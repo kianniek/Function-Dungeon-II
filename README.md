@@ -27,8 +27,8 @@ Please use the issue tracker to report bugs, suggest features and submit pull re
 ## Credits
 This project is developed during the Game Play Engineering semester 2 - 2024 for the Smart Education Lab as part of the Erasmus+ GAMMA project.
 
-## License
-Distributed under the MIT License. See `LICENSE` for more information.
+<!-- ## License
+Distributed under the MIT License. See `LICENSE` for more information. -->
 
 ## Contact
 [Smart Education Lab](https://www.hva.nl/appliedai/labs/smart-education-lab/smart-education-lab.html)
