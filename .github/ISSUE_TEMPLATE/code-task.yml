@@ -9,11 +9,16 @@ body:
     attributes:
       label: "Description"
       description: "What is the functional of system requirement?"
+- type: textarea
+    id: dependencies
+    attributes:
+      label: "Dependencies"
+      description: "List issues which block this issue"
   - type: textarea
     id: acceptante-criteria
     attributes:
       label: "Acceptance Criteria"
-      description: "Define the non"
+      description: "When the implimentation is finshed"
   - type: checkboxes
     id: definition-of-done
     attributes:
