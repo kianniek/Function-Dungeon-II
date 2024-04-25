@@ -1,0 +1,27 @@
+name: "Technical page tracker template"
+description: "Use this template to track a technical page"
+title: "Technical Page: "
+projects:
+  - "Code Task Tracker"
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: "Description"
+      description: "What is the functional of system requirement?"
+  - type: textarea
+    id: acceptante-criteria
+    attributes:
+      label: "Acceptance Criteria"
+      description: "Define the non"
+  - type: checkboxes
+    id: definition-of-done
+    attributes:
+      label: "Definition of Done"
+      description: "Make sure to check off the following tasks!"
+      options:
+        - label: Follows the naming conventions
+        - label: Follows the coding conventions
+        - label: Acceptance criteria met
+        - label: Pull request has been opened
+      
