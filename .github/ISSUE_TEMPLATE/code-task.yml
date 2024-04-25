@@ -9,7 +9,7 @@ body:
     attributes:
       label: "Description"
       description: "What is the functional of system requirement?"
-- type: textarea
+  - type: textarea
     id: dependencies
     attributes:
       label: "Dependencies"
