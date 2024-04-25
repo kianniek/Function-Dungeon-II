@@ -8,7 +8,7 @@ body:
     id: description
     attributes:
       label: "Description"
-      description: "What is the functional of system requirement?"
+      description: "What is the functional requirement?"
   - type: textarea
     id: dependencies
     attributes:
@@ -18,7 +18,7 @@ body:
     id: acceptante-criteria
     attributes:
       label: "Acceptance Criteria"
-      description: "When the implimentation is finshed"
+      description: "When is the implimentation finshed"
   - type: checkboxes
     id: definition-of-done
     attributes:
