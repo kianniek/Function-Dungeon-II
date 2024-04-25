@@ -1,6 +1,6 @@
-name: "Technical page tracker template"
-description: "Use this template to track a technical page"
-title: "Technical Page: "
+name: "Code task issue template"
+description: "Use this template to create codin tasks"
+title: "Feature: "
 projects:
   - "Code Task Tracker"
 body:
