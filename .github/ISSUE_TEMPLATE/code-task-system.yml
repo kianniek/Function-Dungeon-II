@@ -1,0 +1,32 @@
+name: "Code task system issue template"
+description: "Use this template to create codin tasks for sepcific systems"
+title: "System: "
+projects:
+  - "Code Task Tracker"
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: "Description"
+      description: "Which system needs to be implemented?"
+  - type: textarea
+    id: dependencies
+    attributes:
+      label: "Dependencies"
+      description: "List issues which need this system"
+  - type: textarea
+    id: acceptante-criteria
+    attributes:
+      label: "Acceptance Criteria"
+      description: "When is the implimentation finshed?"
+  - type: checkboxes
+    id: definition-of-done
+    attributes:
+      label: "Definition of Done"
+      description: "Make sure to check off the following tasks!"
+      options:
+        - label: Follows the naming conventions
+        - label: Follows the coding conventions
+        - label: Acceptance criteria met
+        - label: Pull request has been opened
+      
