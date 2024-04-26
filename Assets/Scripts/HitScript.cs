@@ -30,6 +30,10 @@ public class HitScript : MonoBehaviour
             StartCoroutine(FlashRed());
             if (_hp <= 0)
             {
+                if(this.gameObject.tag == "Enemy")
+                {
+                    GameManager.instance._enemyKillCount++;
+                }
                 Destroy(this.gameObject);
             }
         }
