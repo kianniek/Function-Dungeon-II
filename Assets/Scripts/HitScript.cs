@@ -5,30 +5,30 @@ using UnityEngine;
 public class HitScript : MonoBehaviour
 {
     [SerializeField]
-    private int maxHp = 3, hp = 3, damageOnHit = 1;
+    private int _maxHp = 3, _hp = 3, _damageOnHit = 1;
 
     [SerializeField]
-    private bool damageable = true, testBool = false;
+    private bool _damageable = true, _testBool = false;
 
     [SerializeField]
-    private Material damageColor;
+    private Material _damageColor;
 
-    private Material startMaterial;
+    private Material _startMaterial;
 
-    private SpriteRenderer spriteRenderer;
+    private SpriteRenderer _spriteRenderer;
     private void Start()
     {
-        spriteRenderer = this.gameObject.GetComponent<SpriteRenderer>();
-        startMaterial = spriteRenderer.material;
+        _spriteRenderer = this.gameObject.GetComponent<SpriteRenderer>();
+        _startMaterial = _spriteRenderer.material;
     }
 
     void OnBlockHit(int damage)
     {
-        if (damageable)
+        if (_damageable)
         {
-            hp = hp - damage;
+            _hp = _hp - damage;
             StartCoroutine(FlashRed());
-            if (hp <= 0)
+            if (_hp <= 0)
             {
                 Destroy(this.gameObject);
             }
@@ -40,17 +40,17 @@ public class HitScript : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (testBool)
+        if (_testBool)
         {
-            OnBlockHit(damageOnHit);
-            testBool = false;
+            OnBlockHit(_damageOnHit);
+            _testBool = false;
         }
     }
 
     private IEnumerator FlashRed()
     {
-        spriteRenderer.material = damageColor;
+        _spriteRenderer.material = _damageColor;
         yield return new WaitForSeconds(0.1f);
-        spriteRenderer.material = startMaterial;
+        _spriteRenderer.material = _startMaterial;
     }
 }
