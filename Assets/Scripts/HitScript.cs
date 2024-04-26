@@ -16,6 +16,9 @@ public class HitScript : MonoBehaviour
     private Material _startMaterial;
 
     private SpriteRenderer _spriteRenderer;
+
+    [SerializeField]
+    private GameObject _bloodsprayParticles;
     private void Start()
     {
         _spriteRenderer = this.gameObject.GetComponent<SpriteRenderer>();
@@ -32,6 +35,7 @@ public class HitScript : MonoBehaviour
             {
                 if(this.gameObject.tag == "Enemy")
                 {
+                    Instantiate(_bloodsprayParticles, transform.position, Quaternion.identity);
                     GameManager.instance._enemyKillCount++;
                 }
                 Destroy(this.gameObject);

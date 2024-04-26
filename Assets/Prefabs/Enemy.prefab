@@ -165,12 +165,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76d2b6da735cbfe43b7fbeabd72310bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHp: 3
-  hp: 3
-  damageOnHit: 3
-  damageable: 1
-  testBool: 0
-  damageColor: {fileID: 2100000, guid: a641b868bd67f2e409022992df1226b9, type: 2}
+  _maxHp: 3
+  _hp: 3
+  _damageOnHit: 1
+  _damageable: 1
+  _testBool: 0
+  _damageColor: {fileID: 2100000, guid: a641b868bd67f2e409022992df1226b9, type: 2}
+  _bloodsprayParticles: {fileID: 1189758241476995002, guid: a47e5bfb2d2cff94baf022374ed12a7c, type: 3}
 --- !u!114 &4745670014286339650
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -183,7 +184,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b051844c8f316334f8cffe2169358d78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gravity: 1
-  friction: 2
-  mass: 1
-  bounciness: 0
+  _gravity: 1
+  _friction: 2
+  _mass: 1
+  _bounciness: 0
