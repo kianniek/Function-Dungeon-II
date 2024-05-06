@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 325039001029777211}
   - component: {fileID: 5607735361005672529}
   m_Layer: 0
-  m_Name: TEMP_PLEASE_DELETE
+  m_Name: TEMP_DELETE_AFTER_PROJECTILE_IMPLIMENTED
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
