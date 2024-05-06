@@ -30,6 +30,6 @@ body:
       options:
         - label: Follows the naming conventions
         - label: Follows the coding conventions
-        - label: Meats the acceptance criteria
+        - label: Meets the acceptance criteria
         - label: Pull request has been opened
       
