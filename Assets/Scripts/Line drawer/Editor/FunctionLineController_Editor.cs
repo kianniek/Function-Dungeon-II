@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEditor;
 
 [CustomEditor(typeof(FunctionLineController))]
-public class FunctionLineController_Editor : Editor
+public class FunctionLineControllerEditor : Editor
 {
     SerializedProperty isQuadratic;
     SerializedProperty a;
@@ -14,8 +14,8 @@ public class FunctionLineController_Editor : Editor
 
     private void OnEnable()
     {
-        // Bind the serialized properties
-        isQuadratic = serializedObject.FindProperty("isQuadratic");
+        // Make sure these names exactly match the private fields in FunctionLineController
+        isQuadratic = serializedObject.FindProperty("IsQuadratic"); // Ensure this name matches
         a = serializedObject.FindProperty("a");
         b = serializedObject.FindProperty("b");
         c = serializedObject.FindProperty("c");
@@ -50,7 +50,7 @@ public class FunctionLineController_Editor : Editor
 
         // Display the current equation with dynamic values
         string equation = "y = " + a.floatValue.ToString("F2") + "x";
-        if (isQuadratic.boolValue && c.floatValue != 0)
+        if (isQuadratic.boolValue && c.floatValue != 1)
         {
             equation += "^" + c.floatValue.ToString("F1");
         }
@@ -65,5 +65,4 @@ public class FunctionLineController_Editor : Editor
 
         serializedObject.ApplyModifiedProperties();
     }
-
 }

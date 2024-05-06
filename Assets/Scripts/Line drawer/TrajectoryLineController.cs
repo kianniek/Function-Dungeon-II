@@ -1,13 +1,15 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Controls the visualization of projectile trajectories based on initial conditions provided by a FunctionLineController.
+/// </summary>
 [ExecuteInEditMode]
 public class TrajectoryLineController : MonoBehaviour
 {
     [Header("Projectile Debug Settings")]
-    [SerializeField] private bool _debug = false;
+    [SerializeField] private bool debugMode = false;
     [SerializeField] private Vector2 projectileVelocity;
 
     [Header("References")]
@@ -18,29 +20,41 @@ public class TrajectoryLineController : MonoBehaviour
     [Min(0.0001f)]
     [SerializeField] private float followDistance = 5f; // Distance along the function line to set the start point
     [SerializeField] private float gravity = Physics.gravity.y; // Gravity value
-    [SerializeField] private float groundLevel = 0;
+    [SerializeField] private float groundLevel = 0f;
     [SerializeField] private float timeStep = 0.1f; // Time step for calculating trajectory points
 
-    void OnDrawGizmos()
+    /// <summary>
+    /// Draws a ray on the ground level for visualization purposes.
+    /// </summary>
+    private void OnDrawGizmos()
     {
-        DrawTrajectory();
         Gizmos.DrawRay(new Vector2(0, groundLevel), Vector2.right * Mathf.Infinity);
     }
 
-    void Awake()
+    /// <summary>
+    /// Warns about debug mode being active upon initialization.
+    /// </summary>
+    private void Awake()
     {
-        if (_debug)
+        if (debugMode)
         {
             Debug.LogWarning("Debug mode is active, which overrides variables for trajectory calculation. Turn off if debugging is not intended.");
         }
     }
 
+    /// <summary>
+    /// Sets the ground level and redraws the trajectory.
+    /// </summary>
+    /// <param name="value">The new ground level to set.</param>
     public void SetGroundLevel(float value)
     {
         groundLevel = value;
         DrawTrajectory();
     }
 
+    /// <summary>
+    /// Draws the trajectory of a projectile based on current settings and conditions.
+    /// </summary>
     public void DrawTrajectory()
     {
         if (!trajectoryLineRenderer || !functionLineController)
@@ -48,7 +62,7 @@ public class TrajectoryLineController : MonoBehaviour
 
         followDistance = Mathf.Clamp(followDistance, 0f, functionLineController.GetLineLength());
         Vector3 startPosition = new Vector3(followDistance, functionLineController.EvaluateFunction(followDistance), 0);
-        Vector3 initialVelocity = _debug ? projectileVelocity : functionLineController.GetVelocityAtPoint(startPosition, followDistance);
+        Vector3 initialVelocity = debugMode ? projectileVelocity : functionLineController.GetVelocityAtPoint(startPosition, followDistance);
 
         float initialVerticalVelocity = initialVelocity.y;
         float initialHeight = startPosition.y;
@@ -90,5 +104,13 @@ public class TrajectoryLineController : MonoBehaviour
 
         trajectoryLineRenderer.positionCount = trajectoryPoints.Count;
         trajectoryLineRenderer.SetPositions(trajectoryPoints.ToArray());
+    }
+
+    /// <summary>
+    /// Automatically updates trajectory visualization when properties are changed in the editor.
+    /// </summary>
+    private void OnValidate()
+    {
+        DrawTrajectory();
     }
 }
