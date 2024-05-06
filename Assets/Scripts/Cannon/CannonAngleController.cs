@@ -5,7 +5,7 @@ using UnityEngine;
 public class CannonAngleController : MonoBehaviour
 {
     [SerializeField]
-    private GameObject _barrelObject;
+    private GameObject _barrelRotationPivot;
     [SerializeField]
     private float a;
 
@@ -16,7 +16,7 @@ public class CannonAngleController : MonoBehaviour
 
     public void Rotate()
     {
-        _barrelObject.transform.rotation = Quaternion.Euler(0f, 0f, GetAngle(a));
+        _barrelRotationPivot.transform.rotation = Quaternion.Euler(0f, 0f, GetAngle(a));
     }
 
     private float GetAngle(float a)
