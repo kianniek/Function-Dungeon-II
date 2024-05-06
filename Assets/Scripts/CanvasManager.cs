@@ -29,5 +29,6 @@ public class CanvasManager : MonoBehaviour
         if(GameManager.instance._enemyCount == GameManager.instance._enemyKillCount)
         {
             onAllEnemiesKilledEvent.Invoke();
+        }
     }
 }
