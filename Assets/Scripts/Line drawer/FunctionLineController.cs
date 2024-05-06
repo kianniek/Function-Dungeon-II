@@ -70,6 +70,11 @@ public class FunctionLineController : MonoBehaviour
         DrawFunction();
     }
 
+    public void GetCoefficientB(float newB)
+    {
+        return b;
+    }
+
     /// <summary>
     /// Sets the coefficient 'c' if the function is quadratic and redraws the function line; logs a warning if not quadratic.
     /// </summary>
