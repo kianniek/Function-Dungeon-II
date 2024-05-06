@@ -165,6 +165,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76d2b6da735cbfe43b7fbeabd72310bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onDieEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1033971314423488722}
+        m_TargetAssemblyTypeName: HitScript, Assembly-CSharp
+        m_MethodName: EnemyOnDie
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1033971314423488722}
+        m_TargetAssemblyTypeName: HitScript, Assembly-CSharp
+        m_MethodName: OnDie
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   _maxHp: 3
   _hp: 3
   _damageOnHit: 1

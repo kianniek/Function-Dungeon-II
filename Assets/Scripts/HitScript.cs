@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class HitScript : MonoBehaviour
 {
+    public UnityEvent onDieEvent;
+
     [SerializeField]
     private int _maxHp = 3, _hp = 3, _damageOnHit = 1;
 
@@ -33,12 +36,7 @@ public class HitScript : MonoBehaviour
             StartCoroutine(FlashRed());
             if (_hp <= 0)
             {
-                if(this.gameObject.tag == "Enemy")
-                {
-                    Instantiate(_bloodsprayParticles, transform.position, Quaternion.identity);
-                    GameManager.instance._enemyKillCount++;
-                }
-                Destroy(this.gameObject);
+                onDieEvent.Invoke();
             }
         }
     }
@@ -54,7 +52,16 @@ public class HitScript : MonoBehaviour
             _testBool = false;
         }
     }
+    public void OnDie()
+    {
+        Destroy(this.gameObject);
+    }
 
+    public void EnemyOnDie()
+    {
+        Instantiate(_bloodsprayParticles, transform.position, Quaternion.identity);
+        GameManager.instance._enemyKillCount++;
+    }
     private IEnumerator FlashRed()
     {
         _spriteRenderer.material = _damageColor;

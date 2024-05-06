@@ -5,6 +5,7 @@ using UnityEngine;
 public class PhysicsScript : MonoBehaviour
 {
     private Rigidbody2D _rb;
+    private Collider2D _collider;
 
     [SerializeField]
     private float _gravity = 1f, _friction = 2f, _mass = 1f, _bounciness;
@@ -16,6 +17,13 @@ public class PhysicsScript : MonoBehaviour
         _rb = GetComponent<Rigidbody2D>();
         physicsMaterial = new PhysicsMaterial2D();
         physicsMaterial.bounciness = _bounciness;
+        _rb.sharedMaterial = physicsMaterial;   
+
+        _collider = GetComponent<Collider2D>();
+        physicsMaterial = new PhysicsMaterial2D();
+
+        physicsMaterial.bounciness = _bounciness;
+        _collider.sharedMaterial = physicsMaterial;
     }
 
     // Update is called once per frame
