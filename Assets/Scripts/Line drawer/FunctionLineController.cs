@@ -70,7 +70,7 @@ public class FunctionLineController : MonoBehaviour
         DrawFunction();
     }
 
-    public void GetCoefficientB(float newB)
+    public float GetCoefficientB()
     {
         return b;
     }
