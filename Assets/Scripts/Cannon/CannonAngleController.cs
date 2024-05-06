@@ -9,6 +9,11 @@ public class CannonAngleController : MonoBehaviour
     [SerializeField]
     private float a;
 
+    private void FixedUpdate()
+    {
+        Rotate();
+    }
+
     public void Rotate()
     {
         _barrelObject.transform.rotation = Quaternion.Euler(0f, 0f, GetAngle(a));
