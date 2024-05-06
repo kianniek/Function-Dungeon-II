@@ -8,29 +8,29 @@ public class PhysicsScript : MonoBehaviour
     private Collider2D _collider;
 
     [SerializeField]
-    private float _gravity = 1f, _friction = 2f, _mass = 1f, _bounciness;
+    private float gravity = 1f, friction = 2f, mass = 1f, bounciness;
 
-    private PhysicsMaterial2D physicsMaterial;
+    private PhysicsMaterial2D _physicsMaterial;
     // Start is called before the first frame update
     void Start()
     {
         _rb = GetComponent<Rigidbody2D>();
-        physicsMaterial = new PhysicsMaterial2D();
-        physicsMaterial.bounciness = _bounciness;
-        _rb.sharedMaterial = physicsMaterial;   
+        _physicsMaterial = new PhysicsMaterial2D();
+        _physicsMaterial.bounciness = bounciness;
+        _rb.sharedMaterial = _physicsMaterial;   
 
         _collider = GetComponent<Collider2D>();
-        physicsMaterial = new PhysicsMaterial2D();
+        _physicsMaterial = new PhysicsMaterial2D();
 
-        physicsMaterial.bounciness = _bounciness;
-        _collider.sharedMaterial = physicsMaterial;
+        _physicsMaterial.bounciness = bounciness;
+        _collider.sharedMaterial = _physicsMaterial;
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        _rb.gravityScale = _gravity;
-        _rb.angularDrag = _friction;
-        _rb.mass = _mass;
+        _rb.gravityScale = gravity;
+        _rb.angularDrag = friction;
+        _rb.mass = mass;
     }
 }

@@ -8,13 +8,13 @@ public class HitScript : MonoBehaviour
     public UnityEvent onDieEvent;
 
     [SerializeField]
-    private int _maxHp = 3, _hp = 3, _damageOnHit = 1;
+    private int maxHp = 3, hp = 3, damageOnHit = 1;
 
     [SerializeField]
-    private bool _damageable = true, _testBool = false;
+    private bool damageable = true, testBool = false;
 
     [SerializeField]
-    private Material _damageColor;
+    private Material damageColor;
 
     private Material _startMaterial;
 
@@ -30,11 +30,11 @@ public class HitScript : MonoBehaviour
 
     void OnBlockHit(int damage)
     {
-        if (_damageable)
+        if (damageable)
         {
-            _hp = _hp - damage;
+            hp = hp - damage;
             StartCoroutine(FlashRed());
-            if (_hp <= 0)
+            if (hp <= 0)
             {
                 onDieEvent.Invoke();
             }
@@ -46,10 +46,10 @@ public class HitScript : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (_testBool)
+        if (testBool)
         {
-            OnBlockHit(_damageOnHit);
-            _testBool = false;
+            OnBlockHit(damageOnHit);
+            testBool = false;
         }
     }
     public void OnDie()
@@ -64,7 +64,7 @@ public class HitScript : MonoBehaviour
     }
     private IEnumerator FlashRed()
     {
-        _spriteRenderer.material = _damageColor;
+        _spriteRenderer.material = damageColor;
         yield return new WaitForSeconds(0.1f);
         _spriteRenderer.material = _startMaterial;
     }

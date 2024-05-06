@@ -8,7 +8,7 @@ public class CanvasManager : MonoBehaviour
     public static CanvasManager instance;
 
     [SerializeField]
-    private TextMeshProUGUI _enemyText;
+    private TextMeshProUGUI enemyText;
     private void Awake()
     {
         if (instance != null && instance != this)
@@ -23,6 +23,6 @@ public class CanvasManager : MonoBehaviour
 
     private void Update()
     {
-        _enemyText.text = $"Enemies killed: {GameManager.instance._enemyKillCount} / {GameManager.instance._enemyCount}";
+        enemyText.text = $"Enemies killed: {GameManager.instance._enemyKillCount} / {GameManager.instance._enemyCount}";
     }
 }
