@@ -16,6 +16,9 @@ namespace UI.LinearEquation
         private float _aVariable;
         private float _bVariable;
         
+        /// <summary>
+        /// Change the A, aka slope or steepness, variable of the equation
+        /// </summary>
         public float AVariable
         {
             get => _aVariable;
@@ -26,6 +29,9 @@ namespace UI.LinearEquation
             }
         }
 
+        /// <summary>
+        /// Change the B, aka y-intercept or height, variable of the equation
+        /// </summary>
         public float BVariable
         {
             get => _bVariable;

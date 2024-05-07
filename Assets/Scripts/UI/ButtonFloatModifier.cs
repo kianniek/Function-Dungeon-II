@@ -17,6 +17,9 @@ namespace UI
 
         private float _value;
 
+        /// <summary>
+        /// The float value of this modifier
+        /// </summary>
         public float Value
         {
             get => _value;
@@ -34,11 +37,17 @@ namespace UI
             Value = startValue;
         }
 
+        /// <summary>
+        /// Increase the value by the step
+        /// </summary>
         public void Increase()
         {
             Value += step;
         }
 
+        /// <summary>
+        /// Decrease the value by the step
+        /// </summary>
         public void Decrease()
         {
             Value -= step;
