@@ -70,6 +70,6 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  widthMultiplier: 0.25
+  widthMultiplier: 0.1
   numCapVertices: 8
   numCornerVertices: 8

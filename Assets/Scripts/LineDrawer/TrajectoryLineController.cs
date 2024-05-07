@@ -55,14 +55,18 @@ namespace LineController
             }
         }
 
+        private void Update()
+        {
+            DrawTrajectory();
+        }
+
         /// <summary>
         /// Draws the trajectory of a projectile based on current settings and conditions.
         /// </summary>
         public void DrawTrajectory()
-        {
+        { 
             if (!trajectoryLineRenderer || !functionLineController)
                 return;
-
             followDistance = Mathf.Clamp(followDistance, 0f, functionLineController.LineLength);
             var startPosition = new Vector3(followDistance, functionLineController.EvaluateFunction(followDistance), 0);
             Vector3 initialVelocity = debugMode ? projectileVelocity : functionLineController.GetVelocityAtPoint(startPosition, followDistance);

@@ -362,7 +362,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!21 &964465507
+--- !u!21 &772849726
 Material:
   serializedVersion: 8
   m_ObjectHideFlags: 0
@@ -409,7 +409,7 @@ Material:
     - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
---- !u!21 &1307865294
+--- !u!21 &1632447735
 Material:
   serializedVersion: 8
   m_ObjectHideFlags: 0
@@ -467,71 +467,11 @@ PrefabInstance:
     - target: {fileID: 1516196684296637784, guid: 006f266fc6e3fd74a8247b2c70ac3520, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 964465507}
-    - target: {fileID: 1516196684296637784, guid: 006f266fc6e3fd74a8247b2c70ac3520, type: 3}
-      propertyPath: m_Parameters.widthMultiplier
-      value: 0.54
-      objectReference: {fileID: 0}
-    - target: {fileID: 1580077867831759669, guid: 006f266fc6e3fd74a8247b2c70ac3520, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6922533945423510579, guid: 006f266fc6e3fd74a8247b2c70ac3520, type: 3}
-      propertyPath: m_Parameters.alignment
-      value: 0
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 772849726}
     - target: {fileID: 6922533945423510579, guid: 006f266fc6e3fd74a8247b2c70ac3520, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 1307865294}
-    - target: {fileID: 6922533945423510579, guid: 006f266fc6e3fd74a8247b2c70ac3520, type: 3}
-      propertyPath: m_Parameters.widthMultiplier
-      value: 0.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 6922533945423510579, guid: 006f266fc6e3fd74a8247b2c70ac3520, type: 3}
-      propertyPath: m_Parameters.colorGradient.atime0
-      value: 52428
-      objectReference: {fileID: 0}
-    - target: {fileID: 6922533945423510579, guid: 006f266fc6e3fd74a8247b2c70ac3520, type: 3}
-      propertyPath: m_Parameters.colorGradient.ctime0
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6922533945423510579, guid: 006f266fc6e3fd74a8247b2c70ac3520, type: 3}
-      propertyPath: m_Parameters.colorGradient.key0.a
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6922533945423510579, guid: 006f266fc6e3fd74a8247b2c70ac3520, type: 3}
-      propertyPath: m_Parameters.colorGradient.key0.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6922533945423510579, guid: 006f266fc6e3fd74a8247b2c70ac3520, type: 3}
-      propertyPath: m_Parameters.colorGradient.key0.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6922533945423510579, guid: 006f266fc6e3fd74a8247b2c70ac3520, type: 3}
-      propertyPath: m_Parameters.colorGradient.key0.r
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6922533945423510579, guid: 006f266fc6e3fd74a8247b2c70ac3520, type: 3}
-      propertyPath: m_Parameters.colorGradient.key1.a
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6922533945423510579, guid: 006f266fc6e3fd74a8247b2c70ac3520, type: 3}
-      propertyPath: m_Parameters.colorGradient.m_ColorSpace
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6922533945423510579, guid: 006f266fc6e3fd74a8247b2c70ac3520, type: 3}
-      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[0].value
-      value: 0.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 6922533945423510579, guid: 006f266fc6e3fd74a8247b2c70ac3520, type: 3}
-      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[1].value
-      value: 0.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 7166863714836086688, guid: 006f266fc6e3fd74a8247b2c70ac3520, type: 3}
-      propertyPath: isQuadratic
-      value: 0
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1632447735}
     - target: {fileID: 7330308856910961621, guid: 006f266fc6e3fd74a8247b2c70ac3520, type: 3}
       propertyPath: m_Name
       value: CannonPlatform
