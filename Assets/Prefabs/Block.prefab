@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 1067624999192158399}
   - component: {fileID: 4958550345508235367}
   - component: {fileID: 878559466307328197}
-  - component: {fileID: 3515589063632954185}
   m_Layer: 0
   m_Name: Block
   m_TagString: Untagged
@@ -190,26 +189,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  _maxHp: 3
-  _hp: 3
-  _damageOnHit: 1
-  _damageable: 1
-  _testBool: 0
-  _damageColor: {fileID: 2100000, guid: a641b868bd67f2e409022992df1226b9, type: 2}
+  maxHp: 3
+  hp: 3
+  damageOnHit: 1
+  damageable: 1
+  testBool: 0
+  damageColor: {fileID: 0}
   _bloodsprayParticles: {fileID: 0}
---- !u!114 &3515589063632954185
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2013956999011018964}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b051844c8f316334f8cffe2169358d78, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _gravity: 1
-  _friction: 0
-  _mass: 1
-  _bounciness: 0
