@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class CannonAngleController : MonoBehaviour
 {
@@ -8,7 +9,7 @@ public class CannonAngleController : MonoBehaviour
     private GameObject _barrelRotationPivot;
 
     [SerializeField]
-    private float a;
+    private float a; 
 
     private void FixedUpdate()
     {
