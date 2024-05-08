@@ -6,14 +6,14 @@ namespace LineController
     [CustomEditor(typeof(TrajectoryLineController))]
     public class TrajectoryLineControllerEditor : Editor
     {
-        SerializedProperty debugProp;
-        SerializedProperty projectileVelocityProp;
-        SerializedProperty trajectoryLineRendererProp;
-        SerializedProperty functionLineControllerProp;
-        SerializedProperty followDistanceProp;
-        SerializedProperty gravityProp;
-        SerializedProperty groundLevelProp;
-        SerializedProperty timeStepProp;
+        private SerializedProperty debugProp;
+        private SerializedProperty projectileVelocityProp;
+        private SerializedProperty trajectoryLineRendererProp;
+        private SerializedProperty functionLineControllerProp;
+        private SerializedProperty followDistanceProp;
+        private SerializedProperty gravityProp;
+        private SerializedProperty groundLevelProp;
+        private SerializedProperty timeStepProp;
 
         void OnEnable()
         {
@@ -33,7 +33,7 @@ namespace LineController
             serializedObject.Update();  // Load the actual values
 
             // Script field
-            MonoScript script = MonoScript.FromMonoBehaviour((TrajectoryLineController)target);
+            var script = MonoScript.FromMonoBehaviour((TrajectoryLineController)target);
             EditorGUI.BeginDisabledGroup(true);
             EditorGUILayout.ObjectField("Script", script, typeof(MonoScript), false);
             EditorGUI.EndDisabledGroup();

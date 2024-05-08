@@ -1,12 +1,14 @@
 using UnityEngine;
 using System;
+using UnityEngine.Events;
+
 namespace LineController
 {
     [ExecuteInEditMode]
     [CreateAssetMenu(fileName = "LineSettingVariables", menuName = "LineDrawer/LineSettingVariables")]
     public class LineSettingVariables : ScriptableObject
     {
-        public event Action OnSettingsChanged;
+        public event UnityAction OnSettingsChanged;
 
         [SerializeField] private LineAlignment alignment = LineAlignment.View;
         public LineAlignment Alignment
@@ -111,7 +113,7 @@ namespace LineController
             }
         }
 
-        public void NotifyChanged()
+        public void OnValidate()
         {
             OnSettingsChanged?.Invoke();
         }

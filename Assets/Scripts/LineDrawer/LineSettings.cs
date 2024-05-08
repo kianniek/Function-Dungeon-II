@@ -47,7 +47,7 @@ namespace LineController
             ApplySettings(trajectoryLine, trajectoryLineSettings);
         }
 
-        void ApplySettings(LineRenderer lineRenderer, LineSettingVariables settings)
+        private void ApplySettings(LineRenderer lineRenderer, LineSettingVariables settings)
         {
             if (lineRenderer != null && settings != null)
             {

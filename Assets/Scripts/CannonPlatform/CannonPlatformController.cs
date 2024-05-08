@@ -7,14 +7,13 @@ namespace CannonPlatform
     /// </summary>
     public class CannonPlatformController : MonoBehaviour
     {
-        [SerializeField]
-        private float maxHeight = 10f; // Maximum height the platform can reach.
-        [SerializeField]
-        private float minHeight = 0f; // Minimum height the platform can descend to.
-        [SerializeField]
-        UnityEvent OnMovingUp; // Event invoked when the platform is moving up.
-        [SerializeField]
-        UnityEvent OnMovingDown; // Event invoked when the platform is moving down.
+        [SerializeField] private float maxHeight = 10f; // Maximum height the platform can reach.
+
+        [SerializeField] private float minHeight = 0f; // Minimum height the platform can descend to.
+
+        [SerializeField] private UnityEvent OnMovingUp = new UnityEvent(); // Event invoked when the platform is moving up.
+
+        [SerializeField] private UnityEvent OnMovingDown = new UnityEvent(); // Event invoked when the platform is moving down.
 
         private Vector3 _wantedPosition;
 

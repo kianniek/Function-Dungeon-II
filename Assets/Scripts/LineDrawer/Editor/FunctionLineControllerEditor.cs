@@ -5,13 +5,13 @@ namespace LineController
     [CustomEditor(typeof(FunctionLineController))]
     public class FunctionLineControllerEditor : Editor
     {
-        SerializedProperty isQuadratic;
-        SerializedProperty a;
-        SerializedProperty b;
-        SerializedProperty c;
-        SerializedProperty lineLength;
-        SerializedProperty segments;
-        SerializedProperty lineRenderer;
+        private SerializedProperty isQuadratic;
+        private SerializedProperty a;
+        private SerializedProperty b;
+        private SerializedProperty c;
+        private SerializedProperty lineLength;
+        private SerializedProperty segments;
+        private SerializedProperty lineRenderer;
 
         private void OnEnable()
         {

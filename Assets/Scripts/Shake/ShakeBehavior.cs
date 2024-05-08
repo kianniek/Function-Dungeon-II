@@ -9,12 +9,11 @@ namespace Shake
     [ExecuteInEditMode]
     public class ShakeBehavior : MonoBehaviour
     {
-        [SerializeField]
-        UnityEvent OnShakeStart;
-        [SerializeField]
-        UnityEvent OnShakeEnd;
-        [SerializeField]
-        private float shakeDuration = 0.5f;
+        [SerializeField] UnityEvent OnShakeStart = new UnityEvent();
+
+        [SerializeField] UnityEvent OnShakeEnd = new UnityEvent();
+
+        [SerializeField] private float shakeDuration = 0.5f;
 
         /// <summary>
         /// Gets or sets the duration of the shake.
