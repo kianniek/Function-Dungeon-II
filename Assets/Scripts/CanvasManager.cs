@@ -6,7 +6,7 @@ using UnityEngine.Events;
 
 public class CanvasManager : MonoBehaviour
 {
-    public UnityEvent onAllEnemiesKilledEvent;
+    [SerializeField] private UnityEvent onAllEnemiesKilledEvent;
     public static CanvasManager instance;
 
     [SerializeField]
