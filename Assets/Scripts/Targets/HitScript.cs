@@ -20,6 +20,8 @@ namespace Targets
 
         [SerializeField] private GameObject bloodsprayParticles;
 
+        public UnityEvent OnDieEvent { get => onDieEvent; }
+
         private void Awake()
         {
             _spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
@@ -53,9 +55,6 @@ namespace Targets
         {
             //Particles should already exist, remove instantiate
             Instantiate(bloodsprayParticles, transform.position, Quaternion.identity);
-
-            //Change this
-            GameManager.instance._enemyKillCount++;
         }
 
         private IEnumerator FlashRed()
