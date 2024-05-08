@@ -11,9 +11,11 @@ namespace CannonPlatform
 
         [SerializeField] private float minHeight = 0f; // Minimum height the platform can descend to.
 
-        [SerializeField] private UnityEvent OnMovingUp = new UnityEvent(); // Event invoked when the platform is moving up.
+        [SerializeField] private float movementSmoothing = 5f; // Smoothing factor for the platform movement.
 
-        [SerializeField] private UnityEvent OnMovingDown = new UnityEvent(); // Event invoked when the platform is moving down.
+        [SerializeField] private UnityEvent OnMovingUp = new (); // Event invoked when the platform is moving up.
+
+        [SerializeField] private UnityEvent OnMovingDown = new (); // Event invoked when the platform is moving down.
 
         private Vector3 _wantedPosition;
 
@@ -22,12 +24,12 @@ namespace CannonPlatform
             _wantedPosition = transform.position;
         }
 
-        private void Update()
+        private void FixedUpdate()
         {
             // Smoothly move the platform towards the wanted position.
             if (Vector3.Distance(transform.position, _wantedPosition) > 0.01f)
             {
-                transform.position = Vector3.Lerp(transform.position, _wantedPosition, Time.deltaTime * 5f);
+                transform.position = Vector3.Lerp(transform.position, _wantedPosition, Time.deltaTime * movementSmoothing);
             }
             else
             {
@@ -43,8 +45,8 @@ namespace CannonPlatform
         /// <param name="input">Vertical input for moving the platform, typically from -1 to 1.</param>
         public void Move(float input)
         {
-            float translation = input;
-            Vector3 newPosition = _wantedPosition + new Vector3(0, translation, 0);
+            var translationY = input;
+            var newPosition = _wantedPosition + new Vector3(0, translationY, 0);
 
             // Clamping the position to ensure the platform stays within defined bounds.
             newPosition.y = Mathf.Clamp(newPosition.y, minHeight, maxHeight);
