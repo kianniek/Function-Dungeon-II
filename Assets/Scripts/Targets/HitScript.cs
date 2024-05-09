@@ -8,7 +8,7 @@ namespace Targets
     {
         [SerializeField] private UnityEvent onDieEvent = new();
 
-        [SerializeField] private int hp = 3;
+        [SerializeField] private float hp = 3;
 
         [SerializeField] private bool damageable = true;
 
@@ -31,7 +31,7 @@ namespace Targets
             _startMaterial = _spriteRenderer.material;
         }
 
-        public void OnBlockHit(int damage)
+        public void OnBlockHit(float damage)
         {
             if (damageable)
             {

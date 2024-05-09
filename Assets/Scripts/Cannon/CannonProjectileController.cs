@@ -1,59 +1,102 @@
 using UnityEngine;
 using UnityEngine.Events;
 using System.Collections.Generic;
+using Projectile;
 
-public class CannonProjectileController : MonoBehaviour
+namespace Cannon
 {
-    private List<GameObject> _pooledProjectiles;
-
-    [SerializeField]
-    private GameObject prefabToPool;
-
-    [SerializeField]
-    private int amountToPool = 20;
-
-    [SerializeField]
-    public UnityEvent OnCannonFire;
-
-    // Start is called before the first frame update
-    void Start()
+    public class CannonProjectileController : MonoBehaviour
     {
-        _pooledProjectiles = new List<GameObject>();
-        GameObject tmp;
-        for (int i = 0; i < amountToPool; i++)
+        [Header("References")]
+        [SerializeField] private GameObject shootPosition;
+        [Header("Pooling")]
+        [SerializeField] private GameObject prefabToPool;
+        [SerializeField] private int amountToPool = 20;
+        [SerializeField] private UnityEvent OnCannonFire = new();
+
+
+
+
+        private List<ProjectileScript> _pooledProjectiles = new();
+
+        // Start is called before the first frame update
+        private void Start()
         {
-            tmp = Instantiate(prefabToPool);
-            tmp.SetActive(false);
-            _pooledProjectiles.Add(tmp);
+            CreatePooledProjectiles();
         }
-    }
 
-    // Returns a pooled projectile if available, otherwise returns null
-    public GameObject GetPooledProjectile()
-    {
-        for (int i = 0; i < amountToPool; i++)
+        private void OnValidate()
         {
-            if (!_pooledProjectiles[i].activeInHierarchy)
+            if (Application.isPlaying)
+                CreatePooledProjectiles();
+        }
+
+
+        /// <summary>
+        /// Empties the current pooled object list and creates a new pool
+        /// </summary>
+        private void CreatePooledProjectiles()
+        {
+            if (prefabToPool.GetComponent<ProjectileScript>() == null)
             {
-                return _pooledProjectiles[i];
+                Debug.LogWarning($"Prefab {prefabToPool.name} doesn't have a ProjectileScript!");
+                return;
+            }
+
+            // Checks if there are already pooled objects and destroys exisitng pooled gameObjects
+            if (_pooledProjectiles != null && _pooledProjectiles.Count > 0)
+            {
+                for (var i = 0; i < _pooledProjectiles.Count; i++)
+                {
+                    Destroy(_pooledProjectiles[i].gameObject);
+                }
+            }
+
+            // Creates a new list of pooled objects
+            _pooledProjectiles = new();
+            GameObject tmp;
+            for (var i = 0; i < amountToPool; i++)
+            {
+                tmp = Instantiate(prefabToPool);
+                tmp.SetActive(false);
+                _pooledProjectiles.Add(tmp.GetComponent<ProjectileScript>());
             }
         }
-        return null;
-    }
 
-    // Activates a pooled projectile and invokes the cannon fired event
-    public void ShootProjectile()
-    {
-        GameObject projectile = GetPooledProjectile();
-        if (projectile)
+        /// <summary>
+        /// Returns a pooled projectile if available, otherwise returns null
+        /// </summary>
+        private ProjectileScript GetPooledProjectile()
         {
-            projectile.transform.position = transform.position;
-            projectile.SetActive(true);
-            OnCannonFire.Invoke();
+            for (var i = 0; i < amountToPool; i++)
+            {
+                if (!_pooledProjectiles[i].gameObject.activeInHierarchy)
+                {
+                    return _pooledProjectiles[i];
+                }
+            }
+            return null;
         }
-        else
+
+        /// <summary>
+        /// Activates a pooled projectile and invokes the cannon fired event 
+        /// </summary>
+        public void ShootProjectile()
         {
-            Debug.LogWarning("Not enough pooled projectiles! Consider increasing the current ammount: " + amountToPool);
+            ProjectileScript projectile = GetPooledProjectile();
+            if (projectile)
+            {
+                projectile.transform.position = transform.position;
+                projectile.gameObject.SetActive(true);
+
+                projectile.Shoot(shootPosition.transform.rotation);
+
+                OnCannonFire.Invoke();
+            }
+            else
+            {
+                Debug.LogWarning($"Not enough pooled projectiles! Consider increasing the current amount: {amountToPool}");
+            }
         }
     }
 }
