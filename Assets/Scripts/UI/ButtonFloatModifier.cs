@@ -4,6 +4,9 @@ using UnityEngine;
 
 namespace UI
 {
+    /// <summary>
+    /// This script can be used as a float value modifier for buttons
+    /// </summary>
     public class ButtonFloatModifier : MonoBehaviour
     {
         [Header("Settings")] 

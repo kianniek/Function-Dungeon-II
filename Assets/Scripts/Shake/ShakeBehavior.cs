@@ -17,15 +17,17 @@ namespace Shake
         private Vector2 _initialShakeIntensity;
 
         [Header("Debugging")]
-        [Tooltip("This varable is only used when hitting the <b>Test Shake</b> button in the inspector")]
+        [Tooltip("This variable is only used when hitting the <b>Test Shake</b> button in the inspector")]
         [SerializeField] private Vector2 debugShakeIntensity = new(0.5f, 0.5f);
-        [Tooltip("This varable is only used when hitting the <b>Test Shake</b> button in the inspector")]
+        [Tooltip("This variable is only used when hitting the <b>Test Shake</b> button in the inspector")]
         [SerializeField] private float debugShakeDuration = 0.5f;
 
         public float DebugShakeDuration { get; private set; }
+        
         public float DebugShakeIntensity { get; private set; }
 
         public Vector2 ShakeIntensity { get; set; } = new(0.5f, 0.5f);
+        
         public bool EnableDecay { get; set; } = true;
 
         /// <summary>
