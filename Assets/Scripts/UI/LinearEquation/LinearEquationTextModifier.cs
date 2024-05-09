@@ -3,6 +3,9 @@ using UnityEngine;
 
 namespace UI.LinearEquation
 {
+    /// <summary>
+    /// This class is responsible for changing the text of a TMP_Text component to represent a linear equation
+    /// </summary>
     [RequireComponent(typeof(TMP_Text))]
     public class LinearEquationTextModifier : MonoBehaviour
     {
