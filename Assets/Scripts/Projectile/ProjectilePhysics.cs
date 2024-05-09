@@ -21,7 +21,7 @@ namespace Projectile
         
         public static Vector2 CalculateGravityTrajectory(Vector2 direction, float speed, float gravity)
         {
-            return direction.normalized * speed * gravity;
+            return direction.normalized * speed;
         }
     }
 }
