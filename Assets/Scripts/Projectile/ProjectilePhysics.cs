@@ -16,7 +16,7 @@ namespace Projectile
             if (travelDistance == 0)
                 return direction;
             
-            return direction * travelDistance;
+            return direction.normalized * travelDistance;
         }
         
         public static Vector2 CalculateGravityTrajectory(Vector2 direction, float speed, float gravity)

@@ -33,6 +33,7 @@ namespace Projectile
             _rb.velocity = transform.forward * physicsVariables.Velocity;
             _rb.gravityScale = 0;
             _currentResetTime = resetTime;
+            _lastPosition = transform.position;
         }
 
         private void FixedUpdate()
@@ -62,7 +63,8 @@ namespace Projectile
         /// </summary>
         private void EnablesGravity()
         {
-            _rb.gravityScale = 1f;
+            Physics2D.gravity = new Vector2(0, -Mathf.Abs(physicsVariables.Gravity));
+            _rb.gravityScale = 1;
         }
 
         /// <summary>
@@ -117,6 +119,7 @@ namespace Projectile
         /// <param name="rotation">The rotation the projectile will be shot towards</param>
         public void Shoot(Quaternion rotation)
         {
+            _lastPosition = transform.position;
             _direction = (rotation * Vector2.right).normalized;
             _rb.AddForce(_direction * physicsVariables.Velocity, ForceMode2D.Impulse);
         }
