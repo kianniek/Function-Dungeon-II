@@ -7,13 +7,15 @@ namespace Cannon
 {
     public class CannonProjectileController : MonoBehaviour
     {
+        [Header("References")]
         [SerializeField] private GameObject shootPosition;
-
+        [Header("Pooling")]
         [SerializeField] private GameObject prefabToPool;
-
         [SerializeField] private int amountToPool = 20;
-
         [SerializeField] private UnityEvent OnCannonFire = new();
+
+
+
 
         private List<ProjectileScript> _pooledProjectiles = new();
 

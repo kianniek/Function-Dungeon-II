@@ -1,3 +1,4 @@
+using Targets;
 using UnityEngine;
 
 namespace Projectile
@@ -5,10 +6,15 @@ namespace Projectile
     [RequireComponent(typeof(Rigidbody2D))]
     public class ProjectileScript : MonoBehaviour
     {
+        [Header("Cannon settings")]
+        [SerializeField] private int baseDamage = 1;
         [SerializeField] private float speed = 10f;
+        [Header("Physic settings")]
+        [Tooltip("The distance traveled until gravity is applied")]
         [SerializeField] private float maxDistance = 20f;
+        [Tooltip("The gravity scale that will be applied when it has reached it max distance")]
         [SerializeField] private float gravityScale = 1f;
-        [SerializeField] private float damage = 10f;
+        [Tooltip("Time needed until the projectile is deactivated after time of inactivity")]
         [SerializeField] private float resetTime = 5f;
 
         private float _distanceTraveled;
@@ -91,10 +97,11 @@ namespace Projectile
         {
             EnablesGravity();
 
-            HitScript hitScript = collision.gameObject.GetComponent<HitScript>();
+            var hitScript = collision.gameObject.GetComponent<HitScript>();
             if (hitScript != null)
             {
-
+                var speed = _rb.velocity.magnitude;
+                hitScript.OnBlockHit(baseDamage * speed);
             }
         }
 
