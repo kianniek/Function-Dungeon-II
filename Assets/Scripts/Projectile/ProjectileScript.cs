@@ -90,18 +90,21 @@ namespace Projectile
         private void OnCollisionEnter2D(Collision2D collision)
         {
             EnablesGravity();
+
+            HitScript hitScript = collision.gameObject.GetComponent<HitScript>();
+            if (hitScript != null)
+            {
+
+            }
         }
 
         /// <summary>
         /// Launches the object towards a specified direction
         /// </summary>
-        /// <param name="orientation">The direction the projectile will be shot to</param>
+        /// <param name="rotation">The rotation the projectile will be shot towards</param>
         public void Shoot(Quaternion rotation)
         {
-            // Convert the quaternion rotation to a forward direction
             Vector2 direction = rotation * Vector2.right;
-
-            // Normalize the direction and apply force
             _rb.AddForce(direction.normalized * speed);
         }
     }
