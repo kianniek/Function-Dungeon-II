@@ -1,9 +1,10 @@
 using UnityEngine;
 using UnityEditor;
-namespace Shake
+
+namespace Shake.Editor
 {
     [CustomEditor(typeof(ShakeBehavior))]
-    public class ShakeBehaviorEditor : Editor
+    public class ShakeBehaviorEditor : UnityEditor.Editor
     {
         public override void OnInspectorGUI()
         {
@@ -14,7 +15,7 @@ namespace Shake
             if (GUILayout.Button("Test Shake"))
             {
                 // Trigger the shake using the current settings in the inspector
-                shakeScript.Shake(shakeScript.ShakeDuration, shakeScript.ShakeIntensity);
+                shakeScript.Shake(shakeScript.DebugShakeDuration, shakeScript.DebugShakeIntensity);
             }
         }
     }
