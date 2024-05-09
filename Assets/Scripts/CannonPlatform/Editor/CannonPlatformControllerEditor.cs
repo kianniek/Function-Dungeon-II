@@ -1,16 +1,16 @@
 using UnityEngine;
 using UnityEditor;
 
-namespace CannonPlatform
+namespace CannonPlatform.Editor
 {
     [CustomEditor(typeof(CannonPlatformController))]
-    public class CannonPlatformControllerEditor : Editor
+    public class CannonPlatformControllerEditor : UnityEditor.Editor
     {
         public override void OnInspectorGUI()
         {
             DrawDefaultInspector(); // Draws the default inspector
 
-            CannonPlatformController script = (CannonPlatformController)target;
+            var script = (CannonPlatformController)target;
 
             if (GUILayout.Button("Move Up (1f)"))
             {
