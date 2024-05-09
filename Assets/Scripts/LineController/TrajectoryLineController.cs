@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -27,7 +26,7 @@ namespace LineController
 
         public float GroundLevel
         {
-            get { return groundLevel; }
+            get => groundLevel;
             private set
             {
                 groundLevel = value;
@@ -37,7 +36,7 @@ namespace LineController
 
         public float FollowDistance
         {
-            get { return followDistance; }
+            get => followDistance;
             private set
             {
                 followDistance = value;
@@ -47,7 +46,7 @@ namespace LineController
 
         public float Gravity
         {
-            get { return gravity; }
+            get => gravity;
             private set
             {
                 gravity = value;
@@ -57,7 +56,7 @@ namespace LineController
 
         public float TimeStep
         {
-            get { return timeStep; }
+            get => timeStep;
             private set
             {
                 timeStep = value;

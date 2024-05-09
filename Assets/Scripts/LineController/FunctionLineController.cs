@@ -1,6 +1,5 @@
-using System;
 using UnityEngine;
-using UnityEngine.PlayerLoop;
+
 //MVC pattern 
 namespace LineController
 {
@@ -10,8 +9,7 @@ namespace LineController
     {
         [Header("Function settings")]
         public bool isQuadratic;
-
-
+        
         [Header("Function coefficients")]
         [Tooltip("This variable defines the slope of the function.")]
         [SerializeField] private float a = 1f;
@@ -28,7 +26,7 @@ namespace LineController
 
         public float LineLength
         {
-            get { return lineLength; }
+            get => lineLength;
             private set
             {
                 lineLength = Mathf.Max(0, value);  // Ensure lineLength never goes negative.
@@ -41,7 +39,7 @@ namespace LineController
         /// </summary>
         public float A
         {
-            get { return a; }
+            get => a;
             set
             {
                 a = value;
@@ -54,7 +52,7 @@ namespace LineController
         /// </summary>
         public float B
         {
-            get { return b; }
+            get => b;
             set
             {
                 b = value;
@@ -67,7 +65,7 @@ namespace LineController
         /// </summary>
         public float C
         {
-            get { return c; }
+            get => c;
             set
             {
                 c = value;

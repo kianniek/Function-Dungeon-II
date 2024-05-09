@@ -1,5 +1,7 @@
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Serialization;
+
 namespace CannonPlatform
 {
     /// <summary>
@@ -8,14 +10,11 @@ namespace CannonPlatform
     public class CannonPlatformController : MonoBehaviour
     {
         [SerializeField] private float maxHeight = 10f; // Maximum height the platform can reach.
-
         [SerializeField] private float minHeight = 0f; // Minimum height the platform can descend to.
-
         [SerializeField] private float movementSmoothing = 5f; // Smoothing factor for the platform movement.
 
-        [SerializeField] private UnityEvent OnMovingUp = new (); // Event invoked when the platform is moving up.
-
-        [SerializeField] private UnityEvent OnMovingDown = new (); // Event invoked when the platform is moving down.
+        [SerializeField] private UnityEvent onMovingUp = new (); // Event invoked when the platform is moving up.
+        [SerializeField] private UnityEvent onMovingDown = new (); // Event invoked when the platform is moving down.
 
         private Vector3 _wantedPosition;
 
@@ -37,7 +36,6 @@ namespace CannonPlatform
             }
 
         }
-
 
         /// <summary>
         /// Move the platform vertically based on the input.
@@ -61,7 +59,7 @@ namespace CannonPlatform
         public void MoveUp(float amount)
         {
             Move(amount);
-            OnMovingUp.Invoke();
+            onMovingUp.Invoke();
         }
 
         /// <summary>
@@ -71,7 +69,7 @@ namespace CannonPlatform
         public void MoveDown(float amount)
         {
             Move(-amount);
-            OnMovingDown.Invoke();
+            onMovingDown.Invoke();
         }
     }
 }

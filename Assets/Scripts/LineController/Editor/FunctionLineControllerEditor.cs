@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEditor;
+
 namespace LineController.Editor
 {
     [CustomEditor(typeof(FunctionLineController))]
