@@ -3,6 +3,7 @@ using UnityEngine.Events;
 using System.Collections.Generic;
 using Attributes;
 using Projectile;
+using UnityEngine.Serialization;
 
 namespace Cannon
 {
@@ -12,11 +13,11 @@ namespace Cannon
         [SerializeField] private GameObject shootPosition;
         
         [Header("Pooling")] 
-        [SerializeField, Expandable] private GameObject prefabToPool;
+        [SerializeField, Expandable] private ProjectileScript prefabToPool;
         [SerializeField] private int amountToPool = 20;
-        [SerializeField] private UnityEvent OnCannonFire = new();
+        [SerializeField] private UnityEvent onCannonFire = new();
         
-        private List<ProjectileScript> _pooledProjectiles = new();
+        private readonly List<ProjectileScript> _pooledProjectiles = new();
         
         // Start is called before the first frame update
         private void Start()
@@ -24,41 +25,37 @@ namespace Cannon
             CreatePooledProjectiles();
         }
         
-        private void OnValidate()
-        {
-            if (Application.isPlaying)
-                CreatePooledProjectiles();
-        }
-        
         /// <summary>
         /// Empties the current pooled object list and creates a new pool
         /// </summary>
         private void CreatePooledProjectiles()
         {
-            if (prefabToPool.GetComponent<ProjectileScript>() == null)
-            {
-                Debug.LogWarning($"Prefab {prefabToPool.name} doesn't have a ProjectileScript!");
-                return;
-            }
+            // if (prefabToPool == null)
+            // {
+            //     Debug.LogWarning($"Prefab {prefabToPool.name} doesn't have a ProjectileScript!");
+            //     
+            //     return;
+            // }
             
-            // Checks if there are already pooled objects and destroys exisitng pooled gameObjects
-            if (_pooledProjectiles != null && _pooledProjectiles.Count > 0)
+            // Checks if there are already pooled objects and destroys existing pooled gameObjects
+            if (_pooledProjectiles.Count > 0)
             {
-                for (var i = 0; i < _pooledProjectiles.Count; i++)
+                foreach (var projectile in _pooledProjectiles)
                 {
-                    Destroy(_pooledProjectiles[i].gameObject);
+                    Destroy(projectile.gameObject);
                 }
             }
             
             // Creates a new list of pooled objects
-            _pooledProjectiles = new();
-            GameObject tmp;
+            _pooledProjectiles.Clear();
             
             for (var i = 0; i < amountToPool; i++)
             {
-                tmp = Instantiate(prefabToPool);
-                tmp.SetActive(false);
-                _pooledProjectiles.Add(tmp.GetComponent<ProjectileScript>());
+                var projectile = Instantiate(prefabToPool, transform);
+                
+                projectile.gameObject.SetActive(false);
+                
+                _pooledProjectiles.Add(projectile);
             }
         }
         
@@ -83,7 +80,7 @@ namespace Cannon
         /// </summary>
         public void ShootProjectile()
         {
-            ProjectileScript projectile = GetPooledProjectile();
+            var projectile = GetPooledProjectile();
             
             if (projectile)
             {
@@ -92,7 +89,7 @@ namespace Cannon
                 
                 projectile.Shoot(shootPosition.transform.rotation);
                 
-                OnCannonFire.Invoke();
+                onCannonFire.Invoke();
             }
             else
             {
