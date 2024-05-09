@@ -14,11 +14,11 @@ namespace Targets
 
         [SerializeField] private Material damageColor;
 
+        [SerializeField] private GameObject bloodsprayParticles;
+
         private Material _startMaterial;
 
         private SpriteRenderer _spriteRenderer;
-
-        [SerializeField] private GameObject bloodsprayParticles;
 
         public UnityEvent OnDieEvent { get => onDieEvent; }
 
@@ -39,7 +39,11 @@ namespace Targets
                 StartCoroutine(FlashRed());
                 if (hp <= 0)
                 {
-                    Destroy(gameObject);
+                    if(bloodsprayParticles != null)
+                    {
+                        bloodsprayParticles.SetActive(true);
+                    }
+                    gameObject.SetActive(false);
                     onDieEvent.Invoke();
                 }
             }
@@ -48,14 +52,6 @@ namespace Targets
         //TODO:
         //impact from fall
         //impact from things falling on it
-
-        //  TODO: Use this inside the class to make it clear that it is a method for this class
-        // Or move to separate script
-        public void EnemyOnDie()
-        {
-            //Particles should already exist, remove instantiate
-            Instantiate(bloodsprayParticles, transform.position, Quaternion.identity);
-        }
 
         private IEnumerator FlashRed()
         {

@@ -15,11 +15,12 @@ namespace UI
         [SerializeField] private List<HitScript> enemies = new List<HitScript>();
 
         private int _enemyStartCount;
-        private int _enemyKillCount;
+        private int _enemyKillCount = -1;
 
         private void Start()
         {
             _enemyStartCount = enemies.Count;
+            UpdateEnemyLeftText();
         }
         private void OnValidate()
         {
