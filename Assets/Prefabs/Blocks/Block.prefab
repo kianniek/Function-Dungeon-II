@@ -171,13 +171,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 2013956999011018964}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 76d2b6da735cbfe43b7fbeabd72310bf, type: 3}
+  m_Script: {fileID: 11500000, guid: 0577f08d5d58349568806fe084c4ff56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   onDieEvent:
     m_PersistentCalls:
       m_Calls: []
-  maxHp: 3
   hp: 3
   damageable: 1
   damageColor: {fileID: 2100000, guid: a641b868bd67f2e409022992df1226b9, type: 2}

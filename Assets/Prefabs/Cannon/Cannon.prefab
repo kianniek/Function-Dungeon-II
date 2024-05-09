@@ -133,7 +133,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72c9841235d6b0140aaa488efa673eb6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefabToPool: {fileID: 0}
+  shootPosition: {fileID: 7293545863962168998}
+  prefabToPool: {fileID: 8489824262079630986, guid: 78bf6c873b0bd4d909dbfd1ec215b47a, type: 3}
   amountToPool: 20
   OnCannonFire:
     m_PersistentCalls:
@@ -150,8 +151,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c413f0450e04fe44a01366160dbe93a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _barrelObject: {fileID: 7293545863962168998}
-  a: 35
+  barrelRotationPivot: {fileID: 7293545863962168998}
+  a: 1
+  OnAngleChange:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &4068278827067530911
 GameObject:
   m_ObjectHideFlags: 0
@@ -262,7 +266,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7293545863962168998}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: 0.38268346, w: 0.9238795}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0

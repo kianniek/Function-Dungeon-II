@@ -142,7 +142,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4885660448511353279}
   - component: {fileID: 7664564931497047567}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: ButtonFloatModifier
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -156,7 +156,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4979080427493964151}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -179,7 +179,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4979080427493964151}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dcf7ab082dc1420b82945dc066e36e45, type: 3}
+  m_Script: {fileID: 11500000, guid: 03c4909a80f6b4afe83c1e633d6d691b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   startValue: 0
@@ -188,7 +188,19 @@ MonoBehaviour:
   roundings: 1
   onFloatChange:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: UI.LinearEquationTextModifier, Assembly-CSharp
+        m_MethodName: set_AVariable
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &8825411734168638431
 GameObject:
   m_ObjectHideFlags: 0

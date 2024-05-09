@@ -44,10 +44,10 @@ namespace CannonPlatform
         public void Move(float input)
         {
             var translationY = input;
-            var newPosition = _wantedPosition + new Vector3(0, translationY, 0);
+            var newPosition = _wantedPosition; //+ new Vector3(0, translationY, 0);
 
             // Clamping the position to ensure the platform stays within defined bounds.
-            newPosition.y = Mathf.Clamp(newPosition.y, minHeight, maxHeight);
+            newPosition.y = Mathf.Clamp(input, minHeight, maxHeight);
 
             _wantedPosition = newPosition;
         }

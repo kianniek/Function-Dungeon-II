@@ -160,7 +160,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cc0da934ee3249d7bbe9be562dfad9ec, type: 3}
+  m_Script: {fileID: 11500000, guid: b313ab85a226c4ca7ad174e45869e653, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &4800941004386518166
@@ -171,10 +171,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3438157767611939403}
     m_Modifications:
-    - target: {fileID: 712209798206874740, guid: a09abb98bf33f44369119d8460718bd9, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4885660448511353279, guid: a09abb98bf33f44369119d8460718bd9, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -259,42 +255,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Slope
       objectReference: {fileID: 0}
-    - target: {fileID: 4979080427493964151, guid: a09abb98bf33f44369119d8460718bd9, type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7664564931497047567, guid: a09abb98bf33f44369119d8460718bd9, type: 3}
-      propertyPath: step
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7664564931497047567, guid: a09abb98bf33f44369119d8460718bd9, type: 3}
-      propertyPath: roundings
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7664564931497047567, guid: a09abb98bf33f44369119d8460718bd9, type: 3}
-      propertyPath: onFloatChange.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7664564931497047567, guid: a09abb98bf33f44369119d8460718bd9, type: 3}
       propertyPath: onFloatChange.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 5497380837380160512}
-    - target: {fileID: 7664564931497047567, guid: a09abb98bf33f44369119d8460718bd9, type: 3}
-      propertyPath: onFloatChange.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7664564931497047567, guid: a09abb98bf33f44369119d8460718bd9, type: 3}
-      propertyPath: onFloatChange.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: set_AVariable
-      objectReference: {fileID: 0}
-    - target: {fileID: 7664564931497047567, guid: a09abb98bf33f44369119d8460718bd9, type: 3}
-      propertyPath: onFloatChange.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: UI.LinearEquationTextModifier, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 7664564931497047567, guid: a09abb98bf33f44369119d8460718bd9, type: 3}
-      propertyPath: onFloatChange.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

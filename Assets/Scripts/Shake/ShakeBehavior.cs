@@ -14,7 +14,6 @@ namespace Shake
         [SerializeField] private UnityEvent onShakeEnd = new();
 
         private Vector3 _originalPosition;
-        private Vector2 _initialShakeIntensity;
 
         [Header("Debugging")]
         [Tooltip("This variable is only used when hitting the <b>Test Shake</b> button in the inspector")]
@@ -22,11 +21,9 @@ namespace Shake
         [Tooltip("This variable is only used when hitting the <b>Test Shake</b> button in the inspector")]
         [SerializeField] private float debugShakeDuration = 0.5f;
 
-        public float DebugShakeDuration { get; private set; }
+        public float DebugShakeDuration => debugShakeDuration;
         
-        public float DebugShakeIntensity { get; private set; }
-
-        public Vector2 ShakeIntensity { get; set; } = new(0.5f, 0.5f);
+        public Vector2 DebugShakeIntensity => debugShakeIntensity;
         
         public bool EnableDecay { get; set; } = true;
 
@@ -51,6 +48,8 @@ namespace Shake
             transform.localPosition = _originalPosition;
             var elapsed = 0.0f;
 
+            //Debug.Log("Help me! I'm shaking! " + duration + " " + intensity);
+            
             while (elapsed < duration)
             {
                 elapsed += Time.deltaTime;
@@ -74,7 +73,7 @@ namespace Shake
         /// <param name="duration">Duration of the shake.</param>
         /// <param name="intensity">Intensity of the shake on both axes.</param>
         public void Shake(float duration, Vector2 intensity)
-        {
+        { 
             StopAllCoroutines(); // Stop any ongoing shake before starting a new one
             StartCoroutine(ShakeCoroutine(duration, intensity));
         }

@@ -1,3 +1,4 @@
+using Attributes;
 using Targets;
 using UnityEngine;
 
@@ -8,12 +9,13 @@ namespace Projectile
     {
         [Header("Cannon settings")]
         [SerializeField] private int baseDamage = 1;
-        [SerializeField] private float speed = 10f;
+        // [SerializeField] private float speed = 10f;
         [Header("Physic settings")]
-        [Tooltip("The distance traveled until gravity is applied")]
-        [SerializeField] private float maxDistance = 20f;
-        [Tooltip("The gravity scale that will be applied when it has reached it max distance")]
-        [SerializeField] private float gravityScale = 1f;
+        [SerializeField, Expandable] private ProjectilePhysicsVariables physicsVariables;
+        // [Tooltip("The distance traveled until gravity is applied")]
+        // [SerializeField] private float maxDistance = 20f;
+        // [Tooltip("The gravity scale that will be applied when it has reached it max distance")]
+        // [SerializeField] private float gravityScale = 1f;
         [Tooltip("Time needed until the projectile is deactivated after time of inactivity")]
         [SerializeField] private float resetTime = 5f;
 
@@ -22,12 +24,13 @@ namespace Projectile
         private Vector3 _initialPosition;
         private Vector3 _lastPosition;
         private Rigidbody2D _rb;
+        private Vector2 _direction;
 
         private void Awake()
         {
             _rb = GetComponent<Rigidbody2D>();
             _initialPosition = transform.position;
-            _rb.velocity = transform.forward * speed;
+            _rb.velocity = transform.forward * physicsVariables.Velocity;
             _rb.gravityScale = 0;
             _currentResetTime = resetTime;
         }
@@ -44,11 +47,11 @@ namespace Projectile
         private void CalculateDistanceTraveled()
         {
             var displacement = transform.position - _lastPosition;
+            
             _distanceTraveled += displacement.magnitude;
-
             _lastPosition = transform.position;
 
-            if (_distanceTraveled >= maxDistance)
+            if (_distanceTraveled >= ProjectilePhysics.CalculateGraphTrajectoryEndPoint(_direction, physicsVariables.FollowDistance).magnitude)
             {
                 EnablesGravity();
             }
@@ -59,7 +62,7 @@ namespace Projectile
         /// </summary>
         private void EnablesGravity()
         {
-            _rb.gravityScale = gravityScale;
+            _rb.gravityScale = 1f;
         }
 
         /// <summary>
@@ -88,8 +91,11 @@ namespace Projectile
         {
             _distanceTraveled = 0f;
             _rb.velocity = Vector3.zero;
+            _rb.gravityScale = 0f;
             _currentResetTime = resetTime;
             transform.position = _initialPosition;
+            transform.rotation = Quaternion.identity;
+            _lastPosition = Vector3.zero;
             gameObject.SetActive(false);
         }
 
@@ -111,8 +117,8 @@ namespace Projectile
         /// <param name="rotation">The rotation the projectile will be shot towards</param>
         public void Shoot(Quaternion rotation)
         {
-            Vector2 direction = rotation * Vector2.right;
-            _rb.AddForce(direction.normalized * speed);
+            _direction = (rotation * Vector2.right).normalized;
+            _rb.AddForce(_direction * physicsVariables.Velocity, ForceMode2D.Impulse);
         }
     }
 }
