@@ -208,8 +208,7 @@ namespace LineController
         /// <returns></returns>
         private Vector2 CalculateInitialVelocity(Vector2 direction)
         {
-            return ProjectilePhysics.CalculateGravityTrajectory(direction, -projectilePhysicsVariables.Velocity,
-                projectilePhysicsVariables.Gravity);
+            return ProjectilePhysics.CalculateGravityTrajectory(direction, projectilePhysicsVariables.Velocity, projectilePhysicsVariables.Gravity);
         }
         
         /// <summary>
@@ -233,7 +232,7 @@ namespace LineController
             }
             
             var timeToGround = (-initialVerticalVelocity - Mathf.Sqrt(discriminant)) /
-                               projectilePhysicsVariables.Gravity;
+                               -Mathf.Abs(projectilePhysicsVariables.Gravity);
             
             return timeToGround;
         }
@@ -246,6 +245,7 @@ namespace LineController
         /// <param name="timeToGround"></param>
         private void UpdateTrajectoryLineRenderer(Vector3 startPosition, Vector2 initialVelocity, float timeToGround)
         {
+            Debug.Log($"initialVelocity {initialVelocity}");
             var calculatedSegments = Mathf.CeilToInt(timeToGround / timeStep);
             var trajectoryPoints = new List<Vector3>();
             
@@ -257,13 +257,13 @@ namespace LineController
                 
                 if (time > timeToGround)
                     time = timeToGround;
-                
+
                 // Calculate the displacement of the projectile formula: s = ut + 0.5 * a * t^2
                 var displacement = new Vector3(
-                    initialVelocity.x * time,
-                    initialVelocity.y * time + 0.5f * projectilePhysicsVariables.Gravity * time * time,
-                    0);
-                
+    initialVelocity.x * time,
+    (initialVelocity.y * time) + 0.5f * (-Mathf.Abs(projectilePhysicsVariables.Gravity) * (time * time)),
+    0);
+
                 // Calculate the next point along the trajectory
                 var nextPoint = startPosition + displacement;
                 
