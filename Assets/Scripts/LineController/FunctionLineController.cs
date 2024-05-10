@@ -245,7 +245,8 @@ namespace LineController
         /// <param name="timeToGround"></param>
         private void UpdateTrajectoryLineRenderer(Vector3 startPosition, Vector2 initialVelocity, float timeToGround)
         {
-            Debug.Log($"initialVelocity {initialVelocity}");
+            //Debug.Log($"initialVelocity {initialVelocity}");
+            
             var calculatedSegments = Mathf.CeilToInt(timeToGround / timeStep);
             var trajectoryPoints = new List<Vector3>();
             
