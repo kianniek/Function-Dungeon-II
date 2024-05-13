@@ -22,6 +22,10 @@ namespace UI
             _enemyStartCount = enemies.Count;
             UpdateEnemyLeftText();
         }
+
+        /// <summary>
+        /// Add listeners for all enemies in scene
+        /// </summary>
         private void OnValidate()
         {
             foreach (HitScript script in enemies)
@@ -31,6 +35,9 @@ namespace UI
             }
         }
 
+        /// <summary>
+        /// Update enemy left text based on enemies in the level and enemies killed 
+        /// </summary>
         private void UpdateEnemyLeftText()
         {
             _enemyKillCount++;
