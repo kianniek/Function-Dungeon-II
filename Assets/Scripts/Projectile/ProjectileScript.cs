@@ -107,7 +107,7 @@ namespace Projectile
         
         private void OnCollisionEnter2D(Collision2D collision)
         {
-            EnablesGravity();
+            //EnablesGravity();
             
             var hitScript = collision.gameObject.GetComponent<HitScript>();
             
@@ -116,6 +116,8 @@ namespace Projectile
                 var speed = _rb.velocity.magnitude;
                 hitScript.OnBlockHit(baseDamage * speed);
             }
+
+            ResetAndDeactivate();
         }
         
         /// <summary>

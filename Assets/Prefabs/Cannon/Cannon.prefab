@@ -48,10 +48,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shootPosition: {fileID: 7293545863962168998}
   prefabToPool: {fileID: 3621945482446078802, guid: 78bf6c873b0bd4d909dbfd1ec215b47a, type: 3}
-  amountToPool: 20
+  amountToPool: 5
   onCannonFire:
     m_PersistentCalls:
       m_Calls: []
+  totalAmmo: 3
 --- !u!114 &1183189936547476379
 MonoBehaviour:
   m_ObjectHideFlags: 0

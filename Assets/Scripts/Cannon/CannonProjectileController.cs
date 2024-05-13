@@ -16,13 +16,24 @@ namespace Cannon
         [SerializeField, Expandable] private ProjectileScript prefabToPool;
         [SerializeField] private int amountToPool = 20;
         [SerializeField] private UnityEvent onCannonFire = new();
-        
+
+        [Header("Settings")]
+        [Tooltip("The total amount of times the cannon can shoot in the current level")]
+        [SerializeField] private int totalAmmo = 3;
+
+        public int CurrentAmmoCount
+        {
+            get;
+            private set;
+        }
+
         private readonly List<ProjectileScript> _pooledProjectiles = new();
         
         // Start is called before the first frame update
         private void Start()
         {
             CreatePooledProjectiles();
+            CurrentAmmoCount = totalAmmo;
         }
         
         /// <summary>
@@ -76,10 +87,14 @@ namespace Cannon
         }
         
         /// <summary>
-        /// Activates a pooled projectile and invokes the cannon fired event 
+        /// Activates a pooled projectile and invokes the cannon fired event, will not work if the cannon doesn't have ammo
         /// </summary>
         public void ShootProjectile()
         {
+            if (CurrentAmmoCount <= 0)
+                return;
+
+            CurrentAmmoCount--;
             var projectile = GetPooledProjectile();
             
             if (projectile)
