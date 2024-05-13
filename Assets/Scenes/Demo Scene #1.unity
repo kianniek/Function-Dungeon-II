@@ -895,9 +895,25 @@ PrefabInstance:
       value: CannonPlatform
       objectReference: {fileID: 0}
     - target: {fileID: 7726676736881329201, guid: 006f266fc6e3fd74a8247b2c70ac3520, type: 3}
+      propertyPath: onCannonFire.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7726676736881329201, guid: 006f266fc6e3fd74a8247b2c70ac3520, type: 3}
       propertyPath: onCannonFire.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1783131241}
+      objectReference: {fileID: 492678732}
+    - target: {fileID: 7726676736881329201, guid: 006f266fc6e3fd74a8247b2c70ac3520, type: 3}
+      propertyPath: onCannonFire.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: TrajectoryLineIsVisible
+      objectReference: {fileID: 0}
+    - target: {fileID: 7726676736881329201, guid: 006f266fc6e3fd74a8247b2c70ac3520, type: 3}
+      propertyPath: onCannonFire.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: LineController.FunctionLineController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7726676736881329201, guid: 006f266fc6e3fd74a8247b2c70ac3520, type: 3}
+      propertyPath: onCannonFire.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 8580049813322286446, guid: 006f266fc6e3fd74a8247b2c70ac3520, type: 3}
       propertyPath: m_LocalPosition.x
       value: -24.46
@@ -2984,11 +3000,6 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 7875924866016971496, guid: d40b2fc17e86943938e71d40f70ca033, type: 3}
   m_PrefabInstance: {fileID: 1770753715}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1783131241 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1700391702720951311, guid: 434b023e4440f48f7b63b6aa9df90adb, type: 3}
-  m_PrefabInstance: {fileID: 255840015}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1858925107
 GameObject:
