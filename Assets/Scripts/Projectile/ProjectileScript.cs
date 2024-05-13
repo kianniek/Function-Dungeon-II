@@ -13,6 +13,8 @@ namespace Projectile
         [Header("Projectile settings")]
         [SerializeField] private int projectileForceRadius = 2;
         [SerializeField] private int projectileForcePower = 20000;
+        [SerializeField] private int projectileScore;
+        public int ProjectileScore => projectileScore;
 
         // [SerializeField] private float speed = 10f;
         [Header("Physic settings")]

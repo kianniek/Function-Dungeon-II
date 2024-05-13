@@ -131,6 +131,7 @@ MonoBehaviour:
   baseDamage: 1
   projectileForceRadius: 5
   projectileForcePower: 10000
+  projectileScore: 500
   physicsVariables: {fileID: 11400000, guid: 1700083af172147a79deaa104412fc70, type: 2}
   resetTime: 5
 --- !u!58 &7194805776701942715
