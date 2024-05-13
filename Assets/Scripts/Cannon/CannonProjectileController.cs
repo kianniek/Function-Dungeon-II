@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Attributes;
 using Projectile;
 using UnityEngine.Serialization;
+using TypedUnityEvent;
 
 namespace Cannon
 {
@@ -15,7 +16,7 @@ namespace Cannon
         [Header("Pooling")] 
         [SerializeField, Expandable] private ProjectileScript prefabToPool;
         [SerializeField] private int amountToPool = 20;
-        [SerializeField] private UnityEvent onCannonFire = new();
+        [SerializeField] private GameObjectEvent onCannonFire = new();
 
         [Header("Settings")]
         [Tooltip("The total amount of times the cannon can shoot in the current level")]
@@ -104,7 +105,7 @@ namespace Cannon
                 
                 projectile.Shoot(shootPosition.transform.rotation);
                 
-                onCannonFire.Invoke();
+                onCannonFire.Invoke(projectile.gameObject);
             }
             else
             {
