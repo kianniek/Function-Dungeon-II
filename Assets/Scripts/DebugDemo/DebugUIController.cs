@@ -13,7 +13,6 @@ namespace DebugDemo
         public static DebugUIController Instance { get; private set; }
 
         private TextMeshProUGUI _debugText;
-
         private bool _isDebugUIVisible = true;
         private int _totalScenes;
         [SerializeField] private InputAction SceneSwitch1DAction;
@@ -22,7 +21,7 @@ namespace DebugDemo
         [SerializeField] private InputAction ReloadAction;
 
         private int _currentSceneIndex;
-        private List<Scene> _loadedScenes = new List<Scene>();
+        private List<int> _loadedSceneIndexes = new List<int>();
 
         private void Awake()
         {
@@ -103,8 +102,7 @@ namespace DebugDemo
                         yield return null;
                     }
                     Scene scene = SceneManager.GetSceneByBuildIndex(i);
-                    _loadedScenes.Add(scene);
-                    SceneManager.SetActiveScene(scene);
+                    _loadedSceneIndexes.Add(i);
                     foreach (GameObject go in scene.GetRootGameObjects())
                     {
                         go.SetActive(false);
@@ -160,7 +158,35 @@ namespace DebugDemo
 
         private void ReloadScene(InputAction.CallbackContext context)
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            StartCoroutine(ReloadCurrentScene());
+        }
+
+        private IEnumerator ReloadCurrentScene()
+        {
+            // Pause physics simulation
+            Time.timeScale = 0;
+            // Save the currently active scene index
+            int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+
+            // Unload all scenes except the current one
+            foreach (int sceneIndex in _loadedSceneIndexes)
+            {
+                if (sceneIndex != currentSceneIndex)
+                {
+                    yield return SceneManager.UnloadSceneAsync(sceneIndex);
+                }
+            }
+
+            _loadedSceneIndexes.RemoveAll(index => index != currentSceneIndex);
+
+            // Reload the current scene
+            yield return SceneManager.LoadSceneAsync(currentSceneIndex);
+
+            // Reload all other scenes
+            yield return StartCoroutine(LoadAllScenes());
+
+            // Pause physics simulation
+            Time.timeScale = 1;
         }
 
         private void SetupUI()
@@ -168,7 +194,7 @@ namespace DebugDemo
             // Create Canvas
             GameObject canvasObject = new GameObject("DebugUICanvas");
             Canvas canvas = canvasObject.AddComponent<Canvas>();
-            canvas.sortingOrder= 999;
+            canvas.sortingOrder = 999;
             canvas.renderMode = RenderMode.ScreenSpaceOverlay;
             canvasObject.AddComponent<CanvasScaler>().uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
             canvasObject.AddComponent<GraphicRaycaster>();

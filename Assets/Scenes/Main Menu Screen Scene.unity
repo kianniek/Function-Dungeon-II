@@ -1332,6 +1332,10 @@ PrefabInstance:
       value: Quit
       objectReference: {fileID: 0}
     - target: {fileID: 1925685767350144688, guid: 250d353cb5ab4fb4eb947c4adcbda420, type: 3}
+      propertyPath: ReloadAction.m_Name
+      value: Reload
+      objectReference: {fileID: 0}
+    - target: {fileID: 1925685767350144688, guid: 250d353cb5ab4fb4eb947c4adcbda420, type: 3}
       propertyPath: DisableAction.m_Name
       value: Disable
       objectReference: {fileID: 0}
@@ -1341,6 +1345,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1925685767350144688, guid: 250d353cb5ab4fb4eb947c4adcbda420, type: 3}
       propertyPath: QuitAction.m_SingletonActionBindings.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1925685767350144688, guid: 250d353cb5ab4fb4eb947c4adcbda420, type: 3}
+      propertyPath: ReloadAction.m_SingletonActionBindings.Array.size
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1925685767350144688, guid: 250d353cb5ab4fb4eb947c4adcbda420, type: 3}
@@ -1360,6 +1368,10 @@ PrefabInstance:
       value: <Keyboard>/escape
       objectReference: {fileID: 0}
     - target: {fileID: 1925685767350144688, guid: 250d353cb5ab4fb4eb947c4adcbda420, type: 3}
+      propertyPath: ReloadAction.m_SingletonActionBindings.Array.data[0].m_Id
+      value: 2e551c43-f47f-423b-9a43-f60c01d67fdc
+      objectReference: {fileID: 0}
+    - target: {fileID: 1925685767350144688, guid: 250d353cb5ab4fb4eb947c4adcbda420, type: 3}
       propertyPath: DisableAction.m_SingletonActionBindings.Array.data[0].m_Id
       value: 82b938d9-b8b9-45d4-b0c8-423297c96bcb
       objectReference: {fileID: 0}
@@ -1368,8 +1380,16 @@ PrefabInstance:
       value: Quit
       objectReference: {fileID: 0}
     - target: {fileID: 1925685767350144688, guid: 250d353cb5ab4fb4eb947c4adcbda420, type: 3}
+      propertyPath: ReloadAction.m_SingletonActionBindings.Array.data[0].m_Path
+      value: <Keyboard>/r
+      objectReference: {fileID: 0}
+    - target: {fileID: 1925685767350144688, guid: 250d353cb5ab4fb4eb947c4adcbda420, type: 3}
       propertyPath: DisableAction.m_SingletonActionBindings.Array.data[0].m_Path
       value: <Keyboard>/slash
+      objectReference: {fileID: 0}
+    - target: {fileID: 1925685767350144688, guid: 250d353cb5ab4fb4eb947c4adcbda420, type: 3}
+      propertyPath: ReloadAction.m_SingletonActionBindings.Array.data[0].m_Action
+      value: Reload
       objectReference: {fileID: 0}
     - target: {fileID: 1925685767350144688, guid: 250d353cb5ab4fb4eb947c4adcbda420, type: 3}
       propertyPath: DisableAction.m_SingletonActionBindings.Array.data[0].m_Action
