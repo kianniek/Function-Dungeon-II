@@ -1,6 +1,7 @@
 using Attributes;
 using Targets;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Projectile
 {
@@ -25,6 +26,9 @@ namespace Projectile
         // [SerializeField] private float gravityScale = 1f;
         [Tooltip("Time needed until the projectile is deactivated after time of inactivity")]
         [SerializeField] private float resetTime = 5f;
+
+        [SerializeField] private UnityEvent changeCameraView = new();
+        public UnityEvent ChangeCameraView { get => changeCameraView; }
 
         private bool _firstCollision = true;
         private float _distanceTraveled;
@@ -138,6 +142,7 @@ namespace Projectile
                         otherRigidbody.AddForce(direction.normalized * (forceFalloff <= 0 ? 0 : projectileForcePower) * forceFalloff);
                     }
                 }
+                changeCameraView.Invoke();
                 _firstCollision = false;
             }
         }
