@@ -7,27 +7,34 @@ namespace Projectile
     [RequireComponent(typeof(Rigidbody2D))]
     public class ProjectileScript : MonoBehaviour
     {
-        [Header("Cannon settings")] 
+        [Header("Cannon settings")]
         [SerializeField] private int baseDamage = 1;
-        
+
+        [Header("Projectile settings")]
+        [SerializeField] private int projectileForceRadius = 2;
+        [SerializeField] private int projectileForcePower = 20000;
+        [SerializeField] private int projectileScore;
+
         // [SerializeField] private float speed = 10f;
-        [Header("Physic settings")] 
+        [Header("Physic settings")]
         [SerializeField, Expandable] private ProjectilePhysicsVariables physicsVariables;
-        
+
         // [Tooltip("The distance traveled until gravity is applied")]
         // [SerializeField] private float maxDistance = 20f;
         // [Tooltip("The gravity scale that will be applied when it has reached it max distance")]
         // [SerializeField] private float gravityScale = 1f;
-        [Tooltip("Time needed until the projectile is deactivated after time of inactivity")] 
+        [Tooltip("Time needed until the projectile is deactivated after time of inactivity")]
         [SerializeField] private float resetTime = 5f;
-        
+
+        private bool _firstCollision = true;
         private float _distanceTraveled;
         private float _currentResetTime;
         private Vector3 _initialPosition;
         private Vector3 _lastPosition;
         private Rigidbody2D _rb;
         private Vector2 _direction;
-        
+
+        public int ProjectileScore => projectileScore;
         private void Awake()
         {
             _rb = GetComponent<Rigidbody2D>();
@@ -37,30 +44,30 @@ namespace Projectile
             _currentResetTime = resetTime;
             _lastPosition = transform.position;
         }
-        
+
         private void FixedUpdate()
         {
             CalculateDistanceTraveled();
             CalculateDeactivationTimer();
         }
-        
+
         /// <summary>
         /// Calculates the amount of distance the projectile has traveled, used to enable gravity after a certain distance
         /// </summary>
         private void CalculateDistanceTraveled()
         {
             var displacement = transform.position - _lastPosition;
-            
+
             _distanceTraveled += displacement.magnitude;
             _lastPosition = transform.position;
-            
+
             if (_distanceTraveled >= ProjectilePhysics
                     .CalculateGraphTrajectoryEndPoint(_direction, physicsVariables.FollowDistance).magnitude)
             {
                 EnablesGravity();
             }
         }
-        
+
         /// <summary>
         /// Enables gravity by specifying a value other than zero
         /// </summary>
@@ -69,7 +76,7 @@ namespace Projectile
             Physics2D.gravity = new Vector2(0, -Mathf.Abs(physicsVariables.Gravity));
             _rb.gravityScale = 1;
         }
-        
+
         /// <summary>
         /// Calculates the time before the objects gets deactavted due to inactivity (not Moving)
         /// </summary>
@@ -78,7 +85,7 @@ namespace Projectile
             if (_rb.velocity.magnitude <= 0.1f)
             {
                 _currentResetTime -= Time.deltaTime;
-                
+
                 if (_currentResetTime <= 0f)
                 {
                     ResetAndDeactivate();
@@ -89,7 +96,7 @@ namespace Projectile
                 _currentResetTime = resetTime;
             }
         }
-        
+
         /// <summary>
         /// Resets the variables to their default and deactivates the gameObject
         /// </summary>
@@ -104,20 +111,37 @@ namespace Projectile
             _lastPosition = Vector3.zero;
             gameObject.SetActive(false);
         }
-        
+
         private void OnCollisionEnter2D(Collision2D collision)
         {
             EnablesGravity();
-            
+
             var hitScript = collision.gameObject.GetComponent<HitScript>();
-            
+
             if (hitScript != null)
             {
                 var speed = _rb.velocity.magnitude;
                 hitScript.OnBlockHit(baseDamage * speed);
             }
+
+            //Explosion for first collision
+            if (_firstCollision)
+            {
+                var hitColliders = Physics2D.OverlapCircleAll(transform.position, projectileForceRadius);
+                foreach (var hitCollider in hitColliders)
+                {
+                    var otherRigidbody = hitCollider.attachedRigidbody;
+                    if (otherRigidbody != null && otherRigidbody != _rb)
+                    {
+                        var direction = hitCollider.transform.position - transform.position;
+                        var forceFalloff = 1 - (direction.magnitude / projectileForceRadius);
+                        otherRigidbody.AddForce(direction.normalized * (forceFalloff <= 0 ? 0 : projectileForcePower) * forceFalloff);
+                    }
+                }
+                _firstCollision = false;
+            }
         }
-        
+
         /// <summary>
         /// Launches the object towards a specified direction
         /// </summary>
