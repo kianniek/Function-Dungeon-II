@@ -11,6 +11,8 @@ namespace Camera
         [SerializeField] private GameObject normalViewCamera;
         [SerializeField] private GameObject projectileCamera;
         [SerializeField] private GameObject cannon;
+        [SerializeField] private GameObject equationText;
+        [SerializeField] private GameObject fireButton; 
 
         private CinemachineVirtualCamera _projectileVirtualCamera;
 
@@ -29,6 +31,8 @@ namespace Camera
             showLevelCamera.SetActive(true);
             normalViewCamera.SetActive(false);
             projectileCamera.SetActive(false);
+            equationText.SetActive(false);
+            fireButton.SetActive(false);
             StartCoroutine(LevelShowTime());
         }
 
@@ -37,6 +41,8 @@ namespace Camera
             showLevelCamera.SetActive(false);
             normalViewCamera.SetActive(true);
             projectileCamera.SetActive(false);
+            equationText.SetActive(true);
+            fireButton.SetActive(true); 
         }
 
         public void ShowProjectile()
@@ -53,6 +59,8 @@ namespace Camera
             showLevelCamera.SetActive(false);
             normalViewCamera.SetActive(false);
             projectileCamera.SetActive(true);
+            equationText.SetActive(false);
+            fireButton.SetActive(false);
         }
 
         private IEnumerator LevelShowTime()
