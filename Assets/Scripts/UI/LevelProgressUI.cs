@@ -3,6 +3,7 @@ using Targets;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 namespace UI
 {
@@ -39,6 +40,18 @@ namespace UI
             {
                 onAllEnemiesKilledEvent.Invoke();
             }
+        }
+
+        // switch to scene with index
+        public void SwitchScene(int sceneIndex)
+        {
+            if (sceneIndex < 0 || sceneIndex >= SceneManager.sceneCountInBuildSettings)
+            {
+                Debug.LogError("Invalid scene index");
+                return;
+            }
+
+            SceneManager.LoadScene(sceneIndex);
         }
     }
 }

@@ -95,17 +95,23 @@ namespace DebugDemo
             {
                 if (i != _currentSceneIndex)
                 {
-                    var asyncLoad = SceneManager.LoadSceneAsync(i, LoadSceneMode.Additive);
-                    asyncLoad.allowSceneActivation = true;
-                    while (!asyncLoad.isDone)
+                    if (!IsSceneLoaded(i))
                     {
-                        yield return null;
-                    }
-                    Scene scene = SceneManager.GetSceneByBuildIndex(i);
-                    _loadedSceneIndexes.Add(i);
-                    foreach (GameObject go in scene.GetRootGameObjects())
-                    {
-                        go.SetActive(false);
+                        var asyncLoad = SceneManager.LoadSceneAsync(i, LoadSceneMode.Additive);
+                        asyncLoad.allowSceneActivation = true;
+                        while (!asyncLoad.isDone)
+                        {
+                            UpdateDebugText($"Loading Scene {i}...");
+                            yield return null;
+                        }
+                        Scene scene = SceneManager.GetSceneByBuildIndex(i);
+                        _loadedSceneIndexes.Add(i);
+                        UpdateDebugText($"Disabling Scene {i} objects");
+                        foreach (GameObject go in scene.GetRootGameObjects())
+                        {
+                            go.SetActive(false);
+                        }
+                        UpdateDebugText($"DONE Disabling Scene {i} objects");
                     }
                 }
             }
@@ -115,12 +121,44 @@ namespace DebugDemo
 
         private void SwitchScene(float direction)
         {
+            UpdateDebugText($"Switching scene");
+
             int nextSceneIndex = direction > 0 ? (_currentSceneIndex + 1) % _totalScenes : (_currentSceneIndex - 1 + _totalScenes) % _totalScenes;
             SwitchSceneToIndex(nextSceneIndex);
         }
 
         private void SwitchSceneToIndex(int sceneIndex)
         {
+            UpdateDebugText($"Start Scene switch to scene with index {sceneIndex}");
+
+            if (!IsSceneLoaded(sceneIndex))
+            {
+                StartCoroutine(LoadSceneAndSwitch(sceneIndex));
+            }
+            else
+            {
+                StartCoroutine(SwitchToScene(sceneIndex));
+            }
+        }
+
+        private IEnumerator LoadSceneAndSwitch(int sceneIndex)
+        {
+            var asyncLoad = SceneManager.LoadSceneAsync(sceneIndex, LoadSceneMode.Additive);
+            asyncLoad.allowSceneActivation = true;
+            while (!asyncLoad.isDone)
+            {
+                UpdateDebugText($"Loading Scene {sceneIndex}...");
+                yield return null;
+            }
+
+            Scene scene = SceneManager.GetSceneByBuildIndex(sceneIndex);
+            _loadedSceneIndexes.Add(sceneIndex);
+
+            foreach (GameObject go in scene.GetRootGameObjects())
+            {
+                go.SetActive(false);
+            }
+
             StartCoroutine(SwitchToScene(sceneIndex));
         }
 
@@ -163,6 +201,8 @@ namespace DebugDemo
 
         private IEnumerator ReloadCurrentScene()
         {
+            UpdateDebugText($"Reloading current scene...");
+
             // Pause physics simulation
             Time.timeScale = 0;
             // Save the currently active scene index
@@ -185,8 +225,22 @@ namespace DebugDemo
             // Reload all other scenes
             yield return StartCoroutine(LoadAllScenes());
 
-            // Pause physics simulation
+            // Resume physics simulation
             Time.timeScale = 1;
+
+            UpdateDebugText($"Reloaded current scene");
+        }
+
+        private bool IsSceneLoaded(int buildIndex)
+        {
+            for (int i = 0; i < SceneManager.sceneCount; i++)
+            {
+                if (SceneManager.GetSceneAt(i).buildIndex == buildIndex)
+                {
+                    return true;
+                }
+            }
+            return false;
         }
 
         private void SetupUI()
