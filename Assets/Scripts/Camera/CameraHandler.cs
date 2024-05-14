@@ -12,7 +12,8 @@ namespace Camera
         [SerializeField] private GameObject projectileCamera;
         [SerializeField] private GameObject cannon;
         [SerializeField] private GameObject equationText;
-        [SerializeField] private GameObject fireButton; 
+        [SerializeField] private GameObject fireButton;
+        [SerializeField] private int timeBetweenLevelAndCannonView = 3;
 
         private CinemachineVirtualCamera _projectileVirtualCamera;
 
@@ -33,7 +34,7 @@ namespace Camera
             projectileCamera.SetActive(false);
             equationText.SetActive(false);
             fireButton.SetActive(false);
-            StartCoroutine(LevelShowTime());
+            StartCoroutine(SwitchToCannonView());
         }
 
         private void CannonView()
@@ -63,9 +64,9 @@ namespace Camera
             fireButton.SetActive(false);
         }
 
-        private IEnumerator LevelShowTime()
+        private IEnumerator SwitchToCannonView()
         {
-            yield return new WaitForSeconds(3f);
+            yield return new WaitForSeconds(timeBetweenLevelAndCannonView);
             CannonView();
         }
     }
