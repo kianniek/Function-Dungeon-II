@@ -41,6 +41,7 @@ namespace Targets
                 {
                     if(bloodsprayParticles != null)
                     {
+                        bloodsprayParticles.transform.position = transform.position;
                         bloodsprayParticles.SetActive(true);
                     }
                     gameObject.SetActive(false);

@@ -252,8 +252,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e607e3cda979fc4382246d65cf23eef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHeight: 10
-  minHeight: -10
+  maxHeight: 15
+  minHeight: -15
   movementSmoothing: 5
   onMovingUp:
     m_PersistentCalls:
@@ -2549,22 +2549,6 @@ PrefabInstance:
       propertyPath: m_Positions.Array.data[283].y
       value: -14.999996
       objectReference: {fileID: 0}
-    - target: {fileID: 982230469042780371, guid: f345572c06e124620aacead470bac251, type: 3}
-      propertyPath: m_Parameters.colorGradient.atime1
-      value: 41865
-      objectReference: {fileID: 0}
-    - target: {fileID: 982230469042780371, guid: f345572c06e124620aacead470bac251, type: 3}
-      propertyPath: m_Parameters.colorGradient.atime2
-      value: 41865
-      objectReference: {fileID: 0}
-    - target: {fileID: 982230469042780371, guid: f345572c06e124620aacead470bac251, type: 3}
-      propertyPath: m_Parameters.colorGradient.key1.a
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 982230469042780371, guid: f345572c06e124620aacead470bac251, type: 3}
-      propertyPath: m_Parameters.colorGradient.m_ColorSpace
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3621450353531566600, guid: f345572c06e124620aacead470bac251, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -2614,10 +2598,6 @@ PrefabInstance:
       value: -20
       objectReference: {fileID: 0}
     - target: {fileID: 4682240404007912575, guid: f345572c06e124620aacead470bac251, type: 3}
-      propertyPath: functionLineLength
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 4682240404007912575, guid: f345572c06e124620aacead470bac251, type: 3}
       propertyPath: trajectoryLineRenderer
       value: 
       objectReference: {fileID: 1516196684296637784}
@@ -2643,83 +2623,83 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8699492419549350328, guid: f345572c06e124620aacead470bac251, type: 3}
       propertyPath: m_Positions.Array.data[1].x
-      value: 1.4142135
+      value: 2.1213205
       objectReference: {fileID: 0}
     - target: {fileID: 8699492419549350328, guid: f345572c06e124620aacead470bac251, type: 3}
       propertyPath: m_Positions.Array.data[1].y
-      value: 1.4142135
+      value: 2.1213205
       objectReference: {fileID: 0}
     - target: {fileID: 8699492419549350328, guid: f345572c06e124620aacead470bac251, type: 3}
       propertyPath: m_Positions.Array.data[2].x
-      value: 2.828427
+      value: 4.242641
       objectReference: {fileID: 0}
     - target: {fileID: 8699492419549350328, guid: f345572c06e124620aacead470bac251, type: 3}
       propertyPath: m_Positions.Array.data[2].y
-      value: 2.828427
+      value: 4.242641
       objectReference: {fileID: 0}
     - target: {fileID: 8699492419549350328, guid: f345572c06e124620aacead470bac251, type: 3}
       propertyPath: m_Positions.Array.data[3].x
-      value: 4.242641
+      value: 6.363961
       objectReference: {fileID: 0}
     - target: {fileID: 8699492419549350328, guid: f345572c06e124620aacead470bac251, type: 3}
       propertyPath: m_Positions.Array.data[3].y
-      value: 4.242641
+      value: 6.363961
       objectReference: {fileID: 0}
     - target: {fileID: 8699492419549350328, guid: f345572c06e124620aacead470bac251, type: 3}
       propertyPath: m_Positions.Array.data[4].x
-      value: 5.656854
+      value: 8.485282
       objectReference: {fileID: 0}
     - target: {fileID: 8699492419549350328, guid: f345572c06e124620aacead470bac251, type: 3}
       propertyPath: m_Positions.Array.data[4].y
-      value: 5.656854
+      value: 8.485282
       objectReference: {fileID: 0}
     - target: {fileID: 8699492419549350328, guid: f345572c06e124620aacead470bac251, type: 3}
       propertyPath: m_Positions.Array.data[5].x
-      value: 7.071068
+      value: 10.606602
       objectReference: {fileID: 0}
     - target: {fileID: 8699492419549350328, guid: f345572c06e124620aacead470bac251, type: 3}
       propertyPath: m_Positions.Array.data[5].y
-      value: 7.071068
+      value: 10.606602
       objectReference: {fileID: 0}
     - target: {fileID: 8699492419549350328, guid: f345572c06e124620aacead470bac251, type: 3}
       propertyPath: m_Positions.Array.data[6].x
-      value: 8.485282
+      value: 12.727922
       objectReference: {fileID: 0}
     - target: {fileID: 8699492419549350328, guid: f345572c06e124620aacead470bac251, type: 3}
       propertyPath: m_Positions.Array.data[6].y
-      value: 8.485282
+      value: 12.727922
       objectReference: {fileID: 0}
     - target: {fileID: 8699492419549350328, guid: f345572c06e124620aacead470bac251, type: 3}
       propertyPath: m_Positions.Array.data[7].x
-      value: 9.899495
+      value: 14.849242
       objectReference: {fileID: 0}
     - target: {fileID: 8699492419549350328, guid: f345572c06e124620aacead470bac251, type: 3}
       propertyPath: m_Positions.Array.data[7].y
-      value: 9.899495
+      value: 14.849242
       objectReference: {fileID: 0}
     - target: {fileID: 8699492419549350328, guid: f345572c06e124620aacead470bac251, type: 3}
       propertyPath: m_Positions.Array.data[8].x
-      value: 11.313708
+      value: 16.970564
       objectReference: {fileID: 0}
     - target: {fileID: 8699492419549350328, guid: f345572c06e124620aacead470bac251, type: 3}
       propertyPath: m_Positions.Array.data[8].y
-      value: 11.313708
+      value: 16.970564
       objectReference: {fileID: 0}
     - target: {fileID: 8699492419549350328, guid: f345572c06e124620aacead470bac251, type: 3}
       propertyPath: m_Positions.Array.data[9].x
-      value: 12.7279215
+      value: 19.091883
       objectReference: {fileID: 0}
     - target: {fileID: 8699492419549350328, guid: f345572c06e124620aacead470bac251, type: 3}
       propertyPath: m_Positions.Array.data[9].y
-      value: 12.7279215
+      value: 19.091883
       objectReference: {fileID: 0}
     - target: {fileID: 8699492419549350328, guid: f345572c06e124620aacead470bac251, type: 3}
       propertyPath: m_Positions.Array.data[10].x
-      value: 14.142136
+      value: 21.213203
       objectReference: {fileID: 0}
     - target: {fileID: 8699492419549350328, guid: f345572c06e124620aacead470bac251, type: 3}
       propertyPath: m_Positions.Array.data[10].y
-      value: 14.142136
+      value: 21.213203
       objectReference: {fileID: 0}
     - target: {fileID: 8699492419549350328, guid: f345572c06e124620aacead470bac251, type: 3}
       propertyPath: m_Parameters.colorGradient.m_ColorSpace

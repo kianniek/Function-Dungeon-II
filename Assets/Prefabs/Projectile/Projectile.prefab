@@ -130,7 +130,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseDamage: 1
   physicsVariables: {fileID: 11400000, guid: 1700083af172147a79deaa104412fc70, type: 2}
-  resetTime: 5
+  resetTime: 0.5
 --- !u!58 &7194805776701942715
 CircleCollider2D:
   m_ObjectHideFlags: 0
