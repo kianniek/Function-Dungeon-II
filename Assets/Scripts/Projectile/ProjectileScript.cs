@@ -14,7 +14,6 @@ namespace Projectile
         [SerializeField] private int projectileForceRadius = 2;
         [SerializeField] private int projectileForcePower = 20000;
         [SerializeField] private int projectileScore;
-        public int ProjectileScore => projectileScore;
 
         // [SerializeField] private float speed = 10f;
         [Header("Physic settings")]
@@ -35,6 +34,7 @@ namespace Projectile
         private Rigidbody2D _rb;
         private Vector2 _direction;
 
+        public int ProjectileScore => projectileScore;
         private void Awake()
         {
             _rb = GetComponent<Rigidbody2D>();
@@ -127,14 +127,15 @@ namespace Projectile
             //Explosion for first collision
             if (_firstCollision)
             {
-                Collider2D[] hitColliders = Physics2D.OverlapCircleAll(transform.position, projectileForceRadius);
+                var hitColliders = Physics2D.OverlapCircleAll(transform.position, projectileForceRadius);
                 foreach (var hitCollider in hitColliders)
                 {
-                    if (hitCollider.attachedRigidbody != null && hitCollider.attachedRigidbody != gameObject.GetComponent<Rigidbody2D>())
+                    var otherRigidbody = hitCollider.attachedRigidbody;
+                    if (otherRigidbody != null && otherRigidbody != _rb)
                     {
-                        Vector2 direction = hitCollider.transform.position - transform.position;
-                        float forceFalloff = 1 - (direction.magnitude / projectileForceRadius);
-                        hitCollider.attachedRigidbody.AddForce(direction.normalized * (forceFalloff <= 0 ? 0 : projectileForcePower) * forceFalloff);
+                        var direction = hitCollider.transform.position - transform.position;
+                        var forceFalloff = 1 - (direction.magnitude / projectileForceRadius);
+                        otherRigidbody.AddForce(direction.normalized * (forceFalloff <= 0 ? 0 : projectileForcePower) * forceFalloff);
                     }
                 }
                 _firstCollision = false;
