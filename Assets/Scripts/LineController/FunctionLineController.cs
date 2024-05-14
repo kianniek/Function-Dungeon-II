@@ -15,7 +15,8 @@ namespace LineController
         [Header("Function settings")] public bool isQuadratic;
 
         [Header("Function coefficients")]
-        [Tooltip("This variable defines the slope of the function.")][SerializeField] private float a = 1f;
+        [Tooltip("This variable defines the slope of the function.")]
+        [SerializeField] private float a = 1f;
 
         [Tooltip("This variable defines the y-intercept of the function.")]
         [SerializeField] private float b;
@@ -24,8 +25,6 @@ namespace LineController
         [Min(0.001f)]
         [SerializeField] private float c = 1f;
 
-        [FormerlySerializedAs("functionmLineLength")]
-        [FormerlySerializedAs("lineLength")]
         [Header("Visual settings")]
         [SerializeField] private float functionLineLength = 10f;
         [SerializeField] private int segments = 10;
@@ -39,8 +38,8 @@ namespace LineController
         [Min(0.0001f)]
         [SerializeField] private float timeStep = 0.1f; // Time step for calculating trajectory points
 
-        // [SerializeField] private float followDistance = 5f; // Distance along the function line to set the start point
-        // [SerializeField] private float gravity = Physics.gravity.y; // Gravity value
+        //variable for the time the line should be hidden
+        [SerializeField] private float hideTime = 5f;
         [SerializeField] private float groundLevel;
         [SerializeField, Expandable] private ProjectilePhysicsVariables projectilePhysicsVariables;
 
@@ -293,7 +292,7 @@ namespace LineController
         public void TrajectoryLineIsVisible(bool enable)
         {
             trajectoryLineRenderer.enabled = enable;
-            StartCoroutine(EnableTrajectoryLineAfterTimeOut(5f));
+            StartCoroutine(EnableTrajectoryLineAfterTimeOut(hideTime));
         }
 
         private IEnumerator EnableTrajectoryLineAfterTimeOut(float time)
