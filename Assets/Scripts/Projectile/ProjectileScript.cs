@@ -107,7 +107,6 @@ namespace Projectile
         
         private void OnCollisionEnter2D(Collision2D collision)
         {
-            //EnablesGravity();
             
             var hitScript = collision.gameObject.GetComponent<HitScript>();
             

@@ -27,10 +27,10 @@ namespace Cannon
             get;
             private set;
         }
-
+        
         private readonly List<ProjectileScript> _pooledProjectiles = new();
         
-        // Start is called before the first frame update
+
         private void Start()
         {
             CreatePooledProjectiles();
