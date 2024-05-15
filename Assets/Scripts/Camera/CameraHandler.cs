@@ -22,11 +22,14 @@ namespace Camera
             _projectileVirtualCamera = projectileCamera.GetComponent<CinemachineVirtualCamera>();
         }
 
-        void Start()
+        private void Start()
         {
             ShowLevel();
         }
 
+        /// <summary>
+        /// Camera view of the whole level, this view shows up first
+        /// </summary>
         public void ShowLevel()
         {
             showLevelCamera.SetActive(true);
@@ -37,6 +40,9 @@ namespace Camera
             StartCoroutine(SwitchToCannonView());
         }
 
+        /// <summary>
+        /// Camera view of the cannon, timeBetweenLevelAndCannon view variable decide after how much seconds this camera activates from ShowLevelView
+        /// </summary>
         private void CannonView()
         {
             showLevelCamera.SetActive(false);
@@ -46,9 +52,12 @@ namespace Camera
             fireButton.SetActive(true); 
         }
 
+        /// <summary>
+        /// Camera view of following projectile, shown when pressed on fire. After projectile landed go back to level view
+        /// </summary>
         public void ShowProjectile()
         {
-            foreach (ProjectileScript projectile in cannon.GetComponentsInChildren<ProjectileScript>())
+            foreach (var projectile in cannon.GetComponentsInChildren<ProjectileScript>())
             {
                 if (projectile.isActiveAndEnabled)
                 {
