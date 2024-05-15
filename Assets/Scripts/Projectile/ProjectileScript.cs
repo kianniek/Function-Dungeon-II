@@ -26,7 +26,6 @@ namespace Projectile
         [Tooltip("Time needed until the projectile is deactivated after time of inactivity")]
         [SerializeField] private float resetTime = 5f;
 
-        private bool _firstCollision = true;
         private float _distanceTraveled;
         private float _currentResetTime;
         private Vector3 _initialPosition;
@@ -114,8 +113,6 @@ namespace Projectile
 
         private void OnCollisionEnter2D(Collision2D collision)
         {
-            EnablesGravity();
-
             var hitScript = collision.gameObject.GetComponent<HitScript>();
 
             if (hitScript != null)
@@ -123,10 +120,8 @@ namespace Projectile
                 var speed = _rb.velocity.magnitude;
                 hitScript.OnBlockHit(baseDamage * speed);
             }
-
+            
             //Explosion for first collision
-            if (_firstCollision)
-            {
                 var hitColliders = Physics2D.OverlapCircleAll(transform.position, projectileForceRadius);
                 foreach (var hitCollider in hitColliders)
                 {
@@ -138,8 +133,7 @@ namespace Projectile
                         otherRigidbody.AddForce(direction.normalized * (forceFalloff <= 0 ? 0 : projectileForcePower) * forceFalloff);
                     }
                 }
-                _firstCollision = false;
-            }
+            ResetAndDeactivate();
         }
 
         /// <summary>
