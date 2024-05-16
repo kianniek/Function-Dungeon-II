@@ -1,10 +1,9 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace Progression
 {
-    [CreateAssetMenu(fileName = "Game Progression Data", menuName = "Game Data/Progression Container")]
+    [CreateAssetMenu(fileName = "Game Progression Data", menuName = "Progression/Game Data")]
     public class GameProgressionData : ScriptableObject
     {
         private readonly Dictionary<string, LevelProgressionData> _gameProgression = new();

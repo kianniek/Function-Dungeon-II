@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Progression.Grading
 {
-    [CreateAssetMenu(fileName = "Grade", menuName = "Level/Grade")]
+    [CreateAssetMenu(fileName = "Grade", menuName = "Progression/Grading/Grade")]
     public class Grade : ScriptableObject
     {
         [SerializeField] private string gradeName;

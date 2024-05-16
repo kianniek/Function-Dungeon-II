@@ -4,10 +4,10 @@ using UnityEngine;
 
 namespace Progression.Grading
 {
-    [CreateAssetMenu(fileName = "Level Grading System", menuName = "Level/Grading System")]
+    [CreateAssetMenu(fileName = "Level Grading System", menuName = "Progression/Grading/Level Grading System")]
     public class LevelGradingSystem : ScriptableObject
     {
-        [SerializeField] private List<LevelGradeEntry> gradingSystem = new();
+        [SerializeField] private List<LevelGradingEntry> gradingSystem = new();
         
         /// <summary>
         /// 
