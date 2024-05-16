@@ -4062,14 +4062,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: PauzeMenu
       objectReference: {fileID: 0}
-    - target: {fileID: 1361133228028590456, guid: 96db7b41f8a32b844945d4683e3c5f17, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 2076593750}
-    - target: {fileID: 1361133228028590456, guid: 96db7b41f8a32b844945d4683e3c5f17, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: QuitGame
-      objectReference: {fileID: 0}
     - target: {fileID: 5138196420732096491, guid: 96db7b41f8a32b844945d4683e3c5f17, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
