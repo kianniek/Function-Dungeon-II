@@ -1,4 +1,5 @@
 using System.Collections;
+using Projectile;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -8,6 +9,8 @@ namespace Targets
     {
         [SerializeField] private UnityEvent onDieEvent = new();
 
+        [SerializeField] private UnityEvent onDamageEvent = new();
+
         [SerializeField] private float hp = 3;
 
         [SerializeField] private bool damageable = true;
@@ -16,11 +19,20 @@ namespace Targets
 
         [SerializeField] private GameObject bloodsprayParticles;
 
+        [SerializeField] private int points;
+
+        public int Points
+        {
+            get { return points; }
+            private set { points = value; }
+        }
+
         private Material _startMaterial;
 
         private SpriteRenderer _spriteRenderer;
 
         public UnityEvent OnDieEvent { get => onDieEvent; }
+        public UnityEvent OnDamageEvent { get => onDamageEvent; }
 
         private void Awake()
         {
@@ -36,22 +48,37 @@ namespace Targets
             if (damageable)
             {
                 hp = hp - damage;
-                StartCoroutine(FlashRed());
+                onDamageEvent.Invoke();
                 if (hp <= 0)
                 {
-                    if(bloodsprayParticles != null)
+                    if (bloodsprayParticles != null)
                     {
                         bloodsprayParticles.SetActive(true);
                     }
                     gameObject.SetActive(false);
                     onDieEvent.Invoke();
                 }
+                else
+                {
+                    StartCoroutine(FlashRed());
+                }
             }
         }
 
-        //TODO:
-        //impact from fall
-        //impact from things falling on it
+        private void OnCollisionEnter2D(Collision2D collision)
+        {
+            if (collision.gameObject.TryGetComponent<ProjectileScript>(out var _))
+            {
+                return;
+            }
+
+            var relativeVelocty = collision.relativeVelocity.magnitude;
+            if (relativeVelocty > 1.5f)
+            {
+                Debug.Log(relativeVelocty);
+                OnBlockHit(collision.relativeVelocity.magnitude);
+            }
+        }
 
         private IEnumerator FlashRed()
         {
