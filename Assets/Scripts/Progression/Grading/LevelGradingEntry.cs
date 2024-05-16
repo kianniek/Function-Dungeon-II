@@ -4,7 +4,7 @@ using UnityEngine;
 namespace Progression.Grading
 {
     [Serializable]
-    public class LevelGradeEntry : IComparable<LevelGradeEntry>
+    public class LevelGradingEntry : IComparable<LevelGradingEntry>
     {
         [SerializeField, Min(0)] private int scoreThreshold;
         [SerializeField] private Grade grade;
@@ -13,7 +13,7 @@ namespace Progression.Grading
         
         public Grade Grade => grade;
         
-        public int CompareTo(LevelGradeEntry other)
+        public int CompareTo(LevelGradingEntry other)
         {
             return scoreThreshold.CompareTo(other.ScoreThreshold);
         }
