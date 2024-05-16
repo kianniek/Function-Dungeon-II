@@ -1,7 +1,7 @@
-using Progression.Grading;
+using GameEvent.Events;
 using UnityEngine;
 
-namespace GameEvent.Events.Typed
+namespace Progression.Grading
 {
     /// <summary>
     /// Float-typed <see cref="GameEvent"/> to use when there is the need for passing through float values.
