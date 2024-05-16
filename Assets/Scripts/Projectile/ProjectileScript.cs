@@ -30,7 +30,6 @@ namespace Projectile
         [SerializeField] private UnityEvent changeCameraView = new();
         public UnityEvent ChangeCameraView { get => changeCameraView; }
 
-        private bool _firstCollision = true;
         private float _distanceTraveled;
         private float _currentResetTime;
         private Vector3 _initialPosition;
