@@ -21,7 +21,7 @@ namespace Progression.Scoring
         /// </summary>
         public void AddScore()
         {
-            scoreAddEvent.Invoke(scorePoints);
+            scoreAddEvent?.Invoke(scorePoints);
         }
     }
 }
