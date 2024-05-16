@@ -1,4 +1,4 @@
-using Attributes;
+using System.Collections.Generic;
 using GameEvent.Events.Typed;
 using Progression.Grading;
 using UnityEngine;
@@ -6,18 +6,18 @@ using UnityEngine.SceneManagement;
 
 namespace Progression.Scoring
 {
-    [CreateAssetMenu(fileName = "ScoreManager", menuName = "Progression/Score Manager", order = 0)]
+    [CreateAssetMenu(fileName = "Score Manager", menuName = "Progression/Score Manager", order = 0)]
     public class ScoreManager : ScriptableObject
     {
         [Header("Game Data")] 
         [SerializeField] private GameProgressionData gameProgressionContainer;
         
-        [Header("Score & Grading Settings")] 
-        [SerializeField, Expandable] private LevelGradingSystem gradingSystem;
+        [Header("Score & Grading Settings")]
         [SerializeField] private bool allowNegativeScore;
+        [SerializeField] private List<LevelGradingSettingsEntry> gradingSettings;
         
         [Header("Events")] 
-        [SerializeField] private IntGameEvent onScoreAdd;
+        [SerializeField] private IntGameEvent onUpdateScore;
         [SerializeField] private IntGameEvent onScoreChanged;
         [SerializeField] private GradeGameEvent onGradeChanged;
         
@@ -37,7 +37,7 @@ namespace Progression.Scoring
         
         private void OnValidate()
         {
-            onScoreAdd?.AddListener(UpdateScore);
+            onUpdateScore?.AddListener(UpdateScore);
         }
         
         private void ResetScoringSystem(Scene arg0, Scene arg1)
@@ -49,9 +49,9 @@ namespace Progression.Scoring
         
         private void UpdateScore(int points)
         {
-            var newScore = CurrentScore - points;
+            var newScore = CurrentScore + points;
             
-            if (newScore < 0 && !allowNegativeScore)
+            if (newScore < 0 && allowNegativeScore)
             {
                 CurrentScore = 0;
                 
@@ -60,6 +60,8 @@ namespace Progression.Scoring
             else
             {
                 CurrentScore = newScore;
+                
+                UpdateGameProgression();
             }
         }
         
@@ -67,12 +69,15 @@ namespace Progression.Scoring
         {
             onScoreChanged?.Invoke(CurrentScore);
             
+            var activeSceneName = SceneManager.GetActiveScene().name;
+            var gradingSystem = gradingSettings.Find(entry => entry.LevelName == activeSceneName).GradingSystem;
+            
             CurrentGrade = gradingSystem.CalculateGrade(CurrentScore);
             
             onGradeChanged?.Invoke(CurrentGrade);
             
             gameProgressionContainer.UpdateOrAddLevelScore(
-                SceneManager.GetActiveScene().name,
+                activeSceneName,
                 new LevelScoreData
                 {
                     Score = CurrentScore,
