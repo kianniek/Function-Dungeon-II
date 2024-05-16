@@ -1,8 +1,8 @@
-using GameEvent.Listeners;
+using Events.GameEventListeners;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace GameEvent.Events
+namespace Events.GameEvents
 {
     /// <summary>
     /// Game wide event based on <see cref="ScriptableObject"/>.
@@ -16,25 +16,25 @@ namespace GameEvent.Events
         void Invoke();
         
         /// <summary>
-        /// Adds a <see cref="IGameEventListener"/> to its listeners.
+        /// Adds an <see cref="IGameEventListener"/> to its listeners.
         /// </summary>
         /// <param name="eventListener"> The <see cref="IGameEventListener"/> object to add. </param>
         void AddListener(IGameEventListener eventListener);
 
         /// <summary>
-        /// Removes a <see cref="IGameEventListener"/> from its listeners.
+        /// Removes an <see cref="IGameEventListener"/> from its listeners.
         /// </summary>
         /// <param name="eventListener"> The <see cref="IGameEventListener"/> object to remove. </param>
         void RemoveListener(IGameEventListener eventListener);
         
         /// <summary>
-        /// Adds a <see cref="UnityAction"/> to its listeners.
+        /// Adds an <see cref="UnityAction"/> to its listeners.
         /// </summary>
         /// <param name="callback"> The <see cref="UnityAction"/> object to add. </param>
         void AddListener(UnityAction callback);
 
         /// <summary>
-        /// Removes a <see cref="UnityAction"/> from its listeners.
+        /// Removes an <see cref="UnityAction"/> from its listeners.
         /// </summary>
         /// <param name="callback"> The <see cref="UnityAction"/> object to remove. </param>
         void RemoveListener(UnityAction callback);

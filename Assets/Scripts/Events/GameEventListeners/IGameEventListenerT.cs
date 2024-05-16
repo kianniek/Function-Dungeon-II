@@ -1,18 +1,7 @@
-using GameEvent.Events;
+using Events.GameEvents;
 
-namespace GameEvent.Listeners
+namespace Events.GameEventListeners
 {
-    /// <summary>
-    /// Script to add <see cref="IGameEvent"/> listener functionality to an object.
-    /// </summary>
-    public interface IGameEventListener
-    {
-        /// <summary>
-        /// Behaviour when the <see cref="IGameEvent"/> is invoked.
-        /// </summary>
-        void OnInvoked();
-    }
-    
     /// <summary>
     /// Script to add <see cref="IGameEvent{T}"/> listener functionality to an object.
     /// </summary>

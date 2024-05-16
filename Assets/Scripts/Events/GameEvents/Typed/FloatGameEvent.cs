@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace GameEvent.Events.Typed
+namespace Events.GameEvents.Typed
 {
     /// <summary>
     /// Float-typed <see cref="GameEvent"/> to use when there is the need for passing through float values.

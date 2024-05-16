@@ -1,7 +1,6 @@
-using GameEvent.Events.Typed;
-using TypedUnityEvent;
+using Events.GameEvents.Typed;
 
-namespace GameEvent.Listeners.Typed
+namespace Events.GameEventListeners.Typed
 {
     /// <summary>
     /// Int-typed <see cref="GameEventListener"/> to use when there is the need for passing through int values.

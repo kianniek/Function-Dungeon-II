@@ -1,13 +1,13 @@
+using Events.GameEvents;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace GameEvent.Listeners
+namespace Events.GameEventListeners
 {
     /// <inheritdoc cref="IGameEventListener"/>
     public class GameEventListener : MonoBehaviour, IGameEventListener
     {
-        [SerializeField] private Events.GameEvent listenTo;
-
+        [SerializeField] private GameEvent listenTo;
         [SerializeField] private UnityEvent response;
 
         public void OnInvoked()

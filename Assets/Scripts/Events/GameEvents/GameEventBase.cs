@@ -1,8 +1,8 @@
 using System.Collections.Generic;
-using GameEvent.Listeners;
+using Events.GameEventListeners;
 using UnityEngine.Events;
 
-namespace GameEvent.Events
+namespace Events.GameEvents
 {
     /// <inheritdoc cref="IGameEvent{T}"/>
     public class GameEventBase<T> : GameEvent
@@ -14,15 +14,11 @@ namespace GameEvent.Events
         {
             Invoke();
             
-            for (var i = _typedListeners.Count - 1; i >= 0; i--)
-            {
+            for (var i = _typedListeners.Count - 1; i >= 0; i--) 
                 _typedListeners[i].OnInvoked(value);
-            }
 
-            for (var i = _typedActions.Count - 1; i >= 0; i--)
-            {
+            for (var i = _typedActions.Count - 1; i >= 0; i--) 
                 _typedActions[i](value);
-            }
         }
 
         public void AddListener(UnityAction<T> callback)

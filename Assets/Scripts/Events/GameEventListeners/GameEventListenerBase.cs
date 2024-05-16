@@ -1,8 +1,8 @@
-using GameEvent.Events;
+using Events.GameEvents;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace GameEvent.Listeners
+namespace Events.GameEventListeners
 {
     /// <inheritdoc cref="IGameEventListener{T}"/>
     /// <typeparam name="TE"> The <see cref="GameEventBase{T}"/>-type to listen to. </typeparam>
@@ -13,7 +13,6 @@ namespace GameEvent.Listeners
         where TU : UnityEvent<T>
     {
         [SerializeField] private TE listenTo;
-
         [SerializeField] private TU response;
 
         public void OnInvoked(T value)
