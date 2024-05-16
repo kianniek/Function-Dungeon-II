@@ -1,6 +1,7 @@
 using Attributes;
 using Targets;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Projectile
 {
@@ -25,6 +26,9 @@ namespace Projectile
         // [SerializeField] private float gravityScale = 1f;
         [Tooltip("Time needed until the projectile is deactivated after time of inactivity")]
         [SerializeField] private float resetTime = 5f;
+
+        [SerializeField] private UnityEvent changeCameraView = new();
+        public UnityEvent ChangeCameraView { get => changeCameraView; }
 
         private float _distanceTraveled;
         private float _currentResetTime;
@@ -120,19 +124,20 @@ namespace Projectile
                 var speed = _rb.velocity.magnitude;
                 hitScript.OnBlockHit(baseDamage * speed);
             }
-            
+
             //Explosion for first collision
-                var hitColliders = Physics2D.OverlapCircleAll(transform.position, projectileForceRadius);
-                foreach (var hitCollider in hitColliders)
+            var hitColliders = Physics2D.OverlapCircleAll(transform.position, projectileForceRadius);
+            foreach (var hitCollider in hitColliders)
+            {
+                var otherRigidbody = hitCollider.attachedRigidbody;
+                if (otherRigidbody != null && otherRigidbody != _rb)
                 {
-                    var otherRigidbody = hitCollider.attachedRigidbody;
-                    if (otherRigidbody != null && otherRigidbody != _rb)
-                    {
-                        var direction = hitCollider.transform.position - transform.position;
-                        var forceFalloff = 1 - (direction.magnitude / projectileForceRadius);
-                        otherRigidbody.AddForce(direction.normalized * (forceFalloff <= 0 ? 0 : projectileForcePower) * forceFalloff);
-                    }
+                    var direction = hitCollider.transform.position - transform.position;
+                    var forceFalloff = 1 - (direction.magnitude / projectileForceRadius);
+                    otherRigidbody.AddForce(direction.normalized * (forceFalloff <= 0 ? 0 : projectileForcePower) * forceFalloff);
                 }
+            }
+            changeCameraView.Invoke();
             ResetAndDeactivate();
         }
 
