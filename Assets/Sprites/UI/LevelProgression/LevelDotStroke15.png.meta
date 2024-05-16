@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 7dab3eab91adecc479613d200f89c04b
+guid: dac74642792a58241bb15975de4b7c56
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 807229356125987603
-    second: chevron-down@256px_0
+      213: 3902281882586332476
+    second: LevelDotStroke15_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: chevron-down@256px_0
+      name: LevelDotStroke15_0
       rect:
         serializedVersion: 2
-        x: 55
-        y: 87
-        width: 146
-        height: 82
+        x: 0
+        y: 0
+        width: 200
+        height: 200
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -127,8 +127,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 313282092dad33b00800000000000000
-      internalID: 807229356125987603
+      spriteID: c3d300172b0b72630800000000000000
+      internalID: 3902281882586332476
       vertices: []
       indices: 
       edges: []
@@ -143,8 +143,7 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable:
-      chevron-down@256px_0: 807229356125987603
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
