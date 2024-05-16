@@ -17,7 +17,7 @@ namespace UI
         /// </summary>
         public void RetryButtonClicked()
         {
-            SceneManager.LoadScene(_activeScene.name);//name or buildindex better?
+            SceneManager.LoadScene(_activeScene.name);
         }
 
         /// <summary>
@@ -25,8 +25,17 @@ namespace UI
         /// </summary>
         public void LevelSelectButtonClicked()
         {
-            //TODO needs to be implemented waiting for dependency
+            //TODO needs to be implemented waiting for level selection screen
             Debug.Log("Works");
+        }
+
+        /// <summary>
+        /// Navigates to next level when next level button is clicked
+        /// </summary>
+        public void NextLevelButtonClicked()
+        {
+            //TODO needs to be implemented waiting for dependency
+            SceneManager.LoadScene(_activeScene.buildIndex + 1);
         }
     }
 }
