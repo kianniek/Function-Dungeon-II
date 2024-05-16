@@ -23,8 +23,8 @@ namespace Progression.Grading
         public Grade Grade => grade;
         
         public int CompareTo(LevelGradingEntry other)
-        {
-            return scoreThreshold.CompareTo(other.ScoreThreshold);
+        { 
+            return scoreThreshold.CompareTo(other.scoreThreshold);
         }
     }
 }

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Progression
 {
@@ -33,6 +34,15 @@ namespace Progression
         {
             // Get last element in the list
             return _levelDataHistory[^1];
+        }
+        
+        /// <summary>
+        /// Convenience method to get the highest score level data.
+        /// </summary>
+        /// <returns> The highest score level data <see cref="LevelScoreData"/>. </returns>
+        public LevelScoreData GetHighestScoreLevelData()
+        {
+            return _levelDataHistory.Max();
         }
     }
 }
