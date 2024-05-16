@@ -1,7 +1,8 @@
+using Cannon;
 using UnityEditor;
 using UnityEngine;
 
-namespace Cannon.Editor
+namespace Editor.Custom
 {
     [CustomEditor(typeof(CannonProjectileController))]
     public class CannonProjectileControllerEditor : UnityEditor.Editor
