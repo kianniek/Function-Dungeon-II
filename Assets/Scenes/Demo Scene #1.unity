@@ -3833,10 +3833,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: LevelFailedUI
       objectReference: {fileID: 0}
-    - target: {fileID: 2039620731226772439, guid: ab60ba363a86aff4bacf9d52382c2e6e, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2320189475426286458, guid: ab60ba363a86aff4bacf9d52382c2e6e, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
