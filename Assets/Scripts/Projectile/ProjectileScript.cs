@@ -118,8 +118,6 @@ namespace Projectile
 
         private void OnCollisionEnter2D(Collision2D collision)
         {
-            EnablesGravity();
-
             var hitScript = collision.gameObject.GetComponent<HitScript>();
 
             if (hitScript != null)
@@ -127,10 +125,8 @@ namespace Projectile
                 var speed = _rb.velocity.magnitude;
                 hitScript.OnBlockHit(baseDamage * speed);
             }
-
+            
             //Explosion for first collision
-            if (_firstCollision)
-            {
                 var hitColliders = Physics2D.OverlapCircleAll(transform.position, projectileForceRadius);
                 foreach (var hitCollider in hitColliders)
                 {
@@ -143,8 +139,8 @@ namespace Projectile
                     }
                 }
                 changeCameraView.Invoke();
-                _firstCollision = false;
             }
+            ResetAndDeactivate();
         }
 
         /// <summary>
