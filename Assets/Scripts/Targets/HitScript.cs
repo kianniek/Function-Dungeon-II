@@ -17,11 +17,9 @@ namespace Targets
 
         [SerializeField] private GameObject bloodsprayParticles;
 
-        [SerializeField] private int points;
+        private const float PhysicDamageTreshold = 2f; // The treshold of damage the block needs to recieve for it to call the OnBlockHit event
 
-        private float _physicDamageTreshold = 2f; // The treshold of damage the block needs to recieve for it to call the OnBlockHit event
-
-        private float _startInvulnerabilityTime = 1f; // The time the block is invulnerable for at the start of the game. To prevent block breaking when the level starts
+        private const float StartInvulnerabilityTime = 1f; // The time the block is invulnerable for at the start of the game. To prevent block breaking when the level starts
 
         private bool _damageable;
 
@@ -29,13 +27,8 @@ namespace Targets
 
         private SpriteRenderer _spriteRenderer;
 
-        public UnityEvent OnDieEvent { get => onDieEvent; }
         public UnityEvent OnDamageEvent { get => onDamageEvent; }
-        public int Points
-        {
-            get { return points; }
-            private set { points = value; }
-        }
+        public UnityEvent OnDieEvent { get => onDieEvent; }
 
         private void Awake()
         {
@@ -59,8 +52,8 @@ namespace Targets
                     {
                         bloodsprayParticles.SetActive(true);
                     }
-                    gameObject.SetActive(false);
                     onDieEvent.Invoke();
+                    gameObject.SetActive(false);
                 }
                 else
                 {
@@ -76,10 +69,10 @@ namespace Targets
                 return;
             }
 
-            var relativeVelocty = collision.relativeVelocity.magnitude;
-            if (relativeVelocty > _physicDamageTreshold)
+            var relativeVelocity = collision.relativeVelocity.magnitude;
+            if (relativeVelocity > PhysicDamageTreshold)
             {
-                OnBlockHit(collision.relativeVelocity.magnitude);
+                OnBlockHit(relativeVelocity);
             }
         }
 
@@ -90,9 +83,12 @@ namespace Targets
             _spriteRenderer.material = _startMaterial;
         }
 
+        /// <summary>
+        /// Waits an amount of seconds equal to the StartInvulnerabilityTime variable, afterwards enables the object to be damageable
+        /// </summary>
         private IEnumerator EnableDamage()
         {
-            yield return new WaitForSeconds(_startInvulnerabilityTime);
+            yield return new WaitForSeconds(StartInvulnerabilityTime);
             _damageable = true;
         }
     }
