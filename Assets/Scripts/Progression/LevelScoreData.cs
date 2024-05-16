@@ -3,11 +3,20 @@ using Progression.Grading;
 
 namespace Progression
 {
+    /// <summary>
+    /// Record for storing the score and grade of a level.
+    /// </summary>
     [Serializable]
-    public class LevelScoreData
+    public record LevelScoreData(int Score, Grade Grade)
     {
-        public int Score { get; set; }
+        /// <summary>
+        /// The score of the level.
+        /// </summary>
+        public int Score { get; } = Score;
         
-        public Grade Grade { get; set; }
+        /// <summary>
+        /// The grade of the level.
+        /// </summary>
+        public Grade Grade { get; } = Grade;
     }
 }

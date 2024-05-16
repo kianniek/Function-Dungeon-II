@@ -1,4 +1,4 @@
-using GameEvent.Events;
+using Events.GameEvents;
 using UnityEngine;
 
 namespace Progression.Grading

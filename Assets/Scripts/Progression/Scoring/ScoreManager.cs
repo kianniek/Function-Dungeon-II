@@ -1,18 +1,21 @@
 using System.Collections.Generic;
-using GameEvent.Events.Typed;
+using Events.GameEvents.Typed;
 using Progression.Grading;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 namespace Progression.Scoring
 {
+    /// <summary>
+    /// Manages the scoring system for the game.
+    /// </summary>
     [CreateAssetMenu(fileName = "Score Manager", menuName = "Progression/Score Manager", order = 0)]
     public class ScoreManager : ScriptableObject
     {
         [Header("Game Data")] 
         [SerializeField] private GameProgressionData gameProgressionContainer;
         
-        [Header("Score & Grading Settings")]
+        [Header("Score & Grading Settings")] 
         [SerializeField] private bool allowNegativeScore;
         [SerializeField] private List<LevelGradingSettingsEntry> gradingSettings;
         
@@ -21,8 +24,14 @@ namespace Progression.Scoring
         [SerializeField] private IntGameEvent onScoreChanged;
         [SerializeField] private GradeGameEvent onGradeChanged;
         
+        /// <summary>
+        /// The current grade of the player in the active scene.
+        /// </summary>
         public Grade CurrentGrade { get; private set; }
         
+        /// <summary>
+        /// The current score of the player in the active scene.
+        /// </summary>
         public int CurrentScore { get; private set; }
         
         private void OnEnable()
@@ -37,6 +46,7 @@ namespace Progression.Scoring
         
         private void OnValidate()
         {
+            onUpdateScore?.RemoveListener(UpdateScore);
             onUpdateScore?.AddListener(UpdateScore);
         }
         
@@ -78,11 +88,7 @@ namespace Progression.Scoring
             
             gameProgressionContainer.UpdateOrAddLevelScore(
                 activeSceneName,
-                new LevelScoreData
-                {
-                    Score = CurrentScore,
-                    Grade = CurrentGrade
-                }
+                new LevelScoreData(CurrentScore, CurrentGrade)
             );
         }
     }

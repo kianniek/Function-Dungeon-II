@@ -1,4 +1,4 @@
-using GameEvent.Listeners;
+using Events.GameEventListeners;
 
 namespace Progression.Grading
 {
