@@ -1,7 +1,8 @@
-using UnityEngine;
+using LineController;
 using UnityEditor;
+using UnityEngine;
 
-namespace LineController.Editor
+namespace Editor.Custom
 {
     //[CustomEditor(typeof(FunctionLineController))]
     public class FunctionLineControllerEditor : UnityEditor.Editor

@@ -46,6 +46,7 @@ GameObject:
   - component: {fileID: 621986685937511592}
   - component: {fileID: 7618568449713036412}
   - component: {fileID: 1493665479339653894}
+  - component: {fileID: 174529264499358573}
   m_Layer: 0
   m_Name: Sprite
   m_TagString: Untagged
@@ -199,11 +200,37 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onDieEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 174529264499358573}
+        m_TargetAssemblyTypeName: Progression.Scoring.ScoreView, Assembly-CSharp
+        m_MethodName: AddScore
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   hp: 3
   damageable: 1
   damageColor: {fileID: 2100000, guid: a641b868bd67f2e409022992df1226b9, type: 2}
   bloodsprayParticles: {fileID: 5022056385974438762}
+--- !u!114 &174529264499358573
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5947559002800276217}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b60dd9c6c69a415ba37c850da0abf769, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scorePoints: 100
+  scoreAddEvent: {fileID: 11400000, guid: fbb7e6991063e4814b16e3ba8945c412, type: 2}
 --- !u!1001 &6139307332895075536
 PrefabInstance:
   m_ObjectHideFlags: 0
