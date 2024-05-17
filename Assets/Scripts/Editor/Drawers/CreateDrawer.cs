@@ -6,6 +6,9 @@ using UnityEngine;
 
 namespace Editor.Drawers
 {
+    /// <summary>
+    /// Custom property drawer for creating ScriptableObjects.
+    /// </summary>
     [CustomPropertyDrawer(typeof(ScriptableObject), true)]
     public class CreateDrawer : PropertyDrawer
     {
@@ -18,6 +21,13 @@ namespace Editor.Drawers
             CreateDrawerExtension(position, property, label, fieldInfo);
         }
         
+        /// <summary>
+        /// Extension of the OnGUI method to allow for the creation of ScriptableObjects.
+        /// </summary>
+        /// <param name="position"> The position of the property. </param>
+        /// <param name="property"> The property to draw. </param>
+        /// <param name="label"> The label of the property. </param>
+        /// <param name="fieldInfo"> The field information of the property. </param>
         public static void CreateDrawerExtension(Rect position, SerializedProperty property, GUIContent label,
             FieldInfo fieldInfo)
         {
@@ -38,7 +48,8 @@ namespace Editor.Drawers
                     width = CreateButtonWidth
                 };
                 
-                if (!GUI.Button(buttonRect, "Create")) return;
+                if (!GUI.Button(buttonRect, "Create")) 
+                    return;
                 
                 property.objectReferenceValue = CreateAssetWithSavePrompt(label, GetFieldType(fieldInfo), AssetPath);
             }
@@ -48,7 +59,13 @@ namespace Editor.Drawers
             }
         }
         
-        // Creates a new ScriptableObject via the default Save File panel
+        /// <summary>
+        /// Creates a new ScriptableObject via the default Save File panel.
+        /// </summary>
+        /// <param name="label"> The label of the ScriptableObject. </param>
+        /// <param name="type"> The type of the ScriptableObject. </param>
+        /// <param name="path"> The path to save the ScriptableObject. </param>
+        /// <returns></returns>
         public static ScriptableObject CreateAssetWithSavePrompt(GUIContent label, Type type, string path)
         {
             path = EditorUtility.SaveFilePanelInProject(
@@ -58,7 +75,8 @@ namespace Editor.Drawers
                 "Enter a file name for the ScriptableObject.",
                 path);
             
-            if (path == "") return null;
+            if (path is "") 
+                return null;
             
             var asset = ScriptableObject.CreateInstance(type);
             
@@ -72,6 +90,11 @@ namespace Editor.Drawers
             return asset;
         }
         
+        /// <summary>
+        /// Get the type of the field.
+        /// </summary>
+        /// <param name="fieldInfo"> The field to get the type of. </param>
+        /// <returns> The type of the field. </returns>
         public static Type GetFieldType(FieldInfo fieldInfo)
         {
             var type = fieldInfo.FieldType;
