@@ -11,8 +11,8 @@ namespace Progression.Scoring
         [Header("Score Settings")]
         [SerializeField] private int scorePoints;
         
-        [Header("Game Event")]
-        [SerializeField] private IntGameEvent scoreAddEvent;
+        [Header("Game Events")] 
+        [SerializeField] private IntGameEvent onApplyScore;
         
         /// <summary>
         /// The amount of points this script adds to the total score.
@@ -24,7 +24,7 @@ namespace Progression.Scoring
         /// </summary>
         public void AddScore()
         {
-            scoreAddEvent?.Invoke(scorePoints);
+            onApplyScore?.Invoke(scorePoints);
         }
     }
 }
