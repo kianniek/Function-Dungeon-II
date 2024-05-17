@@ -13,7 +13,7 @@ public class DrawUILinesBetweenElements : MonoBehaviour
 
     private const int MinAmountChildren = 2;
 
-    void Start()
+    private void Start()
     {
         var childCount = parentUIElement.childCount;
 
@@ -40,7 +40,7 @@ public class DrawUILinesBetweenElements : MonoBehaviour
         UpdateLinePositions();
     }
 
-    void UpdateLinePositions()
+    private void UpdateLinePositions()
     {
         for (var i = 0; i < _lines.Length; i++)
         {
@@ -50,25 +50,19 @@ public class DrawUILinesBetweenElements : MonoBehaviour
         }
     }
 
-    void DrawLine(Image line, Vector2 start, Vector2 end)
+    private void DrawLine(Image line, Vector2 start, Vector2 end)
     {
         var direction = end - start;
         var distance = direction.magnitude;
 
-        line.color = lineColor;
         line.rectTransform.sizeDelta = new (distance, lineWidth);
         line.rectTransform.pivot = new (0, 0.5f);
         line.rectTransform.anchoredPosition = start;
+        line.color = lineColor;
 
         var angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         line.rectTransform.rotation = Quaternion.Euler(0, 0, angle);
 
         line.transform.SetSiblingIndex(0);
-    }
-
-    void Update()
-    {
-        // If you want to update lines dynamically during gameplay, uncomment the line below
-        // UpdateLinePositions();
     }
 }

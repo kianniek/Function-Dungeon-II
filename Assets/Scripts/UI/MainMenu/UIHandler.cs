@@ -70,7 +70,7 @@ namespace UI.MainMenu
             }
             else
             {
-                Debug.LogError("Menu GameObject is null");
+                Debug.LogError("Menu GameObject is null. Please add a Menu Gameobject");
             }
         }
     }
