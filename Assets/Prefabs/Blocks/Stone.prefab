@@ -177,7 +177,11 @@ MonoBehaviour:
   onDieEvent:
     m_PersistentCalls:
       m_Calls: []
-  hp: 3
+  onDamageEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  hp: 15
   damageable: 1
   damageColor: {fileID: 2100000, guid: a641b868bd67f2e409022992df1226b9, type: 2}
   bloodsprayParticles: {fileID: 0}
+  points: 25
