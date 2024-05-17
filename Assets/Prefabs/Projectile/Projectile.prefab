@@ -11,8 +11,10 @@ GameObject:
   - component: {fileID: 5144363661693434479}
   - component: {fileID: 8093031784450060953}
   - component: {fileID: 1732762045120391626}
-  - component: {fileID: 3621945482446078802}
   - component: {fileID: 7194805776701942715}
+  - component: {fileID: 3621945482446078802}
+  - component: {fileID: 1786236840159613523}
+  - component: {fileID: 5428016419734089186}
   m_Layer: 0
   m_Name: Projectile
   m_TagString: Untagged
@@ -116,24 +118,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &3621945482446078802
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8489824262079630986}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5ea024738f43b4dd0afd7c310b267d31, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  baseDamage: 1
-  projectileForceRadius: 5
-  projectileForcePower: 10000
-  projectileScore: 500
-  physicsVariables: {fileID: 11400000, guid: 1700083af172147a79deaa104412fc70, type: 2}
-  resetTime: 5
 --- !u!58 &7194805776701942715
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -170,3 +154,66 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 0.5
+--- !u!114 &3621945482446078802
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8489824262079630986}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ea024738f43b4dd0afd7c310b267d31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseDamage: 1
+  projectileForceRadius: 5
+  projectileForcePower: 10000
+  projectileScore: 500
+  physicsVariables: {fileID: 11400000, guid: 1700083af172147a79deaa104412fc70, type: 2}
+  resetTime: 5
+  changeCameraView:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &1786236840159613523
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8489824262079630986}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b60dd9c6c69a415ba37c850da0abf769, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scorePoints: 100
+  onApplyScore: {fileID: 11400000, guid: fbb7e6991063e4814b16e3ba8945c412, type: 2}
+--- !u!114 &5428016419734089186
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8489824262079630986}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41b767c751a7497e94fabf55b446118e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  listenTo: {fileID: 11400000, guid: 0324aa95a59544d198ad86effba8466c, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1786236840159613523}
+        m_TargetAssemblyTypeName: Progression.Scoring.ScoreModel, Assembly-CSharp
+        m_MethodName: AddScore
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2

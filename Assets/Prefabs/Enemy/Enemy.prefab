@@ -213,8 +213,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  onDamageEvent:
+    m_PersistentCalls:
+      m_Calls: []
   hp: 3
-  damageable: 1
   damageColor: {fileID: 2100000, guid: a641b868bd67f2e409022992df1226b9, type: 2}
   bloodsprayParticles: {fileID: 5022056385974438762}
 --- !u!114 &174529264499358573
@@ -230,7 +232,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scorePoints: 100
-  scoreAddEvent: {fileID: 11400000, guid: fbb7e6991063e4814b16e3ba8945c412, type: 2}
+  onApplyScore: {fileID: 11400000, guid: fbb7e6991063e4814b16e3ba8945c412, type: 2}
 --- !u!1001 &6139307332895075536
 PrefabInstance:
   m_ObjectHideFlags: 0
