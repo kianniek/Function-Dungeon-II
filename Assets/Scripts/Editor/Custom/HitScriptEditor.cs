@@ -1,16 +1,17 @@
-using UnityEngine;
+using Targets;
 using UnityEditor;
+using UnityEngine;
 
-namespace Targets.Editor
+namespace Editor.Custom
 {
     [CustomEditor(typeof(HitScript))]
-    public class CannonPlatformControllerEditor : UnityEditor.Editor
+    public class HitScriptEditor : UnityEditor.Editor
     {
         public override void OnInspectorGUI()
         {
             DrawDefaultInspector(); // Draws the default inspector
 
-            HitScript script = (HitScript)target;
+            var script = (HitScript)target;
 
             if (GUILayout.Button("Test HP"))
             {
