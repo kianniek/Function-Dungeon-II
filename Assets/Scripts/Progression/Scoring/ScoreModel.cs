@@ -6,9 +6,12 @@ namespace Progression.Scoring
     /// <summary>
     /// Represents a score that can be added to the total score.
     /// </summary>
-    public class ScoreView : MonoBehaviour
+    public class ScoreModel : MonoBehaviour
     {
+        [Header("Score Settings")]
         [SerializeField] private int scorePoints;
+        
+        [Header("Game Event")]
         [SerializeField] private IntGameEvent scoreAddEvent;
         
         /// <summary>
