@@ -12,7 +12,10 @@ namespace Events.GameEventListeners
         where TE : GameEventBase<T>
         where TU : UnityEvent<T>
     {
+        [Header("Game Event")]
         [SerializeField] private TE listenTo;
+        
+        [Header("Callbacks")]
         [SerializeField] private TU response;
 
         public void OnInvoked(T value)
