@@ -175,15 +175,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0577f08d5d58349568806fe084c4ff56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  physicDamageThreshold: 2
+  startInvulnerabilityTime: 1
+  startHealth: 3
+  enableNegativeHealth: 0
+  spriteView: {fileID: 0}
+  enableDamageEffect: 0
+  damageColor: {r: 0, g: 0, b: 0, a: 0}
   onDieEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2013956999011018964}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   onDamageEvent:
     m_PersistentCalls:
       m_Calls: []
-  hp: 15
-  damageColor: {fileID: 2100000, guid: a641b868bd67f2e409022992df1226b9, type: 2}
-  bloodsprayParticles: {fileID: 0}
 --- !u!114 &-1168761634677028020
 MonoBehaviour:
   m_ObjectHideFlags: 0

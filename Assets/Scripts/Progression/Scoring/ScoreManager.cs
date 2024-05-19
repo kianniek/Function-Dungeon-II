@@ -12,12 +12,13 @@ namespace Progression.Scoring
     [CreateAssetMenu(fileName = "Score Manager", menuName = "Progression/Score Manager", order = 0)]
     public class ScoreManager : ScriptableObject
     {
+        [SerializeField] private List<LevelGradingSettingsEntry> gradingSettings;
+        
+        [Header("Score Settings")]
+        [SerializeField] private bool allowNegativeScore;
+        
         [Header("Game Data")] 
         [SerializeField] private GameProgressionData gameProgressionContainer;
-        
-        [Header("Score & Grading Settings")] 
-        [SerializeField] private bool allowNegativeScore;
-        [SerializeField] private List<LevelGradingSettingsEntry> gradingSettings;
         
         [Header("Events")] 
         [SerializeField] private IntGameEvent onUpdateScore;
