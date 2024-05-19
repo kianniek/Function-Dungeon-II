@@ -7,7 +7,10 @@ namespace Events.GameEventListeners
     /// <inheritdoc cref="IGameEventListener"/>
     public class GameEventListener : MonoBehaviour, IGameEventListener
     {
+        [Header("Game Event")]
         [SerializeField] private GameEvent listenTo;
+        
+        [Header("Callbacks")]
         [SerializeField] private UnityEvent response;
 
         public void OnInvoked()
