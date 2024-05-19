@@ -3,7 +3,7 @@ using UnityEngine.SceneManagement;
 
 namespace UI.MainMenu
 {
-    public class MainMenuController : MonoBehaviour
+    public class SceneAndMenuController : MonoBehaviour
     {
         /// <summary>
         /// Function to quit the game
