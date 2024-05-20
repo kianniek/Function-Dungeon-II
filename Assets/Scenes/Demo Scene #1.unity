@@ -2713,22 +2713,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: HUD
       objectReference: {fileID: 0}
-    - target: {fileID: 1031992429345290186, guid: d79d0524276944cf8bb6e33ca23b7686, type: 3}
-      propertyPath: response.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1031992429345290186, guid: d79d0524276944cf8bb6e33ca23b7686, type: 3}
-      propertyPath: response.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1112187067}
-    - target: {fileID: 1031992429345290186, guid: d79d0524276944cf8bb6e33ca23b7686, type: 3}
-      propertyPath: response.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SetScore
-      objectReference: {fileID: 0}
-    - target: {fileID: 1031992429345290186, guid: d79d0524276944cf8bb6e33ca23b7686, type: 3}
-      propertyPath: response.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: UI.ResourceText, Assembly-CSharp
-      objectReference: {fileID: 0}
     - target: {fileID: 1995348614945874723, guid: d79d0524276944cf8bb6e33ca23b7686, type: 3}
       propertyPath: 'targets.Array.data[0]'
       value: 
@@ -2829,38 +2813,16 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 338
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 5522723936144922798, guid: d79d0524276944cf8bb6e33ca23b7686, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 4499765140181375704, guid: d79d0524276944cf8bb6e33ca23b7686, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1112187067}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d79d0524276944cf8bb6e33ca23b7686, type: 3}
 --- !u!224 &1112187065 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2571362195403259620, guid: d79d0524276944cf8bb6e33ca23b7686, type: 3}
   m_PrefabInstance: {fileID: 1112187064}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1112187066 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4499765140181375704, guid: d79d0524276944cf8bb6e33ca23b7686, type: 3}
-  m_PrefabInstance: {fileID: 1112187064}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1112187067
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1112187066}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 11c9e026ddcb4b0e8651f3228bca2d33, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scoreTextFormat: 'Score: {0}'
 --- !u!1001 &1124601734
 PrefabInstance:
   m_ObjectHideFlags: 0
