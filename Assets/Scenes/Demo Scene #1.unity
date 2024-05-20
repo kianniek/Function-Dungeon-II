@@ -930,6 +930,10 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 772849726}
+    - target: {fileID: 5648676444454763344, guid: 006f266fc6e3fd74a8247b2c70ac3520, type: 3}
+      propertyPath: delay
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 6922533945423510579, guid: 006f266fc6e3fd74a8247b2c70ac3520, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
@@ -939,23 +943,55 @@ PrefabInstance:
       value: CannonPlatform
       objectReference: {fileID: 0}
     - target: {fileID: 7726676736881329201, guid: 006f266fc6e3fd74a8247b2c70ac3520, type: 3}
-      propertyPath: onCannonFire.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      propertyPath: onAmmoDepleted.m_PersistentCalls.m_Calls.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7726676736881329201, guid: 006f266fc6e3fd74a8247b2c70ac3520, type: 3}
+      propertyPath: onAmmoDepleted.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
       value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 7726676736881329201, guid: 006f266fc6e3fd74a8247b2c70ac3520, type: 3}
-      propertyPath: onCannonFire.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      propertyPath: onAmmoDepleted.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7726676736881329201, guid: 006f266fc6e3fd74a8247b2c70ac3520, type: 3}
+      propertyPath: onAmmoDepleted.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 492678732}
+      objectReference: {fileID: 1162119151}
     - target: {fileID: 7726676736881329201, guid: 006f266fc6e3fd74a8247b2c70ac3520, type: 3}
-      propertyPath: onCannonFire.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: TrajectoryLineIsVisible
+      propertyPath: onAmmoDepleted.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
+      objectReference: {fileID: 2028096161}
+    - target: {fileID: 7726676736881329201, guid: 006f266fc6e3fd74a8247b2c70ac3520, type: 3}
+      propertyPath: onAmmoDepleted.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7726676736881329201, guid: 006f266fc6e3fd74a8247b2c70ac3520, type: 3}
-      propertyPath: onCannonFire.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: LineController.FunctionLineController, Assembly-CSharp
+      propertyPath: onAmmoDepleted.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7726676736881329201, guid: 006f266fc6e3fd74a8247b2c70ac3520, type: 3}
-      propertyPath: onCannonFire.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      propertyPath: onAmmoDepleted.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: SetActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 7726676736881329201, guid: 006f266fc6e3fd74a8247b2c70ac3520, type: 3}
+      propertyPath: onAmmoDepleted.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
+      value: SetActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 7726676736881329201, guid: 006f266fc6e3fd74a8247b2c70ac3520, type: 3}
+      propertyPath: onAmmoDepleted.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 7726676736881329201, guid: 006f266fc6e3fd74a8247b2c70ac3520, type: 3}
+      propertyPath: onAmmoDepleted.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 7726676736881329201, guid: 006f266fc6e3fd74a8247b2c70ac3520, type: 3}
+      propertyPath: onAmmoDepleted.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 7726676736881329201, guid: 006f266fc6e3fd74a8247b2c70ac3520, type: 3}
+      propertyPath: onAmmoDepleted.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 8580049813322286446, guid: 006f266fc6e3fd74a8247b2c70ac3520, type: 3}
@@ -2225,6 +2261,10 @@ PrefabInstance:
     - target: {fileID: 2571362195403259620, guid: d79d0524276944cf8bb6e33ca23b7686, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6668829980022681974, guid: d79d0524276944cf8bb6e33ca23b7686, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 338
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
