@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7083041310482688980}
-  - component: {fileID: 609169715375004874}
   - component: {fileID: 7939975364953887199}
   m_Layer: 0
   m_Name: SceneManager
@@ -33,34 +32,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &609169715375004874
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4448910673922231255}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 41b767c751a7497e94fabf55b446118e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  listenTo: {fileID: 11400000, guid: 0324aa95a59544d198ad86effba8466c, type: 2}
-  response:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 7939975364953887199}
-        m_TargetAssemblyTypeName: SceneManagement.SceneSwitcher, Assembly-CSharp
-        m_MethodName: SwitchScene
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &7939975364953887199
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -73,5 +44,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff9cb3fa9ef42304cb28d6903bc7909c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneName: Level Select Screen Scene
   switchDelay: 0
