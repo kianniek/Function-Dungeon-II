@@ -3673,6 +3673,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauzeMenu: {fileID: 1145445175}
+  levelSelectionScreenBuildIndex: 1
 --- !u!1 &2084076179 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6612053217649810361, guid: 006f266fc6e3fd74a8247b2c70ac3520, type: 3}

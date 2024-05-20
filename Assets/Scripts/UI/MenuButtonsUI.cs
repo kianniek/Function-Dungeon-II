@@ -8,7 +8,7 @@ namespace UI
         [SerializeField] private GameObject pauzeMenu;
         private Scene _activeScene;
 
-        private int _levelSelectionScreenBuildIndex;
+        [SerializeField] private int levelSelectionScreenBuildIndex = 1;
 
         private void Start()
         {
@@ -28,9 +28,7 @@ namespace UI
         /// </summary>
         public void LevelSelectButtonClicked()
         {
-            //TODO needs to be implemented waiting for level selection screen
-            Debug.Log("Works");
-            SceneManager.LoadScene(_levelSelectionScreenBuildIndex);
+            SceneManager.LoadScene(levelSelectionScreenBuildIndex);
         }
 
         /// <summary>
@@ -38,7 +36,6 @@ namespace UI
         /// </summary>
         public void NextLevelButtonClicked()
         {
-            //TODO needs to be implemented waiting for dependency
             SceneManager.LoadScene(_activeScene.buildIndex + 1);
         }
 
