@@ -6,9 +6,10 @@ namespace UI
     public class MenuButtonsUI : MonoBehaviour
     {
         [SerializeField] private GameObject pauzeMenu;
-        private Scene _activeScene;
-
+        
         [SerializeField] private int levelSelectionScreenBuildIndex = 1;
+
+        private Scene _activeScene;
 
         private void Start()
         {
@@ -60,8 +61,7 @@ namespace UI
         /// </summary>
         public void OptionsButtonClicked() 
         { 
-            //Not yet implemented
-            //SceneManager.LoadScene(settings);
+            //TODO: not yet implemented
         }
 
         /// <summary>
