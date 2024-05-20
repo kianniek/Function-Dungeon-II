@@ -4,19 +4,19 @@ using UnityEngine;
 
 namespace Editor.Custom
 {
-    [CustomEditor(typeof(CannonProjectileController))]
-    public class CannonProjectileControllerEditor : UnityEditor.Editor
+    [CustomEditor(typeof(ProjectileLauncher))]
+    public class ProjectileLauncherEditor : UnityEditor.Editor
     {
         public override void OnInspectorGUI()
         {
             base.OnInspectorGUI();
             
-            CannonProjectileController cannonScript = (CannonProjectileController)target;
+            ProjectileLauncher script = (ProjectileLauncher)target;
             
             if (GUILayout.Button("Test Shot"))
             {
                 // Trigger the shot using the current settings in the inspector
-                cannonScript.ShootProjectile();
+                script.ShootProjectile();
             }
         }
     }
