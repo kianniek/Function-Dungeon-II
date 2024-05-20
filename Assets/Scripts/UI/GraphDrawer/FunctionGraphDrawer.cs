@@ -9,13 +9,12 @@ namespace UI.GraphDrawer
         [SerializeField] private float axisThickness = 4f;
         [SerializeField] private Color gridColor = Color.gray;
         [SerializeField] private Color axisColor = Color.black;
-        
         [SerializeField] private LineRenderer lineRendererPrefabY;
         [SerializeField] private LineRenderer lineRendererPrefabX;
-        
         [SerializeField] private int lineCount = 100;
         [SerializeField] private int step = 1;
-        void Start()
+        
+        private void Start()
         {
             RedrawGrid();
         }
@@ -69,7 +68,6 @@ namespace UI.GraphDrawer
         
         private void DrawVerticalLines()
         {
-            
             for (var i = 1; i <= lineCount; i++)
             {
                 var line = CreateLine(lineRendererPrefabY);
@@ -84,10 +82,11 @@ namespace UI.GraphDrawer
         
         private LineRenderer CreateLine(LineRenderer prefab)
         {
-            var line = Instantiate(prefab);
-            line.transform.SetParent(transform);
+            var line = Instantiate(prefab, transform, true);
+            
             line.startColor = line.endColor = gridColor;
             line.startWidth = line.endWidth = lineThickness;
+            
             return line;
         }
     }

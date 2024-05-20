@@ -1,5 +1,6 @@
-using System.Collections;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using Events.GameEvents;
 using Targets;
 using TMPro;
@@ -21,6 +22,22 @@ namespace UI
         
         private TMP_Text _enemyText;
         private int _currentTargetCount;
+        
+        private void OnEnable()
+        {
+            foreach (var script in targets.Where(script => script))
+            {
+                script.OnDieEvent.AddListener(DestroyedTarget);
+            }
+        }
+        
+        private void OnDisable()
+        {
+            foreach (var script in targets.Where(script => script))
+            {
+                script.OnDieEvent.RemoveListener(DestroyedTarget);
+            }
+        }
         
         public int CurrentTargetCount
         {
@@ -44,18 +61,6 @@ namespace UI
         private void Start()
         {
             CurrentTargetCount = targets.Count;
-        }
-        
-        private void OnValidate()
-        {
-            foreach (var script in targets)
-            {
-                if (!script) 
-                    continue;
-                
-                script.OnDieEvent.RemoveListener(DestroyedTarget);
-                script.OnDieEvent.AddListener(DestroyedTarget);
-            }
         }
         
         private void DestroyedTarget()

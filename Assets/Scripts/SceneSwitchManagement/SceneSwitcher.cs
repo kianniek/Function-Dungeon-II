@@ -1,7 +1,8 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-namespace SceneManagement
+namespace SceneSwitchManagement
 {
     public class SceneSwitcher : MonoBehaviour
     {
@@ -20,22 +21,21 @@ namespace SceneManagement
         private IEnumerator LoadScene(string sceneName)
         {
             yield return new WaitForSeconds(switchDelay);
-            UnityEngine.SceneManagement.SceneManager.LoadScene(sceneName);
+            SceneManager.LoadScene(sceneName);
         }
 
         private IEnumerator LoadSceneAsync(string sceneName)
         {
             yield return new WaitForSeconds(switchDelay);
-            UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(sceneName);
+            
+            SceneManager.LoadSceneAsync(sceneName);
 
             //if scene has not finished loading, wait
-            while (!UnityEngine.SceneManagement.SceneManager.GetSceneByName(sceneName).isLoaded)
-            {
+            while (!SceneManager.GetSceneByName(sceneName).isLoaded)
                 yield return null;
-            }
 
             //if scene has finished loading, activate it
-            UnityEngine.SceneManagement.SceneManager.SetActiveScene(UnityEngine.SceneManagement.SceneManager.GetSceneByName(sceneName));
+            SceneManager.SetActiveScene(SceneManager.GetSceneByName(sceneName));
         }
     }
 }

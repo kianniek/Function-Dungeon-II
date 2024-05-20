@@ -32,11 +32,12 @@ namespace UI.LevelDrawer
             {
                 _childElements[i] = parentUIElement.GetChild(i) as RectTransform;
                 
-                if (i < childCount - 1)
-                {
-                    var lineObj = Instantiate(linePrefab, parentUIElement);
-                    _lines[i] = lineObj.GetComponent<Image>();
-                }
+                if (i >= childCount - 1) 
+                    continue;
+                
+                var lineObj = Instantiate(linePrefab, parentUIElement);
+                
+                _lines[i] = lineObj.GetComponent<Image>();
             }
             
             UpdateLinePositions();
@@ -48,6 +49,7 @@ namespace UI.LevelDrawer
             {
                 var start = _childElements[i].anchoredPosition;
                 var end = _childElements[i + 1].anchoredPosition;
+                
                 DrawLine(_lines[i], start, end);
             }
         }
@@ -57,14 +59,14 @@ namespace UI.LevelDrawer
             var direction = end - start;
             var distance = direction.magnitude;
             
-            line.rectTransform.sizeDelta = new (distance, lineWidth);
-            line.rectTransform.pivot = new (0, 0.5f);
+            line.rectTransform.sizeDelta = new Vector2(distance, lineWidth);
+            line.rectTransform.pivot = new Vector2(0, 0.5f);
             line.rectTransform.anchoredPosition = start;
             line.color = lineColor;
             
             var angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-            line.rectTransform.rotation = Quaternion.Euler(0, 0, angle);
             
+            line.rectTransform.rotation = Quaternion.Euler(0, 0, angle);
             line.transform.SetSiblingIndex(0);
         }
     }

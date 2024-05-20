@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace Progression.Grading
@@ -24,9 +25,12 @@ namespace Progression.Grading
         public Grade CalculateGrade(int score)
         {
             // Iterate through the sorted list and find the appropriate grade
-            foreach (var gradeContainer in gradingSystem)
-                if (score >= gradeContainer.ScoreThreshold)
-                    return gradeContainer.Grade;
+            foreach (var gradeContainer in gradingSystem.Where(
+                         gradeContainer => score >= gradeContainer.ScoreThreshold
+                     ))
+            {
+                return gradeContainer.Grade;
+            }
             
             // If no grade is found, return the last (base) grade in the list
             return DefaultGrade;

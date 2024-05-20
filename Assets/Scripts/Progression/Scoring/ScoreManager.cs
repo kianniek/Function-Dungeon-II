@@ -83,6 +83,7 @@ namespace Progression.Scoring
         private void UpdateGameProgression()
         {
             onScoreChanged?.Invoke(CurrentScore);
+            
             var activeSceneName = SceneManager.GetActiveScene().name;
             
             try
