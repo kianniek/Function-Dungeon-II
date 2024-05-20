@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using Progression;
 using Progression.Grading;
 using UnityEngine;

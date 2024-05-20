@@ -3482,6 +3482,34 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8580049813322286446}
     m_Modifications:
+    - target: {fileID: 1968205763515253657, guid: 96852da69c05945418271ec246e03d10, type: 3}
+      propertyPath: onAmmoDepleted.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1968205763515253657, guid: 96852da69c05945418271ec246e03d10, type: 3}
+      propertyPath: onAmmoDepleted.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1968205763515253657, guid: 96852da69c05945418271ec246e03d10, type: 3}
+      propertyPath: onAmmoDepleted.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 5648676444454763344}
+    - target: {fileID: 1968205763515253657, guid: 96852da69c05945418271ec246e03d10, type: 3}
+      propertyPath: onAmmoDepleted.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1968205763515253657, guid: 96852da69c05945418271ec246e03d10, type: 3}
+      propertyPath: onAmmoDepleted.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: InvokeDelayed
+      objectReference: {fileID: 0}
+    - target: {fileID: 1968205763515253657, guid: 96852da69c05945418271ec246e03d10, type: 3}
+      propertyPath: onAmmoDepleted.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Cannon.DelayedGameEvent, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 1968205763515253657, guid: 96852da69c05945418271ec246e03d10, type: 3}
+      propertyPath: onAmmoDepleted.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 3145879125921422353, guid: 96852da69c05945418271ec246e03d10, type: 3}
       propertyPath: m_Name
       value: Cannon
@@ -3529,10 +3557,32 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3145879125921422353, guid: 96852da69c05945418271ec246e03d10, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5648676444454763344}
   m_SourcePrefab: {fileID: 100100000, guid: 96852da69c05945418271ec246e03d10, type: 3}
 --- !u!4 &404791947873602113 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8499646111421812201, guid: 96852da69c05945418271ec246e03d10, type: 3}
   m_PrefabInstance: {fileID: 8100519131060766632}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &6612053217649810361 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3145879125921422353, guid: 96852da69c05945418271ec246e03d10, type: 3}
+  m_PrefabInstance: {fileID: 8100519131060766632}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5648676444454763344
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6612053217649810361}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a787c0aed2ce453c97d332cf4fb4087a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: 41bb45748e8494f16a3f9d325aa3040d, type: 2}
+  delay: 5

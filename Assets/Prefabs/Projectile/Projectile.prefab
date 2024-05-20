@@ -167,9 +167,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   baseDamage: 1
-  projectileForceRadius: 5
-  projectileForcePower: 10000
-  projectileScore: 500
+  forceRadius: 5
+  forcePower: 10000
   physicsVariables: {fileID: 11400000, guid: 1700083af172147a79deaa104412fc70, type: 2}
   resetTime: 5
   changeCameraView:
@@ -201,7 +200,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41b767c751a7497e94fabf55b446118e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  listenTo: {fileID: 11400000, guid: 0324aa95a59544d198ad86effba8466c, type: 2}
+  listenTo: {fileID: 11400000, guid: 69c475b72e6134b98abcde11371048fc, type: 2}
   response:
     m_PersistentCalls:
       m_Calls:
