@@ -1,5 +1,6 @@
 using System.Collections;
 using Cinemachine;
+using Events.GameEvents;
 using Projectile;
 using UnityEngine;
 
@@ -14,17 +15,34 @@ namespace Camera
         [SerializeField] private GameObject equationText;
         [SerializeField] private GameObject fireButton;
         [SerializeField] private int timeBetweenLevelAndCannonView = 3;
-
+        [SerializeField] private GameEvent onAmmoDepleted;
+        
         private CinemachineVirtualCamera _projectileVirtualCamera;
+        private bool _ammoDepleted;
 
         private void Awake()
         {
             _projectileVirtualCamera = projectileCamera.GetComponent<CinemachineVirtualCamera>();
         }
-
+        
+        private void OnEnable()
+        {
+            onAmmoDepleted.AddListener(SetAmmoDepleted);
+        }
+        
+        private void OnDisable()
+        {
+            onAmmoDepleted.RemoveListener(SetAmmoDepleted);
+        }
+        
         private void Start()
         {
             ShowLevel();
+        }
+        
+        private void SetAmmoDepleted()
+        {
+            _ammoDepleted = true;
         }
 
         /// <summary>
@@ -37,6 +55,10 @@ namespace Camera
             projectileCamera.SetActive(false);
             equationText.SetActive(false);
             fireButton.SetActive(false);
+            
+            if (_ammoDepleted)
+                return;
+            
             StartCoroutine(SwitchToCannonView());
         }
 
@@ -59,12 +81,13 @@ namespace Camera
         {
             foreach (var projectile in cannon.GetComponentsInChildren<ProjectileScript>())
             {
-                if (projectile.isActiveAndEnabled)
-                {
-                    projectile.ChangeCameraView.RemoveListener(ShowLevel);
-                    projectile.ChangeCameraView.AddListener(ShowLevel);
-                    _projectileVirtualCamera.Follow = projectile.gameObject.transform;
-                }
+                if (!projectile.isActiveAndEnabled) 
+                    continue;
+                
+                projectile.ChangeCameraView.RemoveListener(ShowLevel);
+                projectile.ChangeCameraView.AddListener(ShowLevel);
+                
+                _projectileVirtualCamera.Follow = projectile.gameObject.transform;
             }
             showLevelCamera.SetActive(false);
             normalViewCamera.SetActive(false);
