@@ -13,10 +13,16 @@ MonoBehaviour:
   m_Name: Score Manager
   m_EditorClassIdentifier: 
   gameProgressionContainer: {fileID: 11400000, guid: 456cdb52776f746e79eede9e7a6219b9, type: 2}
+  allowNegativeScore: 0
   gradingSettings:
   - levelName: Cannon Platform UI Scene
     gradingSystem: {fileID: 11400000, guid: 3b313b15d0a0d43bcaa0dcc5efe1d16d, type: 2}
-  allowNegativeScore: 0
+  - levelName: Tutorial A Slope
+    gradingSystem: {fileID: 11400000, guid: 3b313b15d0a0d43bcaa0dcc5efe1d16d, type: 2}
+  - levelName: TutorialBLevel
+    gradingSystem: {fileID: 11400000, guid: 3b313b15d0a0d43bcaa0dcc5efe1d16d, type: 2}
+  - levelName: Demo Scene #1
+    gradingSystem: {fileID: 11400000, guid: 3b313b15d0a0d43bcaa0dcc5efe1d16d, type: 2}
   onUpdateScore: {fileID: 11400000, guid: fbb7e6991063e4814b16e3ba8945c412, type: 2}
   onScoreChanged: {fileID: 11400000, guid: 3f170e3f4f55e4dfb9d31131ab67f06b, type: 2}
   onGradeChanged: {fileID: 11400000, guid: 2f9a67dffd3ce4000a768d1b19b85bc4, type: 2}

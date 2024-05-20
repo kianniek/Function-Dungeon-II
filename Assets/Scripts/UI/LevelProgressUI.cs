@@ -1,8 +1,10 @@
+using System.Collections;
 using System.Collections.Generic;
 using Targets;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 namespace UI
 {
@@ -13,6 +15,9 @@ namespace UI
         [SerializeField] private TextMeshProUGUI enemyText;
 
         [SerializeField] private List<HitScript> enemies = new List<HitScript>();
+
+        [SerializeField] private string LevelSelectScene;
+        [SerializeField] private float waitTime = 5;
 
         private int _enemyStartCount;
         private int _enemyKillCount = -1;
@@ -44,8 +49,19 @@ namespace UI
             enemyText.text = $"Enemies killed: {_enemyKillCount} / {_enemyStartCount}";
             if (_enemyStartCount == _enemyKillCount)
             {
+                StartCoroutine(LoadLevelSelect());
                 onAllEnemiesKilledEvent.Invoke();
             }
+        }
+
+        public IEnumerator LoadLevelSelect()
+        {
+            yield return new WaitForSeconds(waitTime);
+            if (LevelSelectScene != null)
+            {
+                SceneManager.LoadScene(LevelSelectScene);
+            }
+            yield return null;
         }
     }
 }
