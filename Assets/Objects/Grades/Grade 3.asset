@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Grade 3
   m_EditorClassIdentifier: 
   gradeName: Excellent
-  icon: {fileID: 2800000, guid: 0ec635f7fa8c5a14eb4cb6ddcf619807, type: 3}
+  icon: {fileID: 21300000, guid: 0ec635f7fa8c5a14eb4cb6ddcf619807, type: 3}
