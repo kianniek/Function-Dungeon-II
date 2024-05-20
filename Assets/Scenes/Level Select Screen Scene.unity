@@ -930,6 +930,7 @@ GameObject:
   - component: {fileID: 418075255}
   - component: {fileID: 418075257}
   - component: {fileID: 418075256}
+  - component: {fileID: 418075258}
   m_Layer: 5
   m_Name: UI
   m_TagString: Untagged
@@ -1093,6 +1094,28 @@ LineRenderer:
   m_UseWorldSpace: 1
   m_Loop: 0
   m_ApplyActiveColorSpace: 1
+--- !u!114 &418075258
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 418075252}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bee3dc7033de9e5468b95a62eca86512, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameProgressionContainer: {fileID: 11400000, guid: 456cdb52776f746e79eede9e7a6219b9, type: 2}
+  passingGradeContainer: {fileID: 11400000, guid: 5ea195156db534b37998e81fc6cc13e9, type: 2}
+  sceneNamesOfLevels:
+  - Tutorial A Slope
+  - TutorialBLevel
+  - Demo Scene #1
+  levelButtons:
+  - {fileID: 212285949}
+  - {fileID: 506560572}
+  - {fileID: 720747666}
 --- !u!1 &506560570
 GameObject:
   m_ObjectHideFlags: 0
