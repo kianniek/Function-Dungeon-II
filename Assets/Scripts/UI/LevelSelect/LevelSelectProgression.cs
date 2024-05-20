@@ -23,7 +23,7 @@ namespace UI.LevelSelect
         /// Checks the game progression data to determine which levels have been played before. And sets the level buttons to active or 
         /// inactive based on the results.
         /// </summary>
-        public void CheckGameProgression()
+        private void CheckGameProgression()
         {
             for (var i = 0; i < sceneNamesOfLevels.Length; i++)
             {
@@ -36,10 +36,7 @@ namespace UI.LevelSelect
                     levelButton.interactable = true;
                 else if (gameProgressionContainer.TryGetLevelData(previousSceneName, out var levelProgression))
                 {
-                    if (levelProgression.GetLatestLevelData().Grade == passingGradeContainer)
-                            levelButtons[i].interactable = true;
-                    else
-                            levelButtons[i].interactable = false;
+                    levelButtons[i].interactable = levelProgression.GetLatestLevelData().Grade == passingGradeContainer;
                 }
             }
         }
