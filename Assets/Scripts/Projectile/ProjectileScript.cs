@@ -2,42 +2,39 @@ using Attributes;
 using Targets;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Serialization;
 
 namespace Projectile
 {
     [RequireComponent(typeof(Rigidbody2D))]
     public class ProjectileScript : MonoBehaviour
     {
-        [Header("Cannon settings")]
+        [Header("Damage Settings")]
         [SerializeField] private int baseDamage = 1;
-
-        [Header("Projectile settings")]
-        [SerializeField] private int projectileForceRadius = 2;
-        [SerializeField] private int projectileForcePower = 20000;
-        [SerializeField] private int projectileScore;
-
-        // [SerializeField] private float speed = 10f;
+        
+        [Header("Impact Settings")]
+        [SerializeField] private int forceRadius = 5; 
+        [SerializeField] private int forcePower = 10000;
+        
         [Header("Physic settings")]
         [SerializeField, Expandable] private ProjectilePhysicsVariables physicsVariables;
-
-        // [Tooltip("The distance traveled until gravity is applied")]
-        // [SerializeField] private float maxDistance = 20f;
-        // [Tooltip("The gravity scale that will be applied when it has reached it max distance")]
-        // [SerializeField] private float gravityScale = 1f;
+        
+        [Header("Reset Settings")]
         [Tooltip("Time needed until the projectile is deactivated after time of inactivity")]
         [SerializeField] private float resetTime = 5f;
-
+        
+        [Header("Events")]
         [SerializeField] private UnityEvent changeCameraView = new();
-        public UnityEvent ChangeCameraView { get => changeCameraView; }
-
+        
         private float _distanceTraveled;
         private float _currentResetTime;
         private Vector3 _initialPosition;
         private Vector3 _lastPosition;
         private Rigidbody2D _rb;
         private Vector2 _direction;
-
-        public int ProjectileScore => projectileScore;
+        
+        public UnityEvent ChangeCameraView => changeCameraView;
+        
         private void Awake()
         {
             _rb = GetComponent<Rigidbody2D>();
@@ -53,10 +50,8 @@ namespace Projectile
             CalculateDistanceTraveled();
             CalculateDeactivationTimer();
         }
-
-        /// <summary>
-        /// Calculates the amount of distance the projectile has traveled, used to enable gravity after a certain distance
-        /// </summary>
+        
+        // Calculates the amount of distance the projectile has traveled, used to enable gravity after a certain distance
         private void CalculateDistanceTraveled()
         {
             var displacement = transform.position - _lastPosition;
@@ -70,39 +65,31 @@ namespace Projectile
                 EnablesGravity();
             }
         }
-
-        /// <summary>
-        /// Enables gravity by specifying a value other than zero
-        /// </summary>
+        
+        // Enables gravity by specifying a value other than zero
         private void EnablesGravity()
         {
             Physics2D.gravity = new Vector2(0, -Mathf.Abs(physicsVariables.Gravity));
             _rb.gravityScale = 1;
         }
-
-        /// <summary>
-        /// Calculates the time before the objects gets deactavted due to inactivity (not Moving)
-        /// </summary>
+        
+        // Calculates the time before the objects gets deactivated due to inactivity (not Moving)
         private void CalculateDeactivationTimer()
         {
             if (_rb.velocity.magnitude <= 0.1f)
             {
                 _currentResetTime -= Time.deltaTime;
 
-                if (_currentResetTime <= 0f)
-                {
+                if (_currentResetTime <= 0f) 
                     ResetAndDeactivate();
-                }
             }
             else
             {
                 _currentResetTime = resetTime;
             }
         }
-
-        /// <summary>
-        /// Resets the variables to their default and deactivates the gameObject
-        /// </summary>
+        
+        // Resets the variables to their default and deactivates the gameObject
         private void ResetAndDeactivate()
         {
             _distanceTraveled = 0f;
@@ -117,27 +104,31 @@ namespace Projectile
 
         private void OnCollisionEnter2D(Collision2D collision)
         {
-            var hitScript = collision.gameObject.GetComponent<HitScript>();
-
-            if (hitScript != null)
+            if (collision.gameObject.TryGetComponent<Damageable>(out var damageableObject))
             {
                 var speed = _rb.velocity.magnitude;
-                hitScript.OnBlockHit(baseDamage * speed);
+                
+                damageableObject.Health -= baseDamage * speed;
             }
 
             //Explosion for first collision
-            var hitColliders = Physics2D.OverlapCircleAll(transform.position, projectileForceRadius);
+            var hitColliders = Physics2D.OverlapCircleAll(transform.position, forceRadius);
+            
             foreach (var hitCollider in hitColliders)
             {
-                var otherRigidbody = hitCollider.attachedRigidbody;
-                if (otherRigidbody != null && otherRigidbody != _rb)
-                {
-                    var direction = hitCollider.transform.position - transform.position;
-                    var forceFalloff = 1 - (direction.magnitude / projectileForceRadius);
-                    otherRigidbody.AddForce(direction.normalized * (forceFalloff <= 0 ? 0 : projectileForcePower) * forceFalloff);
-                }
+                var attachedRigidBody = hitCollider.attachedRigidbody;
+                
+                if (!attachedRigidBody || attachedRigidBody == _rb) 
+                    continue;
+                
+                var direction = hitCollider.transform.position - transform.position;
+                var forceFalloff = 1 - direction.magnitude / forceRadius;
+                
+                attachedRigidBody.AddForce(direction.normalized * (forceFalloff <= 0 ? 0 : forcePower) * forceFalloff);
             }
+            
             changeCameraView.Invoke();
+            
             ResetAndDeactivate();
         }
 
