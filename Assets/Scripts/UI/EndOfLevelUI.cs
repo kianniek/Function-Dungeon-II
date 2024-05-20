@@ -7,6 +7,8 @@ namespace UI
     {
         private Scene _activeScene;
 
+        private int _levelSelectionScreenBuildIndex;
+
         private void Start()
         {
             _activeScene = SceneManager.GetActiveScene();
@@ -27,6 +29,7 @@ namespace UI
         {
             //TODO needs to be implemented waiting for dependency
             Debug.Log("Works");
+            SceneManager.LoadScene(_levelSelectionScreenBuildIndex);
         }
     }
 }
