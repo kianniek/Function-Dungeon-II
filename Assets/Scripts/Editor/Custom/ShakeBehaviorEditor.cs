@@ -1,7 +1,8 @@
-using UnityEngine;
+using Shake;
 using UnityEditor;
+using UnityEngine;
 
-namespace Shake.Editor
+namespace Editor.Custom
 {
     [CustomEditor(typeof(ShakeBehavior))]
     public class ShakeBehaviorEditor : UnityEditor.Editor

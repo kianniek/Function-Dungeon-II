@@ -8,6 +8,8 @@ namespace UI
         [SerializeField] private GameObject pauzeMenu;
         private Scene _activeScene;
 
+        private int _levelSelectionScreenBuildIndex;
+
         private void Start()
         {
             _activeScene = SceneManager.GetActiveScene();
@@ -28,6 +30,7 @@ namespace UI
         {
             //TODO needs to be implemented waiting for level selection screen
             Debug.Log("Works");
+            SceneManager.LoadScene(_levelSelectionScreenBuildIndex);
         }
 
         /// <summary>

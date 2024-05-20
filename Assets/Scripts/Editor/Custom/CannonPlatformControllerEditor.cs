@@ -1,7 +1,8 @@
-using UnityEngine;
+using CannonPlatform;
 using UnityEditor;
+using UnityEngine;
 
-namespace CannonPlatform.Editor
+namespace Editor.Custom
 {
     [CustomEditor(typeof(CannonPlatformController))]
     public class CannonPlatformControllerEditor : UnityEditor.Editor
