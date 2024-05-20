@@ -1106,7 +1106,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bee3dc7033de9e5468b95a62eca86512, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameProgressionContainer: {fileID: 11400000, guid: 456cdb52776f746e79eede9e7a6219b9, type: 2}
+  scoreManager: {fileID: 11400000, guid: abf0b0075bf6c44d1972e8c7b3fb417b, type: 2}
   passingGradeContainer: {fileID: 11400000, guid: 5ea195156db534b37998e81fc6cc13e9, type: 2}
   sceneNamesOfLevels:
   - Tutorial A Slope

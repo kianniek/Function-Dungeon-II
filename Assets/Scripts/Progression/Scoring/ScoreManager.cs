@@ -36,6 +36,11 @@ namespace Progression.Scoring
         /// </summary>
         public int CurrentScore { get; private set; }
         
+        /// <summary>
+        /// The game progression data container.
+        /// </summary>
+        public GameProgressionData GameProgressionContainer => gameProgressionContainer;
+        
         private void OnEnable()
         {
             SceneManager.activeSceneChanged += ResetScoringSystem;

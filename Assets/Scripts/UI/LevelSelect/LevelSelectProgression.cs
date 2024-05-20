@@ -1,13 +1,15 @@
 using Progression;
 using Progression.Grading;
+using Progression.Scoring;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace UI.LevelSelect
 {
     public class LevelSelectProgression : MonoBehaviour
     {
-        [SerializeField] private GameProgressionData gameProgressionContainer;
+        [SerializeField] private ScoreManager scoreManager;
         [SerializeField] private Grade passingGradeContainer;
         [SerializeField] private string[] sceneNamesOfLevels;
         [SerializeField] private Button[] levelButtons;
@@ -32,7 +34,7 @@ namespace UI.LevelSelect
                 // Check if the level has been played before
                 if (i == 0)
                     levelButton.interactable = true;
-                else if (gameProgressionContainer.TryGetLevelData(previousSceneName, out var levelProgression))
+                else if (scoreManager.GameProgressionContainer.TryGetLevelData(previousSceneName, out var levelProgression))
                 {
                     levelButtons[i].interactable = levelProgression.GetLatestLevelData().Grade == passingGradeContainer;
                 }
