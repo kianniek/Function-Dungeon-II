@@ -9,7 +9,7 @@ namespace Progression.Scoring
     /// <summary>
     /// Manages the scoring system for the game.
     /// </summary>
-    [CreateAssetMenu(fileName = "Score Manager", menuName = "Progression/Score Manager", order = 0)]
+    [CreateAssetMenu(fileName = "Score Manager", menuName = "Progression/Score Manager", order = 0), ExecuteAlways]
     public class ScoreManager : ScriptableObject
     {
         [SerializeField] private List<LevelGradingSettingsEntry> gradingSettings;

@@ -401,7 +401,7 @@ PrefabInstance:
     - target: {fileID: 2953903247395189401, guid: 669dd57030bb547bc9cab97cb0eeab7c, type: 3}
       propertyPath: onFloatChange.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1327050217}
     - target: {fileID: 2953903247395189401, guid: 669dd57030bb547bc9cab97cb0eeab7c, type: 3}
       propertyPath: onFloatChange.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
       value: 2
@@ -424,7 +424,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2953903247395189401, guid: 669dd57030bb547bc9cab97cb0eeab7c, type: 3}
       propertyPath: onFloatChange.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
-      value: Cannon.CannonAngleController, Assembly-CSharp
+      value: Cannon.ObjectSlopeAngleController, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 2953903247395189401, guid: 669dd57030bb547bc9cab97cb0eeab7c, type: 3}
       propertyPath: onFloatChange.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
@@ -584,6 +584,28 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 5471314512848531115, guid: 434b023e4440f48f7b63b6aa9df90adb, type: 3}
   m_PrefabInstance: {fileID: 3998333184255643558}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1327050217 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6917911388356129843, guid: 006f266fc6e3fd74a8247b2c70ac3520, type: 3}
+  m_PrefabInstance: {fileID: 492678729}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c413f0450e04fe44a01366160dbe93a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1327050218 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7726676736881329201, guid: 006f266fc6e3fd74a8247b2c70ac3520, type: 3}
+  m_PrefabInstance: {fileID: 492678729}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72c9841235d6b0140aaa488efa673eb6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1352707900
 GameObject:
   m_ObjectHideFlags: 0
@@ -1119,6 +1141,14 @@ PrefabInstance:
     - target: {fileID: 5918779053352099270, guid: 434b023e4440f48f7b63b6aa9df90adb, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
+      objectReference: {fileID: 1327050218}
+    - target: {fileID: 5918779053352099270, guid: 434b023e4440f48f7b63b6aa9df90adb, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ShootProjectile
+      objectReference: {fileID: 0}
+    - target: {fileID: 5918779053352099270, guid: 434b023e4440f48f7b63b6aa9df90adb, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Cannon.ProjectileLauncher, Assembly-CSharp
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

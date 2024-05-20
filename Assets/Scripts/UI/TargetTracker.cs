@@ -19,6 +19,21 @@ namespace UI
         [SerializeField] private GameEvent onTargetDestroyed;
         
         private TMP_Text _enemyText;
+        private int _currentTargetCount;
+        
+        public int CurrentTargetCount
+        {
+            get => _currentTargetCount;
+            private set
+            {
+                if (value < 0)
+                    return;
+                
+                _currentTargetCount = value;
+                
+                _enemyText.text = string.Format(textFormat, value);
+            }
+        }
         
         private void Awake()
         {
@@ -27,7 +42,7 @@ namespace UI
         
         private void Start()
         {
-            UpdateEnemyLeftText();
+            CurrentTargetCount = targets.Count;
         }
         
         private void OnValidate()
@@ -37,23 +52,19 @@ namespace UI
                 if (!script) 
                     continue;
                 
-                script.OnDieEvent.RemoveListener(UpdateEnemyLeftText);
-                script.OnDieEvent.AddListener(UpdateEnemyLeftText);
+                script.OnDieEvent.RemoveListener(DestroyedTarget);
+                script.OnDieEvent.AddListener(DestroyedTarget);
             }
         }
         
-        private void UpdateEnemyLeftText()
+        private void DestroyedTarget()
         {
-            _enemyText.text = string.Format(textFormat, targets.Count);
+            CurrentTargetCount--;
             
-            if (targets.Count == 0)
-            {
+            onTargetDestroyed?.Invoke();
+            
+            if (_currentTargetCount == 0)
                 onAllTargetsDestroyed?.Invoke();
-            }
-            else
-            {
-                onTargetDestroyed?.Invoke();
-            }
         }
     }
 }
