@@ -1,19 +1,18 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace SceneManagement
 {
     public class SceneSwitcher : MonoBehaviour
     {
-        [SerializeField] private string sceneName;
         [SerializeField] private float switchDelay;
-        public void SwitchScene()
+        
+        public void SwitchScene(string sceneName)
         {
             StartCoroutine(LoadScene(sceneName));
         }
 
-        public void SwitchSceneAsync()
+        public void SwitchSceneAsync(string sceneName)
         {
             StartCoroutine(LoadSceneAsync(sceneName));
         }

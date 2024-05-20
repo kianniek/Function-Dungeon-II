@@ -4,6 +4,7 @@ using Attributes;
 using Events.GameEvents.Typed;
 using Projectile;
 using TypedUnityEvent;
+using UnityEngine.Events;
 
 namespace Cannon
 {
@@ -23,6 +24,7 @@ namespace Cannon
         [Header("Events")] 
         [SerializeField] private IntGameEvent onAmmoChange;
         [SerializeField] private GameObjectEvent onCannonFire = new();
+        [SerializeField] private UnityEvent onAmmoDepleted = new();
         
         private readonly List<ProjectileScript> _pooledProjectiles = new();
         private int _currentAmmoCount;
@@ -36,6 +38,9 @@ namespace Cannon
                     return;
                 
                 _currentAmmoCount = value;
+                
+                if (value == 0)
+                    onAmmoDepleted.Invoke();
                 
                 onAmmoChange?.Invoke(value);
             }
