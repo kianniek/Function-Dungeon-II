@@ -14,7 +14,7 @@ public class InterceptionCalculater : MonoBehaviour
     private float _a2;
     private float _b2;
 
-    void Start()
+    private void Start()
     {
         _a1 = line1.GetComponent<FunctionLineController>().A;
         _b1 = line1.transform.position.y;
@@ -33,7 +33,7 @@ public class InterceptionCalculater : MonoBehaviour
 /// <param name="a2">Slope of line 2</param>
 /// <param name="b2">Intercept of line 2</param>
 /// <returns>The correct interception for 2 lines as vector2</returns>
-    public static Vector2 FindIntersection(float a1, float b1, float a2, float b2)
+    private Vector2 FindIntersection(float a1, float b1, float a2, float b2)
     {
         if (a1 == a2)
         {
