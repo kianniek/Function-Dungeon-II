@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Events.GameEvents;
-using Targets;
 using TMPro;
 using UnityEngine;
 

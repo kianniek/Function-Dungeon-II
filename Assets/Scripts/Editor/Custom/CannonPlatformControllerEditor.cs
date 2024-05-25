@@ -1,17 +1,17 @@
-using CannonPlatform;
+using Cannon;
 using UnityEditor;
 using UnityEngine;
 
 namespace Editor.Custom
 {
-    [CustomEditor(typeof(CannonPlatformController))]
+    [CustomEditor(typeof(LerpedYTranslation))]
     public class CannonPlatformControllerEditor : UnityEditor.Editor
     {
         public override void OnInspectorGUI()
         {
             DrawDefaultInspector(); // Draws the default inspector
 
-            var script = (CannonPlatformController)target;
+            var script = (LerpedYTranslation)target;
 
             if (GUILayout.Button("Move Up (1f)"))
             {
