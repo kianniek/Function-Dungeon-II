@@ -3483,6 +3483,22 @@ PrefabInstance:
     m_TransformParent: {fileID: 8580049813322286446}
     m_Modifications:
     - target: {fileID: 1968205763515253657, guid: 96852da69c05945418271ec246e03d10, type: 3}
+      propertyPath: onAmmoChange
+      value: 
+      objectReference: {fileID: 11400000, guid: a28cd43c2dfd44b4ca3baa17409c8cf5, type: 2}
+    - target: {fileID: 1968205763515253657, guid: 96852da69c05945418271ec246e03d10, type: 3}
+      propertyPath: prefabToPool
+      value: 
+      objectReference: {fileID: 3621945482446078802, guid: 78bf6c873b0bd4d909dbfd1ec215b47a, type: 3}
+    - target: {fileID: 1968205763515253657, guid: 96852da69c05945418271ec246e03d10, type: 3}
+      propertyPath: shootPosition
+      value: 
+      objectReference: {fileID: 1539442075011778830}
+    - target: {fileID: 1968205763515253657, guid: 96852da69c05945418271ec246e03d10, type: 3}
+      propertyPath: onCannonFire.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1968205763515253657, guid: 96852da69c05945418271ec246e03d10, type: 3}
       propertyPath: onAmmoDepleted.m_PersistentCalls.m_Calls.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -3491,9 +3507,21 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1968205763515253657, guid: 96852da69c05945418271ec246e03d10, type: 3}
+      propertyPath: onCannonFire.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 11400000, guid: 59201ab3bbab76a4fbe87ec48237a28d, type: 2}
+    - target: {fileID: 1968205763515253657, guid: 96852da69c05945418271ec246e03d10, type: 3}
       propertyPath: onAmmoDepleted.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 5648676444454763344}
+    - target: {fileID: 1968205763515253657, guid: 96852da69c05945418271ec246e03d10, type: 3}
+      propertyPath: onCannonFire.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1968205763515253657, guid: 96852da69c05945418271ec246e03d10, type: 3}
+      propertyPath: onCannonFire.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Invoke
+      objectReference: {fileID: 0}
     - target: {fileID: 1968205763515253657, guid: 96852da69c05945418271ec246e03d10, type: 3}
       propertyPath: onAmmoDepleted.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
@@ -3503,8 +3531,16 @@ PrefabInstance:
       value: InvokeDelayed
       objectReference: {fileID: 0}
     - target: {fileID: 1968205763515253657, guid: 96852da69c05945418271ec246e03d10, type: 3}
+      propertyPath: onCannonFire.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Events.GameEvents.GameEventBase`1[[UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 1968205763515253657, guid: 96852da69c05945418271ec246e03d10, type: 3}
       propertyPath: onAmmoDepleted.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: Cannon.DelayedGameEvent, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 1968205763515253657, guid: 96852da69c05945418271ec246e03d10, type: 3}
+      propertyPath: onCannonFire.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 1968205763515253657, guid: 96852da69c05945418271ec246e03d10, type: 3}
       propertyPath: onAmmoDepleted.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
@@ -3565,6 +3601,11 @@ PrefabInstance:
 --- !u!4 &404791947873602113 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8499646111421812201, guid: 96852da69c05945418271ec246e03d10, type: 3}
+  m_PrefabInstance: {fileID: 8100519131060766632}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1539442075011778830 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7293545863962168998, guid: 96852da69c05945418271ec246e03d10, type: 3}
   m_PrefabInstance: {fileID: 8100519131060766632}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &6612053217649810361 stripped

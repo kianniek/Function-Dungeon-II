@@ -12,7 +12,7 @@ namespace Camera
         [SerializeField] private CinemachineVirtualCamera normalViewCamera;
         [SerializeField] private CinemachineVirtualCamera projectileCamera;
         [SerializeField] private int timeBetweenLevelAndNormalView = 3;
-        
+
         [SerializeField] private GameEvent onAmmoDepleted;
         [SerializeField] private GameObjectGameEvent onCameraFollowGameObject;
         private bool _ammoDepleted;
@@ -22,28 +22,28 @@ namespace Camera
 
         private void Awake()
         {
-            projectileCamera.Priority = LowPriority;
-            showLevelCamera.Priority = LowPriority;
-            normalViewCamera.Priority = LowPriority;
+            projectileCamera.Priority.Value = LowPriority;
+            showLevelCamera.Priority.Value = LowPriority;
+            normalViewCamera.Priority.Value = LowPriority;
         }
-        
+
         private void OnEnable()
         {
             onAmmoDepleted.AddListener(SetAmmoDepleted);
             onCameraFollowGameObject.AddListener(FollowGameObject);
         }
-        
+
         private void OnDisable()
         {
             onAmmoDepleted.RemoveListener(SetAmmoDepleted);
             onCameraFollowGameObject.RemoveListener(FollowGameObject);
         }
-        
+
         private void Start()
         {
             ShowLevel();
         }
-        
+
         private void SetAmmoDepleted()
         {
             _ammoDepleted = true;
@@ -54,11 +54,11 @@ namespace Camera
         /// </summary>
         public void ShowLevel()
         {
-            showLevelCamera.Priority = HighPriority;
-            
+            showLevelCamera.Priority.Value = HighPriority;
+
             if (_ammoDepleted)
                 return;
-            
+
             StartCoroutine(SwitchToCannonView());
         }
 
@@ -67,7 +67,7 @@ namespace Camera
         /// </summary>
         private void CannonView()
         {
-            normalViewCamera.Priority = HighPriority;
+            normalViewCamera.Priority.Value = HighPriority;
         }
 
         /// <summary>
@@ -75,19 +75,19 @@ namespace Camera
         /// </summary>
         public void FollowGameObject(GameObject objectToFollow)
         {
-            normalViewCamera.Priority = LowPriority;
+            normalViewCamera.Priority.Value = LowPriority;
 
             // If the object to follow is null, then we should go back to the level view
-            if(objectToFollow == null)
+            if (objectToFollow == null)
             {
-                projectileCamera.Priority = LowPriority;
+                projectileCamera.Priority.Value = LowPriority;
                 projectileCamera.Follow = null;
                 ShowLevel();
                 return;
             }
 
             // Otherwise, we should follow the object
-            projectileCamera.Priority = HighPriority;
+            projectileCamera.Priority.Value = HighPriority;
             projectileCamera.Follow = objectToFollow.transform;
         }
 

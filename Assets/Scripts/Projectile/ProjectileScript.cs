@@ -1,6 +1,5 @@
 using Attributes;
 using Events.GameEvents.Typed;
-using Targets;
 using UnityEngine;
 
 namespace Projectile
