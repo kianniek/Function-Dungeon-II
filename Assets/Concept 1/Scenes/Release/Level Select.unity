@@ -547,15 +547,15 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 418075255}
-        m_TargetAssemblyTypeName: UIHandler, Assembly-CSharp
-        m_MethodName: SwitchSceneByIndex
-        m_Mode: 3
+        m_TargetAssemblyTypeName: UI.Menu.SceneAndMenuController, Assembly-CSharp
+        m_MethodName: SwitchSceneByName
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 2
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: Tutorial A
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &212285950
@@ -1109,9 +1109,9 @@ MonoBehaviour:
   scoreManager: {fileID: 11400000, guid: abf0b0075bf6c44d1972e8c7b3fb417b, type: 2}
   passingGradeContainer: {fileID: 11400000, guid: 5ea195156db534b37998e81fc6cc13e9, type: 2}
   sceneNamesOfLevels:
-  - Tutorial A Slope
-  - TutorialBLevel
-  - Demo Scene #1
+  - Tutorial A
+  - Tutorial B
+  - Demo 1
   levelButtons:
   - {fileID: 212285949}
   - {fileID: 506560572}
@@ -1200,15 +1200,15 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 418075255}
-        m_TargetAssemblyTypeName: UIHandler, Assembly-CSharp
-        m_MethodName: SwitchSceneByIndex
-        m_Mode: 3
+        m_TargetAssemblyTypeName: UI.Menu.SceneAndMenuController, Assembly-CSharp
+        m_MethodName: SwitchSceneByName
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 3
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: Tutorial B
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &506560573
@@ -1673,15 +1673,15 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 418075255}
-        m_TargetAssemblyTypeName: UIHandler, Assembly-CSharp
-        m_MethodName: SwitchSceneByIndex
-        m_Mode: 3
+        m_TargetAssemblyTypeName: UI.Menu.SceneAndMenuController, Assembly-CSharp
+        m_MethodName: SwitchSceneByName
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 4
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: Demo 1
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &720747667

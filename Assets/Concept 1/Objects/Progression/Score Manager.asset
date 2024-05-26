@@ -15,13 +15,13 @@ MonoBehaviour:
   gradingSettings:
   - levelName: Cannon Platform UI Feature
     gradingSystem: {fileID: 11400000, guid: 3b313b15d0a0d43bcaa0dcc5efe1d16d, type: 2}
-  - levelName: Tutorial A Slope
+  - levelName: Tutorial A
     gradingSystem: {fileID: 11400000, guid: 3b313b15d0a0d43bcaa0dcc5efe1d16d, type: 2}
-  - levelName: Tutorial B Height
+  - levelName: Tutorial B
     gradingSystem: {fileID: 11400000, guid: 3b313b15d0a0d43bcaa0dcc5efe1d16d, type: 2}
-  - levelName: Demo Scene #1
+  - levelName: Demo 1
     gradingSystem: {fileID: 11400000, guid: 3b313b15d0a0d43bcaa0dcc5efe1d16d, type: 2}
-  - levelName: Demo Scene #2
+  - levelName: Demo 2
     gradingSystem: {fileID: 11400000, guid: 3b313b15d0a0d43bcaa0dcc5efe1d16d, type: 2}
   allowNegativeScore: 0
   gameProgressionContainer: {fileID: 11400000, guid: 456cdb52776f746e79eede9e7a6219b9, type: 2}
