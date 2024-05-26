@@ -1,15 +1,15 @@
-using System.Collections;
-using System.Collections.Generic;
 using Progression;
 using Progression.Grading;
+using Progression.Scoring;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace UI.LevelSelect
 {
     public class LevelSelectProgression : MonoBehaviour
     {
-        [SerializeField] private GameProgressionData gameProgressionContainer;
+        [SerializeField] private ScoreManager scoreManager;
         [SerializeField] private Grade passingGradeContainer;
         [SerializeField] private string[] sceneNamesOfLevels;
         [SerializeField] private Button[] levelButtons;
@@ -23,7 +23,7 @@ namespace UI.LevelSelect
         /// Checks the game progression data to determine which levels have been played before. And sets the level buttons to active or 
         /// inactive based on the results.
         /// </summary>
-        public void CheckGameProgression()
+        private void CheckGameProgression()
         {
             for (var i = 0; i < sceneNamesOfLevels.Length; i++)
             {
@@ -34,12 +34,9 @@ namespace UI.LevelSelect
                 // Check if the level has been played before
                 if (i == 0)
                     levelButton.interactable = true;
-                else if (gameProgressionContainer.TryGetLevelData(previousSceneName, out var levelProgression))
+                else if (scoreManager.GameProgressionContainer.TryGetLevelData(previousSceneName, out var levelProgression))
                 {
-                    if (levelProgression.GetLatestLevelData().Grade == passingGradeContainer)
-                            levelButtons[i].interactable = true;
-                    else
-                            levelButtons[i].interactable = false;
+                    levelButtons[i].interactable = levelProgression.GetLatestLevelData().Grade == passingGradeContainer;
                 }
             }
         }

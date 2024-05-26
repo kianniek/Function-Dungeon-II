@@ -57,13 +57,9 @@ namespace Targets
         private void Awake()
         {
             if (spriteView && spriteView.TryGetComponent<SpriteRenderer>(out var spriteRenderer))
-            {
                 _material = spriteRenderer.material;
-            }
             else
-            {
                 _material = GetComponent<SpriteRenderer>().material;
-            }
             
             switch (enableDamageEffect)
             {
@@ -109,6 +105,7 @@ namespace Targets
         private IEnumerator EnableDamage()
         {
             yield return new WaitForSeconds(startInvulnerabilityTime);
+            
             _damageable = true;
         }
     }

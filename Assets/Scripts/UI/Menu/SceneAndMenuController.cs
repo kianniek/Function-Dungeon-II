@@ -61,7 +61,7 @@ namespace UI.Menu
         /// <param name="menu"></param>
         public void ToggleMenu(GameObject menu)
         {
-            if (menu != null)
+            if (menu)
             {
                 menu.SetActive(!menu.activeSelf);
 

@@ -9,7 +9,7 @@ namespace Progression.Grading
     public class Grade : ScriptableObject
     {
         [SerializeField] private string gradeName;
-        [SerializeField] private Texture2D icon;
+        [SerializeField] private Sprite icon;
         
         /// <summary>
         /// The name of the grade.
@@ -19,6 +19,6 @@ namespace Progression.Grading
         /// <summary>
         /// The icon representing the grade.
         /// </summary>
-        public Texture2D Icon => icon;
+        public Sprite Icon => icon;
     }
 }

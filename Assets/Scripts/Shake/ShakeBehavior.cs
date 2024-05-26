@@ -10,23 +10,24 @@ namespace Shake
     [ExecuteInEditMode]
     public class ShakeBehavior : MonoBehaviour
     {
-        [SerializeField] private UnityEvent onShakeStart = new();
-        [SerializeField] private UnityEvent onShakeEnd = new();
-
-        private Vector3 _originalPosition;
-
         [Header("Debugging")]
         [Tooltip("This variable is only used when hitting the <b>Test Shake</b> button in the inspector")]
         [SerializeField] private Vector2 debugShakeIntensity = new(0.5f, 0.5f);
         [Tooltip("This variable is only used when hitting the <b>Test Shake</b> button in the inspector")]
         [SerializeField] private float debugShakeDuration = 0.5f;
+        
+        [Header("Events")]
+        [SerializeField] private UnityEvent onShakeStart = new(); 
+        [SerializeField] private UnityEvent onShakeEnd = new();
+                
+        private Vector3 _originalPosition;
 
         public float DebugShakeDuration => debugShakeDuration;
         
         public Vector2 DebugShakeIntensity => debugShakeIntensity;
         
-        public bool EnableDecay { get; set; } = true;
-
+        public bool EnableDecay => true;
+        
         /// <summary>
         /// Initializes shake parameters when the component awakes.
         /// </summary>

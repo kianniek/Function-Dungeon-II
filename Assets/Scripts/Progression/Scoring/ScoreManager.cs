@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Events.GameEvents.Typed;
 using Progression.Grading;
@@ -14,7 +15,7 @@ namespace Progression.Scoring
     {
         [SerializeField] private List<LevelGradingSettingsEntry> gradingSettings;
         
-        [Header("Score Settings")]
+        [Header("Score Settings")] 
         [SerializeField] private bool allowNegativeScore;
         
         [Header("Game Data")] 
@@ -35,20 +36,23 @@ namespace Progression.Scoring
         /// </summary>
         public int CurrentScore { get; private set; }
         
+        /// <summary>
+        /// The game progression data container.
+        /// </summary>
+        public GameProgressionData GameProgressionContainer => gameProgressionContainer;
+        
         private void OnEnable()
         {
             SceneManager.activeSceneChanged += ResetScoringSystem;
+            
+            onUpdateScore?.AddListener(UpdateScore);
         }
         
         private void OnDisable()
         {
             SceneManager.activeSceneChanged -= ResetScoringSystem;
-        }
-        
-        private void OnValidate()
-        {
+            
             onUpdateScore?.RemoveListener(UpdateScore);
-            onUpdateScore?.AddListener(UpdateScore);
         }
         
         private void ResetScoringSystem(Scene arg0, Scene arg1)
@@ -81,16 +85,24 @@ namespace Progression.Scoring
             onScoreChanged?.Invoke(CurrentScore);
             
             var activeSceneName = SceneManager.GetActiveScene().name;
-            var gradingSystem = gradingSettings.Find(entry => entry.LevelName == activeSceneName).GradingSystem;
             
-            CurrentGrade = gradingSystem.CalculateGrade(CurrentScore);
-            
-            onGradeChanged?.Invoke(CurrentGrade);
-            
-            gameProgressionContainer.UpdateOrAddLevelScore(
-                activeSceneName,
-                new LevelScoreData(CurrentScore, CurrentGrade)
-            );
+            try
+            {
+                var gradingSystem = gradingSettings.Find(entry => entry.LevelName == activeSceneName).GradingSystem;
+                
+                CurrentGrade = gradingSystem.CalculateGrade(CurrentScore);
+                
+                onGradeChanged?.Invoke(CurrentGrade);
+                
+                gameProgressionContainer.UpdateOrAddLevelScore(
+                    activeSceneName,
+                    new LevelScoreData(CurrentScore, CurrentGrade)
+                );
+            }
+            catch (Exception e)
+            {
+                Debug.LogWarning($"Error updating game progression: {e.Message}");
+            }
         }
     }
 }
