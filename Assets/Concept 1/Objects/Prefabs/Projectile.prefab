@@ -171,9 +171,7 @@ MonoBehaviour:
   forcePower: 10000
   physicsVariables: {fileID: 11400000, guid: 1700083af172147a79deaa104412fc70, type: 2}
   resetTime: 5
-  changeCameraView:
-    m_PersistentCalls:
-      m_Calls: []
+  onCameraFollowGameObject: {fileID: 11400000, guid: 59201ab3bbab76a4fbe87ec48237a28d, type: 2}
 --- !u!114 &1786236840159613523
 MonoBehaviour:
   m_ObjectHideFlags: 0
