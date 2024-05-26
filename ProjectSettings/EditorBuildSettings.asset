@@ -5,21 +5,24 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/Concept 1/Scenes/Release/Main Menu.unity
+  - enabled: 1
+    path: Assets/Concept 1/Scenes/Release/Main Menu Screen Scene.unity
     guid: 9a21e71a2e9dac54c9f250628d0d68fd
-  - enabled: 0
-    path: Assets/Concept 1/Scenes/Release/Level Select.unity
+  - enabled: 1
+    path: Assets/Concept 1/Scenes/Release/Level Select Screen Scene.unity
     guid: 00a533a8047a2d94396eedaa1606acbb
   - enabled: 1
     path: Assets/Concept 1/Scenes/Release/Tutorial A Slope.unity
     guid: ba8b5de0a95154d72bf1076beeddb9c3
   - enabled: 1
-    path: Assets/Concept 1/Scenes/Release/TutorialBLevel.unity
+    path: Assets/Concept 1/Scenes/Release/Tutorial B Height.unity
     guid: 61ed999d3a8185441a2871fa064b6c4e
   - enabled: 1
     path: Assets/Concept 1/Scenes/Release/Demo Scene #1.unity
     guid: c18cd4125cd2c344f878e55495e5eb25
+  - enabled: 1
+    path: Assets/Concept 1/Scenes/Release/Demo Scene #2.unity
+    guid: b08e6e69c32576d4096004383844bdce
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: bf90d5f94d8d74920bccc253210010ab, type: 2}
   m_UseUCBPForAssetBundles: 0
