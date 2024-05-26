@@ -703,7 +703,6 @@ MonoBehaviour:
   showLevelCamera: {fileID: 2769134309559829244}
   normalViewCamera: {fileID: 2687159498736342846}
   projectileCamera: {fileID: 4587461832547824266}
-  cannon: {fileID: 0}
-  equationText: {fileID: 0}
-  fireButton: {fileID: 0}
   timeBetweenLevelAndCannonView: 3
+  onAmmoDepleted: {fileID: 0}
+  onCameraFollowGameObject: {fileID: 0}
