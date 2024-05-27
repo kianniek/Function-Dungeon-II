@@ -18,7 +18,7 @@
                     "name": "W",
                     "type": "Button",
                     "id": "070ffb62-4631-4292-93ce-30cc51ae3252",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
