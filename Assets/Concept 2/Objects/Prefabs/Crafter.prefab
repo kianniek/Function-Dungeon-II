@@ -79,9 +79,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2765d751f3d6175469d9122e8ac90e23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interceptionCalculater: {fileID: 5564735652332944096}
+  interceptionCalculator: {fileID: 5564735652332944096}
   xAnswer: {fileID: 8168581396879448073}
   yAnswer: {fileID: 8923226210279615800}
+  onCorrectAnswerGivenEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  onWrongAnswerGivenEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1234281457564984949
 GameObject:
   m_ObjectHideFlags: 0

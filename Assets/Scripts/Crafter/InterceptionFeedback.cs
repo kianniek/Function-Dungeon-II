@@ -1,28 +1,46 @@
+using System.Text.RegularExpressions;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 
-public class InterceptionFeedback : MonoBehaviour
+namespace Crafter
 {
-    [SerializeField] private InterceptionCalculater interceptionCalculater;
-    [SerializeField] private TextMeshProUGUI xAnswer;
-    [SerializeField] private TextMeshProUGUI yAnswer;
-
-    private Vector2 _correctInterceptionAnswer;
-
-    public void OnConfirmButtonClicked()
+    public class InterceptionFeedback : MonoBehaviour
     {
-        _correctInterceptionAnswer = interceptionCalculater.intersection;
-        //TODO: use string builder
-        Vector2 answer = new Vector2(float.Parse(xAnswer.text.Substring(0, xAnswer.text.Length - 1)), float.Parse(yAnswer.text.Substring(0, xAnswer.text.Length - 1)));
-        Debug.Log(answer[0] + " " + answer[1] + " " + _correctInterceptionAnswer[0] + " " + _correctInterceptionAnswer[1]);
-        if (answer == _correctInterceptionAnswer)
+        [SerializeField] private InterceptionCalculator interceptionCalculator;
+        [SerializeField] private TextMeshProUGUI xAnswer;
+        [SerializeField] private TextMeshProUGUI yAnswer;
+
+        [SerializeField] private UnityEvent onCorrectAnswerGivenEvent;
+        [SerializeField] private UnityEvent onWrongAnswerGivenEvent;
+
+        private Vector2 _correctInterceptionAnswer;
+
+        /// <summary>
+        /// Check if answer is correct when confirm button is clicked and fires unity event for wrong or right answer
+        /// </summary>
+        public void OnConfirmButtonClicked()
         {
-            Debug.Log("CorrectAnswer");
-            //TODO: use unity event
+            _correctInterceptionAnswer = interceptionCalculator.intersection;
+            var answer = new Vector2(float.Parse(RemoveSpaces(xAnswer.text)), float.Parse(RemoveSpaces(yAnswer.text)));
+            if (answer == _correctInterceptionAnswer)
+            {
+                onCorrectAnswerGivenEvent.Invoke();
+            }
+            else
+            {
+                onWrongAnswerGivenEvent.Invoke();
+            }
         }
-        else
+
+        /// <summary>
+        /// Removes all spaces from a string
+        /// </summary>
+        /// <param name="input">Input string</param>
+        /// <returns></returns>
+        private string RemoveSpaces(string input)
         {
-            Debug.Log("Try Again");
+            return Regex.Replace(input, @"[^0-9.,]+", "");
         }
     }
 }

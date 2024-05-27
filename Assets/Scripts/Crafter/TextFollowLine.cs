@@ -1,20 +1,23 @@
 using UnityEngine;
 
-public class TextFollowLine : MonoBehaviour
+namespace Crafter
 {
-    private LineRenderer _lineToFollow;
-    private int _indexOfPoint = 2;
-    private float _zPosition = -0.5f;
-    private float _yPositionOffset;
-
-    private void Awake()
+    public class TextFollowLine : MonoBehaviour
     {
-        _lineToFollow = GetComponentInParent<LineRenderer>();
-    }
+        private LineRenderer _lineToFollow;
+        private int _indexOfPoint = 2;
+        private float _zPosition = -0.5f;
+        private float _yPositionOffset;
 
-    private void Start()
-    {
-        _yPositionOffset = transform.parent.position.y;
-        transform.position = new Vector3(_lineToFollow.GetPosition(_indexOfPoint).x, _lineToFollow.GetPosition(_indexOfPoint).y + _yPositionOffset, _zPosition);
+        private void Awake()
+        {
+            _lineToFollow = GetComponentInParent<LineRenderer>();
+        }
+
+        private void Start()
+        {
+            _yPositionOffset = transform.parent.position.y;
+            transform.position = new Vector3(_lineToFollow.GetPosition(_indexOfPoint).x, _lineToFollow.GetPosition(_indexOfPoint).y + _yPositionOffset, _zPosition);
+        }
     }
 }
