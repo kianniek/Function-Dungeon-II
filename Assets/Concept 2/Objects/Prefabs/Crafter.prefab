@@ -1201,7 +1201,6 @@ GameObject:
   - component: {fileID: 8274123966906435282}
   - component: {fileID: 1240965944648218496}
   - component: {fileID: 5449241322856853547}
-  - component: {fileID: 8643270265672730826}
   - component: {fileID: 934119572046156560}
   m_Layer: 0
   m_Name: FormulaText
@@ -1367,18 +1366,6 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_renderer: {fileID: 1240965944648218496}
   m_maskType: 0
---- !u!114 &8643270265672730826
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4384749412365678395}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc542c539bf081b4b8948b476240df0c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &934119572046156560
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2023,7 +2010,6 @@ GameObject:
   - component: {fileID: 413424381169062959}
   - component: {fileID: 4555472044728029375}
   - component: {fileID: 3556044045583520031}
-  - component: {fileID: 229317111655260928}
   - component: {fileID: 5250307317114341469}
   m_Layer: 0
   m_Name: FormulaText
@@ -2189,18 +2175,6 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_renderer: {fileID: 4555472044728029375}
   m_maskType: 0
---- !u!114 &229317111655260928
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6819732879859470175}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc542c539bf081b4b8948b476240df0c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &5250307317114341469
 MonoBehaviour:
   m_ObjectHideFlags: 0
