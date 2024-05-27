@@ -24,20 +24,28 @@ namespace Player2D
         }
 
         /// <summary>
-        /// 
+        /// This method is used by the input system to control the players movement
         /// </summary>
-        /// <param name="context"></param>
+        /// <param name="context">Provides the method with the current state of the keyboard input</param>
         public void OnMove(InputAction.CallbackContext context)
         {
             _moveInput = context.ReadValue<Vector2>();
         }
 
+        /// <summary>
+        /// This method is used by the input system to make the player jump using a button
+        /// </summary>
+        /// <param name="context">Holds the state of the button</param>
         public void OnJump(InputAction.CallbackContext context)
         {
             if (_isGrounded && context.action.WasPressedThisFrame())
                 _rb.velocityY = jumpForce;
         }
 
+        /// <summary>
+        /// This method is used by the input system to allow the player to interact with the world
+        /// </summary>
+        /// <param name="context">Holds the state of the button</param>
         public void OnInteract(InputAction.CallbackContext context)
         {
             if(_nearbyInteractable != null)
@@ -46,7 +54,7 @@ namespace Player2D
             }
         }
 
-        void FixedUpdate()
+        private void FixedUpdate()
         {
             _isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius);
 
@@ -64,13 +72,18 @@ namespace Player2D
                 }
             }
 
+            GroundCheck();
+        }
+
+        private void GroundCheck()
+        {
             if (!_isGrounded)
             {
                 Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius);
             }
         }
 
-        void OnDrawGizmos()
+        private void OnDrawGizmos()
         {
             // Draws ground check radius
             Gizmos.color = Color.red;
