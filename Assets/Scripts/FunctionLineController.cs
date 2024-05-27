@@ -157,10 +157,13 @@ public class FunctionLineController : MonoBehaviour
             // Set the position of the line renderer
             lineRenderer.SetPosition(i, new(point.x, point.y, 0));
         }
-        
-        if (trajectoryLineRenderer.enabled)
+
+        if (trajectoryLineRenderer != null)
         {
-            CalculateTrajectory();
+            if (trajectoryLineRenderer.enabled)
+            {
+                CalculateTrajectory();
+            }
         }
     }
     
