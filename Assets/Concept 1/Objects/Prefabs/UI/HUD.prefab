@@ -527,7 +527,7 @@ MonoBehaviour:
   - {fileID: 0}
   textFormat: 'Targets left: {0}'
   onAllTargetsDestroyed: {fileID: 11400000, guid: 69c475b72e6134b98abcde11371048fc, type: 2}
-  onTargetDestroyed: {fileID: 0}
+  onTargetDestroyed: {fileID: 11400000, guid: 69c475b72e6134b98abcde11371048fc, type: 2}
 --- !u!1001 &5280107373170324331
 PrefabInstance:
   m_ObjectHideFlags: 0

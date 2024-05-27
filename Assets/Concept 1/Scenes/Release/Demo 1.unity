@@ -194,17 +194,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7875924866016971496, guid: a67e6f8eab31d5841b87fc480a1b221e, type: 3}
   m_PrefabInstance: {fileID: 53892089}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &109128958 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 727409757332046778, guid: fd0283a78bcb8c9458f6c5b873ee32d3, type: 3}
-  m_PrefabInstance: {fileID: 1089648306}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 01f65c4e5e0a6fa458ed320993374618, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &147407911
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -469,7 +458,7 @@ PrefabInstance:
     - target: {fileID: 5918779053352099270, guid: 434b023e4440f48f7b63b6aa9df90adb, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 109128958}
+      objectReference: {fileID: 1677569346}
     - target: {fileID: 5918779053352099270, guid: 434b023e4440f48f7b63b6aa9df90adb, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
       value: 2
@@ -480,11 +469,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5918779053352099270, guid: 434b023e4440f48f7b63b6aa9df90adb, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: ShowProjectile
+      value: DisableGraphObject
       objectReference: {fileID: 0}
     - target: {fileID: 5918779053352099270, guid: 434b023e4440f48f7b63b6aa9df90adb, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: Camera.CameraHandler, Assembly-CSharp
+      value: UI.GraphDrawer.FunctionGraphDrawerController, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 5918779053352099270, guid: 434b023e4440f48f7b63b6aa9df90adb, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
@@ -1619,12 +1608,48 @@ PrefabInstance:
       value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 1836766023600342154, guid: 669dd57030bb547bc9cab97cb0eeab7c, type: 3}
+      propertyPath: onFloatChange.m_PersistentCalls.m_Calls.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1836766023600342154, guid: 669dd57030bb547bc9cab97cb0eeab7c, type: 3}
+      propertyPath: onFloatChange.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1836766023600342154, guid: 669dd57030bb547bc9cab97cb0eeab7c, type: 3}
       propertyPath: onFloatChange.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 492678730}
+    - target: {fileID: 1836766023600342154, guid: 669dd57030bb547bc9cab97cb0eeab7c, type: 3}
+      propertyPath: onFloatChange.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
+      objectReference: {fileID: 1677569346}
+    - target: {fileID: 1836766023600342154, guid: 669dd57030bb547bc9cab97cb0eeab7c, type: 3}
+      propertyPath: onFloatChange.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1836766023600342154, guid: 669dd57030bb547bc9cab97cb0eeab7c, type: 3}
+      propertyPath: onFloatChange.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
+      value: EnableGraphObject
+      objectReference: {fileID: 0}
+    - target: {fileID: 1836766023600342154, guid: 669dd57030bb547bc9cab97cb0eeab7c, type: 3}
+      propertyPath: onFloatChange.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
+      value: UI.GraphDrawer.FunctionGraphDrawerController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 1836766023600342154, guid: 669dd57030bb547bc9cab97cb0eeab7c, type: 3}
+      propertyPath: onFloatChange.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 2659229693727935117, guid: 669dd57030bb547bc9cab97cb0eeab7c, type: 3}
       propertyPath: m_Name
       value: LinearEquationUI
+      objectReference: {fileID: 0}
+    - target: {fileID: 2953903247395189401, guid: 669dd57030bb547bc9cab97cb0eeab7c, type: 3}
+      propertyPath: onFloatChange.m_PersistentCalls.m_Calls.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2953903247395189401, guid: 669dd57030bb547bc9cab97cb0eeab7c, type: 3}
+      propertyPath: onFloatChange.m_PersistentCalls.m_Calls.Array.data[3].m_Mode
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2953903247395189401, guid: 669dd57030bb547bc9cab97cb0eeab7c, type: 3}
       propertyPath: onFloatChange.m_PersistentCalls.m_Calls.Array.data[1].m_Target
@@ -1635,12 +1660,32 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1808862894260923874}
     - target: {fileID: 2953903247395189401, guid: 669dd57030bb547bc9cab97cb0eeab7c, type: 3}
+      propertyPath: onFloatChange.m_PersistentCalls.m_Calls.Array.data[3].m_Target
+      value: 
+      objectReference: {fileID: 1677569346}
+    - target: {fileID: 2953903247395189401, guid: 669dd57030bb547bc9cab97cb0eeab7c, type: 3}
+      propertyPath: onFloatChange.m_PersistentCalls.m_Calls.Array.data[3].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2953903247395189401, guid: 669dd57030bb547bc9cab97cb0eeab7c, type: 3}
       propertyPath: onFloatChange.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
       value: set_Slope
       objectReference: {fileID: 0}
     - target: {fileID: 2953903247395189401, guid: 669dd57030bb547bc9cab97cb0eeab7c, type: 3}
+      propertyPath: onFloatChange.m_PersistentCalls.m_Calls.Array.data[3].m_MethodName
+      value: EnableGraphObject
+      objectReference: {fileID: 0}
+    - target: {fileID: 2953903247395189401, guid: 669dd57030bb547bc9cab97cb0eeab7c, type: 3}
       propertyPath: onFloatChange.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
       value: Cannon.ObjectSlopeAngleController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2953903247395189401, guid: 669dd57030bb547bc9cab97cb0eeab7c, type: 3}
+      propertyPath: onFloatChange.m_PersistentCalls.m_Calls.Array.data[3].m_TargetAssemblyTypeName
+      value: UI.GraphDrawer.FunctionGraphDrawerController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2953903247395189401, guid: 669dd57030bb547bc9cab97cb0eeab7c, type: 3}
+      propertyPath: onFloatChange.m_PersistentCalls.m_Calls.Array.data[3].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 3438157767611939403, guid: 669dd57030bb547bc9cab97cb0eeab7c, type: 3}
       propertyPath: m_Pivot.x
@@ -2440,6 +2485,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 33173292619338169, guid: fd0283a78bcb8c9458f6c5b873ee32d3, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.86412615
+      objectReference: {fileID: 0}
+    - target: {fileID: 33173292619338169, guid: fd0283a78bcb8c9458f6c5b873ee32d3, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -23.388252
+      objectReference: {fileID: 0}
     - target: {fileID: 727409757332046778, guid: fd0283a78bcb8c9458f6c5b873ee32d3, type: 3}
       propertyPath: cannon
       value: 
@@ -2496,17 +2549,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: CameraSystem
       objectReference: {fileID: 0}
-    - target: {fileID: 4587461832547824266, guid: fd0283a78bcb8c9458f6c5b873ee32d3, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4754397563577675139, guid: fd0283a78bcb8c9458f6c5b873ee32d3, type: 3}
       propertyPath: OutputChannel
       value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 6261472955422335891, guid: fd0283a78bcb8c9458f6c5b873ee32d3, type: 3}
       propertyPath: near clip plane
-      value: 0.01
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6261472955422335891, guid: fd0283a78bcb8c9458f6c5b873ee32d3, type: 3}
+      propertyPath: orthographic size
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6741579492401503851, guid: fd0283a78bcb8c9458f6c5b873ee32d3, type: 3}
       propertyPath: OutputChannel
@@ -2676,6 +2729,10 @@ PrefabInstance:
     - target: {fileID: 1013717350526958606, guid: d79d0524276944cf8bb6e33ca23b7686, type: 3}
       propertyPath: m_Name
       value: HUD
+      objectReference: {fileID: 0}
+    - target: {fileID: 1995348614945874723, guid: d79d0524276944cf8bb6e33ca23b7686, type: 3}
+      propertyPath: targets.Array.size
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1995348614945874723, guid: d79d0524276944cf8bb6e33ca23b7686, type: 3}
       propertyPath: 'targets.Array.data[0]'
@@ -3614,6 +3671,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a64895c6aef16194e82db5cf0019b847, type: 3}
+--- !u!114 &1677569346 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 41633062908125591, guid: a64895c6aef16194e82db5cf0019b847, type: 3}
+  m_PrefabInstance: {fileID: 1677569345}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 803268916fe26da4a896564ec37bb968, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1755669471 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1131449676025981609, guid: 34e6808c2f56d477480a7151c4267377, type: 3}
@@ -4519,6 +4587,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 1883073359}
+    - target: {fileID: 310414015732157844, guid: c99e4085db30a447996b22274ae3a7e9, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_StringArgument
+      value: Level Select
+      objectReference: {fileID: 0}
     - target: {fileID: 405641101574289715, guid: c99e4085db30a447996b22274ae3a7e9, type: 3}
       propertyPath: m_Name
       value: Menu Overlay
@@ -4607,6 +4679,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 1883073359}
+    - target: {fileID: 776326445748933681, guid: c99e4085db30a447996b22274ae3a7e9, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_StringArgument
+      value: Demo 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1177488309456096156, guid: c99e4085db30a447996b22274ae3a7e9, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 

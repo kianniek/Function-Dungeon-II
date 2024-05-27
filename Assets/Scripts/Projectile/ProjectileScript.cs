@@ -1,7 +1,6 @@
 using Attributes;
+using Events.GameEvents.Typed;
 using UnityEngine;
-using UnityEngine.Events;
-using UnityEngine.Serialization;
 
 namespace Projectile
 {
@@ -21,9 +20,9 @@ namespace Projectile
         [Header("Reset Settings")]
         [Tooltip("Time needed until the projectile is deactivated after time of inactivity")]
         [SerializeField] private float resetTime = 5f;
-        
+
         [Header("Events")]
-        [SerializeField] private UnityEvent changeCameraView = new();
+        [SerializeField] private GameObjectGameEvent onCameraFollowGameObject;
         
         private float _distanceTraveled;
         private float _currentResetTime;
@@ -32,7 +31,6 @@ namespace Projectile
         private Rigidbody2D _rb;
         private Vector2 _direction;
         
-        public UnityEvent ChangeCameraView => changeCameraView;
         
         private void Awake()
         {
@@ -125,9 +123,9 @@ namespace Projectile
                 
                 attachedRigidBody.AddForce(direction.normalized * (forceFalloff <= 0 ? 0 : forcePower) * forceFalloff);
             }
-            
-            changeCameraView.Invoke();
-            
+
+            //Remove the projectile from the camera follow
+            onCameraFollowGameObject.Invoke(null);
             ResetAndDeactivate();
         }
 
