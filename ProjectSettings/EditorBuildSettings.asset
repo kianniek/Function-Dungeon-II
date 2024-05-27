@@ -6,19 +6,23 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Main Menu Screen Scene.unity
-    guid: 9a21e71a2e9dac54c9f250628d0d68fd
+    path: Assets/Concept 1/Scenes/Release/Demo 1.unity
+    guid: 4638b8cbb2d143043a24ef1c1d7b453f
   - enabled: 1
-    path: Assets/Scenes/Level Select Screen Scene.unity
-    guid: 00a533a8047a2d94396eedaa1606acbb
+    path: Assets/Concept 1/Scenes/Release/Demo 2.unity
+    guid: 6a7608b06c5c5bb4e8604670291060a3
   - enabled: 1
-    path: Assets/Scenes/Tutorial A Slope.unity
-    guid: ba8b5de0a95154d72bf1076beeddb9c3
+    path: Assets/Concept 1/Scenes/Release/Level Select.unity
+    guid: 73f78cca3fdb1f141a2461734d68610e
   - enabled: 1
-    path: Assets/Scenes/TutorialBLevel.unity
-    guid: 61ed999d3a8185441a2871fa064b6c4e
+    path: Assets/Concept 1/Scenes/Release/Main Menu.unity
+    guid: 72b716e45d9aee64aa18d41bbce0b900
   - enabled: 1
-    path: Assets/Scenes/Demo Scene #1.unity
-    guid: c18cd4125cd2c344f878e55495e5eb25
-  m_configObjects: {}
+    path: Assets/Concept 1/Scenes/Release/Tutorial A.unity
+    guid: 359fe7cb0d5c716488b83ee7cd1e1163
+  - enabled: 1
+    path: Assets/Concept 1/Scenes/Release/Tutorial B.unity
+    guid: 51ffa9e41fe896d4894ba8a91b2d6672
+  m_configObjects:
+    com.unity.input.settings: {fileID: 11400000, guid: bf90d5f94d8d74920bccc253210010ab, type: 2}
   m_UseUCBPForAssetBundles: 0

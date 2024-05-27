@@ -1,45 +1,49 @@
 using System.Collections;
-using Cinemachine;
 using Events.GameEvents;
-using Projectile;
+using Events.GameEvents.Typed;
+using Unity.Cinemachine;
 using UnityEngine;
 
 namespace Camera
 {
     public class CameraHandler : MonoBehaviour
     {
-        [SerializeField] private GameObject showLevelCamera;
-        [SerializeField] private GameObject normalViewCamera;
-        [SerializeField] private GameObject projectileCamera;
-        [SerializeField] private GameObject cannon;
-        [SerializeField] private GameObject equationText;
-        [SerializeField] private GameObject fireButton;
-        [SerializeField] private int timeBetweenLevelAndCannonView = 3;
+        [SerializeField] private CinemachineVirtualCamera showLevelCamera;
+        [SerializeField] private CinemachineVirtualCamera normalViewCamera;
+        [SerializeField] private CinemachineVirtualCamera projectileCamera;
+        [SerializeField] private int timeBetweenLevelAndNormalView = 3;
+
         [SerializeField] private GameEvent onAmmoDepleted;
-        
-        private CinemachineVirtualCamera _projectileVirtualCamera;
+        [SerializeField] private GameObjectGameEvent onCameraFollowGameObject;
         private bool _ammoDepleted;
+
+        private const int LowPriority = 10;
+        private const int HighPriority = 20;
 
         private void Awake()
         {
-            _projectileVirtualCamera = projectileCamera.GetComponent<CinemachineVirtualCamera>();
+            projectileCamera.Priority.Value = LowPriority;
+            showLevelCamera.Priority.Value = LowPriority;
+            normalViewCamera.Priority.Value = LowPriority;
         }
-        
+
         private void OnEnable()
         {
             onAmmoDepleted.AddListener(SetAmmoDepleted);
+            onCameraFollowGameObject.AddListener(FollowGameObject);
         }
-        
+
         private void OnDisable()
         {
             onAmmoDepleted.RemoveListener(SetAmmoDepleted);
+            onCameraFollowGameObject.RemoveListener(FollowGameObject);
         }
-        
+
         private void Start()
         {
             ShowLevel();
         }
-        
+
         private void SetAmmoDepleted()
         {
             _ammoDepleted = true;
@@ -50,15 +54,11 @@ namespace Camera
         /// </summary>
         public void ShowLevel()
         {
-            showLevelCamera.SetActive(true);
-            normalViewCamera.SetActive(false);
-            projectileCamera.SetActive(false);
-            equationText.SetActive(false);
-            fireButton.SetActive(false);
-            
+            showLevelCamera.Priority.Value = HighPriority;
+
             if (_ammoDepleted)
                 return;
-            
+
             StartCoroutine(SwitchToCannonView());
         }
 
@@ -67,38 +67,33 @@ namespace Camera
         /// </summary>
         private void CannonView()
         {
-            showLevelCamera.SetActive(false);
-            normalViewCamera.SetActive(true);
-            projectileCamera.SetActive(false);
-            equationText.SetActive(true);
-            fireButton.SetActive(true); 
+            normalViewCamera.Priority.Value = HighPriority;
         }
 
         /// <summary>
         /// Camera view of following projectile, shown when pressed on fire. After projectile landed go back to level view
         /// </summary>
-        public void ShowProjectile()
+        public void FollowGameObject(GameObject objectToFollow)
         {
-            foreach (var projectile in cannon.GetComponentsInChildren<ProjectileScript>())
+            normalViewCamera.Priority.Value = LowPriority;
+
+            // If the object to follow is null, then we should go back to the level view
+            if (objectToFollow == null)
             {
-                if (!projectile.isActiveAndEnabled) 
-                    continue;
-                
-                projectile.ChangeCameraView.RemoveListener(ShowLevel);
-                projectile.ChangeCameraView.AddListener(ShowLevel);
-                
-                _projectileVirtualCamera.Follow = projectile.gameObject.transform;
+                projectileCamera.Priority.Value = LowPriority;
+                projectileCamera.Follow = null;
+                ShowLevel();
+                return;
             }
-            showLevelCamera.SetActive(false);
-            normalViewCamera.SetActive(false);
-            projectileCamera.SetActive(true);
-            equationText.SetActive(false);
-            fireButton.SetActive(false);
+
+            // Otherwise, we should follow the object
+            projectileCamera.Priority.Value = HighPriority;
+            projectileCamera.Follow = objectToFollow.transform;
         }
 
         private IEnumerator SwitchToCannonView()
         {
-            yield return new WaitForSeconds(timeBetweenLevelAndCannonView);
+            yield return new WaitForSeconds(timeBetweenLevelAndNormalView);
             CannonView();
         }
     }

@@ -1,4 +1,4 @@
-using TypedUnityEvent;
+using Events;
 using UnityEngine;
 
 namespace Cannon
