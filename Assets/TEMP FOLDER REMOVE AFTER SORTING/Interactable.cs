@@ -4,5 +4,13 @@ using UnityEngine.Events;
 [RequireComponent(typeof(Collider2D))]
 public class Interactable : MonoBehaviour
 {
-    public UnityEvent onInteraction = new(); // Event invoked when the player interacts with this object.
+    [SerializeField] private UnityEvent onInteraction = new(); // Event invoked when the player interacts with this object.
+
+    /// <summary>
+    /// A method used to invoke the onInteraction unity event
+    /// </summary>
+    public void InvokeInteraction()
+    {
+        onInteraction.Invoke();
+    }
 }
