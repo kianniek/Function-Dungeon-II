@@ -1,4 +1,3 @@
-using Shake;
 using UnityEditor;
 using UnityEngine;
 

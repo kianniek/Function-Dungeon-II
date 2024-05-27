@@ -1,5 +1,5 @@
 using System;
-using TypedUnityEvent;
+using Events;
 using UnityEngine;
 
 namespace UI

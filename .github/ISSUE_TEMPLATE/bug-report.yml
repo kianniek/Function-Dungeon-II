@@ -1,0 +1,27 @@
+name: "Bug Report"
+description: "Use this template to report a bug."
+title: "Bug: "
+labels:
+    - bug
+body:
+  - type: textarea
+    id: expected-behaviour
+    attributes:
+      label: "Expected Behaviour"
+      description: "Describe what you expected to happen."
+  - type: textarea
+    id: actual-behaviour
+    attributes:
+      label: "Actual Behaviour"
+      description: "Describe what actually happened."
+  - type: textarea
+    id: steps-to-reproduce
+    attributes:
+      label: "Steps to Reproduce"
+      description: "List the steps required to reproduce the issue."
+  - type: textarea
+    id: additional-information
+    attributes:
+      label: "Additional Information"
+      description: "Any additional information that may be relevant."
+      
