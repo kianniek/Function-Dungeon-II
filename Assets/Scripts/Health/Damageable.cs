@@ -4,6 +4,9 @@ using UnityEngine.Events;
 
 namespace Health
 {
+    /// <summary>
+    /// Represents an object that can take damage.
+    /// </summary>
     public class Damageable : MonoBehaviour
     {
         [Header("Debug")]

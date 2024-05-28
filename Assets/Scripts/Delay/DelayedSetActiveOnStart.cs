@@ -4,6 +4,9 @@ using UnityEngine;
 
 namespace Delay
 {
+    /// <summary>
+    /// Activates or deactivates a script after a delay on start.
+    /// </summary>
     public class DelayedSetActiveOnStart : MonoBehaviour
     {
         [SerializeField] private List<MonoBehaviourDelayContainer> scripts = new();

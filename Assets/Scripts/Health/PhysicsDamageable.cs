@@ -2,6 +2,9 @@ using UnityEngine;
 
 namespace Health
 {
+    /// <summary>
+    /// Represents a damageable object that can take damage from physics collisions.
+    /// </summary>
     [RequireComponent(typeof(Damageable))]
     public class PhysicsDamageable : MonoBehaviour
     {

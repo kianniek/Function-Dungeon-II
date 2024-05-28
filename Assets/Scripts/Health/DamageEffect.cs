@@ -3,6 +3,9 @@ using UnityEngine;
 
 namespace Health
 {
+    /// <summary>
+    /// Represents a visual effect that is applied when the object takes damage.
+    /// </summary>
     public class DamageEffect : MonoBehaviour
     {
         [Header("Separate View")]

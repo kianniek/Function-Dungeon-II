@@ -4,6 +4,9 @@ using UnityEngine;
 
 namespace Delay
 {
+    /// <summary>
+    /// Invokes a game event after a delay.
+    /// </summary>
     public class DelayedLevelFailed : MonoBehaviour
     {
         [SerializeField] private GameEvent onLevelFailed;
