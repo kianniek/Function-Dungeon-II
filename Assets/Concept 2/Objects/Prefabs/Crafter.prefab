@@ -1378,6 +1378,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff524b57166add84dabb27c39724ce47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lineToFollow: {fileID: 8803651041549215413}
+  indexOfPointToFollow: 2
 --- !u!1 &5139244850599905881
 GameObject:
   m_ObjectHideFlags: 0
@@ -2187,6 +2189,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff524b57166add84dabb27c39724ce47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lineToFollow: {fileID: 7526154896639222820}
+  indexOfPointToFollow: 2
 --- !u!1 &7703598250092573517
 GameObject:
   m_ObjectHideFlags: 0
