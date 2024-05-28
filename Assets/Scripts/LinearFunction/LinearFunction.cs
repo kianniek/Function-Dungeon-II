@@ -51,5 +51,21 @@ namespace LinearFunction
         {
             return new Vector2(x, GetY(x, slope, yIntercept));
         }
+
+        /// <summary>
+        /// Returns the angle of a function given a slope
+        /// </summary>
+        /// <param name="slope"></param>
+        /// <returns></returns>
+        public static float GetAngleOfFunction(float slope)
+        {
+            // Calculate the angle in radians
+            float angleInRadians = Mathf.Atan(slope);
+
+            // Convert the angle to degrees
+            float angleInDegrees = angleInRadians * Mathf.Rad2Deg;
+
+            return angleInDegrees;
+        }
     }
 }

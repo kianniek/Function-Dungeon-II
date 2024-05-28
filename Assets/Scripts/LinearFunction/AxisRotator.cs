@@ -40,7 +40,7 @@ namespace LinearFunction
 
             var rotationVector = Vector3.zero;
 
-            _rotationAngle = FunctionToAngle.GetAngleFromSlope(_slopeValue);
+            _rotationAngle = LinearFunction.GetAngleOfFunction(_slopeValue);
 
             switch (rotationAxis)
             {

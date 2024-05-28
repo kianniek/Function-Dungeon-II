@@ -65,7 +65,6 @@ public class TabelController : MonoBehaviour
             return;
 
         var index = Array.IndexOf(tabelYButtons, _currentSelectedButton);
-        Debug.Log("Index: " + index);
         tabelYTexts[index].text = value.ToString();
     }
 
@@ -73,7 +72,7 @@ public class TabelController : MonoBehaviour
     /// Get the value of the x axis at the given index
     /// </summary>
     /// <returns></returns>
-    public int GetCollumCount()
+    public int GetColumnCount()
     {
         return tabelXButtons.Length;
     }
@@ -96,5 +95,13 @@ public class TabelController : MonoBehaviour
     public void SetYValue(int index, float value)
     {
         tabelYTexts[index].text = value.ToString();
+    }
+
+    public void ResetYTexts()
+    {
+        for (var i = 0; i < tabelYTexts.Length; i++)
+        {
+            tabelYTexts[i].text = "N";
+        }
     }
 }
