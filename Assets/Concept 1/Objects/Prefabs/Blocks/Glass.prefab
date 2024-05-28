@@ -251,4 +251,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scripts:
   - script: {fileID: 878559466307328197}
+    setActiveTo: 1
     delayInSeconds: 1

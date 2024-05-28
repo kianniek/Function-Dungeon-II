@@ -6,7 +6,7 @@ namespace Progression.Scoring
     /// <summary>
     /// Represents a score that can be added to the total score.
     /// </summary>
-    public class ScoreModel : MonoBehaviour
+    public class ApplyScore : MonoBehaviour
     {
         [Header("Score Settings")]
         [SerializeField] private int scorePoints;
