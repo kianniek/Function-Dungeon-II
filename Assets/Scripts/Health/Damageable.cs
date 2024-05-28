@@ -1,4 +1,3 @@
-using Attributes;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -9,9 +8,6 @@ namespace Health
     /// </summary>
     public class Damageable : MonoBehaviour
     {
-        [Header("Debug")]
-        [SerializeField, ReadOnlyField] private float currentHealth;
-        
         [Header("Settings")]
         [SerializeField] private float startHealth;
         [SerializeField] private bool enableNegativeHealth;
@@ -20,9 +16,11 @@ namespace Health
         [SerializeField] private UnityEvent onDeathEvent = new();
         [SerializeField] private UnityEvent onDamageEvent = new();
         
+        private float _currentHealth;
+        
         private void Awake()
         {
-            currentHealth = startHealth;
+            _currentHealth = startHealth;
         }
         
         /// <summary>
@@ -30,26 +28,31 @@ namespace Health
         /// </summary>
         public float Health
         {
-            get => currentHealth;
+            get => _currentHealth;
             set
             {
                 if (!enabled)
                     return;
                 
-                if (!enableNegativeHealth && value < 0)
+                if (!enableNegativeHealth && value <= 0)
                 {
                     onDeathEvent.Invoke();
                     
-                    currentHealth = 0;
+                    _currentHealth = 0;
                 }
                 else
                 {
                     onDamageEvent.Invoke();
                     
-                    currentHealth = value;
+                    _currentHealth = value;
                 }
             }
         }
+        
+        /// <summary>
+        /// Whether negative health is enabled.
+        /// </summary>
+        public bool NegativeHealthEnabled => enableNegativeHealth;
         
         /// <summary>
         /// Adds a listener to the onDamageEvent.
