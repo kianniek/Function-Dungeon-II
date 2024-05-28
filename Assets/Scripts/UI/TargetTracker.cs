@@ -1,7 +1,7 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using Events.GameEvents;
+using Health;
 using TMPro;
 using UnityEngine;
 
@@ -26,7 +26,7 @@ namespace UI
         {
             foreach (var script in targets.Where(script => script))
             {
-                script.OnDieEvent.AddListener(DestroyedTarget);
+                script.SubscribeToDeathEvent(DestroyedTarget);
             }
         }
         
@@ -34,7 +34,7 @@ namespace UI
         {
             foreach (var script in targets.Where(script => script))
             {
-                script.OnDieEvent.RemoveListener(DestroyedTarget);
+                script.UnsubscribeFromDeathEvent(DestroyedTarget);
             }
         }
         
@@ -68,7 +68,7 @@ namespace UI
             
             onTargetDestroyed?.Invoke();
             
-            if (_currentTargetCount == 0)
+            if (CurrentTargetCount == 0)
                 onAllTargetsDestroyed?.Invoke();
         }
     }

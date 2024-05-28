@@ -1,4 +1,5 @@
 using Attributes;
+using Health;
 using Events.GameEvents.Typed;
 using UnityEngine;
 
@@ -30,7 +31,6 @@ namespace Projectile
         private Vector3 _lastPosition;
         private Rigidbody2D _rb;
         private Vector2 _direction;
-        
         
         private void Awake()
         {
@@ -101,13 +101,8 @@ namespace Projectile
 
         private void OnCollisionEnter2D(Collision2D collision)
         {
-            if (collision.gameObject.TryGetComponent<Damageable>(out var damageableObject))
-            {
-                var speed = _rb.velocity.magnitude;
-                
-                damageableObject.Health -= baseDamage * speed;
-            }
-
+            if (collision.gameObject.TryGetComponent<Damageable>(out var damageableObject)) 
+                damageableObject.Health -= baseDamage * _rb.velocity.magnitude;
             //Explosion for first collision
             var hitColliders = Physics2D.OverlapCircleAll(transform.position, forceRadius);
             
@@ -123,9 +118,9 @@ namespace Projectile
                 
                 attachedRigidBody.AddForce(direction.normalized * (forceFalloff <= 0 ? 0 : forcePower) * forceFalloff);
             }
-
             //Remove the projectile from the camera follow
             onCameraFollowGameObject.Invoke(null);
+            
             ResetAndDeactivate();
         }
 
