@@ -1,165 +1,161 @@
 using UnityEngine;
 using TMPro;
+using System;
+using System.Linq;
+using UnityEngine.UI;
 using LinearFunction;
 using ButtonExtended;
-using System;
-using UnityEngine.UI;
-using System.Collections.Generic;
-using System.Linq;
+using Table;
 
-public class InputButtonController : MonoBehaviour
+namespace Tabel
 {
-    [SerializeField] private ExtendedButton[] inputButtons;
-    [SerializeField] private TabelController tabelController;
-    [SerializeField] private float valueRange;
-    [SerializeField] private int amountBehindComma = 1;
-    [SerializeField] private int amountOfGivenValues = 2;
-
-    private TMP_Text[] _inputText;
-    private int _tableColumnCount;
-    private float _slope;
-    private float _yIntercept;
-
-    private void Awake()
+    public class InputButtonController : MonoBehaviour
     {
-        ShuffleInputButtons();
-        _inputText = new TMP_Text[inputButtons.Length];
-        for (var i = 0; i < inputButtons.Length; i++)
+        [SerializeField] private LinearFunctionData linearFunctionData;
+        [SerializeField] private ExtendedButton[] inputButtons;
+        [SerializeField] private TabelController tabelController;
+        [SerializeField] private float valueRange;
+        [SerializeField] private int amountOfGivenValues = 2;
+
+        private TMP_Text[] _inputText;
+        private int _tableColumnCount;
+
+        /// <summary>
+        /// Changes the input numbers based on the linear function data.
+        /// </summary>
+        public void ChangeInputNumbers()
         {
-            _inputText[i] = inputButtons[i].GetComponentInChildren<TMP_Text>();
-        }
-        _tableColumnCount = tabelController.GetColumnCount();
-    }
+            if (!ValidateAmounts()) return;
 
-    public void SetSlope(float slope)
-    {
-        _slope = slope;
-    }
+            AssignRandomValuesToButtons();
 
-    public void SetYIntercept(float yIntercept)
-    {
-        _yIntercept = yIntercept;
-    }
+            var preCalculatedIndices = GenerateRandomIndices(amountOfGivenValues, _tableColumnCount);
 
-    public void ChangeInputNumbers()
-    {
-        if (amountOfGivenValues > _tableColumnCount)
-        {
-            Debug.LogError("The amount of given values is higher than the amount of columns in the table");
-            return;
-        }
-
-        if (inputButtons.Length < amountOfGivenValues)
-        {
-            Debug.LogError("The amount of input buttons is lower than the amount of given values");
-            return;
-        }
-        for (var i = 0; i < inputButtons.Length; i++)
-        {
-            var value = UnityEngine.Random.Range(-valueRange, valueRange);
-            value = MathF.Round(value, amountBehindComma);
-            inputButtons[i].ButtonValue = value;
-            _inputText[i].text = value.ToString();
-        }
-
-        // Generate random indices for the pre-calculated values to be shown in the table
-        var preCalculatedIndices = GenerateRandomIndices(amountOfGivenValues, _tableColumnCount);
-        Debug.Log("Random indices: " + string.Join(", ", preCalculatedIndices));
-
-        for (var i = 0; i < _tableColumnCount; i++)
-        {
-            if (preCalculatedIndices.Contains(i))
-                continue;
-
-            var xValue = tabelController.GetXValue(i);
-            var value = LinearFunction.LinearFunction.GetY(xValue, _slope, _yIntercept);
-            value = MathF.Round(value, amountBehindComma);
-
-            ColorBlock colorBlock = new ColorBlock();
-            colorBlock.normalColor = Color.cyan;
-            colorBlock.highlightedColor = Color.cyan;
-            colorBlock.pressedColor = Color.cyan;
-            colorBlock.selectedColor = Color.cyan;
-            colorBlock.disabledColor = Color.cyan;
-            colorBlock.colorMultiplier = 1;
-            colorBlock.fadeDuration = 0.1f;
-
-            //debug for xValue and value
-            Debug.Log("xValue: " + xValue + " value: " + value);
-            inputButtons[i].colors = colorBlock;
-            inputButtons[i].ButtonValue = value;
-            _inputText[i].text = value.ToString();
-            Debug.Log("Value text: " + _inputText[i].text);
-        }
-
-
-        for (var i = 0; i < amountOfGivenValues; i++)
-        {
-            var xValue = tabelController.GetXValue(preCalculatedIndices[i]);
-            var value = LinearFunction.LinearFunction.GetY(xValue, _slope, _yIntercept);
-            Debug.Log("xValue: " + xValue + " value: " + value);
-            tabelController.SetYValue(preCalculatedIndices[i], value);
-        }
-    }
-
-    public void ResetInputButtons()
-    {
-        // Reset each input button to default values and color
-        foreach (var button in inputButtons)
-        {
-            button.ButtonValue = 0;
-            var textComponent = button.GetComponentInChildren<TMP_Text>();
-            if (textComponent != null)
+            for (var i = 0; i < _tableColumnCount; i++)
             {
-                textComponent.text = "X";
+                if (!preCalculatedIndices.Contains(i))
+                {
+                    AssignCalculatedValueToButton(i);
+                }
             }
 
-            ColorBlock colorBlock = new ColorBlock();
-            colorBlock.normalColor = Color.white;
-            colorBlock.highlightedColor = Color.white;
-            colorBlock.pressedColor = Color.white;
-            colorBlock.selectedColor = Color.white;
-            colorBlock.disabledColor = Color.white;
-            colorBlock.colorMultiplier = 1;
-            colorBlock.fadeDuration = 0.1f;
-
-            button.colors = colorBlock;
+            for (var i = 0; i < amountOfGivenValues; i++)
+            {
+                AssignPreCalculatedValueToTable(preCalculatedIndices[i]);
+            }
         }
 
-        // Reset table values to default
-        tabelController.ResetYTexts();
-    }
-
-    private int[] GenerateRandomIndices(int count, int maxIndex)
-    {
-        var indices = new List<int>();
-        for (var i = 0; i < maxIndex; i++)
+        /// <summary>
+        /// Resets the input buttons to their default state.
+        /// </summary>
+        public void ResetInputButtons()
         {
-            indices.Add(i);
+            foreach (var button in inputButtons)
+            {
+                SetButtonValue(button, button.GetComponentInChildren<TMP_Text>(), 0, Color.white);
+            }
+
+            tabelController.ResetYTexts();
         }
 
-        // Shuffle the indices array
-        for (var i = 0; i < indices.Count; i++)
+        private void Awake()
         {
-            var temp = indices[i];
-            var randomIndex = UnityEngine.Random.Range(i, indices.Count);
-            indices[i] = indices[randomIndex];
-            indices[randomIndex] = temp;
+            ShuffleInputButtons();
+            InitializeInputTextComponents();
+            _tableColumnCount = tabelController.GetColumnCount();
         }
 
-        // Take 'count' number of random indices
-        var randomIndices = indices.Take(count).ToArray();
-        return randomIndices;
-    }
-
-    private void ShuffleInputButtons()
-    {
-        for (var i = 0; i < inputButtons.Length; i++)
+        private void InitializeInputTextComponents()
         {
-            var temp = inputButtons[i];
-            var randomIndex = UnityEngine.Random.Range(i, inputButtons.Length);
-            inputButtons[i] = inputButtons[randomIndex];
-            inputButtons[randomIndex] = temp;
+            _inputText = new TMP_Text[inputButtons.Length];
+            for (var i = 0; i < inputButtons.Length; i++)
+            {
+                _inputText[i] = inputButtons[i].GetComponentInChildren<TMP_Text>();
+            }
+        }
+
+        private bool ValidateAmounts()
+        {
+            if (amountOfGivenValues > _tableColumnCount)
+            {
+                Debug.LogError("The amount of given values is higher than the amount of columns in the table");
+                return false;
+            }
+
+            if (inputButtons.Length < amountOfGivenValues)
+            {
+                Debug.LogError("The amount of input buttons is lower than the amount of given values");
+                return false;
+            }
+            return true;
+        }
+
+        private void AssignRandomValuesToButtons()
+        {
+            for (var i = 0; i < inputButtons.Length; i++)
+            {
+                var value = GenerateRandomValue();
+                SetButtonValue(inputButtons[i], _inputText[i], value);
+            }
+        }
+
+        private float GenerateRandomValue()
+        {
+            var value = UnityEngine.Random.Range(-valueRange, valueRange);
+            return Mathf.Round(value * Mathf.Pow(10, linearFunctionData.AmountOfDecimals)) / Mathf.Pow(10, linearFunctionData.AmountOfDecimals);
+        }
+
+        private void AssignCalculatedValueToButton(int index)
+        {
+            var xValue = tabelController.GetXValue(index);
+            var value = LinearFunctionHelper.GetY(xValue, linearFunctionData.Slope, linearFunctionData.YIntercept);
+            value = Mathf.Round(value * Mathf.Pow(10, linearFunctionData.AmountOfDecimals)) / Mathf.Pow(10, linearFunctionData.AmountOfDecimals);
+
+            SetButtonValue(inputButtons[index], _inputText[index], value, Color.cyan);
+        }
+
+        private void AssignPreCalculatedValueToTable(int index)
+        {
+            var xValue = tabelController.GetXValue(index);
+            var value = LinearFunctionHelper.GetY(xValue, linearFunctionData.Slope, linearFunctionData.YIntercept);
+            tabelController.SetYValue(index, value);
+        }
+
+        private void SetButtonValue(ExtendedButton button, TMP_Text text, float value, Color? color = null)
+        {
+            button.ButtonValue = value;
+            text.text = value.ToString();
+            if (color.HasValue)
+            {
+                button.colors = GetColorBlock(color.Value);
+            }
+        }
+
+        
+
+        private int[] GenerateRandomIndices(int count, int maxIndex)
+        {
+            var indices = Enumerable.Range(0, maxIndex).OrderBy(x => UnityEngine.Random.Range(0, maxIndex)).Take(count).ToArray();
+            return indices;
+        }
+
+        private void ShuffleInputButtons()
+        {
+            inputButtons = inputButtons.OrderBy(x => UnityEngine.Random.Range(0, inputButtons.Length)).ToArray();
+        }
+
+        private ColorBlock GetColorBlock(Color color)
+        {
+            return new ColorBlock
+            {
+                normalColor = color,
+                highlightedColor = color,
+                pressedColor = color,
+                selectedColor = color,
+                disabledColor = color,
+                colorMultiplier = 1,
+                fadeDuration = 0.1f
+            };
         }
     }
 }

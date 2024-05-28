@@ -1,107 +1,152 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
+using ButtonExtended;
 using Events.GameEvents.Typed;
+using LinearFunction;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
-public class TabelController : MonoBehaviour
+namespace Table
 {
-    [SerializeField] private Button[] tabelXButtons;
-    [SerializeField] private Button[] tabelYButtons;
-
-    private TMP_Text[] tabelXTexts;
-    private TMP_Text[] tabelYTexts;
-
-    [SerializeField] private FloatGameEvent onInputChanged;
-    [SerializeField] private ButtonGameEvent onButtonClicked;
-
-    [SerializeField] private Button _currentSelectedButton;
-
-    private void OnEnable()
+    public class TabelController : MonoBehaviour
     {
-        onInputChanged.AddListener(OnInputChanged);
-        onButtonClicked.AddListener(OnButtonClicked);
-    }
+        [Header("Data")]
+        [SerializeField] private LinearFunctionData linearFunctionData;
+        [SerializeField] private Button[] tabelXButtons;
+        [SerializeField] private ExtendedButton[] tabelYButtons;
 
-    private void OnDisable()
-    {
-        onInputChanged.RemoveListener(OnInputChanged);
-        onButtonClicked.RemoveListener(OnButtonClicked);
-    }
+        [Header("Events")]
+        [SerializeField] private FloatGameEvent onInputChanged;
+        [SerializeField] private ButtonGameEvent onButtonClicked;
+        [SerializeField] private ExtendedButton _currentSelectedButton;
 
-    private void Awake()
-    {
-        tabelXTexts = new TMP_Text[tabelXButtons.Length];
-        tabelYTexts = new TMP_Text[tabelYButtons.Length];
+        [Header("Check Settings")]
+        [SerializeField] private float checkMargin;
+        [SerializeField] private UnityEvent onInputCorrect;
+        [SerializeField] private UnityEvent onInputIncorrect;
 
-        for (var i = 0; i < tabelXButtons.Length; i++)
+        private TMP_Text[] _tabelXTexts;
+        private TMP_Text[] _tabelYTexts;
+
+        private void OnEnable()
         {
-            tabelXTexts[i] = tabelXButtons[i].GetComponentInChildren<TMP_Text>();
-            tabelYTexts[i] = tabelYButtons[i].GetComponentInChildren<TMP_Text>();
+            onInputChanged.AddListener(OnInputChanged);
+            onButtonClicked.AddListener(OnButtonClicked);
         }
-    }
 
-    // Start is called before the first frame update
-    private void Start()
-    {
-        //if the two tables are not the same size, throw an error
-        if (tabelXButtons.Length != tabelYButtons.Length)
+        private void OnDisable()
         {
-            Debug.LogError("The two tables are not the same size");
-            return;
+            onInputChanged.RemoveListener(OnInputChanged);
+            onButtonClicked.RemoveListener(OnButtonClicked);
         }
-    }
 
-    public void OnButtonClicked(Button button)
-    {
-        _currentSelectedButton = button;
-    }
-
-    public void OnInputChanged(float value)
-    {
-        if (_currentSelectedButton == null)
-            return;
-
-        var index = Array.IndexOf(tabelYButtons, _currentSelectedButton);
-        tabelYTexts[index].text = value.ToString();
-    }
-
-    /// <summary>
-    /// Get the value of the x axis at the given index
-    /// </summary>
-    /// <returns></returns>
-    public int GetColumnCount()
-    {
-        return tabelXButtons.Length;
-    }
-
-    /// <summary>
-    /// Get the value of the x axis at the given index
-    /// </summary>
-    /// <param name="index"></param>
-    /// <returns></returns>
-    public int GetXValue(int index)
-    {
-        return int.Parse(tabelXTexts[index].text);
-    }
-
-    /// <summary>
-    /// Set the value of the x axis at the given index
-    /// </summary>
-    /// <param name="index"></param>
-    /// <param name="value"></param>
-    public void SetYValue(int index, float value)
-    {
-        tabelYTexts[index].text = value.ToString();
-    }
-
-    public void ResetYTexts()
-    {
-        for (var i = 0; i < tabelYTexts.Length; i++)
+        private void Awake()
         {
-            tabelYTexts[i].text = "N";
+            _tabelXTexts = new TMP_Text[tabelXButtons.Length];
+            _tabelYTexts = new TMP_Text[tabelYButtons.Length];
+
+            for (var i = 0; i < tabelXButtons.Length; i++)
+            {
+                _tabelXTexts[i] = tabelXButtons[i].GetComponentInChildren<TMP_Text>();
+                _tabelYTexts[i] = tabelYButtons[i].GetComponentInChildren<TMP_Text>();
+            }
+        }
+
+        private void Start()
+        {
+            if (tabelXButtons.Length != tabelYButtons.Length)
+            {
+                Debug.LogError("The two tables are not the same size");
+                return;
+            }
+        }
+
+        public void OnButtonClicked(Button button)
+        {
+            _currentSelectedButton = button as ExtendedButton;
+        }
+
+        public void OnInputChanged(float value)
+        {
+            if (_currentSelectedButton == null)
+                return;
+
+            _currentSelectedButton.ButtonValue = value;
+            var index = Array.IndexOf(tabelYButtons, _currentSelectedButton);
+            _tabelYTexts[index].text = value.ToString();
+        }
+
+        public int GetColumnCount()
+        {
+            return tabelXButtons.Length;
+        }
+
+        public int GetXValue(int index)
+        {
+            return int.Parse(_tabelXTexts[index].text);
+        }
+
+        public void SetYValue(int index, float value)
+        {
+            _tabelYTexts[index].text = value.ToString();
+            tabelYButtons[index].ButtonValue = value;
+        }
+
+        public void ResetYTexts()
+        {
+            foreach (var text in _tabelYTexts)
+            {
+                text.text = "N";
+            }
+        }
+
+        public float[] GetYValues()
+        {
+            var values = new float[tabelYButtons.Length];
+            for (var i = 0; i < tabelYButtons.Length; i++)
+            {
+                values[i] = tabelYButtons[i].ButtonValue;
+            }
+            return values;
+        }
+
+        public float[] GetXValues()
+        {
+            var values = new float[tabelXButtons.Length];
+            for (var i = 0; i < tabelXButtons.Length; i++)
+            {
+                values[i] = Mathf.Round(float.Parse(_tabelXTexts[i].text) * Mathf.Pow(10, linearFunctionData.AmountOfDecimals)) / Mathf.Pow(10, linearFunctionData.AmountOfDecimals);
+            }
+            return values;
+        }
+
+        public void CheckInput()
+        {
+            var correct = true;
+            for (var i = 0; i < tabelXButtons.Length; i++)
+            {
+                var xValue = GetXValues()[i];
+                var yValue = GetYValues()[i];
+                var correctValue = Mathf.Round(LinearFunctionHelper.GetY(xValue, linearFunctionData.Slope, linearFunctionData.YIntercept) * Mathf.Pow(10, linearFunctionData.AmountOfDecimals)) / Mathf.Pow(10, linearFunctionData.AmountOfDecimals);
+
+                if (yValue < correctValue - checkMargin || yValue > correctValue + checkMargin)
+                {
+                    correct = false;
+                    break;
+                }
+            }
+
+            if (correct)
+            {
+                Debug.Log("Correct");
+                onInputCorrect?.Invoke();
+            }
+            else
+            {
+                Debug.Log("Incorrect");
+                onInputIncorrect?.Invoke();
+            }
         }
     }
 }

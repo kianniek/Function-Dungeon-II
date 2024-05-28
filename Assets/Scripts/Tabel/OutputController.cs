@@ -1,22 +1,21 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class OutputController : MonoBehaviour
+namespace Tabel
 {
-
-    [SerializeField] private UnityEvent onAwake;
-    [SerializeField] private UnityEvent onStart;
-
-    // Awake is called when the script instance is being loaded
-    void Awake()
+    public class OutputController : MonoBehaviour
     {
-        onAwake.Invoke();
-    }
-    // Start is called before the first frame update
-    void Start()
-    {
-        onStart.Invoke();
+        [SerializeField] private UnityEvent onAwake;
+        [SerializeField] private UnityEvent onStart;
+
+        private void Awake()
+        {
+            onAwake.Invoke();
+        }
+
+        private void Start()
+        {
+            onStart.Invoke();
+        }
     }
 }

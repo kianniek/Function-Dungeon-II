@@ -5,31 +5,18 @@ namespace LinearFunction
     [ExecuteInEditMode]
     public class AxisRotator : MonoBehaviour
     {
-        private float _slopeValue;
+        private enum Axis { X, Y, Z }
 
-        public float SlopeValue
-        {
-            get => _slopeValue;
-            set
-            {
-                _slopeValue = value;
-                Rotate();
-            }
-        }
-        // Enum for the XYZ axes
-        public enum Axis
-        {
-            X,
-            Y,
-            Z
-        }
-
-        // Public fields to be set in the Inspector
         [SerializeField] private Axis rotationAxis;
+        [SerializeField] private bool invertRotation;
         [SerializeField] private Transform targetTransform;
+        [SerializeField] private LinearFunctionData LinearFunctionData;
+
         private float _rotationAngle;
 
-        // Rotate the target Transform based on the selected axis and angle
+        /// <summary>
+        /// Rotates the target transform based on the linear function data.
+        /// </summary>
         public void Rotate()
         {
             if (targetTransform == null)
@@ -38,30 +25,18 @@ namespace LinearFunction
                 return;
             }
 
-            var rotationVector = Vector3.zero;
+            _rotationAngle = LinearFunctionHelper.GetAngleOfFunction(LinearFunctionData.Slope);
+            if (invertRotation) _rotationAngle = -_rotationAngle;
 
-            _rotationAngle = LinearFunction.GetAngleOfFunction(_slopeValue);
-
-            switch (rotationAxis)
+            var rotationVector = rotationAxis switch
             {
-                case Axis.X:
-                    rotationVector = new Vector3(_rotationAngle, 0, 0);
-                    break;
-                case Axis.Y:
-                    rotationVector = new Vector3(0, _rotationAngle, 0);
-                    break;
-                case Axis.Z:
-                    rotationVector = new Vector3(0, 0, _rotationAngle);
-                    break;
-            }
+                Axis.X => Vector3.right * _rotationAngle,
+                Axis.Y => Vector3.up * _rotationAngle,
+                Axis.Z => Vector3.forward * _rotationAngle,
+                _ => Vector3.zero
+            };
 
             targetTransform.Rotate(rotationVector);
-        }
-
-        // Example usage in the Start method
-        private void Start()
-        {
-            Rotate();
         }
     }
 }

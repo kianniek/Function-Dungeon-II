@@ -9,16 +9,12 @@ namespace RandomNumbers
     {
         public override void OnInspectorGUI()
         {
-            // Draw the default inspector
             DrawDefaultInspector();
 
-            // Get the RandomFloat script instance
-            RandomFloat randomFloat = (RandomFloat)target;
+            var randomFloat = (RandomFloat)target;
 
-            // Add a button to the inspector
             if (GUILayout.Button("Generate Random Float"))
             {
-                // Call the GenerateRandomFloat function
                 randomFloat.GenerateRandomFloat();
             }
         }

@@ -1,37 +1,28 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using Events;
-using Events.GameEvents.Typed;
 using UnityEngine;
-using UnityEngine.Events;
 
-[ExecuteInEditMode]
-public class RandomFloat : MonoBehaviour
+namespace RandomNumbers
 {
-    [SerializeField] private bool executeAtStart;
-    [SerializeField] private int amountBehindComma;
-
-    [SerializeField] private float minValue;
-    [SerializeField] private float maxValue;
-    [SerializeField] private FloatEvent onValueChanged;
-
-    // Start is called before the first frame update
-    public void Start()
+    [ExecuteInEditMode]
+    public class RandomFloat : MonoBehaviour
     {
-        if (executeAtStart)
-            GenerateRandomFloat();
-    }
+        [SerializeField] private bool executeAtStart;
+        [SerializeField] private int amountBehindComma;
+        [SerializeField] private float minValue;
+        [SerializeField] private float maxValue;
+        [SerializeField] private FloatEvent onValueChanged;
 
-    // Update is called once per frame
-    public void GenerateRandomFloat()
-    {
-        // Generate a random float value between the min and max values
-        var randomValue = UnityEngine.Random.Range(minValue, maxValue);
+        private void Start()
+        {
+            if (executeAtStart)
+                GenerateRandomFloat();
+        }
 
-        randomValue = MathF.Round(randomValue, amountBehindComma);
-
-        // Invoke the event with the generated random value
-        onValueChanged?.Invoke(randomValue);
+        public void GenerateRandomFloat()
+        {
+            var randomValue = Random.Range(minValue, maxValue);
+            randomValue = Mathf.Round(randomValue * Mathf.Pow(10, amountBehindComma)) / Mathf.Pow(10, amountBehindComma);
+            onValueChanged?.Invoke(randomValue);
+        }
     }
 }
