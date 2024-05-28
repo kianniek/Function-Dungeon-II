@@ -33,15 +33,18 @@ namespace Health
                 if (!enabled)
                     return;
                 
-                onDamageEvent.Invoke();
-                
                 if (!enableNegativeHealth && value < 0)
-                    currentHealth = 0;
-                else
-                    currentHealth = value;
-                
-                if (value <= 0 && !enableNegativeHealth)
+                {
                     onDeathEvent.Invoke();
+                    
+                    currentHealth = 0;
+                }
+                else
+                {
+                    onDamageEvent.Invoke();
+                    
+                    currentHealth = value;
+                }
             }
         }
         

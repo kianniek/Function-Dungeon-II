@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 6473916363929876870}
   - component: {fileID: 7314829381828739206}
   - component: {fileID: -5221921209492004149}
+  - component: {fileID: 1601868943513529612}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -115,7 +116,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentHealth: 0
-  startHealth: 2
+  startHealth: 6
   enableNegativeHealth: 0
   onDeathEvent:
     m_PersistentCalls:
@@ -132,7 +133,19 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1566393160540423617}
+      - m_Target: {fileID: 3651677206409354434}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 5876510541527854651}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
@@ -144,9 +157,33 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 4722979030659456832}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   onDamageEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1601868943513529612}
+        m_TargetAssemblyTypeName: Health.DamageEffect, Assembly-CSharp
+        m_MethodName: ApplyDamageEffect
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &6473916363929876870
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -188,7 +225,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scripts:
   - script: {fileID: 4722979030659456832}
+    setActiveTo: 1
     delayInSeconds: 1
+--- !u!114 &1601868943513529612
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1566393160540423617}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 852937892b594864a818b3593b0b08e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  view: {fileID: 5876510541527854651}
+  applyColorVisual: 1
+  damageColor: {r: 1, g: 0, b: 0, a: 1}
+  colorDuration: 0.1
+  applySpriteVisual: 0
+  damageSprite: {fileID: 0}
+  spriteDuration: 0.1
 --- !u!1 &5876510541527854651
 GameObject:
   m_ObjectHideFlags: 0
@@ -339,5 +396,10 @@ PrefabInstance:
 --- !u!4 &805540536503823971 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2955022277466592539, guid: 6836a7d4e604645d896331732b77299e, type: 3}
+  m_PrefabInstance: {fileID: 2463332395907021688}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &3651677206409354434 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1189758241476995002, guid: 6836a7d4e604645d896331732b77299e, type: 3}
   m_PrefabInstance: {fileID: 2463332395907021688}
   m_PrefabAsset: {fileID: 0}

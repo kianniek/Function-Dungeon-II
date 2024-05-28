@@ -16,6 +16,7 @@ namespace Health
         [Header("Sprite Visual")]
         [SerializeField] private bool applySpriteVisual;
         [SerializeField] private Sprite damageSprite;
+        [SerializeField] private float spriteDuration = 0.1f;
         
         private SpriteRenderer _spriteRenderer;
         private Material _material;
@@ -67,7 +68,7 @@ namespace Health
         {
             _spriteRenderer.sprite = damageSprite;
             
-            yield return new WaitForSeconds(colorDuration);
+            yield return new WaitForSeconds(spriteDuration);
             
             _spriteRenderer.sprite = _startSprite;
         }
