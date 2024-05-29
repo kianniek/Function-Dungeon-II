@@ -8,14 +8,16 @@ namespace ObjectMover
     {
         [SerializeField] private float moveDistance = 10f;
         [SerializeField] private float movementTime = 1f;
-        [SerializeField] private UnityEvent onMoveComplete;
-        [SerializeField] private UnityEvent onMoveBackComplete;
+        [SerializeField] private UnityEvent onMoveComplete = new();
+        [SerializeField] private UnityEvent onMoveBackComplete = new();
 
         private Vector3 _startPosition;
+        private Transform _selfTransform;
 
         private void Awake()
         {
-            _startPosition = transform.localPosition;
+            _selfTransform = transform;
+            _startPosition = _selfTransform.localPosition;
         }
 
         public void Move()
@@ -31,16 +33,16 @@ namespace ObjectMover
         private IEnumerator MoveCoroutine(Vector3 targetPosition, UnityEvent onCompleteEvent)
         {
             var elapsedTime = 0f;
-            var initialPosition = transform.localPosition;
+            var initialPosition = _selfTransform.localPosition;
 
             while (elapsedTime < movementTime)
             {
-                transform.localPosition = Vector3.Lerp(initialPosition, targetPosition, elapsedTime / movementTime);
+                _selfTransform.localPosition = Vector3.Lerp(initialPosition, targetPosition, elapsedTime / movementTime);
                 elapsedTime += Time.deltaTime;
                 yield return null;
             }
 
-            transform.localPosition = targetPosition;
+            _selfTransform.localPosition = targetPosition;
             onCompleteEvent?.Invoke();
         }
     }
