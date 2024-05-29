@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace Tabel
+namespace Table
 {
     public class OutputController : MonoBehaviour
     {

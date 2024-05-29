@@ -6,11 +6,14 @@ using UnityEngine.UI;
 namespace ButtonExtended
 {
     [RequireComponent(typeof(Button))]
-    public class ExtendedButton : Button
+    public class ExtendedButton : MonoBehaviour
     {
-        [SerializeField] private ButtonEvent onClickButton = new ();
+        private Button button;
+        [SerializeField] private ExtendedButtonEvent onClickButton = new ();
         [SerializeField] private FloatEvent onClickFloat = new ();
         private float _buttonValue;
+
+        public Button Button => button;
 
         public float ButtonValue
         {
@@ -18,22 +21,25 @@ namespace ButtonExtended
             set => _buttonValue = value;
         }
 
-        public ButtonEvent OnClickButton
+        private ExtendedButtonEvent OnClickButton
         {
             get => onClickButton;
             set => onClickButton = value;
         }
 
-        protected override void Start()
+        private void Awake()
         {
-            base.Start();
-            onClick.AddListener(() => OnClickButton.Invoke(this));
-            onClick.AddListener(() => onClickFloat.Invoke(_buttonValue));
+            button = GetComponent<Button>();
         }
 
-        public override void OnPointerClick(PointerEventData eventData)
+        protected void Start()
         {
-            base.OnPointerClick(eventData);
+            button.onClick.AddListener(() => OnClickButton.Invoke(this));
+            button.onClick.AddListener(() => onClickFloat.Invoke(_buttonValue));
+        }
+
+        public void OnPointerClick(PointerEventData eventData)
+        {
             onClickButton.Invoke(this);
             onClickFloat.Invoke(_buttonValue);
         }

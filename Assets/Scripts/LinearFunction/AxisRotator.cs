@@ -26,6 +26,7 @@ namespace LinearFunction
             }
 
             _rotationAngle = LinearFunctionHelper.GetAngleOfFunction(LinearFunctionData.Slope);
+
             if (invertRotation) _rotationAngle = -_rotationAngle;
 
             var rotationVector = rotationAxis switch
