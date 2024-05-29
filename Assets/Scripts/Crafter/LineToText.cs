@@ -7,11 +7,11 @@ namespace Crafter
     {
         [SerializeField] private LineRenderer lineToFollow;
 
-        private GameObject _line;
+        [SerializeField] private int indexOfPointToFollow = 2;
+
+        private Transform _line;
 
         private TextMeshPro _formulaText;
-
-        [SerializeField] private int indexOfPointToFollow = 2;
 
         private float _a;
         private float _b;
@@ -20,7 +20,7 @@ namespace Crafter
 
         private void Awake()
         {
-            _line = transform.parent.gameObject;
+            _line = lineToFollow.transform;
             _formulaText = GetComponent<TextMeshPro>();
             _a = _line.GetComponent<FunctionLineController>().A;
             _b = _line.transform.position.y;
