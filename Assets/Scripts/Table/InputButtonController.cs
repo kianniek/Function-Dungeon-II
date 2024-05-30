@@ -13,12 +13,16 @@ namespace Table
 {
     public class InputButtonController : MonoBehaviour
     {
+        [Header("Data")]
         [SerializeField] private LinearFunctionData linearFunctionData;
         [SerializeField] private List<ExtendedButton> inputButtons;
         [SerializeField] private TableController tableController;
         [SerializeField] private float valueRange;
         [SerializeField] private int amountOfGivenValues = 2;
 
+        [Header("Debug")]
+        [SerializeField] bool debugMode;
+        
         private Dictionary<ExtendedButton, TMP_Text> _inputDictionary = new();
         private int _tableColumnCount;
 
@@ -33,13 +37,15 @@ namespace Table
             AssignRandomValuesToButtons();
 
             var preCalculatedIndices = TableHelper.GenerateRandomIndices(amountOfGivenValues, _tableColumnCount);
-
+            preCalculatedIndices = preCalculatedIndices.OrderBy(x => x).ToList();
+            foreach (var preCalculatedIndex in preCalculatedIndices)
+            {
+                Debug.Log("Pre-calculated index: " + preCalculatedIndex);
+            }
             for (var i = 0; i < _tableColumnCount; i++)
             {
-                if (!preCalculatedIndices.Contains(i))
-                {
-                    AssignCalculatedValueToButton(i);
-                }
+                if (preCalculatedIndices.Contains(i)) continue;
+                AssignCalculatedValueToButton(i);
             }
 
             for (var i = 0; i < amountOfGivenValues; i++)
@@ -95,14 +101,13 @@ namespace Table
 
         private void AssignRandomValuesToButtons()
         {
-            for (var i = 0; i < inputButtons.Count; i++)
+            foreach (var t in inputButtons)
             {
                 var value = GenerateRandomValue();
-                var button = inputButtons[i];
-
-                if(_inputDictionary.TryGetValue(button, out var text))
+                
+                if(_inputDictionary.TryGetValue(t, out var text))
                 {
-                    SetButtonValue(button, text, value);
+                    SetButtonValue(t, text, value);
                 }
             }
         }
@@ -122,7 +127,8 @@ namespace Table
 
             if (_inputDictionary.TryGetValue(inputButtons[index], out var inputText))
             {
-                SetButtonValue(inputButtons[index], inputText, value, Color.cyan);
+                SetButtonValue(inputButtons[index], inputText, value, Color.cyan, debugMode);
+                Debug.Log(value);
             }
         }
 
