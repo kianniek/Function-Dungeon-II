@@ -7,7 +7,7 @@ public static class StringManipulation
     /// </summary>
     /// <param name="input">Input string</param>
     /// <returns></returns>
-    public static string RemoveRegex(string input)
+    public static string CleanUpDecimalOnlyString(string input)
     {
         return Regex.Replace(input, @"[^0-9.,]+", "");
     }

@@ -15,7 +15,7 @@ namespace Crafter
 
         private float _a;
         private float _b;
-        private float _zPosition = -0.5f;
+        const float _zPosition = -0.5f;
         private float _yPositionOffset;
 
         private void Awake()
@@ -23,7 +23,7 @@ namespace Crafter
             _line = lineToFollow.transform;
             _formulaText = GetComponent<TextMeshPro>();
             _a = _line.GetComponent<FunctionLineController>().A;
-            _b = _line.transform.position.y;
+            _b = _line.position.y;
         }
 
         void Start()

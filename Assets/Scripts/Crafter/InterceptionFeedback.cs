@@ -22,7 +22,7 @@ namespace Crafter
         public void OnConfirmButtonClicked()
         {
             _correctInterceptionAnswer = interceptionCalculator.intersection;
-            var answer = new Vector2(float.Parse(StringManipulation.RemoveRegex(xAnswer.text)), float.Parse(StringManipulation.RemoveRegex(yAnswer.text)));
+            var answer = new Vector2(float.Parse(StringManipulation.CleanUpDecimalOnlyString(xAnswer.text)), float.Parse(StringManipulation.CleanUpDecimalOnlyString(yAnswer.text)));
             if (answer == _correctInterceptionAnswer)
             {
                 onCorrectAnswerGivenEvent.Invoke();

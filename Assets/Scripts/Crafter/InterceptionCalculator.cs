@@ -17,10 +17,10 @@ namespace Crafter
 
         private void Start()
         {
-            _a1 = line1.GetComponent<FunctionLineController>().A;
+            _a1 = line1.A;
             _b1 = line1.transform.position.y;
 
-            _a2 = line2.GetComponent<FunctionLineController>().A;
+            _a2 = line2.A;
             _b2 = line2.transform.position.y;
 
             intersection = Vector2Extension.FindIntersection(_a1, _b1, _a2, _b2);
