@@ -7,13 +7,18 @@ namespace Crafter
         [SerializeField] private FunctionLineController line1;
         [SerializeField] private FunctionLineController line2;
 
-        public Vector2 intersection;
+        private Vector2 _intersection;
 
         private float _a1;
         private float _b1;
-
+        
         private float _a2;
         private float _b2;
+
+        /// <summary>
+        /// Gets the correct interception point for line 1 and 2.
+        /// </summary>
+        public Vector2 Intersection => _intersection;
 
         private void Start()
         {
@@ -23,7 +28,7 @@ namespace Crafter
             _a2 = line2.A;
             _b2 = line2.transform.position.y;
 
-            intersection = Vector2Extension.FindIntersection(_a1, _b1, _a2, _b2);
+            _intersection = Vector2Extension.FindIntersection(_a1, _b1, _a2, _b2);
         }
     }
 }
