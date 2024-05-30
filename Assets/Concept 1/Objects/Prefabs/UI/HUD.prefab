@@ -227,7 +227,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 750, y: 325}
+  m_AnchoredPosition: {x: 750, y: 338}
   m_SizeDelta: {x: 300, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2272874799670433781
@@ -524,10 +524,9 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  - {fileID: 0}
   textFormat: 'Targets left: {0}'
   onAllTargetsDestroyed: {fileID: 11400000, guid: 69c475b72e6134b98abcde11371048fc, type: 2}
-  onTargetDestroyed: {fileID: 11400000, guid: 69c475b72e6134b98abcde11371048fc, type: 2}
+  onTargetDestroyed: {fileID: 0}
 --- !u!1001 &5280107373170324331
 PrefabInstance:
   m_ObjectHideFlags: 0

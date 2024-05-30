@@ -14,6 +14,8 @@ GameObject:
   - component: {fileID: 4958550345508235367}
   - component: {fileID: 878559466307328197}
   - component: {fileID: -1168761634677028020}
+  - component: {fileID: 5657785722258000007}
+  - component: {fileID: 5356596310717764062}
   m_Layer: 0
   m_Name: Stone
   m_TagString: Untagged
@@ -170,21 +172,29 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2013956999011018964}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0577f08d5d58349568806fe084c4ff56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  physicDamageThreshold: 2
-  startInvulnerabilityTime: 1
+  currentHealth: 0
   startHealth: 3
   enableNegativeHealth: 0
-  spriteView: {fileID: 0}
-  enableDamageEffect: 0
-  damageColor: {r: 0, g: 0, b: 0, a: 0}
-  onDieEvent:
+  onDeathEvent:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: -1168761634677028020}
+        m_TargetAssemblyTypeName: Progression.Scoring.ScoreModel, Assembly-CSharp
+        m_MethodName: AddScore
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 2013956999011018964}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
@@ -214,3 +224,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scorePoints: 100
   onApplyScore: {fileID: 11400000, guid: fbb7e6991063e4814b16e3ba8945c412, type: 2}
+--- !u!114 &5657785722258000007
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2013956999011018964}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97b42937b67d4e4eb5c1131ecc4d87b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  physicDamageThreshold: 2
+--- !u!114 &5356596310717764062
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2013956999011018964}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9fd4a36a0764ae595adb5a37b51838b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scripts:
+  - script: {fileID: 878559466307328197}
+    setActiveTo: 1
+    delayInSeconds: 1

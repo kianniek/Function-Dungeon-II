@@ -100,4 +100,20 @@ namespace Events
     public class ColorEvent : UnityEvent<Color>
     {
     }
+
+    /// <summary>
+    /// One argument <see cref="UnityEngine.UI.Button"/>-<see cref="UnityEvent"/>, serializable to the inspector.
+    /// </summary>
+    [Serializable]
+    public class ButtonEvent : UnityEvent<UnityEngine.UI.Button>
+    {
+    }
+
+    /// <summary>
+    /// One argument <see cref="ButtonExtended.ExtendedButton"/>-<see cref="UnityEvent"/>, serializable to the inspector.
+    /// </summary>
+    [Serializable]
+    public class ExtendedButtonEvent : UnityEvent<ButtonExtended.ExtendedButton>
+    {
+    }
 }
