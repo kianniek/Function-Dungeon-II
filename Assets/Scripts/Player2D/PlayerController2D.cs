@@ -13,6 +13,9 @@ namespace Player2D
         [SerializeField] private Transform groundCheck;
         [SerializeField] private Transform interactableCheck;
 
+        [SerializeField] private GameObject objectToCreate;
+        [SerializeField] private Transform positionToCreate;
+
         private Interactable _nearbyInteractable;
         private Rigidbody2D _rb;
         private Vector2 _moveInput;
@@ -48,11 +51,23 @@ namespace Player2D
         /// <param name="context">Holds the state of the button</param>
         public void OnInteract(InputAction.CallbackContext context)
         {
-            if(_nearbyInteractable != null)
+            if (_nearbyInteractable != null)
             {
                 _nearbyInteractable.InvokeInteraction();
             }
         }
+
+        /// <summary>
+        /// This method is used by the input system to create an object at the position of the transform
+        /// </summary>
+        public void OnPlaceObject(InputAction.CallbackContext context)
+        {
+            if (context.action.WasPressedThisFrame())
+            {
+                Instantiate(objectToCreate, positionToCreate.position, Quaternion.identity);
+            }
+        }
+
 
         private void FixedUpdate()
         {
@@ -65,7 +80,7 @@ namespace Player2D
             foreach (var collider2D in collidersInRange)
             {
                 var interactable = collider2D.gameObject.GetComponent<Interactable>();
-                if(interactable != null)
+                if (interactable != null)
                 {
                     _nearbyInteractable = interactable;
                     break;

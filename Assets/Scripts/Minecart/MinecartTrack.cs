@@ -1,4 +1,6 @@
+using Events;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class MinecartTrack : MonoBehaviour
 {
@@ -10,9 +12,11 @@ public class MinecartTrack : MonoBehaviour
 
     [SerializeField] private float maxTrackLenght = 10f;
 
+    [Header("Events")]
+    [SerializeField] private UnityEvent onMinecartTrackplaced = new();
+
     private void FixedUpdate()
     {
-        CheckConnection();
         AdjustLength();
     }
 
@@ -33,5 +37,11 @@ public class MinecartTrack : MonoBehaviour
         Vector2 newSize = transform.localScale;
         newSize.x = adjustedLength;
         transform.localScale = newSize;
+    }
+
+    public void PlaceMinecartTrack()
+    {
+        CheckConnection();
+        onMinecartTrackplaced.Invoke();
     }
 }
