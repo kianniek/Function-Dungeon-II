@@ -7,7 +7,6 @@ namespace UI
     {
         [Header("References")]
         [SerializeField] private GameObject defaultPanel;
-        [SerializeField] private GameObject returnToGameButton;
 
         [Header("Title Text")]
         [SerializeField] private TMP_Text stateTextObject;
@@ -27,15 +26,33 @@ namespace UI
         public void Pause()
         {
             defaultPanel.SetActive(true);
-            returnToGameButton.SetActive(true);
             stateTextObject.text = pausedText;
 
             Time.timeScale = 0;
         }
+
+        /// <summary>
+        /// Function to toggle a menu GameObject
+        /// </summary>
+        /// <param name="menu"></param>
+        public void ToggleMenu(GameObject menu)
+        {
+            if (menu)
+            {
+                menu.SetActive(!menu.activeSelf);
+
+                // Log the new state
+                Debug.Log("Menu " + (menu.activeSelf ? "opened" : "closed"));
+            }
+            else
+            {
+                Debug.LogError("Menu GameObject is null. Please add a Menu Gameobject");
+            }
+        }
+
         public void Reset()
         {
             defaultPanel.SetActive(false);
-            returnToGameButton.SetActive(false);
 
             Time.timeScale = 1;
         }
