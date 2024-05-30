@@ -1378,6 +1378,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff524b57166add84dabb27c39724ce47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lineToFollow: {fileID: 8803651041549215413}
+  indexOfPointToFollow: 2
 --- !u!1 &5139244850599905881
 GameObject:
   m_ObjectHideFlags: 0
@@ -1703,8 +1705,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2dbbdefbebefd544cadf419b51b3a32d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  line1: {fileID: 3481057997310183538}
-  line2: {fileID: 8138445477234787703}
+  line1: {fileID: 6018000140153687598}
+  line2: {fileID: 7876169785252658364}
   intersection: {x: 0, y: 0}
 --- !u!1 &5674705329855749110
 GameObject:
@@ -2187,6 +2189,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff524b57166add84dabb27c39724ce47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lineToFollow: {fileID: 7526154896639222820}
+  indexOfPointToFollow: 2
 --- !u!1 &7703598250092573517
 GameObject:
   m_ObjectHideFlags: 0
