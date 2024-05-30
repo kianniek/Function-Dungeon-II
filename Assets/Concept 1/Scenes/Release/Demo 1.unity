@@ -902,7 +902,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 488546483}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0577f08d5d58349568806fe084c4ff56, type: 3}
   m_Name: 
@@ -1856,7 +1856,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 748434328}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0577f08d5d58349568806fe084c4ff56, type: 3}
   m_Name: 
@@ -2329,7 +2329,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 900287747}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0577f08d5d58349568806fe084c4ff56, type: 3}
   m_Name: 
@@ -2731,10 +2731,6 @@ PrefabInstance:
       value: HUD
       objectReference: {fileID: 0}
     - target: {fileID: 1995348614945874723, guid: d79d0524276944cf8bb6e33ca23b7686, type: 3}
-      propertyPath: targets.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 1995348614945874723, guid: d79d0524276944cf8bb6e33ca23b7686, type: 3}
       propertyPath: 'targets.Array.data[0]'
       value: 
       objectReference: {fileID: 900287748}
@@ -2829,10 +2825,6 @@ PrefabInstance:
     - target: {fileID: 2571362195403259620, guid: d79d0524276944cf8bb6e33ca23b7686, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6668829980022681974, guid: d79d0524276944cf8bb6e33ca23b7686, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 338
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3495,7 +3487,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 1618653647}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0577f08d5d58349568806fe084c4ff56, type: 3}
   m_Name: 
