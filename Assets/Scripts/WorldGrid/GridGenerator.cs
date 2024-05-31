@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace WorldGrid
@@ -14,7 +13,7 @@ namespace WorldGrid
         [SerializeField] private bool generate;
         [SerializeField] private Material pathMaterial;
         [SerializeField] private Material availableMaterial;
-        [SerializeField] private List<Vector2> pathTileCoordinates;
+        [SerializeField] private PathData pathData;
 
         private void Start()
         {
@@ -27,18 +26,18 @@ namespace WorldGrid
                         GameObject tile = Instantiate(gridTile, new Vector3(i, j, 0), Quaternion.identity, transform);
                         tile.name = $"GridTile({i},{j})";
 
-                        for (var k = 0; k < pathTileCoordinates.Count; k++)
+                        for (var k = 0; k < pathData.PathCoordinates.Count; k++)
                         {
                             var currentPathTile = new Vector2(i, j);
-                            if (pathTileCoordinates[k] == currentPathTile)
+                            if (pathData.PathCoordinates[k] == currentPathTile)
                             {
                                 tile.AddComponent<PathTile>();
                                 tile.GetComponent<SpriteRenderer>().material = pathMaterial;
                             }
-                            CheckNeighbourTiles(pathTileCoordinates[k] + new Vector2(-1, 0), currentPathTile, tile);
-                            CheckNeighbourTiles(pathTileCoordinates[k] + new Vector2(+1, 0), currentPathTile, tile);
-                            CheckNeighbourTiles(pathTileCoordinates[k] + new Vector2(0, -1), currentPathTile, tile);
-                            CheckNeighbourTiles(pathTileCoordinates[k] + new Vector2(0, +1), currentPathTile, tile);
+                            CheckNeighbourTiles(pathData.PathCoordinates[k] + new Vector2(-1, 0), currentPathTile, tile);
+                            CheckNeighbourTiles(pathData.PathCoordinates[k] + new Vector2(+1, 0), currentPathTile, tile);
+                            CheckNeighbourTiles(pathData.PathCoordinates[k] + new Vector2(0, -1), currentPathTile, tile);
+                            CheckNeighbourTiles(pathData.PathCoordinates[k] + new Vector2(0, +1), currentPathTile, tile);
                         }
                     }
                 }
@@ -49,7 +48,7 @@ namespace WorldGrid
         {
             if (pathTileToCheck == currentPathTile)
             {
-                if (!pathTileCoordinates.Contains(pathTileToCheck))
+                if (!pathData.PathCoordinates.Contains(pathTileToCheck))
                 {
                     tile.AddComponent<PlaceableTile>();
                     tile.GetComponent<SpriteRenderer>().material = availableMaterial;

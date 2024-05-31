@@ -264,6 +264,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1128606038724778941, guid: 00d7ff7b3a199db47b8ecdd6e68d6da0, type: 3}
+      propertyPath: pathData
+      value: 
+      objectReference: {fileID: 11400000, guid: 45a2ad084e612414ea186eb029b8ab38, type: 2}
     - target: {fileID: 2463612401833687487, guid: 00d7ff7b3a199db47b8ecdd6e68d6da0, type: 3}
       propertyPath: m_Name
       value: LevelHolder
