@@ -31,7 +31,7 @@ namespace Cannon
             Rotate(startSlope);
         }
         
-        // Rotate the barrel based on the value of _a
+        // Rotate the barrel based on the value of slope
         private void Rotate(float slope)
         {
             var newAngle = GetAngle(slope);

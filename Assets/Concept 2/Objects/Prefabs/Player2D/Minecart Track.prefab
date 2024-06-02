@@ -188,7 +188,19 @@ MonoBehaviour:
   maxTrackLenght: 10
   onMinecartTrackplaced:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: b9476d845e80f004191e0d0025cf1d27, type: 2}
+        m_TargetAssemblyTypeName: Events.GameEvents.GameEvent, Assembly-CSharp
+        m_MethodName: Invoke
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &6189279274175488791
 GameObject:
   m_ObjectHideFlags: 0
