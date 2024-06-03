@@ -1,7 +1,7 @@
 using System.Collections;
 using Events.GameEvents;
 using Events.GameEvents.Typed;
-using Unity.Cinemachine;
+using Cinemachine;
 using UnityEngine;
 
 namespace Camera
@@ -22,9 +22,9 @@ namespace Camera
 
         private void Awake()
         {
-            projectileCamera.Priority.Value = LowPriority;
-            showLevelCamera.Priority.Value = LowPriority;
-            normalViewCamera.Priority.Value = LowPriority;
+            projectileCamera.Priority = LowPriority;
+            showLevelCamera.Priority = LowPriority;
+            normalViewCamera.Priority = LowPriority;
         }
 
         private void OnEnable()
@@ -54,7 +54,7 @@ namespace Camera
         /// </summary>
         public void ShowLevel()
         {
-            showLevelCamera.Priority.Value = HighPriority;
+            showLevelCamera.Priority = HighPriority;
 
             if (_ammoDepleted)
                 return;
@@ -67,7 +67,7 @@ namespace Camera
         /// </summary>
         private void CannonView()
         {
-            normalViewCamera.Priority.Value = HighPriority;
+            normalViewCamera.Priority = HighPriority;
         }
 
         /// <summary>
@@ -75,19 +75,19 @@ namespace Camera
         /// </summary>
         public void FollowGameObject(GameObject objectToFollow)
         {
-            normalViewCamera.Priority.Value = LowPriority;
+            normalViewCamera.Priority = LowPriority;
 
             // If the object to follow is null, then we should go back to the level view
             if (objectToFollow == null)
             {
-                projectileCamera.Priority.Value = LowPriority;
+                projectileCamera.Priority = LowPriority;
                 projectileCamera.Follow = null;
                 ShowLevel();
                 return;
             }
 
             // Otherwise, we should follow the object
-            projectileCamera.Priority.Value = HighPriority;
+            projectileCamera.Priority = HighPriority;
             projectileCamera.Follow = objectToFollow.transform;
         }
 
