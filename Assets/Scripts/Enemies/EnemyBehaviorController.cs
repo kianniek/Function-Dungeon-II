@@ -1,60 +1,85 @@
 using System.Collections;
-using System.Collections.Generic;
 using Health;
 using UnityEngine;
 using WorldGrid;
 
-public class EnemyBehaviorController : MonoBehaviour
+namespace Enemies
 {
-    [SerializeField] private PathData pathData;
-    [SerializeField] private int movementSpeed;
-    [SerializeField] private int damage;
-    [SerializeField] private int attackSpeed;
-
-    private float _enemyTowerRadius = 1f;
-    private int _currentTargetIndex;
-
-    private void Start()
+    public class EnemyBehaviorController : MonoBehaviour
     {
-        transform.position = pathData.PathCoordinates[0];
-    }
+        [SerializeField] private PathData pathData;
+        [SerializeField] private int movementSpeed;
+        [SerializeField] private int damage;
+        [SerializeField] private int attackSpeed;
 
-    private void FixedUpdate()
-    {
-        //Code for moving along path
-        Vector3 targetPosition = pathData.PathCoordinates[_currentTargetIndex];
-        transform.position = Vector3.MoveTowards(transform.position, pathData.PathCoordinates[_currentTargetIndex], movementSpeed * Time.deltaTime);
+        private float _enemyTowerRadius = 1f;
+        private int _currentTargetIndex;
+        private bool _isAttacking;
+        private Vector3 _targetPosition;
 
-        if (Vector3.Distance(transform.position, targetPosition) < 0.01f && _currentTargetIndex != pathData.PathCoordinates.Count - 1)
+        private void Start()
         {
+            transform.position = pathData.PathCoordinates[0];
+        }
+
+        /// <summary>
+        /// Moves enemy and checks if enemy is on next waypoint. If the enemy is on the waypoint check for nearby towers and add an index if there are no towers
+        /// </summary>
+        private void FixedUpdate()
+        {
+            _targetPosition = pathData.PathCoordinates[_currentTargetIndex];
+            transform.position = Vector3.MoveTowards(transform.position, pathData.PathCoordinates[_currentTargetIndex], movementSpeed * Time.deltaTime);
+
+            if (Vector3.Distance(transform.position, _targetPosition) > 0.01f || _currentTargetIndex == pathData.PathCoordinates.Count - 1)
+                return;
+
             if (ClosestTower() != null)
             {
+                if (_isAttacking)
+                    return;
+
                 StartCoroutine(AttackCoroutine(ClosestTower()));
-                return;
             }
             else
             {
                 _currentTargetIndex = _currentTargetIndex + 1;
             }
-        }
-    }
 
-    private Damageable ClosestTower()
-    {
-        Collider[] hits = Physics.OverlapSphere(transform.position, _enemyTowerRadius);
-        foreach (Collider hit in hits)
+        }
+
+        /// <summary>
+        /// Find closest tower for enemy
+        /// </summary>
+        /// <returns>Closest tower for enemy</returns>
+        private Damageable ClosestTower()
         {
-            if (!hit.GetComponent<EnemyBehaviorController>())
+            Collider[] hits = Physics.OverlapSphere(transform.position, _enemyTowerRadius);
+            foreach (Collider hit in hits)
             {
-                return hit.gameObject.GetComponent<Damageable>();
+                //Filter enemies (and possibly later more) out
+                if (!hit.GetComponent<EnemyBehaviorController>())
+                {
+                    return hit.gameObject.GetComponent<Damageable>();
+                }
+            }
+            return null;
+        }
+
+        /// <summary>
+        /// Handles enemy attack and dealing damage to a tower
+        /// </summary>
+        /// <param name="tower">Tower to damage</param>
+        private IEnumerator AttackCoroutine(Damageable tower)
+        {
+            _isAttacking = true;
+            while (ClosestTower() == tower)
+            {
+                yield return new WaitForSeconds(attackSpeed);
+                tower.Health -= damage;
+                _isAttacking = false;
+                Debug.Log(tower.Health);
+                break;
             }
         }
-        return null;
-    }
-    private IEnumerator AttackCoroutine(Damageable tower)
-    {
-        Debug.Log(tower.gameObject.name);
-        yield return new WaitForSeconds(attackSpeed);
-        tower.Health -= damage;
     }
 }
