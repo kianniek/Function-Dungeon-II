@@ -641,7 +641,6 @@ GameObject:
   - component: {fileID: 1236267731}
   - component: {fileID: 1236267730}
   - component: {fileID: 1236267729}
-  - component: {fileID: 1236267728}
   - component: {fileID: 1236267727}
   - component: {fileID: 1236267733}
   m_Layer: 0
@@ -671,20 +670,6 @@ MonoBehaviour:
   onDamageEvent:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &1236267728
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1236267726}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 65b5af45ad4049641b0af97a045ea92c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 20
-  attackSpeed: 1
 --- !u!65 &1236267729
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -787,6 +772,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pathData: {fileID: 11400000, guid: d836a2889ec4107418d00a4bdf0d0452, type: 2}
   movementSpeed: 2
+  damage: 20
+  attackSpeed: 1
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
