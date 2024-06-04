@@ -8,6 +8,9 @@ namespace Camera
 {
     public class CameraHandler : MonoBehaviour
     {
+        private const int LowPriority = 10;
+        private const int HighPriority = 20;
+        
         [SerializeField] private CinemachineVirtualCamera showLevelCamera;
         [SerializeField] private CinemachineVirtualCamera normalViewCamera;
         [SerializeField] private CinemachineVirtualCamera projectileCamera;
@@ -15,11 +18,9 @@ namespace Camera
 
         [SerializeField] private GameEvent onAmmoDepleted;
         [SerializeField] private GameObjectGameEvent onCameraFollowGameObject;
+        
         private bool _ammoDepleted;
-
-        private const int LowPriority = 10;
-        private const int HighPriority = 20;
-
+        
         private void Awake()
         {
             projectileCamera.Priority.Value = LowPriority;
@@ -78,11 +79,13 @@ namespace Camera
             normalViewCamera.Priority.Value = LowPriority;
 
             // If the object to follow is null, then we should go back to the level view
-            if (objectToFollow == null)
+            if (!objectToFollow)
             {
                 projectileCamera.Priority.Value = LowPriority;
                 projectileCamera.Follow = null;
+                
                 ShowLevel();
+                
                 return;
             }
 
@@ -94,6 +97,7 @@ namespace Camera
         private IEnumerator SwitchToCannonView()
         {
             yield return new WaitForSeconds(timeBetweenLevelAndNormalView);
+            
             CannonView();
         }
     }

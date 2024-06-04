@@ -5,7 +5,7 @@ namespace Crafter
 {
     public class LineToText : MonoBehaviour
     {
-        private const float _zPosition = -0.5f;
+        private const float ZPosition = -0.5f;
         
         [SerializeField] private LineRenderer lineToFollow;
         [SerializeField] private int indexOfPointToFollow = 2;
@@ -32,7 +32,7 @@ namespace Crafter
             transform.position = new Vector3(
                 lineToFollow.GetPosition(indexOfPointToFollow).x, 
                 lineToFollow.GetPosition(indexOfPointToFollow).y + _yPositionOffset, 
-                _zPosition
+                ZPosition
             );
         }
     }
