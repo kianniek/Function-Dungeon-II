@@ -8,8 +8,10 @@ namespace WorldGrid
     public class GridGenerator : MonoBehaviour
     {
         [SerializeField] private GameObject gridTile;
-        [SerializeField] private int xSize = 20;
-        [SerializeField] private int ySize = 20;
+        [SerializeField] private int xTileSize = 1;
+        [SerializeField] private int yTileSize = 1;
+        [SerializeField] private int xGridSize = 20;
+        [SerializeField] private int yGridSize = 20;
         [SerializeField] private Material pathMaterial;
         [SerializeField] private Material availableMaterial;
         [SerializeField] private PathData pathData;
@@ -18,16 +20,17 @@ namespace WorldGrid
 
         private void Start()
         {
-            for (var i = 0; i < xSize; i++)
+            for (var i = 0; i < xGridSize; i += xTileSize)
             {
-                for (var j = 0; j < ySize; j++)
+                for (var j = 0; j < yGridSize; j += yTileSize)
                 {
                     GameObject tile = Instantiate(gridTile, new Vector3(i, j, 0), Quaternion.identity, transform);
                     tile.name = $"GridTile({i},{j})";
+                    var currentTile = new Vector2(i, j);
 
                     for (var k = 0; k < pathData.PathCoordinates.Count; k++)
                     {
-                        var currentTile = new Vector2(i, j);
+
                         if (pathData.PathCoordinates[k] == currentTile)
                         {
                             tile.AddComponent<PathTile>();
@@ -51,13 +54,10 @@ namespace WorldGrid
         /// <param name="tile">The current path tile gameobject</param>
         private void IsPlaceableTile(Vector2 pathTileToCheck, Vector2 currentPathTile, GameObject tile)
         {
-            if (pathTileToCheck == currentPathTile)
+            if (pathTileToCheck == currentPathTile && !pathData.PathCoordinates.Contains(pathTileToCheck))
             {
-                if (!pathData.PathCoordinates.Contains(pathTileToCheck))
-                {
-                    tile.AddComponent<PlaceableTile>();
-                    tile.GetComponent<SpriteRenderer>().material = availableMaterial;
-                }
+                tile.AddComponent<PlaceableTile>();
+                tile.GetComponent<SpriteRenderer>().material = availableMaterial;
             }
         }
     }
