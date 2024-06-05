@@ -185,8 +185,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   leftTrackCheck: {fileID: 3851762360410559134}
   rightTrackCheck: {fileID: 597343802249636784}
-  _leftMinecartTrack: {fileID: 0}
-  _rightMinecartTrack: {fileID: 0}
   maxTrackLenght: 10
   onMinecartTrackplaced:
     m_PersistentCalls:
@@ -216,7 +214,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c413f0450e04fe44a01366160dbe93a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  barrelRotationPivot: {fileID: 5935489581430677191}
+  rotationPivot: {fileID: 5935489581430677191}
   startSlope: 0
   onAngleChange:
     m_PersistentCalls:
