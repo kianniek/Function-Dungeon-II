@@ -57,8 +57,7 @@ namespace LinearFunction
         /// <returns>The angle in degrees of the linear function relative to the x-axis.</returns>
         public static float GetAngleOfFunction(float slope)
         {
-            var angleInRadians = Mathf.Atan(slope);
-            return angleInRadians * Mathf.Rad2Deg;
+            return Mathf.Atan(slope) * Mathf.Rad2Deg;
         }
     }
 }

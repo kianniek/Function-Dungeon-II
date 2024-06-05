@@ -1,3 +1,4 @@
+using Extensions;
 using UnityEngine;
 
 namespace Crafter
@@ -6,9 +7,7 @@ namespace Crafter
     {
         [SerializeField] private FunctionLineController line1;
         [SerializeField] private FunctionLineController line2;
-
-        private Vector2 _intersection;
-
+        
         private float _a1;
         private float _b1;
         
@@ -18,8 +17,8 @@ namespace Crafter
         /// <summary>
         /// Gets the correct interception point for line 1 and 2.
         /// </summary>
-        public Vector2 Intersection => _intersection;
-
+        public Vector2 Intersection { get; private set; }
+        
         private void Start()
         {
             _a1 = line1.A;
@@ -28,7 +27,7 @@ namespace Crafter
             _a2 = line2.A;
             _b2 = line2.transform.position.y;
 
-            _intersection = Vector2Extension.FindIntersection(_a1, _b1, _a2, _b2);
+            Intersection = Vector2Extension.FindIntersection(_a1, _b1, _a2, _b2);
         }
     }
 }

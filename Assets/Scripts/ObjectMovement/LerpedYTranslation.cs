@@ -9,7 +9,7 @@ namespace Cannon
     public class LerpedYTranslation : MonoBehaviour
     {
         [SerializeField] private float maxHeight = 10f; // Maximum height the platform can reach.
-        [SerializeField] private float minHeight = 0f; // Minimum height the platform can descend to.
+        [SerializeField] private float minHeight; // Minimum height the platform can descend to.
         [SerializeField] private float movementSmoothing = 5f; // Smoothing factor for the platform movement.
 
         [SerializeField] private UnityEvent onMovingUp = new (); // Event invoked when the platform is moving up.

@@ -88,9 +88,10 @@ namespace Progression.Scoring
             
             try
             {
-                var gradingSystem = gradingSettings.Find(entry => entry.LevelName == activeSceneName).GradingSystem;
-                
-                CurrentGrade = gradingSystem.CalculateGrade(CurrentScore);
+                CurrentGrade = gradingSettings
+                    .Find(entry => entry.LevelName == activeSceneName)
+                    .GradingSystem
+                    .CalculateGrade(CurrentScore);
                 
                 onGradeChanged?.Invoke(CurrentGrade);
                 

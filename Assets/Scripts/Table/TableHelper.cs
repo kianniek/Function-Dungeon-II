@@ -2,21 +2,24 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public static class TableHelper
+namespace Table
 {
-    /// <summary>
-    /// Generates a list of random indices. With a given amount of indices to return and the length of the array.
-    /// </summary>
-    /// <param name="amountOfIndicesToReturn">Number of random indices to generate.</param>
-    /// <param name="lengthOfArray">Length of the array to generate indices for.</param>
-    /// <returns>A list of random indices.</returns>
-    public static IEnumerable<int> GenerateRandomIndices(int amountOfIndicesToReturn, int lengthOfArray)
+    public static class TableHelper
     {
-        if (amountOfIndicesToReturn > lengthOfArray)
+        /// <summary>
+        /// Generates a list of random indices. With a given amount of indices to return and the length of the array.
+        /// </summary>
+        /// <param name="amountOfIndicesToReturn">Number of random indices to generate.</param>
+        /// <param name="lengthOfArray">Length of the array to generate indices for.</param>
+        /// <returns>A list of random indices.</returns>
+        public static IEnumerable<int> GenerateRandomIndices(int amountOfIndicesToReturn, int lengthOfArray)
         {
-            Debug.LogWarning("The amount of indices to return cannot be greater than the length of the array.");
+            if (amountOfIndicesToReturn > lengthOfArray)
+            {
+                Debug.LogWarning("The amount of indices to return cannot be greater than the length of the array.");
+            }
+            
+            return Enumerable.Range(0, lengthOfArray).OrderBy(x => Random.Range(0, lengthOfArray)).Take(amountOfIndicesToReturn);
         }
-
-        return Enumerable.Range(0, lengthOfArray).OrderBy(x => Random.Range(0, lengthOfArray)).Take(amountOfIndicesToReturn);
     }
 }
