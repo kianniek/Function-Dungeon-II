@@ -9,7 +9,6 @@
     {
         [SerializeField] private InventorySystem playerInventory;
         
-        
         /// <summary>
         /// Adds a material to the player's inventory.
         /// </summary>

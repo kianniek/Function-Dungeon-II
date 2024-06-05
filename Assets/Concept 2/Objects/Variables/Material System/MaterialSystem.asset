@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f80a0ff695ad454186bf14eeb4ef0b4a, type: 3}
   m_Name: MaterialSystem
   m_EditorClassIdentifier: 
-  playerInventory: {fileID: 0}
+  playerInventory: {fileID: 11400000, guid: 7a32fc7c3e4c9f84f9f34db23259dfd7, type: 2}

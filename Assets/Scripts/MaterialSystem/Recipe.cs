@@ -23,7 +23,7 @@ namespace MaterialSystem
             
             foreach (var material in materials)
             {
-                details.Add(material.material.MaterialName , material.amount);
+                details.Add(material.material.ItemName , material.amount);
             }
             
             return details;

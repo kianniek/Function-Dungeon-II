@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 324264cd1c90438e892423ed42a499f3, type: 3}
   m_Name: InventorySystem
   m_EditorClassIdentifier: 
-  materials: []
+  materials:
+  - {fileID: 11400000, guid: 4116603fcd2cf7c438c356e189f1c652, type: 2}
   ores: []
   onOreCollected: {fileID: 11400000, guid: 900940ece18f1a543ba90cbb22152e42, type: 2}
   onOreUsed: {fileID: 11400000, guid: b568c53db098e88488f2e3b54ddeb9d3, type: 2}
