@@ -4,6 +4,5 @@ namespace WorldGrid
 {
     public class PathTile : MonoBehaviour
     {
-
     }
 }

@@ -2,7 +2,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace WorldGrid
-{
+{  
+    /// <summary>
+    /// Holds griddata and marks path and placeable tiles
+    /// </summary>
     [CreateAssetMenu(fileName = "GridData", menuName = "WorldGrid/GridData", order = 0)]
     public class GridData : ScriptableObject
     {
