@@ -1,9 +1,9 @@
-using System;
 using System.Collections.Generic;
-using ButtonExtended;
 using Events.GameEvents.Typed;
+using Extensions;
 using LinearFunction;
 using TMPro;
+using UI;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
@@ -12,6 +12,11 @@ namespace Table
 {
     public class TableController : MonoBehaviour
     {
+        private const string PlaceholderText = "N";
+        
+        private readonly Dictionary<Button, TMP_Text> _tableXDictionary = new();
+        private readonly Dictionary<ExtendedButton, TMP_Text> _tableYDictionary = new();
+        
         [Header("Data")]
         [SerializeField] private LinearFunctionData linearFunctionData;
         [SerializeField] private List<Button> tableXButtons;
@@ -29,12 +34,7 @@ namespace Table
 
         // GetColumnCount variable that returns the count of tableXButtons but can 't be set.
         public int GetColumnCount => tableXButtons.Count;
-
-        private Dictionary<Button, TMP_Text> _tableXDictionary;
-        private Dictionary<ExtendedButton, TMP_Text> _tableYDictionary;
-
-        private const string PlaceholderText = "N";
-
+        
         private void OnEnable()
         {
             onInputChanged.AddListener(OnInputChanged);
@@ -49,8 +49,8 @@ namespace Table
 
         private void Awake()
         {
-            _tableXDictionary = new Dictionary<Button, TMP_Text>();
-            _tableYDictionary = new Dictionary<ExtendedButton, TMP_Text>();
+            _tableXDictionary.Clear();
+            _tableYDictionary.Clear();
 
             foreach (var button in tableXButtons)
             {
@@ -65,11 +65,8 @@ namespace Table
 
         private void Start()
         {
-            if (tableXButtons.Count != tableYButtons.Count)
-            {
+            if (tableXButtons.Count != tableYButtons.Count) 
                 Debug.LogError("The two tables are not the same size");
-                return;
-            }
         }
 
         public void OnButtonClicked(ExtendedButton extendedButton)
@@ -79,11 +76,11 @@ namespace Table
 
         public void OnInputChanged(float value)
         {
-            if (currentSelectedButton == null)
+            if (!currentSelectedButton)
                 return;
 
             currentSelectedButton.ButtonValue = value;
-            _tableYDictionary[currentSelectedButton].text = value.ToString();
+            _tableYDictionary[currentSelectedButton].text = $"{value}";
         }
 
         public int GetXValue(int index)
@@ -94,7 +91,9 @@ namespace Table
         public void SetYValue(int index, float value)
         {
             var button = tableYButtons[index];
-            _tableYDictionary[button].text = value.ToString();
+            
+            _tableYDictionary[button].text = $"{value}";
+            
             button.ButtonValue = value;
         }
 
@@ -109,20 +108,27 @@ namespace Table
         public float[] GetYValues()
         {
             var values = new float[tableYButtons.Count];
+            
             for (var i = 0; i < tableYButtons.Count; i++)
             {
                 values[i] = tableYButtons[i].ButtonValue;
             }
+            
             return values;
         }
 
         public float[] GetXValues()
         {
             var values = new float[tableXButtons.Count];
+            
             for (var i = 0; i < tableXButtons.Count; i++)
             {
-                values[i] = MathfExtentions.RoundValue(float.Parse(_tableXDictionary[tableXButtons[i]].text), linearFunctionData.AmountOfDecimals);
+                values[i] = MathfExtentions.RoundValue(
+                    float.Parse(_tableXDictionary[tableXButtons[i]].text), 
+                    linearFunctionData.AmountOfDecimals
+                );
             }
+            
             return values;
         }
 
@@ -139,12 +145,13 @@ namespace Table
 
                 var rawCorrectValue = LinearFunctionHelper.GetY(xValue, linearFunctionData.Slope, linearFunctionData.YIntercept);
                 var correctValue = MathfExtentions.RoundValue(rawCorrectValue, linearFunctionData.AmountOfDecimals);
-
-                if (yValue < correctValue - checkMargin || yValue > correctValue + checkMargin)
-                {
-                    correct = false;
-                    break;
-                }
+                
+                if (!(yValue < correctValue - checkMargin) && !(yValue > correctValue + checkMargin)) 
+                    continue;
+                
+                correct = false;
+                
+                break;
             }
 
             if (correct)

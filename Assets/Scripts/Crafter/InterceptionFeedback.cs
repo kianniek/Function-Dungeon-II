@@ -1,3 +1,4 @@
+using Extensions;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
@@ -23,8 +24,8 @@ namespace Crafter
         public void OnConfirmButtonClicked()
         {
             var answer = new Vector2(
-                float.Parse(StringManipulation.CleanUpDecimalOnlyString(xAnswer.text)), 
-                float.Parse(StringManipulation.CleanUpDecimalOnlyString(yAnswer.text))
+                float.Parse(StringExtensions.CleanUpDecimalOnlyString(xAnswer.text)), 
+                float.Parse(StringExtensions.CleanUpDecimalOnlyString(yAnswer.text))
             );
             
             if (answer == interceptionCalculator.Intersection)
