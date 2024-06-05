@@ -1,5 +1,5 @@
 using System;
-using MaterialSystem;
+using UI;
 using UnityEngine;
 using UnityEngine.Events;
 using Object = UnityEngine.Object;
@@ -111,10 +111,10 @@ namespace Events
     }
 
     /// <summary>
-    /// One argument <see cref="ButtonExtended.ExtendedButton"/>-<see cref="UnityEvent"/>, serializable to the inspector.
+    /// One argument <see cref="ExtendedButton"/>-<see cref="UnityEvent"/>, serializable to the inspector.
     /// </summary>
     [Serializable]
-    public class ExtendedButtonEvent : UnityEvent<ButtonExtended.ExtendedButton>
+    public class ExtendedButtonEvent : UnityEvent<ExtendedButton>
     {
     }
     
