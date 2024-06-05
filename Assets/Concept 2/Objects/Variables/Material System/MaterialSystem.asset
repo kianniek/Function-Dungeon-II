@@ -9,11 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1f61ea748577428f967bc0b0f1af2561, type: 3}
-  m_Name: Iron Material
+  m_Script: {fileID: 11500000, guid: f80a0ff695ad454186bf14eeb4ef0b4a, type: 3}
+  m_Name: MaterialSystem
   m_EditorClassIdentifier: 
-  itemName: Iron
-  icon: {fileID: 0}
-  amountCollected: 0
-  amountUsed: 0
-  materialName: Iron
+  playerInventory: {fileID: 0}
