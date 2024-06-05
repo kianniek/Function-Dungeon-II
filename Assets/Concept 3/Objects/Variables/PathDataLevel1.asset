@@ -54,3 +54,5 @@ MonoBehaviour:
   - {x: 17, y: 5}
   - {x: 18, y: 5}
   - {x: 19, y: 5}
+  xGridSize: 20
+  yGridSize: 20
