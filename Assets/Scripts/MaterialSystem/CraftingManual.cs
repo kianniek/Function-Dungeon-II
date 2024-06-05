@@ -1,4 +1,6 @@
-﻿using UnityEngine.Events;
+﻿using TMPro;
+using UI;
+using UnityEngine.Events;
 
 namespace MaterialSystem
 {
@@ -13,16 +15,11 @@ namespace MaterialSystem
         [Tooltip("Reference to the material system")]
         [SerializeField] private MaterialSystem materialSystem;
         
-        [Tooltip("Panel to display the recipe")]
-        [SerializeField] private GameObject recipePanel;
-        
-        [Tooltip("Text component to display the recipe details")]
-        [SerializeField] private Text recipeText;
         
         [Tooltip("Button to confirm the crafting choice")]
         [SerializeField] private Button craftButton;
         
-        private Recipe _selectedRecipe;
+        [SerializeField] private Recipe _selectedRecipe;
         
         public void Awake()
         {
@@ -33,8 +30,6 @@ namespace MaterialSystem
         public void DisplayRecipe(Recipe recipe)
         {
             _selectedRecipe = recipe;
-            recipeText.text = recipe.GetRecipeDetails();
-            recipePanel.SetActive(true);
             UpdateCraftButton();
         }
         

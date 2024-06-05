@@ -28,5 +28,15 @@ namespace UI
         {
             _text.text = string.Format(textFormat, value);
         }
+        
+        public void SetValue(string value, string value1, bool newLine = false)
+        {
+            if (newLine)
+            {
+                _text.text += "\n";
+            }
+            _text.text = string.Format(textFormat, value, value1);
+
+        }
     }
 }

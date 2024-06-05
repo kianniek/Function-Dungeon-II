@@ -5,7 +5,8 @@ namespace MaterialSystem
     using System.Collections.Generic;
     using UnityEngine;
     
-    public class InventorySystem : MonoBehaviour
+    [CreateAssetMenu(fileName = "NewInventorySystem", menuName = "Inventory/InventorySystem")]
+    public class InventorySystem : ScriptableObject
     {
         [SerializeField] private List<Material> materials = new List<Material>();
         [SerializeField] private List<Ore> ores = new List<Ore>();
@@ -13,9 +14,11 @@ namespace MaterialSystem
         [SerializeField] private ItemGameEvent onOreCollected;
         [SerializeField] private ItemGameEvent onOreUsed;
         
-        
         [SerializeField] private ItemGameEvent onMaterialCollected;
         [SerializeField] private ItemGameEvent onMaterialUsed;
+        
+        public List<Material> Materials => materials;
+        public List<Ore> Ores => ores;
         
         // Method to add a new material type
         public void AddNewMaterial(Material material)

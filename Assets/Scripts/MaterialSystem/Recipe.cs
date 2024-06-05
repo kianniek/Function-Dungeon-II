@@ -9,20 +9,21 @@ namespace MaterialSystem
         [SerializeField] private string itemName;
         [SerializeField] private List<MaterialRequirement> materials;
         
-        //private set for materials
-        public List<MaterialRequirement> Materials
-        {
-            get;
-            private set;
-        }
+        public List<MaterialRequirement> Materials => materials;
         
-        public string GetRecipeDetails()
+        public string RecipeName => itemName;
+    
+        /// <summary>
+        /// Returns the recipe details
+        /// </summary>
+        /// <returns></returns>
+        public Dictionary<string, int> GetRecipeDetails()
         {
-            var details = $"Recipe for {itemName}:\n";
+            var details = new Dictionary<string, int>();
             
             foreach (var material in materials)
             {
-                details += $"{material.material.MaterialName}: {material.amount}\n";
+                details.Add(material.material.MaterialName , material.amount);
             }
             
             return details;

@@ -6,12 +6,8 @@
     public class Material : Item
     {
         [SerializeField] private string materialName;
+        public string MaterialName => materialName;
         
-        public string MaterialName
-        {
-            get;
-            private set;
-        }
     }
 
 }
