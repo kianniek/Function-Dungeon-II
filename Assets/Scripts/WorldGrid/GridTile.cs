@@ -1,6 +1,9 @@
 using UnityEngine;
 
-public class GridTile : MonoBehaviour
+namespace WorldGrid
 {
+    public class GridTile : MonoBehaviour
+    {
 
+    }
 }

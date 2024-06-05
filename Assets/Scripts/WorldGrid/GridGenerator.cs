@@ -7,7 +7,7 @@ namespace WorldGrid
     /// </summary>
     public class GridGenerator : MonoBehaviour
     {
-        [SerializeField] private GridTile grassGridTile;
+        [SerializeField] private GridTile gridTile;
         [SerializeField] private PlaceableTile placeableGridTile;
         [SerializeField] private PathTile pathGridTile;
         [SerializeField] private PathData pathData;
@@ -16,7 +16,7 @@ namespace WorldGrid
 
         private void Awake()
         {
-            _gridTileTransform = grassGridTile.transform;
+            _gridTileTransform = gridTile.transform;
         }
 
         private void Start()
@@ -28,7 +28,7 @@ namespace WorldGrid
                     switch (pathData.generatedGrid[i, j])
                     {
                         case (GridTileTypes.Empty):
-                            Instantiate(grassGridTile, new Vector3(i * _gridTileTransform.localScale.x, j * _gridTileTransform.localScale.y, 0), Quaternion.identity, transform);
+                            Instantiate(gridTile, new Vector3(i * _gridTileTransform.localScale.x, j * _gridTileTransform.localScale.y, 0), Quaternion.identity, transform);
                             break;
                         case (GridTileTypes.Placeable):
                             Instantiate(placeableGridTile, new Vector3(i * _gridTileTransform.localScale.x, j * _gridTileTransform.localScale.y, 0), Quaternion.identity, transform);

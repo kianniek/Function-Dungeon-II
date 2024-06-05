@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5143688515184653075}
   - component: {fileID: 1673266920155040351}
   m_Layer: 0
-  m_Name: GrassTile
+  m_Name: GridTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
