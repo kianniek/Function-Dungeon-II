@@ -3,7 +3,6 @@ using UnityEngine;
 
 namespace WorldGrid
 {
-    //TODO Algormname
     [CreateAssetMenu(fileName = "GridData", menuName = "WorldGrid/GridData", order = 0)]
     public class GridData : ScriptableObject
     {
