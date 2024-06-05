@@ -8,13 +8,16 @@ namespace Projectile
     [RequireComponent(typeof(Rigidbody2D))]
     public class ProjectileScript : MonoBehaviour
     {
+        // TODO: move apply damage to a separate script
         [Header("Damage Settings")]
         [SerializeField] private int baseDamage = 1;
         
+        // TODO: move force impact to a separate script
         [Header("Impact Settings")]
         [SerializeField] private int forceRadius = 5; 
         [SerializeField] private int forcePower = 10000;
         
+        // TODO: make this script purely for physics/shooting and move the rest to a separate script
         [Header("Physic settings")]
         [SerializeField, Expandable] private ProjectilePhysicsVariables physicsVariables;
         
