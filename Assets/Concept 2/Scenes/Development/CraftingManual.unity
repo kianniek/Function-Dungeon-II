@@ -1139,10 +1139,10 @@ RectTransform:
   - {fileID: 778163941}
   m_Father: {fileID: 1222620006}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 931.5, y: -96}
-  m_SizeDelta: {x: 1863, y: 192}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 192}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &794278719
 MonoBehaviour:
@@ -1255,7 +1255,7 @@ GameObject:
   - component: {fileID: 834493469}
   - component: {fileID: 834493468}
   m_Layer: 5
-  m_Name: Button
+  m_Name: CraftButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1324,7 +1324,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 834493469}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 406528913}
+        m_TargetAssemblyTypeName: SceneSwitcher, Assembly-CSharp
+        m_MethodName: SwitchScene
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &834493469
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1507,6 +1519,7 @@ MonoBehaviour:
         m_CallState: 2
   materialSystem: {fileID: 11400000, guid: 706262ed01ad9d243ba7d59a8473c546, type: 2}
   craftButton: {fileID: 834493468}
+  _selectedRecipe: {fileID: 0}
 --- !u!114 &1222620008
 MonoBehaviour:
   m_ObjectHideFlags: 0

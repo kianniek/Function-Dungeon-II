@@ -10,13 +10,13 @@ namespace MaterialSystem
     [RequireComponent(typeof(Button))]
     public class RecipeSelectionButton : MonoBehaviour
     {
-        
-        [SerializeField] private Recipe recipe; // The recipe this button represents
-        [SerializeField] private CraftingManual craftingManual; // Reference to the crafting manual
+        [Header("Crafting Manual & Recipe Reference")]
+        [SerializeField] private Recipe recipe;
+        [SerializeField] private CraftingManual craftingManual;
         
         [Header("Text Components")]
-        [SerializeField] private ResourceText recipeNameText; // Text component to display the recipe name
-        [SerializeField] private ResourceText recipeMaterialsText; // Text component to display the recipe materials
+        [SerializeField] private ResourceText recipeNameText;
+        [SerializeField] private ResourceText recipeMaterialsText;
         
         private void Awake()
         {

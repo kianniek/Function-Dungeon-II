@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace MaterialSystem
@@ -19,14 +20,7 @@ namespace MaterialSystem
         /// <returns></returns>
         public Dictionary<string, int> GetRecipeDetails()
         {
-            var details = new Dictionary<string, int>();
-            
-            foreach (var material in materials)
-            {
-                details.Add(material.material.ItemName , material.amount);
-            }
-            
-            return details;
+            return materials.ToDictionary(material => material.Material.ItemName, material => material.Amount);
         }
     }
 }

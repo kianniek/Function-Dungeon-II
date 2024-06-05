@@ -20,7 +20,10 @@ namespace MaterialSystem
         public List<Material> Materials => materials;
         public List<Ore> Ores => ores;
         
-        // Method to add a new material type
+        /// <summary>
+        /// Adds a new material to the inventory
+        /// </summary>
+        /// <param name="material">Material Object that needs to be added to the Inventory</param>
         public void AddNewMaterial(Material material)
         {
             if (!materials.Contains(material))
@@ -29,7 +32,10 @@ namespace MaterialSystem
             }
         }
         
-        // Method to add a new ore type
+        /// <summary>
+        /// Adds a new ore to the inventory
+        /// </summary>
+        /// <param name="ore">Ore Object that needs to be added to the Inventory</param>
         public void AddNewOre(Ore ore)
         {
             if (!ores.Contains(ore))
@@ -38,44 +44,60 @@ namespace MaterialSystem
             }
         }
         
-        // Method to collect materials
+        /// <summary>
+        /// Sets the material amount of an existing material
+        /// </summary>
+        /// <param name="material">Existing material that was collected</param>
+        /// <param name="amount">Amount of a material that has been collected</param>
         public void CollectMaterial(Material material, int amount)
         {
-            if (materials.Contains(material))
+            if (!materials.Contains(material))
             {
-                material.Collect(amount);
-                onMaterialCollected.Invoke(material);
+                AddNewMaterial(material);
             }
+            
+            material.Collect(amount);
+            onMaterialCollected.Invoke(material);
         }
         
-        // Method to use materials
+        /// <summary>
+        /// Removes the amount of material from the inventory
+        /// </summary>
+        /// <param name="material">Material to be consumed</param>
+        /// <param name="amount">Amount of the material to be subtracted</param>
         public void UseMaterial(Material material, int amount)
         {
-            if (materials.Contains(material))
-            {
-                material.Use(amount);
-                onMaterialUsed.Invoke(material);
-            }
+            if (!materials.Contains(material)) return;
+            material.Use(amount);
+            onMaterialUsed.Invoke(material);
         }
         
-        // Method to collect ores
+        /// <summary>
+        /// Collects the ore and adds its amount to the inventory
+        /// </summary>
+        /// <param name="ore">The type ore that is collected</param>
+        /// <param name="amount">The amount of the ore that is collected</param>
         public void CollectOre(Ore ore, int amount)
         {
-            if (ores.Contains(ore))
+            if (!ores.Contains(ore))
             {
-                ore.Collect(amount);
-                onOreCollected.Invoke(ore);
+                AddNewOre(ore);
             }
+            
+            ore.Collect(amount);
+            onOreCollected.Invoke(ore);
         }
         
-        // Method to use ores
+        /// <summary>
+        /// Removes the amount of ore from the inventory
+        /// </summary>
+        /// <param name="material">Ore to be consumed</param>
+        /// <param name="amount">Amount of the ore to be subtracted</param>
         public void UseOre(Ore ore, int amount)
         {
-            if (ores.Contains(ore))
-            {
-                ore.Use(amount);
-                onOreUsed.Invoke(ore);
-            }
+            if (!ores.Contains(ore)) return;
+            ore.Use(amount);
+            onOreUsed.Invoke(ore);
         }
     }
 }

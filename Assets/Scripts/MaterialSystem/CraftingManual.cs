@@ -21,12 +21,16 @@ namespace MaterialSystem
         
         [SerializeField] private Recipe _selectedRecipe;
         
-        public void Awake()
+        private void Awake()
         {
             // Set up the craft button listener
             craftButton.onClick.AddListener(OnCraftButtonClicked);
         }
         
+        /// <summary>
+        /// Displays the selected recipe in the crafting manual
+        /// </summary>
+        /// <param name="recipe">The Recipe that was selected</param>
         public void DisplayRecipe(Recipe recipe)
         {
             _selectedRecipe = recipe;

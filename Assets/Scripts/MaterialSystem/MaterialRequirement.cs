@@ -1,9 +1,14 @@
-﻿namespace MaterialSystem
+﻿using UnityEngine;
+
+namespace MaterialSystem
 {
     [System.Serializable]
     public class MaterialRequirement
     {
-        public Material material;
-        public int amount;
+        [SerializeField] private Material material;
+        [SerializeField] private int amount;
+        
+        public Material Material => material;
+        public int Amount => amount;
     }
 }

@@ -1,10 +1,9 @@
-﻿namespace MaterialSystem
+﻿using UnityEngine;
+
+namespace MaterialSystem
 {
-    using UnityEngine;
-    
     [CreateAssetMenu(fileName = "NewMaterial", menuName = "Crafting/Material")]
     public class Material : Item
     {
     }
-
 }
