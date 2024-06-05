@@ -3,9 +3,9 @@ using UnityEngine;
 
 namespace WorldGrid
 {
-    //TODO what algorithm
-    [CreateAssetMenu(fileName = "PathData", menuName = "WorldGrid/PathData", order = 0)]
-    public class PathData : ScriptableObject
+    //TODO Algormname
+    [CreateAssetMenu(fileName = "GridData", menuName = "WorldGrid/GridData", order = 0)]
+    public class GridData : ScriptableObject
     {
         private readonly Vector2Int[] directions = { Vector2Int.up, Vector2Int.down, Vector2Int.left, Vector2Int.right };
 
@@ -30,6 +30,9 @@ namespace WorldGrid
             MarkPlaceable();
         }
 
+        /// <summary>
+        /// Marks all path coordinates as path
+        /// </summary>
         private void MarkPaths()
         {
             for (var i = 0; i < xGridSize; i++)
@@ -44,6 +47,9 @@ namespace WorldGrid
             }
         }
 
+        /// <summary>
+        /// Marks cells around the paths (which arent paths) as placeable
+        /// </summary>
         private void MarkPlaceable()
         {
             foreach (var pathIndex in pathCoordinates)

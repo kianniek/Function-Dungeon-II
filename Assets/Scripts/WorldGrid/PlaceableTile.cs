@@ -4,7 +4,7 @@ namespace WorldGrid
 {
     public class PlaceableTile : MonoBehaviour
     {
-        //TODO event for has placed
+        //TODO event for tower has placed
         private bool _hasTower;
 
         public void OnTowerPlaced()

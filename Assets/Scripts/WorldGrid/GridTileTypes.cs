@@ -1,7 +1,9 @@
-//Does this need namespace?
-public enum GridTileTypes
+namespace WorldGrid
 {
-    Empty,
-    Placeable,
-    Path
+    public enum GridTileTypes
+    {
+        Empty,
+        Placeable,
+        Path
+    }
 }

@@ -132,6 +132,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1128606038724778941, guid: 00d7ff7b3a199db47b8ecdd6e68d6da0, type: 3}
+      propertyPath: gridData
+      value: 
+      objectReference: {fileID: 11400000, guid: d836a2889ec4107418d00a4bdf0d0452, type: 2}
+    - target: {fileID: 1128606038724778941, guid: 00d7ff7b3a199db47b8ecdd6e68d6da0, type: 3}
       propertyPath: pathData
       value: 
       objectReference: {fileID: 11400000, guid: d836a2889ec4107418d00a4bdf0d0452, type: 2}
