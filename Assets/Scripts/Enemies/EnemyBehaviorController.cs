@@ -77,7 +77,6 @@ namespace Enemies
                 yield return new WaitForSeconds(attackSpeed);
                 tower.Health -= damage;
                 _isAttacking = false;
-                Debug.Log(tower.Health);
                 break;
             }
         }
