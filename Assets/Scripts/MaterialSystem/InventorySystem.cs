@@ -1,13 +1,16 @@
 ﻿using Events.GameEvents.Typed;
+using System.Collections.Generic;
+using UnityEngine;
 
 namespace MaterialSystem
 {
-    using System.Collections.Generic;
-    using UnityEngine;
-    
+    /// <summary>
+    /// Inventory System that holds the materials and ores that are collected
+    /// </summary>
     [CreateAssetMenu(fileName = "NewInventorySystem", menuName = "Inventory/InventorySystem")]
     public class InventorySystem : ScriptableObject
     {
+        // List for materials and ores that can be pre-filled in the inspector
         [SerializeField] private List<Material> materials = new List<Material>();
         [SerializeField] private List<Ore> ores = new List<Ore>();
         
@@ -27,9 +30,7 @@ namespace MaterialSystem
         public void AddNewMaterial(Material material)
         {
             if (!materials.Contains(material))
-            {
                 materials.Add(material);
-            }
         }
         
         /// <summary>
@@ -39,9 +40,7 @@ namespace MaterialSystem
         public void AddNewOre(Ore ore)
         {
             if (!ores.Contains(ore))
-            {
                 ores.Add(ore);
-            }
         }
         
         /// <summary>
@@ -52,9 +51,7 @@ namespace MaterialSystem
         public void CollectMaterial(Material material, int amount)
         {
             if (!materials.Contains(material))
-            {
                 AddNewMaterial(material);
-            }
             
             material.Collect(amount);
             onMaterialCollected.Invoke(material);
@@ -67,7 +64,9 @@ namespace MaterialSystem
         /// <param name="amount">Amount of the material to be subtracted</param>
         public void UseMaterial(Material material, int amount)
         {
-            if (!materials.Contains(material)) return;
+            if (!materials.Contains(material)) 
+                return;
+            
             material.Use(amount);
             onMaterialUsed.Invoke(material);
         }
@@ -80,9 +79,7 @@ namespace MaterialSystem
         public void CollectOre(Ore ore, int amount)
         {
             if (!ores.Contains(ore))
-            {
                 AddNewOre(ore);
-            }
             
             ore.Collect(amount);
             onOreCollected.Invoke(ore);
@@ -95,7 +92,9 @@ namespace MaterialSystem
         /// <param name="amount">Amount of the ore to be subtracted</param>
         public void UseOre(Ore ore, int amount)
         {
-            if (!ores.Contains(ore)) return;
+            if (!ores.Contains(ore))
+                return;
+            
             ore.Use(amount);
             onOreUsed.Invoke(ore);
         }

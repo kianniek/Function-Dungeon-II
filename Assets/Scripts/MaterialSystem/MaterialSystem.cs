@@ -4,8 +4,9 @@ namespace MaterialSystem
 {
     using System.Collections.Generic;
     using UnityEngine;
-    
-    //scriptable object
+    /// <summary>
+    /// Material System that checks if the player has the required materials to craft an item.
+    /// </summary>
     [CreateAssetMenu(fileName = "MaterialEntry", menuName = "Material System/Material Entry", order = 0)]
     public class MaterialSystem : ScriptableObject
     {
@@ -18,16 +19,20 @@ namespace MaterialSystem
         /// <returns></returns>
         public bool HasRequiredMaterials(Recipe recipe)
         {
-            foreach (var req in recipe.Materials)
+            foreach (var req in recipe.RequiredMaterials)
             {
                 var hasMaterial = false;
                 foreach (var mat in inventory.Materials)
                 {
-                    if (mat != req.Material || mat.AmountCollected < req.Amount) continue;
+                    if (mat != req.Material || mat.AmountCollected < req.Amount) 
+                        continue;
+                    
                     hasMaterial = true;
                     break;
                 }
-                if (!hasMaterial) return false;
+                
+                if (!hasMaterial) 
+                    return false;
             }
             return true;
         }
@@ -43,9 +48,7 @@ namespace MaterialSystem
             foreach (var mat in inventory.Materials)
             {
                 if (mat == material && mat.AmountCollected >= amount)
-                {
                     return true;
-                }
             }
             return false;
         }

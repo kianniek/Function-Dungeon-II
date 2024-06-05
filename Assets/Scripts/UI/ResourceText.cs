@@ -24,11 +24,21 @@ namespace UI
             _text.text = string.Format(textFormat, value);
         }
         
+        /// <summary>
+        /// Set the value of the text
+        /// </summary>
+        /// <param name="value"></param>
         public void SetValue(string value)
         {
             _text.text = string.Format(textFormat, value);
         }
         
+        /// <summary>
+        /// Set the value of the text
+        /// </summary>
+        /// <param name="value"></param>
+        /// <param name="value1"></param>
+        /// <param name="newLine">Put a new line symbol at the end of the</param>
         public void SetValue(string value, string value1, bool newLine = false)
         {
             if (newLine)

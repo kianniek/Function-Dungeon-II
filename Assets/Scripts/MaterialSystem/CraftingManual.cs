@@ -7,6 +7,9 @@ namespace MaterialSystem
     using UnityEngine;
     using UnityEngine.UI;
     
+    /// <summary>
+    /// Crafting manual class that handles the crafting manual UI
+    /// </summary>
     public class CraftingManual : MonoBehaviour
     {        
         [Tooltip("Event to trigger when craft button is clicked")]

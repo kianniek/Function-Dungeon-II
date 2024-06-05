@@ -1,23 +1,26 @@
-using System.Collections;
-using System.Collections.Generic;
 using LinearFunction;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Serialization;
 
+/// <summary>
+/// Linear equation formula text class that displays the linear equation formula
+/// </summary>
 public class LinearEquationFormulaText : MonoBehaviour
 {
     [SerializeField] private LinearFunctionData linearFunctionData;
+    
     private const string TextFormat = "y = {0}x + {1}";
     private const string GenericTextFormat = "y = ax + b";
     
     private TMP_Text _text;
-    
     private string outputText;
     private float _slope;
     private float _yIntercept;
     private bool _useGenericTextFormat;
     
+    /// <summary>
+    /// Gets or sets the use generic text format
+    /// </summary>
     public bool UseGenericTextFormat
     {
         get => _useGenericTextFormat;

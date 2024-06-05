@@ -1,16 +1,23 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace MaterialSystem
 {
+    /// <summary>
+    /// Recipe class that holds the required materials for crafting an item
+    /// </summary>
     [CreateAssetMenu(fileName = "NewRecipe", menuName = "Crafting/Recipe")]
     public class Recipe : ScriptableObject
     {
         [SerializeField] private string itemName;
-        [SerializeField] private List<MaterialRequirement> materials;
+        [SerializeField] private List<MaterialRequirement> requiredMaterials;
         
-        public List<MaterialRequirement> Materials => materials;
+        /// <summary>
+        /// List of required materials
+        /// </summary>
+        public List<MaterialRequirement> RequiredMaterials => requiredMaterials;
         
         public string RecipeName => itemName;
     
@@ -20,7 +27,7 @@ namespace MaterialSystem
         /// <returns></returns>
         public Dictionary<string, int> GetRecipeDetails()
         {
-            return materials.ToDictionary(material => material.Material.ItemName, material => material.Amount);
+            return requiredMaterials.ToDictionary(material => material.Material.ItemName, material => material.Amount);
         }
     }
 }
