@@ -1,6 +1,4 @@
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using Cannon;
 using Events;
 using Events.GameEvents.Typed;
@@ -10,14 +8,15 @@ namespace MinecartTrack
 {
     public class MinecartRailController : MonoBehaviour
     {
+        [Header("Events")]
         [SerializeField] private GameObjectGameEvent onTrackPlaced;
         [SerializeField] private GameObjectGameEvent onTrackConfirmPlacement;
+
         [SerializeField] private FloatEvent changeSlope = new();
-        [SerializeField]  private FloatEvent changeHeight = new();
+        [SerializeField] private FloatEvent changeHeight = new();
 
-        [SerializeField] private List<MinecartTrack> _minecartTracks = new List<MinecartTrack>();
-        [SerializeField] private MinecartTrack _currentTrack;
-
+        private List<MinecartTrack> _minecartTracks = new List<MinecartTrack>();
+        private MinecartTrack _currentTrack;
 
         private void OnEnable()
         {
@@ -57,14 +56,22 @@ namespace MinecartTrack
             }
         }
 
+        /// <summary>
+        /// Gets called whenever the slope changes of the track
+        /// </summary>
+        /// <param name="angle">The angle of the change</param>
         public void OnChangeSlope(float angle)
         {
             changeSlope.Invoke(angle);
         }
 
-        public void OnChangeHeight(float heigth)
+        /// <summary>
+        /// Gets called whenever the slope changes of the track
+        /// </summary>
+        /// <param name="angle">The H of the change</param>
+        public void OnChangeHeight(float height)
         {
-            changeHeight.Invoke(heigth);
+            changeHeight.Invoke(height);
         }
     }
 }
