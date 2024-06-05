@@ -27,7 +27,7 @@
                     "name": "A",
                     "type": "Button",
                     "id": "efb04609-e603-42af-8834-72cb154f1e60",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -36,7 +36,7 @@
                     "name": "S",
                     "type": "Button",
                     "id": "c0fe3aee-6bb6-4450-b1d3-cc059b264c43",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -45,7 +45,7 @@
                     "name": "D",
                     "type": "Button",
                     "id": "9b4e6633-dd88-4c9e-a046-8a0fb48beef5",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -54,7 +54,7 @@
                     "name": "E",
                     "type": "Button",
                     "id": "2587b9fe-b468-43a0-bafe-66ec4358c04d",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -63,16 +63,16 @@
                     "name": "R",
                     "type": "Button",
                     "id": "b26d5a7e-fe98-43fc-b5d2-4d9d4cbfd18c",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": false
+                    "initialStateCheck": true
                 },
                 {
                     "name": "Spacebar",
                     "type": "Button",
                     "id": "546de7f5-ed3d-44e4-ac0f-e48b41ad407d",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false

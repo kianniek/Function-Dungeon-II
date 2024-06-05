@@ -30,5 +30,5 @@ EditorBuildSettings:
     path: Assets/Concept 2/Scenes/SurfaceWorldScene.unity
     guid: 6a5a8f296ef644e429c6e091dc03bc19
   m_configObjects:
-    com.unity.input.settings: {fileID: 11400000, guid: 5667568af948fca48af30598ec97ea4d, type: 2}
+    com.unity.input.settings: {fileID: 11400000, guid: bf90d5f94d8d74920bccc253210010ab, type: 2}
   m_UseUCBPForAssetBundles: 0

@@ -11,28 +11,35 @@ namespace Cannon
         [SerializeField] private float maxHeight = 10f; // Maximum height the platform can reach.
         [SerializeField] private float minHeight = 0f; // Minimum height the platform can descend to.
         [SerializeField] private float movementSmoothing = 5f; // Smoothing factor for the platform movement.
+        [SerializeField] private bool baseOffStartPosition; // Base movement on the position of the start
 
         [SerializeField] private UnityEvent onMovingUp = new (); // Event invoked when the platform is moving up.
         [SerializeField] private UnityEvent onMovingDown = new (); // Event invoked when the platform is moving down.
 
         private Vector3 _wantedPosition;
+        private Vector3 _startPosition;
 
         private void Start()
         {
+            _startPosition = transform.position;
             _wantedPosition = transform.position;
         }
 
         private void FixedUpdate()
         {
+            Vector3 lerpedPosition;
+
             // Smoothly move the platform towards the wanted position.
             if (Vector3.Distance(transform.position, _wantedPosition) > 0.01f)
             {
-                transform.position = Vector3.Lerp(transform.position, _wantedPosition, Time.deltaTime * movementSmoothing);
+                lerpedPosition = Vector3.Lerp(transform.position, _wantedPosition, Time.deltaTime * movementSmoothing);
             }
             else
             {
-                transform.position = _wantedPosition;
+                lerpedPosition = _wantedPosition;
             }
+
+            transform.position = lerpedPosition;
         }
 
         /// <summary>
@@ -42,7 +49,7 @@ namespace Cannon
         public void Move(float input)
         {
             // Clamping the position to ensure the platform stays within defined bounds.
-            _wantedPosition.y = Mathf.Clamp(input, minHeight, maxHeight);
+            _wantedPosition.y = Mathf.Clamp(input, minHeight, maxHeight) + _startPosition.y;
         }
 
         /// <summary>

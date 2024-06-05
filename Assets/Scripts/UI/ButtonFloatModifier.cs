@@ -37,7 +37,7 @@ namespace UI
 
         private void Start()
         {
-            Value = startValue;
+            ResetValue();
         }
 
         /// <summary>
@@ -54,6 +54,15 @@ namespace UI
         public void Decrease()
         {
             Value -= step;
+        }
+
+
+        /// <summary>
+        /// Resets the value to its startValue
+        /// </summary>
+        public void ResetValue()
+        {
+            Value = startValue;
         }
     }
 }

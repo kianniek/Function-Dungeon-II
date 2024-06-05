@@ -62,7 +62,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -89,6 +89,8 @@ GameObject:
   - component: {fileID: 4399345468581431712}
   - component: {fileID: 3581020393843766468}
   - component: {fileID: 7875635333406325979}
+  - component: {fileID: 2128412402501737773}
+  - component: {fileID: 7532064503397205663}
   m_Layer: 0
   m_Name: Minecart Track
   m_TagString: Untagged
@@ -106,7 +108,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.534, y: -2.494, z: 0}
-  m_LocalScale: {x: 1, y: 0.1, z: 1}
+  m_LocalScale: {x: 1, y: 0.1, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1469581207203934753}
@@ -190,8 +192,38 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 11400000, guid: b9476d845e80f004191e0d0025cf1d27, type: 2}
-        m_TargetAssemblyTypeName: Events.GameEvents.GameEvent, Assembly-CSharp
+        m_TargetAssemblyTypeName: Events.GameEvents.GameEventBase`1[[UnityEngine.GameObject,
+          UnityEngine
         m_MethodName: Invoke
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &2128412402501737773
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5935489581430677191}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c413f0450e04fe44a01366160dbe93a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  barrelRotationPivot: {fileID: 5935489581430677191}
+  startSlope: 0
+  onAngleChange:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7875635333406325979}
+        m_TargetAssemblyTypeName: MinecartTrack.MinecartTrack, Assembly-CSharp
+        m_MethodName: AdjustLength
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -201,6 +233,28 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &7532064503397205663
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5935489581430677191}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f24921cd8ef4f484b8c418cef0e641bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHeight: 10
+  minHeight: -10
+  movementSmoothing: 12
+  baseOffStartPosition: 1
+  onMovingUp:
+    m_PersistentCalls:
+      m_Calls: []
+  onMovingDown:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &6189279274175488791
 GameObject:
   m_ObjectHideFlags: 0
@@ -325,7 +379,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0

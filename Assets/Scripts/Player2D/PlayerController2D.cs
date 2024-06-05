@@ -62,7 +62,7 @@ namespace Player2D
         /// </summary>
         public void OnPlaceObject(InputAction.CallbackContext context)
         {
-            if (context.action.WasPressedThisFrame())
+            if (context.started)
             {
                 Instantiate(objectToCreate, positionToCreate.position, Quaternion.identity);
             }
