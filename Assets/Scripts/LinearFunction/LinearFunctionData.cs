@@ -5,56 +5,43 @@ namespace LinearFunction
     [CreateAssetMenu(fileName = "LinearFunctionData", menuName = "Linear Function/LinearFunctionData", order = 1)]
     public class LinearFunctionData : ScriptableObject
     {
-        private float _slope;
-        private float _yIntercept;
-
-        [SerializeField] private int _amountOfDecimals = 2;
-
-        [Header("Random Slope Settings")]
-        [SerializeField] private float _minSlope = -10;
-        [SerializeField] private float _maxSlope = 10;
-
-        [Header("Random Y-Intercept Settings")]
-        [SerializeField] private float _minYIntercept = -10;
-        [SerializeField] private float _maxYIntercept = 10;
-
-        public float Slope
-        {
-            private set => _slope = value;
-            get => _slope;
-        }
-        public float YIntercept
-        {
-            private set => _yIntercept = value;
-            get => _yIntercept;
-        }
-        public int AmountOfDecimals
-        {
-            private set => _amountOfDecimals = value;
-            get => _amountOfDecimals;
-        }
-
+        [SerializeField] private int amountOfDecimals = 1;
+        
+        [Header("Random Slope Settings")] 
+        [SerializeField] private float minSlope = -10;
+        [SerializeField] private float maxSlope = 10;
+        
+        [Header("Random Y-Intercept Settings")] 
+        [SerializeField] private float minYIntercept = -10;
+        [SerializeField] private float maxYIntercept = 10;
+        
+        public float Slope { private set; get; }
+        
+        public float YIntercept { private set; get; }
+        
+        public int AmountOfDecimals => amountOfDecimals;
+        
         public void GenerateRandomSlopeAndYIntercept()
         {
             GenerateRandomSlope();
-            GenerateRandomYIntersept();
+            GenerateRandomYIntercept();
         }
-
+        
         public void GenerateRandomSlope()
         {
-            Slope = (GenerateRandomFloat(_minSlope, _maxSlope, _amountOfDecimals));
+            Slope = GenerateRandomFloat(minSlope, maxSlope, amountOfDecimals);
         }
-
-        public void GenerateRandomYIntersept()
+        
+        public void GenerateRandomYIntercept()
         {
-            YIntercept = (GenerateRandomFloat(_minYIntercept, _maxYIntercept, _amountOfDecimals));
+            YIntercept = GenerateRandomFloat(minYIntercept, maxYIntercept, amountOfDecimals);
         }
-
-        private float GenerateRandomFloat(float minValue, float maxValue, int amountBehindComma)
+        
+        private static float GenerateRandomFloat(float minValue, float maxValue, int amountBehindComma)
         {
-            var randomValue = Random.Range(minValue, maxValue);
-            randomValue = Mathf.Round(randomValue * Mathf.Pow(10, amountBehindComma)) / Mathf.Pow(10, amountBehindComma);
-            return randomValue;
+            return Mathf.Round(Random.Range(minValue, maxValue) * 
+                   Mathf.Pow(10, amountBehindComma)) /
+                   Mathf.Pow(10, amountBehindComma);
         }
     }
 }

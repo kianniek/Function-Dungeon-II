@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace LinearFunction
 {
@@ -10,7 +11,7 @@ namespace LinearFunction
         [SerializeField] private Axis rotationAxis;
         [SerializeField] private bool invertRotation;
         [SerializeField] private Transform targetTransform;
-        [SerializeField] private LinearFunctionData LinearFunctionData;
+        [FormerlySerializedAs("LinearFunctionData")] [SerializeField] private LinearFunctionData linearFunctionData;
 
         private float _rotationAngle;
 
@@ -19,13 +20,14 @@ namespace LinearFunction
         /// </summary>
         public void Rotate()
         {
-            if (targetTransform == null)
+            if (!targetTransform)
             {
                 Debug.LogWarning("Target Transform is not set.");
+                
                 return;
             }
 
-            _rotationAngle = LinearFunctionHelper.GetAngleOfFunction(LinearFunctionData.Slope);
+            _rotationAngle = LinearFunctionHelper.GetAngleOfFunction(linearFunctionData.Slope);
 
             if (invertRotation) _rotationAngle = -_rotationAngle;
 
