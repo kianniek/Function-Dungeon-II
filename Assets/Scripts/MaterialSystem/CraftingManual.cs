@@ -19,7 +19,7 @@ namespace MaterialSystem
         [Tooltip("Button to confirm the crafting choice")]
         [SerializeField] private Button craftButton;
         
-        [SerializeField] private Recipe _selectedRecipe;
+        private Recipe _selectedRecipe;
         
         private void Awake()
         {
