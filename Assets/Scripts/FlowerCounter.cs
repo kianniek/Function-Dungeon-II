@@ -1,11 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using Events.GameEvents.Typed;
 using UnityEngine;
 
-public class FlowerCounter : MonoBehaviour
+[CreateAssetMenu(fileName = "FlowerCounter", menuName = "FlowerCounter", order = 1)]
+public class FlowerCounter : ScriptableObject
 {
-
     [Header("Events")]
     [SerializeField] private IntGameEvent onFlowerChange;
 
@@ -28,12 +26,10 @@ public class FlowerCounter : MonoBehaviour
     public void Increase(int amount)
     {
         CurrentFlowerCount += amount;
-        onFlowerChange.Invoke();
     }
 
     public void Decrease(int amount)
     {
         CurrentFlowerCount -= amount;
-        onFlowerChange.Invoke();
     }
 }
