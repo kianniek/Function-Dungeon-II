@@ -6,7 +6,7 @@ namespace Cannon
     public class ObjectSlopeAngleController : MonoBehaviour
     {
         [Header("References")]
-        [SerializeField] private GameObject barrelRotationPivot;
+        [SerializeField] private GameObject rotationPivot;
         
         [Header("Settings")]
         [SerializeField] private float startSlope;
@@ -30,20 +30,29 @@ namespace Cannon
         {
             Rotate(startSlope);
         }
+
+        /// <summary>
+        /// Sets the slope of the object
+        /// </summary>
+        /// <param name="input"></param>
+        public void SetSlope(float input)
+        {
+            Slope = input;
+        }
         
-        // Rotate the barrel based on the value of _a
+        // Rotate the barrel based on the value of slope
         private void Rotate(float slope)
         {
             var newAngle = GetAngle(slope);
             
-            barrelRotationPivot.transform.rotation = Quaternion.Euler(0f, 0f, newAngle);
+            rotationPivot.transform.rotation = Quaternion.Euler(0f, 0f, newAngle);
             
             onAngleChange.Invoke(newAngle);
         }
         
         private void OnValidate()
         {
-            if (barrelRotationPivot)
+            if (rotationPivot)
                 Rotate(startSlope);
         }
         
