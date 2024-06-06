@@ -117,4 +117,12 @@ namespace Events
     public class ExtendedButtonEvent : UnityEvent<ExtendedButton>
     {
     }
+    
+    /// <summary>
+    /// One argument <see cref="Item"/>-<see cref="UnityEvent"/>, serializable to the inspector.
+    /// </summary>
+    [Serializable]
+    public class ItemEvent : UnityEvent<Item>
+    {
+    }
 }
