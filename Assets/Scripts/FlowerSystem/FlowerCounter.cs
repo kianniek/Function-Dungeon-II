@@ -1,7 +1,7 @@
 using Events.GameEvents.Typed;
 using UnityEngine;
 
-namespace Systems
+namespace FlowerSystem
 {
     [CreateAssetMenu(fileName = "FlowerCounter", menuName = "FlowerCounter", order = 1)]
     public class FlowerCounter : ScriptableObject
