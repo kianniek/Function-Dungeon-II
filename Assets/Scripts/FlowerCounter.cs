@@ -23,6 +23,8 @@ public class FlowerCounter : ScriptableObject
         }
     }
 
+    public int FlowerCount => CurrentFlowerCount;
+
     public void Increase(int amount)
     {
         CurrentFlowerCount += amount;
