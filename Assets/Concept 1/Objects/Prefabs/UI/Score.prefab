@@ -169,7 +169,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 423933778567359429}
         m_TargetAssemblyTypeName: UI.ScoreText, Assembly-CSharp
-        m_MethodName: SetScore
+        m_MethodName: SetValue
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 324264cd1c90438e892423ed42a499f3, type: 3}
+  m_Name: InventorySystem
+  m_EditorClassIdentifier: 
+  materials: []
+  ores: []
+  onOreCollected: {fileID: 11400000, guid: 900940ece18f1a543ba90cbb22152e42, type: 2}
+  onOreUsed: {fileID: 11400000, guid: b568c53db098e88488f2e3b54ddeb9d3, type: 2}
+  onMaterialCollected: {fileID: 11400000, guid: 52b7d58f1201d1548a39831894a71a6c, type: 2}
+  onMaterialUsed: {fileID: 11400000, guid: 52b7d58f1201d1548a39831894a71a6c, type: 2}
