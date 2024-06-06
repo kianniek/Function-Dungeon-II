@@ -1,45 +1,48 @@
 using Events.GameEvents.Typed;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "FlowerCounter", menuName = "FlowerCounter", order = 1)]
-public class FlowerCounter : ScriptableObject
+namespace Systems
 {
-    [Header("Events")]
-    [SerializeField] private IntGameEvent onFlowerChange;
-
-    private int _currentFlowerCount;
-
-    private int CurrentFlowerCount
+    [CreateAssetMenu(fileName = "FlowerCounter", menuName = "FlowerCounter", order = 1)]
+    public class FlowerCounter : ScriptableObject
     {
-        get => _currentFlowerCount;
-        set
+        [Header("Events")]
+        [SerializeField] private IntGameEvent onFlowerChange;
+
+        private int _currentFlowerCount;
+
+        private int CurrentFlowerCount
         {
-            if (value < 0)
-                return;
+            get => _currentFlowerCount;
+            set
+            {
+                if (value < 0)
+                    return;
 
-            _currentFlowerCount = value;
+                _currentFlowerCount = value;
 
-            onFlowerChange?.Invoke(value);
+                onFlowerChange?.Invoke(value);
+            }
         }
-    }
 
-    public int FlowerCount => CurrentFlowerCount;
+        public int FlowerCount => CurrentFlowerCount;
 
-    /// <summary>
-    /// Increase amount of flowers player has
-    /// </summary>
-    /// <param name="amount">Amount to add</param>
-    public void Increase(int amount)
-    {
-        CurrentFlowerCount += amount;
-    }
+        /// <summary>
+        /// Increase amount of flowers player has
+        /// </summary>
+        /// <param name="amount">Amount to add</param>
+        public void Increase(int amount)
+        {
+            CurrentFlowerCount += amount;
+        }
 
-    /// <summary>
-    /// Decrease amount of flowers player has
-    /// </summary>
-    /// <param name="amount">Amount to substract</param>
-    public void Decrease(int amount)
-    {
-        CurrentFlowerCount -= amount;
+        /// <summary>
+        /// Decrease amount of flowers player has
+        /// </summary>
+        /// <param name="amount">Amount to substract</param>
+        public void Decrease(int amount)
+        {
+            CurrentFlowerCount -= amount;
+        }
     }
 }
