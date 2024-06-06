@@ -51,7 +51,7 @@ namespace Player2D
         /// <param name="context">Holds the state of the button</param>
         public void OnInteract(InputAction.CallbackContext context)
         {
-            if (_nearbyInteractable != null)
+            if (_nearbyInteractable)
             {
                 _nearbyInteractable.InvokeInteraction();
             }
