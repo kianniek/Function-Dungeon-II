@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Attributes;
-using Projectile;
+using LinearProjectiles;
 using UnityEngine;
 
 [ExecuteInEditMode]

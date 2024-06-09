@@ -1,8 +1,8 @@
 using UnityEngine;
 
-namespace Projectile
+namespace LinearProjectiles
 {
-    [CreateAssetMenu(fileName = "ProjectileVariables", menuName = "Projectile/ProjectileVariables", order = 0)]
+    [CreateAssetMenu(fileName = "ProjectileVariables", menuName = "LinearProjectiles/Physics Projectile Data", order = 0)]
     public class ProjectilePhysicsVariables : ScriptableObject
     {
         [Tooltip("The distance traveled until gravity is applied")]

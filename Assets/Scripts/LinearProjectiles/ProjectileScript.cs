@@ -1,9 +1,9 @@
 using Attributes;
-using Health;
 using Events.GameEvents.Typed;
+using Health;
 using UnityEngine;
 
-namespace Projectile
+namespace LinearProjectiles
 {
     [RequireComponent(typeof(Rigidbody2D))]
     public class ProjectileScript : MonoBehaviour

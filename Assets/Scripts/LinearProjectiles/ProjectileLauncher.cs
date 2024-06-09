@@ -5,7 +5,7 @@ using Events.GameEvents.Typed;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace Projectile
+namespace LinearProjectiles
 {
     public class ProjectileLauncher : MonoBehaviour
     {

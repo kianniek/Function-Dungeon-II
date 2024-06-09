@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace Extensions
@@ -25,6 +26,20 @@ namespace Extensions
             var yIntercept = a1 * xIntercept + b1;
             
             return new Vector2(xIntercept, yIntercept);
+        }
+        
+        /// <summary>
+        /// Calculates the distance between 2 vectors using MathF.Sqrt instead of doubles
+        /// </summary>
+        /// <param name="from">The starting point</param>
+        /// <param name="to">The ending point</param>
+        /// <returns>The distance between 2 vectors</returns>
+        public static float Distance(this Vector2 from, Vector2 to)
+        {
+            var x = from.x - to.x;
+            var y = from.y - to.y;
+            
+            return MathF.Sqrt(x * x + y * y);
         }
     }
 }

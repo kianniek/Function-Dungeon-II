@@ -255,6 +255,7 @@ MonoBehaviour:
   maxHeight: 10
   minHeight: 0
   movementSmoothing: 5
+  baseOffStartPosition: 0
   onMovingUp:
     m_PersistentCalls:
       m_Calls: []
@@ -271,7 +272,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 982230469042780371, guid: f345572c06e124620aacead470bac251, type: 3}
       propertyPath: m_Positions.Array.size
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 982230469042780371, guid: f345572c06e124620aacead470bac251, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
@@ -279,11 +280,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 982230469042780371, guid: f345572c06e124620aacead470bac251, type: 3}
       propertyPath: m_Positions.Array.data[0].x
-      value: 4.2426405
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 982230469042780371, guid: f345572c06e124620aacead470bac251, type: 3}
       propertyPath: m_Positions.Array.data[0].y
-      value: 4.2426405
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 982230469042780371, guid: f345572c06e124620aacead470bac251, type: 3}
       propertyPath: m_Positions.Array.data[1].x

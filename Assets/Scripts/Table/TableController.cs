@@ -123,7 +123,7 @@ namespace Table
             
             for (var i = 0; i < tableXButtons.Count; i++)
             {
-                values[i] = MathfExtentions.RoundValue(
+                values[i] = MathExtensions.RoundValue(
                     float.Parse(_tableXDictionary[tableXButtons[i]].text), 
                     linearFunctionData.AmountOfDecimals
                 );
@@ -144,7 +144,7 @@ namespace Table
                 var yValue = yValues[i];
 
                 var rawCorrectValue = LinearFunctionHelper.GetY(xValue, linearFunctionData.Slope, linearFunctionData.YIntercept);
-                var correctValue = MathfExtentions.RoundValue(rawCorrectValue, linearFunctionData.AmountOfDecimals);
+                var correctValue = MathExtensions.RoundValue(rawCorrectValue, linearFunctionData.AmountOfDecimals);
                 
                 if (!(yValue < correctValue - checkMargin) && !(yValue > correctValue + checkMargin)) 
                     continue;

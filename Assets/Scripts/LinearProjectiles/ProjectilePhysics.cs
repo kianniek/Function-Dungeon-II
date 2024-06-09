@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Projectile
+namespace LinearProjectiles
 {
     public static class ProjectilePhysics
     {

@@ -106,7 +106,7 @@ namespace Table
         private float GenerateRandomValue()
         {
             // Round the value to the amount of decimals specified in the linear function data.
-            return MathfExtentions.RoundValue(
+            return MathExtensions.RoundValue(
                 Random.Range(-valueRange, valueRange),
                 linearFunctionData.AmountOfDecimals
             );
@@ -117,7 +117,7 @@ namespace Table
             var xValue = tableController.GetXValue(index);
             var yValue = LinearFunctionHelper.GetY(xValue, linearFunctionData.Slope, linearFunctionData.YIntercept);
             
-            yValue = MathfExtentions.RoundValue(yValue, linearFunctionData.AmountOfDecimals);
+            yValue = MathExtensions.RoundValue(yValue, linearFunctionData.AmountOfDecimals);
             
             if (_inputDictionary.TryGetValue(inputButtons[index], out var inputText))
                 inputButtons[index].SetButtonValue(inputText, yValue, Color.cyan);
