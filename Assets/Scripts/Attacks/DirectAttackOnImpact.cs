@@ -9,7 +9,7 @@ namespace Attacks
     [RequireComponent(typeof(Rigidbody2D))]
     public class DirectAttackOnImpact : Attack
     {
-        [Header("Calculation Settings")]
+        [Header("Damage Calculation Settings")]
         [SerializeField] private bool useVelocityForCalculation = true;
         
         private Rigidbody2D _rigidBody2D;
