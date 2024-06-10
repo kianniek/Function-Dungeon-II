@@ -21,6 +21,8 @@ namespace Attacks
         
         private void OnCollisionEnter2D(Collision2D collision)
         {
+            onAttack.Invoke();
+            
             var attackMultiplier = useVelocityForCalculation ? _rigidBody2D.velocity.magnitude : 1;
             
             if (!collision.gameObject.TryGetComponent<Damageable>(out var damageableObject)) 

@@ -18,6 +18,8 @@ namespace Attacks
         
         private void OnCollisionEnter2D(Collision2D _)
         {
+            onAttack.Invoke();
+            
             _hitColliders = Physics2D.OverlapCircleAll(transform.position, effectRadius);
             
             foreach (var hitCollider in _hitColliders)
