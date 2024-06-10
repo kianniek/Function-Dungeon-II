@@ -11,7 +11,7 @@ namespace Attacks
     public class AoeAttackOnImpact : Attack
     {
         [Header("Aoe Settings")]
-        [SerializeField] private float effectRadius;
+        [SerializeField, Min(0.01f)] private float effectRadius;
         [SerializeField] private bool applyDamageFallOff = true;
         
         private Collider2D[] _hitColliders;

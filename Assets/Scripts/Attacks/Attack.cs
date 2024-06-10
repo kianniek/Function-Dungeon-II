@@ -10,7 +10,7 @@ namespace Attacks
     public abstract class Attack : MonoBehaviour
     {
         [Header("Attack Settings")]
-        [SerializeField] private float startStrength = 1f;
+        [SerializeField, Min(0.01f)] private float startStrength = 1f;
         
         [Header("Events")]
         [SerializeField] private FloatEvent onStrengthChanged = new();
