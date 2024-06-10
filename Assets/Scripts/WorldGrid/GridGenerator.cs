@@ -7,56 +7,39 @@ namespace WorldGrid
     /// </summary>
     public class GridGenerator : MonoBehaviour
     {
-        [SerializeField] private GameObject gridTile;
-        [SerializeField] private int xSize = 20;
-        [SerializeField] private int ySize = 20;
-        [SerializeField] private Material pathMaterial;
-        [SerializeField] private Material availableMaterial;
-        [SerializeField] private PathData pathData;
+        [SerializeField] private GridTile gridTile;
+        [SerializeField] private PlaceableTile placeableGridTile;
+        [SerializeField] private PathTile pathGridTile;
+        [SerializeField] private GridData gridData;
 
-        private Vector2[] _directions = { Vector2.left, Vector2.right, Vector2.up, Vector2.down };
+        private Transform _gridTileTransform;
 
-        private void Start()
+        private void Awake()
         {
-            for (var i = 0; i < xSize; i++)
-            {
-                for (var j = 0; j < ySize; j++)
-                {
-                    GameObject tile = Instantiate(gridTile, new Vector3(i, j, 0), Quaternion.identity, transform);
-                    tile.name = $"GridTile({i},{j})";
-
-                    for (var k = 0; k < pathData.PathCoordinates.Count; k++)
-                    {
-                        var currentTile = new Vector2(i, j);
-                        if (pathData.PathCoordinates[k] == currentTile)
-                        {
-                            tile.AddComponent<PathTile>();
-                            tile.GetComponent<SpriteRenderer>().material = pathMaterial;
-                        }
-
-                        foreach (var direction in _directions)
-                        {
-                            IsPlaceableTile(pathData.PathCoordinates[k] + direction, currentTile, tile);
-                        }
-                    }
-                }
-            }
+            _gridTileTransform = gridTile.transform;
         }
 
         /// <summary>
-        /// Checks if currentTile is an placeable tile by checking if the cell is next to an path and if its not an path
+        /// Instantiates the right gridtiles at the postions defined in PathData
         /// </summary>
-        /// <param name="pathTileToCheck">The pathcell you want to check</param>
-        /// <param name="currentPathTile">The current path tile of the grid</param>
-        /// <param name="tile">The current path tile gameobject</param>
-        private void IsPlaceableTile(Vector2 pathTileToCheck, Vector2 currentPathTile, GameObject tile)
+        private void Start()
         {
-            if (pathTileToCheck == currentPathTile)
+            for (var i = 0; i < gridData.XGridSize; i++)
             {
-                if (!pathData.PathCoordinates.Contains(pathTileToCheck))
+                for (var j = 0; j < gridData.YGridSize; j++)
                 {
-                    tile.AddComponent<PlaceableTile>();
-                    tile.GetComponent<SpriteRenderer>().material = availableMaterial;
+                    switch (gridData.generatedGrid[i, j])
+                    {
+                        case (GridTileTypes.Empty):
+                            Instantiate(gridTile, new Vector3(i * _gridTileTransform.localScale.x, j * _gridTileTransform.localScale.y, 0), Quaternion.identity, transform);
+                            break;
+                        case (GridTileTypes.Placeable):
+                            Instantiate(placeableGridTile, new Vector3(i * _gridTileTransform.localScale.x, j * _gridTileTransform.localScale.y, 0), Quaternion.identity, transform);
+                            break;
+                        case (GridTileTypes.Path):
+                            Instantiate(pathGridTile, new Vector3(i * _gridTileTransform.localScale.x, j * _gridTileTransform.localScale.y, 0), Quaternion.identity, transform);
+                            break;
+                    }
                 }
             }
         }

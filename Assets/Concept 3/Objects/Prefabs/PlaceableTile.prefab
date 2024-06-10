@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 279439336451688865}
   - component: {fileID: 5143688515184653075}
-  - component: {fileID: 1673266920155040351}
+  - component: {fileID: 6663351834643575591}
   m_Layer: 0
-  m_Name: GridTile
+  m_Name: PlaceableTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -55,7 +55,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 409618ff0e6df8742a90e381b43c764c, type: 2}
+  - {fileID: 2100000, guid: 44c679f765427404f8305a286fb861d6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -87,6 +87,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &6663351834643575591
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -95,6 +96,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 7176111512938906551}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4bf179a005337ad439ea2bcb391eb878, type: 3}
+  m_Script: {fileID: 11500000, guid: 5b86997ed5ab71b4e87974b0d75ed224, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

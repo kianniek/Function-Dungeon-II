@@ -132,9 +132,25 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1128606038724778941, guid: 00d7ff7b3a199db47b8ecdd6e68d6da0, type: 3}
+      propertyPath: gridData
+      value: 
+      objectReference: {fileID: 11400000, guid: d836a2889ec4107418d00a4bdf0d0452, type: 2}
+    - target: {fileID: 1128606038724778941, guid: 00d7ff7b3a199db47b8ecdd6e68d6da0, type: 3}
       propertyPath: pathData
       value: 
       objectReference: {fileID: 11400000, guid: d836a2889ec4107418d00a4bdf0d0452, type: 2}
+    - target: {fileID: 1128606038724778941, guid: 00d7ff7b3a199db47b8ecdd6e68d6da0, type: 3}
+      propertyPath: pathGridTile
+      value: 
+      objectReference: {fileID: 2990015622576239724, guid: f32c187719ca72b4c807b4c710a25d80, type: 3}
+    - target: {fileID: 1128606038724778941, guid: 00d7ff7b3a199db47b8ecdd6e68d6da0, type: 3}
+      propertyPath: grassGridTile
+      value: 
+      objectReference: {fileID: 1673266920155040351, guid: ef1b0feb1f606214294ffb81531b6f6d, type: 3}
+    - target: {fileID: 1128606038724778941, guid: 00d7ff7b3a199db47b8ecdd6e68d6da0, type: 3}
+      propertyPath: placeableGridTile
+      value: 
+      objectReference: {fileID: 6663351834643575591, guid: ac216fbc6dc79c1478fff6fa9cc0843e, type: 3}
     - target: {fileID: 1128606038724778941, guid: 00d7ff7b3a199db47b8ecdd6e68d6da0, type: 3}
       propertyPath: pathTileCoordinates.Array.size
       value: 41

@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace WorldGrid
 {
-    public class PathTile : MonoBehaviour
+    public class GridTile : MonoBehaviour
     {
     }
 }
