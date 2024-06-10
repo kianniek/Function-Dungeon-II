@@ -31,6 +31,12 @@ namespace LinearProjectiles
         
         public float GravityScale => _rigidBody2D.gravityScale;
         
+        public float AppliedGravity => Physics2D.gravity.y * _rigidBody2D.gravityScale;
+        
+        public float Speed => speed;
+        
+        public float DelayValue => delayValue;
+        
         public float DistanceTraveled => Vector2Extension.Distance(_initialPosition, _transform.position);
         
         public void Shoot(Quaternion rotation)
