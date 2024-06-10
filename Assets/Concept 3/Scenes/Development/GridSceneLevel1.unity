@@ -1204,6 +1204,39 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bombTowerVariables: {fileID: 11400000, guid: 0307f21d0848a0e46ad11dbbe0985172, type: 2}
   bombTower: {fileID: 1494809494}
+  MousePosition:
+    m_Name: Mouse Position
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 2e219259-59e1-4b01-b9b3-7ab6af7951e1
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 1D Axis
+      m_Id: c603ed14-4d93-4d1d-b551-0edf53f41b71
+      m_Path: 1DAxis
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Mouse Position
+      m_Flags: 4
+    - m_Name: negative
+      m_Id: 31742310-41e4-476f-8022-41ee6dee7d90
+      m_Path: 
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Mouse Position
+      m_Flags: 8
+    - m_Name: positive
+      m_Id: ad4d458c-d453-41f3-b970-b0f30065d1ae
+      m_Path: 
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Mouse Position
+      m_Flags: 8
+    m_Flags: 0
 --- !u!1 &982346278
 GameObject:
   m_ObjectHideFlags: 0
