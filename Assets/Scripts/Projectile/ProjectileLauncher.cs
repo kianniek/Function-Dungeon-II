@@ -1,9 +1,11 @@
+using System;
 using System.Collections.Generic;
 using Attributes;
 using Events;
 using Events.GameEvents.Typed;
 using UnityEngine;
 using UnityEngine.Events;
+using Utils;
 
 namespace Projectile
 {
@@ -25,7 +27,7 @@ namespace Projectile
         [SerializeField] private GameObjectEvent onCannonFire = new();
         [SerializeField] private UnityEvent onAmmoDepleted = new();
         
-        private readonly List<ProjectileScript> _pooledProjectiles = new();
+        private ObjectPool<ProjectileScript> _projectilePool;
         private int _currentAmmoCount;
         
         private int CurrentAmmoCount
@@ -45,40 +47,14 @@ namespace Projectile
             }
         }
         
+        private void Awake()
+        {
+            _projectilePool = new ObjectPool<ProjectileScript>(prefabToPool, amountToPool);
+        }
+        
         private void Start()
         {
-            CreatePooledProjectiles();
             CurrentAmmoCount = totalAmmo;
-        }
-        
-        // Empties the current pooled object list and creates a new pool
-        private void CreatePooledProjectiles()
-        {
-            // Checks if there are already pooled objects and destroys existing pooled gameObjects
-            if (_pooledProjectiles.Count > 0)
-                foreach (var projectile in _pooledProjectiles) 
-                    Destroy(projectile.gameObject);
-            
-            _pooledProjectiles.Clear();
-            
-            for (var i = 0; i < amountToPool; i++)
-            {
-                var projectile = Instantiate(prefabToPool, transform);
-                
-                projectile.gameObject.SetActive(false);
-                
-                _pooledProjectiles.Add(projectile);
-            }
-        }
-        
-        // Returns a pooled projectile if available, otherwise returns null
-        private ProjectileScript GetPooledProjectile()
-        {
-            for (var i = 0; i < amountToPool; i++)
-                if (!_pooledProjectiles[i].gameObject.activeInHierarchy)
-                    return _pooledProjectiles[i];
-            
-            return null;
         }
         
         /// <summary>
@@ -91,7 +67,7 @@ namespace Projectile
             
             CurrentAmmoCount--;
             
-            var projectile = GetPooledProjectile();
+            var projectile = _projectilePool.GetPooledObject();
             
             if (projectile)
             {
