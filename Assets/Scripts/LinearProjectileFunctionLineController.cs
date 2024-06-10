@@ -8,6 +8,7 @@ using UnityEngine;
 [RequireComponent(typeof(LineRenderer))]
 public class LinearProjectileFunctionLineController : MonoBehaviour
 {
+    [Tooltip("This variable is used to display a debug trajectory of the projectile in the editor.")]
     [SerializeField] private LinearProjectile debugProjectile;
     
     [Header("Function settings")]
@@ -35,6 +36,9 @@ public class LinearProjectileFunctionLineController : MonoBehaviour
     [SerializeField] private float hideTime = 5f; // variable for the time the line should be hidden
     [SerializeField] private float groundLevel;
     
+    /// <summary>
+    /// The active projectile that will be used to calculate the trajectory.
+    /// </summary>
     public LinearProjectile ActiveProjectile { private get; set; }
     
     public float GroundLevel

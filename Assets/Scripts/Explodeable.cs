@@ -1,6 +1,9 @@
 using Extensions;
 using UnityEngine;
 
+/// <summary>
+/// This class is responsible for defining the behavior of an object that can explode.
+/// </summary>
 public class Explodeable : MonoBehaviour
 {
     [SerializeField] private float forceRadius;
@@ -15,6 +18,9 @@ public class Explodeable : MonoBehaviour
         _rigidBody2D = GetComponent<Rigidbody2D>();
     }
     
+    /// <summary>
+    /// Explodes the object and applies force to all colliders within the force radius.
+    /// </summary>
     public void Explode()
     {
         _hitColliders = Physics2D.OverlapCircleAll(transform.position, forceRadius);

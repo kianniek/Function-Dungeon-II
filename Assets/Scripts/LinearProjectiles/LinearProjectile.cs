@@ -5,6 +5,9 @@ using UnityEngine;
 
 namespace LinearProjectiles
 {
+    /// <summary>
+    /// This class is responsible for defining the behavior and type of linear projectile.
+    /// </summary>
     [RequireComponent(typeof(Rigidbody2D))]
     public class LinearProjectile : MonoBehaviour
     {

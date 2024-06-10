@@ -4,6 +4,9 @@ using UnityEngine;
 
 namespace Attacks
 {
+    /// <summary>
+    /// This class is responsible for defining the behavior of an area of effect attack that triggers on impact.
+    /// </summary>
     [RequireComponent(typeof(Rigidbody2D))]
     public class AoeAttackOnImpact : Attack
     {

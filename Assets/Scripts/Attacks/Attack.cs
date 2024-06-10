@@ -3,6 +3,9 @@ using UnityEngine;
 
 namespace Attacks
 {
+    /// <summary>
+    /// This class is responsible for defining the type of attack.
+    /// </summary>
     public abstract class Attack : MonoBehaviour
     {
         [Header("Attack Settings")]
@@ -13,6 +16,9 @@ namespace Attacks
         
         private float _currentStrength;
         
+        /// <summary>
+        /// The current strength of the attack.
+        /// </summary>
         public float CurrentStrength
         {
             get => _currentStrength;

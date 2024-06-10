@@ -6,6 +6,9 @@ using UnityEngine.Events;
 
 namespace LinearProjectiles
 {
+    /// <summary>
+    /// This class is responsible for managing the linear projectile launcher and its behavior.
+    /// </summary>
     public class LinearProjectileLauncher : MonoBehaviour
     {
         private readonly List<LinearProjectile> _pooledProjectiles = new();

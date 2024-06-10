@@ -4,6 +4,9 @@ using UnityEngine;
 
 namespace Editor.Custom
 {
+    /// <summary>
+    /// Custom editor for the <see cref="LinearProjectile"/> class.
+    /// </summary>
     [CustomEditor(typeof(LinearProjectile))]
     public class LinearProjectileEditor : UnityEditor.Editor
     {
