@@ -10,12 +10,13 @@ namespace Editor.Custom
         public override void OnInspectorGUI()
         {
             DrawDefaultInspector(); // Draws the default inspector
-
+            
             var script = (WaveManager)target;
-
+            
             if (GUILayout.Button("Spawn Wave(s)"))
             {
                 script.SpawnWaves(); // Calls SpawnWave on the target object
             }
+        }
     }
 }
