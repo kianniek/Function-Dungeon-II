@@ -5,16 +5,18 @@ namespace Player2D
 {
     public class PlayerController2D : MonoBehaviour
     {
+        [Header("Settings")]
         [SerializeField] private float jumpForce = 10f;
         [SerializeField] private float groundCheckRadius = 0.2f;
         [SerializeField] private float interactableCheckRadius = 0.5f;
         [SerializeField] private float moveSpeed = 5f;
+        [SerializeField] private bool placementEnabled;
 
+        [Header("References")]
         [SerializeField] private Transform groundCheck;
         [SerializeField] private Transform interactableCheck;
-
-        [SerializeField] private GameObject objectToCreate;
         [SerializeField] private Transform positionToCreate;
+        [SerializeField] private GameObject objectToCreate;
 
         private Interactable _nearbyInteractable;
         private Rigidbody2D _rb;
@@ -62,7 +64,7 @@ namespace Player2D
         /// </summary>
         public void OnPlaceObject(InputAction.CallbackContext context)
         {
-            if (context.started)
+            if (placementEnabled && context.started)
             {
                 Instantiate(objectToCreate, positionToCreate.position, Quaternion.identity);
             }
@@ -79,6 +81,7 @@ namespace Player2D
 
             foreach (var collider2D in collidersInRange)
             {
+                _nearbyInteractable = null;
                 var interactable = collider2D.gameObject.GetComponent<Interactable>();
                 if (interactable != null)
                 {
