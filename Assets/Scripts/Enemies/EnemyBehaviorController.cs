@@ -5,6 +5,9 @@ using WorldGrid;
 
 namespace Enemies
 {
+    /// <summary>
+    /// Class which handles enemy movement and atack
+    /// </summary>
     public class EnemyBehaviorController : MonoBehaviour
     {
         [SerializeField] private PathData pathData;
@@ -30,7 +33,7 @@ namespace Enemies
             _targetPosition = pathData.PathCoordinates[_currentTargetIndex];
             transform.position = Vector3.MoveTowards(transform.position, pathData.PathCoordinates[_currentTargetIndex], movementSpeed * Time.deltaTime);
 
-            if (Vector3.Distance(transform.position, _targetPosition) > 0.01f || _currentTargetIndex == pathData.PathCoordinates.Count - 1)
+            if (Vector2.Distance(transform.position, _targetPosition) > 0.01f || _currentTargetIndex == pathData.PathCoordinates.Count - 1)
                 return;
 
             if (ClosestTower() != null)
@@ -57,7 +60,7 @@ namespace Enemies
             foreach (Collider hit in hits)
             {
                 //Filter enemies (and possibly later more) out
-                if (!hit.GetComponent<EnemyBehaviorController>())
+                if (!hit.TryGetComponent<EnemyBehaviorController>(out _))
                 {
                     return hit.gameObject.GetComponent<Damageable>();
                 }
