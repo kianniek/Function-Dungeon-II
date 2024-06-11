@@ -134,7 +134,11 @@ PrefabInstance:
     - target: {fileID: 1128606038724778941, guid: 00d7ff7b3a199db47b8ecdd6e68d6da0, type: 3}
       propertyPath: gridData
       value: 
-      objectReference: {fileID: 11400000, guid: d836a2889ec4107418d00a4bdf0d0452, type: 2}
+      objectReference: {fileID: 11400000, guid: 69064e702d581c845affe180ffd5fca6, type: 2}
+    - target: {fileID: 1128606038724778941, guid: 00d7ff7b3a199db47b8ecdd6e68d6da0, type: 3}
+      propertyPath: gridTile
+      value: 
+      objectReference: {fileID: 3530273512751714376, guid: ef1b0feb1f606214294ffb81531b6f6d, type: 3}
     - target: {fileID: 1128606038724778941, guid: 00d7ff7b3a199db47b8ecdd6e68d6da0, type: 3}
       propertyPath: pathData
       value: 

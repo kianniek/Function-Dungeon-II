@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 279439336451688865}
   - component: {fileID: 5143688515184653075}
-  - component: {fileID: 1673266920155040351}
+  - component: {fileID: 3530273512751714376}
   m_Layer: 0
   m_Name: GridTile
   m_TagString: Untagged
@@ -87,6 +87,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &3530273512751714376
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

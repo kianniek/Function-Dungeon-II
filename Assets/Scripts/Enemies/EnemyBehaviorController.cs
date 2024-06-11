@@ -1,6 +1,7 @@
 using System.Collections;
 using Health;
 using UnityEngine;
+using UnityEngine.AI;
 using WorldGrid;
 
 namespace Enemies
@@ -10,10 +11,13 @@ namespace Enemies
     /// </summary>
     public class EnemyBehaviorController : MonoBehaviour
     {
-        [SerializeField] private PathData pathData;
+        [SerializeField] private GridData gridData;
         [SerializeField] private int movementSpeed;
         [SerializeField] private int damage;
         [SerializeField] private int attackSpeed;
+
+        private int _gridTileWidth = 1;
+        private int _gridTileHeight = 1;
 
         private float _enemyTowerRadius = 1f;
         private int _currentTargetIndex;
@@ -22,7 +26,7 @@ namespace Enemies
 
         private void Start()
         {
-            transform.position = pathData.PathCoordinates[0];
+            transform.position = new Vector3(gridData.PathIndices[0].x * _gridTileWidth, gridData.PathIndices[0].y * _gridTileHeight, transform.position.z);
         }
 
         /// <summary>
@@ -30,10 +34,10 @@ namespace Enemies
         /// </summary>
         private void FixedUpdate()
         {
-            _targetPosition = pathData.PathCoordinates[_currentTargetIndex];
-            transform.position = Vector3.MoveTowards(transform.position, pathData.PathCoordinates[_currentTargetIndex], movementSpeed * Time.deltaTime);
+            _targetPosition = new Vector3(gridData.PathIndices[_currentTargetIndex].x, gridData.PathIndices[_currentTargetIndex].y, transform.position.z);
+            transform.position = Vector3.MoveTowards(transform.position, _targetPosition, movementSpeed * Time.deltaTime);
 
-            if (Vector2.Distance(transform.position, _targetPosition) > 0.01f || _currentTargetIndex == pathData.PathCoordinates.Count - 1)
+            if (Vector2.Distance(transform.position, _targetPosition) > 0.01f || _currentTargetIndex == gridData.PathIndices.Count - 1)
                 return;
 
             if (ClosestTower() != null)

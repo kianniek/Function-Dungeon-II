@@ -11,8 +11,8 @@ namespace WorldGrid
     {
         private readonly Vector2Int[] directions = { Vector2Int.up, Vector2Int.down, Vector2Int.left, Vector2Int.right };
 
-        [Tooltip("The coordinates of all pathcells for a level")]
-        [SerializeField] private List<Vector2Int> pathCoordinates;
+        [Tooltip("The indices of all pathcells for a level")]
+        [SerializeField] private List<Vector2Int> pathIndices;
 
         [Tooltip("The size of a grid")]
         [SerializeField] private int xGridSize;
@@ -20,7 +20,7 @@ namespace WorldGrid
 
         private GridTileTypes[,] gridTileTypes;
 
-        public List<Vector2Int> PathCoordinates => pathCoordinates;
+        public List<Vector2Int> PathIndices => pathIndices;
         public GridTileTypes[,] generatedGrid => gridTileTypes;
         public int XGridSize => xGridSize;
         public int YGridSize => yGridSize;
@@ -41,7 +41,7 @@ namespace WorldGrid
             {
                 for (var j = 0; j < yGridSize; j++)
                 {
-                    if (pathCoordinates.Contains(new Vector2Int(i, j)))
+                    if (pathIndices.Contains(new Vector2Int(i, j)))
                     {
                         gridTileTypes[i, j] = GridTileTypes.Path;
                     }
@@ -54,7 +54,7 @@ namespace WorldGrid
         /// </summary>
         private void MarkPlaceable()
         {
-            foreach (var pathIndex in pathCoordinates)
+            foreach (var pathIndex in pathIndices)
             {
                 foreach (var direction in directions)
                 {
