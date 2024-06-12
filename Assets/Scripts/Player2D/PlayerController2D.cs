@@ -16,7 +16,7 @@ namespace Player2D
         [SerializeField] private Transform positionToCreate;
         [SerializeField] private GameObject objectToCreate;
 
-        public Interactable _nearbyInteractable;
+        private Interactable _nearbyInteractable;
 
         private Rigidbody2D _rb;
         private Vector2 _moveInput;
