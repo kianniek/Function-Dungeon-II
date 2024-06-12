@@ -11,22 +11,24 @@ namespace Enemies
     /// </summary>
     public class EnemyBehaviorController : MonoBehaviour
     {
-        [SerializeField] private GridData gridData;
+        [SerializeField] private GridGenerator gridGenerator;
         [SerializeField] private int movementSpeed;
         [SerializeField] private int damage;
         [SerializeField] private int attackSpeed;
 
-        private int _gridTileWidth = 1;
-        private int _gridTileHeight = 1;
-
+        private NavMeshAgent _navMeshAgent;
         private float _enemyTowerRadius = 1f;
-        private int _currentTargetIndex;
         private bool _isAttacking;
         private Vector3 _targetPosition;
 
+        private void Awake()
+        {
+            _navMeshAgent = GetComponent<NavMeshAgent>();
+        }
         private void Start()
         {
-            transform.position = new Vector3(gridData.PathIndices[0].x * _gridTileWidth, gridData.PathIndices[0].y * _gridTileHeight, transform.position.z);
+            transform.position = gridGenerator.PathStartPosition;
+            _navMeshAgent.SetDestination(gridGenerator.PathEndPosition);
         }
 
         /// <summary>
@@ -34,23 +36,14 @@ namespace Enemies
         /// </summary>
         private void FixedUpdate()
         {
-            _targetPosition = new Vector3(gridData.PathIndices[_currentTargetIndex].x, gridData.PathIndices[_currentTargetIndex].y, transform.position.z);
-            transform.position = Vector3.MoveTowards(transform.position, _targetPosition, movementSpeed * Time.deltaTime);
-
-            if (Vector2.Distance(transform.position, _targetPosition) > 0.01f || _currentTargetIndex == gridData.PathIndices.Count - 1)
+            if (ClosestTower() == null)
                 return;
 
-            if (ClosestTower() != null)
-            {
-                if (_isAttacking)
-                    return;
+            if (_isAttacking)
+                return;
 
-                StartCoroutine(AttackCoroutine(ClosestTower()));
-            }
-            else
-            {
-                _currentTargetIndex = _currentTargetIndex + 1;
-            }
+            StartCoroutine(AttackCoroutine(ClosestTower()));
+
 
         }
 

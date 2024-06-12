@@ -1,5 +1,5 @@
+using Unity.AI.Navigation;
 using UnityEngine;
-
 namespace WorldGrid
 {
     /// <summary>
@@ -11,8 +11,12 @@ namespace WorldGrid
         [SerializeField] private PlaceableTile placeableGridTile;
         [SerializeField] private PathTile pathGridTile;
         [SerializeField] private GridData gridData;
+        [SerializeField] private NavMeshSurface navMeshSurface;
 
         private Transform _gridTileTransform;
+
+        public Vector2 PathStartPosition => new Vector2(gridData.PathEndIndex.x * _gridTileTransform.localScale.x, gridData.PathEndIndex.y * _gridTileTransform.localScale.y);
+        public Vector2 PathEndPosition => new Vector2(gridData.PathEndIndex.x * _gridTileTransform.localScale.x, gridData.PathEndIndex.y * _gridTileTransform.localScale.y);
 
         private void Awake()
         {
@@ -20,7 +24,7 @@ namespace WorldGrid
         }
 
         /// <summary>
-        /// Instantiates the right gridtiles at the postions defined in PathData
+        /// Instantiates the right gridtiles at the postions defined in PathData, determines start and endposition of path
         /// </summary>
         private void Start()
         {
@@ -30,18 +34,32 @@ namespace WorldGrid
                 {
                     switch (gridData.generatedGrid[i, j])
                     {
+                        //2D
+                        //case (GridTileTypes.Empty):
+                        //    Instantiate(gridTile, new Vector3(i * _gridTileTransform.localScale.x, j * _gridTileTransform.localScale.y, 0), Quaternion.identity, transform);
+                        //    break;
+                        //case (GridTileTypes.Placeable):
+                        //    Instantiate(placeableGridTile, new Vector3(i * _gridTileTransform.localScale.x, j * _gridTileTransform.localScale.y, 0), Quaternion.identity, transform);
+                        //    break;
+                        //case (GridTileTypes.Path):
+                        //    Instantiate(pathGridTile, new Vector3(i * _gridTileTransform.localScale.x, j * _gridTileTransform.localScale.y, 0), Quaternion.identity, transform);
+                        //    break;
+
+                        //3D
                         case (GridTileTypes.Empty):
-                            Instantiate(gridTile, new Vector3(i * _gridTileTransform.localScale.x, j * _gridTileTransform.localScale.y, 0), Quaternion.identity, transform);
+                            Instantiate(gridTile, new Vector3(i * _gridTileTransform.localScale.x, 0, j * _gridTileTransform.localScale.y), Quaternion.identity, transform);
                             break;
                         case (GridTileTypes.Placeable):
-                            Instantiate(placeableGridTile, new Vector3(i * _gridTileTransform.localScale.x, j * _gridTileTransform.localScale.y, 0), Quaternion.identity, transform);
+                            Instantiate(placeableGridTile, new Vector3(i * _gridTileTransform.localScale.x, 0, j * _gridTileTransform.localScale.y), Quaternion.identity, transform);
                             break;
                         case (GridTileTypes.Path):
-                            Instantiate(pathGridTile, new Vector3(i * _gridTileTransform.localScale.x, j * _gridTileTransform.localScale.y, 0), Quaternion.identity, transform);
+                            Instantiate(pathGridTile, new Vector3(i * _gridTileTransform.localScale.x, 0, j * _gridTileTransform.localScale.y), Quaternion.identity, transform);
                             break;
                     }
                 }
             }
+
+            navMeshSurface.BuildNavMesh();
         }
     }
 }

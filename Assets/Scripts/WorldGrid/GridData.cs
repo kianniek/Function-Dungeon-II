@@ -24,6 +24,9 @@ namespace WorldGrid
         public GridTileTypes[,] generatedGrid => gridTileTypes;
         public int XGridSize => xGridSize;
         public int YGridSize => yGridSize;
+        public Vector2Int PathStartIndex => pathIndices[0];
+        public Vector2Int PathEndIndex => pathIndices[pathIndices.Count - 1];   
+
 
         private void OnValidate()
         {
