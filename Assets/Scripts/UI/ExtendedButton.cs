@@ -10,7 +10,7 @@ namespace UI
     [RequireComponent(typeof(Button))]
     public class ExtendedButton : MonoBehaviour
     {
-        [SerializeField] private ExtendedButtonEvent onClickButton = new ();
+        [SerializeField] private ExtendedButtonEvent onClickParseButton = new ();
         [SerializeField] private FloatEvent onClickFloat = new ();
         
         public Button Button { get; private set; }
@@ -24,13 +24,13 @@ namespace UI
 
         protected void Start()
         {
-            Button.onClick.AddListener(() => onClickButton.Invoke(this));
+            Button.onClick.AddListener(() => onClickParseButton.Invoke(this));
             Button.onClick.AddListener(() => onClickFloat.Invoke(ButtonValue));
         }
 
         public void OnPointerClick(PointerEventData eventData)
         {
-            onClickButton.Invoke(this);
+            onClickParseButton.Invoke(this);
             onClickFloat.Invoke(ButtonValue);
         }
         
