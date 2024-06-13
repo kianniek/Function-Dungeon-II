@@ -175,7 +175,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 20
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 0.084905684, g: 0.084905684, b: 0.084905684, a: 1}
   m_FlipX: 0
@@ -201,11 +201,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   jumpForce: 10
   groundCheckRadius: 0.2
-  interactableCheckRadius: 1
   moveSpeed: 5
   placementEnabled: 0
   groundCheck: {fileID: 4583243946330741846}
-  interactableCheck: {fileID: 6293244795322014748}
   positionToCreate: {fileID: 8475525787135262373}
   objectToCreate: {fileID: 5935489581430677191, guid: 862c7807e6027804a82525f129a6d4a6, type: 3}
 --- !u!114 &8013342854908779772
