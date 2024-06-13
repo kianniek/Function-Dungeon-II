@@ -137,7 +137,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2605216892821921716, guid: 1c9318da0d0cf9f438c8fcfd46be656f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.66
+      value: -3.01
       objectReference: {fileID: 0}
     - target: {fileID: 2605216892821921716, guid: 1c9318da0d0cf9f438c8fcfd46be656f, type: 3}
       propertyPath: m_LocalPosition.z
@@ -356,6 +356,10 @@ PrefabInstance:
       propertyPath: m_Creator
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 2670432906424554137, guid: 807d6775300cda24898169d0424feb7a, type: 3}
+      propertyPath: m_SortingOrder
+      value: 17
+      objectReference: {fileID: 0}
     - target: {fileID: 2790829344436247545, guid: 807d6775300cda24898169d0424feb7a, type: 3}
       propertyPath: m_Name
       value: Workshop Inside
@@ -411,6 +415,10 @@ PrefabInstance:
     - target: {fileID: 7833752792324831540, guid: 807d6775300cda24898169d0424feb7a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8569530845164194383, guid: 807d6775300cda24898169d0424feb7a, type: 3}
+      propertyPath: m_SortingOrder
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
