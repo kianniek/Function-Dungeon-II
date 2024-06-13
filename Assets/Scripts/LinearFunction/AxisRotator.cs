@@ -34,8 +34,9 @@ namespace LinearFunction
             }
 
             _rotationAngle = LinearFunctionHelper.GetAngleOfFunction(linearFunctionData.Slope);
-Debug.Log("Rotation Angle: " + _rotationAngle);
-            if (invertRotation) _rotationAngle = -_rotationAngle;
+            
+            if (invertRotation) 
+                _rotationAngle = -_rotationAngle;
 
             var rotationVector = rotationAxis switch
             {
@@ -45,7 +46,6 @@ Debug.Log("Rotation Angle: " + _rotationAngle);
                 _ => Vector3.zero
             };
             
-            Debug.Log("Rotation Vector: " + rotationVector);
             targetTransform.Rotate(rotationVector);
         }
     }
