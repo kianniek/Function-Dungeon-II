@@ -4155,7 +4155,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2907296463492854231}
         m_TargetAssemblyTypeName: Table.TabelController, Assembly-CSharp
-        m_MethodName: CheckInput
+        m_MethodName: ValidateInput
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
