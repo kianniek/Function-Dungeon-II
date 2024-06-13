@@ -12,7 +12,6 @@ namespace MaterialSystem
     public class Recipe : ScriptableObject
     {
         [SerializeField] private string recipeName;
-        //TO DO: Add a Item for which the recipe is
         [SerializeField] private Item item;
         [SerializeField] private List<MaterialRequirement> requiredMaterials;
         

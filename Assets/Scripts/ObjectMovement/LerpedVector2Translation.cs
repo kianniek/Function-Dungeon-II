@@ -87,7 +87,6 @@ namespace ObjectMovement
                 yield return null;
             }
             
-            Debug.Log(targetPosition);
             _selfTransform.localPosition = targetPosition;
             onCompleteEvent?.Invoke();
         }
