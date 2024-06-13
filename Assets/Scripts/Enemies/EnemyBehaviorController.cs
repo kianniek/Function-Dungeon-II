@@ -19,12 +19,15 @@ namespace Enemies
         private NavMeshAgent _navMeshAgent;
         private float _enemyTowerRadius = 1f;
         private bool _isAttacking;
-        private Vector3 _targetPosition;
 
         private void Awake()
         {
             _navMeshAgent = GetComponent<NavMeshAgent>();
         }
+
+        /// <summary>
+        /// Set start and end position for path to follow
+        /// </summary>
         private void Start()
         {
             transform.position = gridGenerator.PathStartPosition;
@@ -36,15 +39,10 @@ namespace Enemies
         /// </summary>
         private void FixedUpdate()
         {
-            if (ClosestTower() == null)
-                return;
-
-            if (_isAttacking)
+            if (ClosestTower() == null || _isAttacking)
                 return;
 
             StartCoroutine(AttackCoroutine(ClosestTower()));
-
-
         }
 
         /// <summary>

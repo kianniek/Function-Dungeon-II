@@ -15,8 +15,8 @@ namespace WorldGrid
 
         private Transform _gridTileTransform;
 
-        public Vector2 PathStartPosition => new Vector2(gridData.PathEndIndex.x * _gridTileTransform.localScale.x, gridData.PathEndIndex.y * _gridTileTransform.localScale.y);
-        public Vector2 PathEndPosition => new Vector2(gridData.PathEndIndex.x * _gridTileTransform.localScale.x, gridData.PathEndIndex.y * _gridTileTransform.localScale.y);
+        public Vector3 PathStartPosition => new Vector3(gridData.PathStartIndex.x * _gridTileTransform.localScale.x, 1, gridData.PathStartIndex.y * _gridTileTransform.localScale.y);
+        public Vector3 PathEndPosition => new Vector3(gridData.PathEndIndex.x * _gridTileTransform.localScale.x, 1, gridData.PathEndIndex.y * _gridTileTransform.localScale.y);
 
         private void Awake()
         {
