@@ -13,7 +13,7 @@ namespace Towers
         [SerializeField] private LinearEquationTextModifier linearEquationTextModifier;
 
         [Header("Events")]
-        [SerializeField] Vector2GameEvent bulletCoordinatesSet;
+        [SerializeField] private Vector2GameEvent bulletCoordinatesSet;
         [SerializeField] private GameObjectGameEvent onShootingTowerPlaced;
 
         private GameObject _shootingTower;

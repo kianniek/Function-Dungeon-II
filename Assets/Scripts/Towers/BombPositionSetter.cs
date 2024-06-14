@@ -15,7 +15,7 @@ namespace Towers
         [SerializeField] private TextMeshProUGUI yAnswer;
 
         [Header("Events")]
-        [SerializeField] Vector2GameEvent bombCoordinatesSet;
+        [SerializeField] private Vector2GameEvent bombCoordinatesSet;
         [SerializeField] private GameObjectGameEvent onBombTowerPlaced;
 
         private Vector2 _answer;
