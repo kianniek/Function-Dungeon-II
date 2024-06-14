@@ -25,5 +25,30 @@ namespace Extensions
         {
             return (radius - magnitude) / radius;
         }
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <param name="x"></param>
+        /// <returns></returns>
+        public static float LinearFunction(float a, float b, float x)
+        {
+            return a * x + b;
+        }
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <param name="c"></param>
+        /// <param name="x"></param>
+        /// <returns></returns>
+        public static float QuadraticFunction(float a, float b, float c, float x)
+        {
+            return a * x * x + b * x + c;
+        }
     }
 }
