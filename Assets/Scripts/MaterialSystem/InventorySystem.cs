@@ -1,4 +1,4 @@
-﻿using Events.GameEvents.Typed;
+using Events.GameEvents.Typed;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -97,6 +97,47 @@ namespace MaterialSystem
             
             ore.Use(amount);
             onOreUsed.Invoke(ore);
+        }
+
+        /// <summary>
+        /// Adds a material to the player's inventory.
+        /// </summary>
+        /// <param name="recipe"></param>
+        /// <returns></returns>
+        public bool HasRequiredMaterials(Recipe recipe)
+        {
+            foreach (var req in recipe.RequiredMaterials)
+            {
+                var hasMaterial = false;
+                foreach (var mat in Materials)
+                {
+                    if (mat != req.Material || mat.AmountCollected < req.Amount)
+                        continue;
+
+                    hasMaterial = true;
+                    break;
+                }
+
+                if (!hasMaterial)
+                    return false;
+            }
+            return true;
+        }
+
+        /// <summary>
+        /// Removes the required materials from the player's inventory.
+        /// </summary>
+        /// <param name="material"></param>
+        /// <param name="amount"></param>
+        /// <returns></returns>
+        public bool HasAmountOfMaterial(Material material, int amount)
+        {
+            foreach (var mat in Materials)
+            {
+                if (mat == material && mat.AmountCollected >= amount)
+                    return true;
+            }
+            return false;
         }
     }
 }
