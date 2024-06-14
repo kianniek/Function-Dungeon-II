@@ -1,8 +1,9 @@
 using Events;
 using UnityEngine;
 
-namespace Cannon
+namespace ObjectMovement
 {
+    [ExecuteInEditMode]
     public class ObjectSlopeAngleController : MonoBehaviour
     {
         [Header("References")]
@@ -12,6 +13,7 @@ namespace Cannon
         [SerializeField] private float startSlope;
         
         [Header("Events")]
+        [SerializeField] private FloatEvent onSlopeChange = new();
         [SerializeField] private FloatEvent onAngleChange = new();
 
         private float _slope;
@@ -22,6 +24,7 @@ namespace Cannon
             set
             {
                 _slope = value;
+                
                 Rotate(value);
             }
         }
@@ -43,6 +46,8 @@ namespace Cannon
         // Rotate the barrel based on the value of slope
         private void Rotate(float slope)
         {
+            onSlopeChange.Invoke(slope);
+            
             var newAngle = GetAngle(slope);
             
             rotationPivot.transform.rotation = Quaternion.Euler(0f, 0f, newAngle);

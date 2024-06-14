@@ -98,7 +98,6 @@ namespace LinearProjectiles
             
             if (projectile)
             {
-                projectile.transform.position = transform.position;
                 projectile.gameObject.SetActive(true);
                 projectile.Shoot(shootPosition.transform.rotation);
                 
