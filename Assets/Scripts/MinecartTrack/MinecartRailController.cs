@@ -37,7 +37,7 @@ namespace MineCartTrack
 
             _currentTrack = track.GetComponent<MineCartTrack>();
 
-            //changeHeight.AddListener(_currentTrack.GetComponent<LerpedVector2Translation>().Move);
+            //changeHeight.AddListener(_currentTrack.GetComponent<LerpedYTranslation>().Move);
             changeSlope.AddListener(_currentTrack.GetComponent<ObjectSlopeAngleController>().Rotate);
 
             _minecartTracks.Add(_currentTrack);
