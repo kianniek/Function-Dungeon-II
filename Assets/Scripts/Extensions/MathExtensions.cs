@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace Extensions
@@ -10,9 +11,9 @@ namespace Extensions
         /// <param name="value">The value to round.</param>
         /// <param name="amountBehindComma">The amount of decimal places to round to.</param>
         /// <returns>The rounded value.</returns>
-        public static float RoundValue(float value, int amountBehindComma)
+        public static float RoundValue(this float value, int amountBehindComma)
         {
-            return Mathf.Round(value * Mathf.Pow(10, amountBehindComma)) / Mathf.Pow(10, amountBehindComma);
+            return MathF.Round(value * MathF.Pow(10, amountBehindComma)) / MathF.Pow(10, amountBehindComma);
         }
         
         /// <summary>
@@ -49,6 +50,26 @@ namespace Extensions
         public static float QuadraticFunction(float a, float b, float c, float x)
         {
             return a * x * x + b * x + c;
+        }
+        
+        /// <summary>
+        /// Calculates the angle from a given x coefficient.
+        /// </summary>
+        /// <param name="a"> The x coefficient. </param>
+        /// <returns> Returns the angle in degrees. </returns>
+        public static float AToDegrees(float a)
+        {
+            return AToRadians(a) * Mathf.Rad2Deg;
+        }
+        
+        /// <summary>
+        /// Calculates the angle from a given x coefficient.
+        /// </summary>
+        /// <param name="a"> The x coefficient. </param>
+        /// <returns> Returns the angle in radians. </returns>
+        public static float AToRadians(float a)
+        {
+            return Mathf.Atan2(a, 1);
         }
     }
 }
