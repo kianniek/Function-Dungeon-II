@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using Attributes;
 using Events.GameEvents.Typed;
 using UnityEngine;
@@ -28,6 +29,7 @@ namespace LinearProjectiles
         [SerializeField] private IntGameEvent onAmmoChange;
         [SerializeField] private UnityEvent onAmmoDepleted = new();
         [SerializeField] private LinearProjectileEvent onShootProjectile = new();
+        [SerializeField] private LinearProjectileEvent onNextProjectile = new();
         
         private int _currentAmmoCount;
         
@@ -52,6 +54,8 @@ namespace LinearProjectiles
         {
             CreatePooledProjectiles();
             CurrentAmmoCount = totalAmmo;
+            
+            onNextProjectile.Invoke(_pooledProjectiles[0]);
         }
         
         // Empties the current pooled object list and creates a new pool
@@ -102,6 +106,7 @@ namespace LinearProjectiles
                 projectile.Shoot(shootPosition.transform.rotation);
                 
                 onShootProjectile.Invoke(projectile);
+                onNextProjectile.Invoke(GetPooledProjectile());
             }
             else
             {
