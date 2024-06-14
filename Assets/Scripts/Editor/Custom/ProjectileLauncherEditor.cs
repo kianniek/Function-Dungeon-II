@@ -1,5 +1,4 @@
-using Cannon;
-using Projectile;
+using LinearProjectiles;
 using UnityEditor;
 using UnityEngine;
 

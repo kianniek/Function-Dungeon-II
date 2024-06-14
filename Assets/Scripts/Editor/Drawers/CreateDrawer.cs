@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Reflection;
+using Attributes;
 using UnityEditor;
 using UnityEngine;
 
@@ -18,7 +19,14 @@ namespace Editor.Drawers
         
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
-            CreateDrawerExtension(position, property, label, fieldInfo);
+            if (fieldInfo.GetCustomAttribute<ExpandableAttribute>() is null)
+            {
+                CreateDrawerExtension(position, property, label, fieldInfo);
+            }
+            else
+            {
+                EditorGUI.PropertyField(position, property, label);
+            }
         }
         
         /// <summary>
@@ -48,7 +56,7 @@ namespace Editor.Drawers
                     width = CreateButtonWidth
                 };
                 
-                if (!GUI.Button(buttonRect, "Create")) 
+                if (!GUI.Button(buttonRect, "Create"))
                     return;
                 
                 property.objectReferenceValue = CreateAssetWithSavePrompt(label, GetFieldType(fieldInfo), AssetPath);
@@ -75,7 +83,7 @@ namespace Editor.Drawers
                 "Enter a file name for the ScriptableObject.",
                 path);
             
-            if (path is "") 
+            if (path is "")
                 return null;
             
             var asset = ScriptableObject.CreateInstance(type);

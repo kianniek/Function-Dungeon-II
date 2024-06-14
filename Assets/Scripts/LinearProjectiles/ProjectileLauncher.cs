@@ -7,7 +7,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using Utils;
 
-namespace Projectile
+namespace LinearProjectiles
 {
     public class ProjectileLauncher : MonoBehaviour
     {

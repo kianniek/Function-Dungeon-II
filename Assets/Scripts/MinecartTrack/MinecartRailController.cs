@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using Cannon;
 using Events;
 using Events.GameEvents.Typed;
+using ObjectMovement;
 using UnityEngine;
 
 namespace MinecartTrack
@@ -38,7 +39,7 @@ namespace MinecartTrack
             _currentTrack = track.GetComponent<MinecartTrack>();
 
             changeHeight.AddListener(_currentTrack.GetComponent<LerpedYTranslation>().Move);
-            changeSlope.AddListener(_currentTrack.GetComponent<ObjectSlopeAngleController>().SetSlope);
+            changeSlope.AddListener(_currentTrack.GetComponent<ObjectSlopeAngleController>().Rotate);
 
             _minecartTracks.Add(_currentTrack);
         }
