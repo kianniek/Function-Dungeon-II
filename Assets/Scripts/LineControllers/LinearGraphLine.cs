@@ -55,6 +55,9 @@ namespace LineControllers
 
         private void UpdateLine()
         {
+            if (!_lineRenderer)
+                return;
+            
             _lineRenderer.positionCount = Resolution;
 
             var direction = new Vector2 { x = 1, y = MathExtensions.LinearFunction(_a, _b, 1) }.normalized;

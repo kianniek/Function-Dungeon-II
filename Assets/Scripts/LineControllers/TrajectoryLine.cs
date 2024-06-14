@@ -15,7 +15,7 @@ namespace LineControllers
         [SerializeField, Min(2)] private int resolution = 10;
         [SerializeField, Min(1)] private float length = 10f;
 
-        private LineRenderer _trajectoryLineRenderer;
+        private LineRenderer _lineRenderer;
         private float _a;
         private float _b;
         private LinearProjectile _activeProjectile;
@@ -69,7 +69,7 @@ namespace LineControllers
 
         private void Awake()
         {
-            _trajectoryLineRenderer = GetComponent<LineRenderer>();
+            _lineRenderer = GetComponent<LineRenderer>();
         }
 
         private void OnValidate()
@@ -82,6 +82,9 @@ namespace LineControllers
 
         private void UpdateLine()
         {
+            if (!_lineRenderer)
+                return;
+            
             var direction = new Vector2 { x = 1, y = MathExtensions.LinearFunction(_a, _b, 1) }.normalized;
 
             var initialVelocity = direction * _activeProjectile.Speed;
@@ -93,8 +96,8 @@ namespace LineControllers
                 -_activeProjectile.AppliedGravity
             );
 
-            _trajectoryLineRenderer.positionCount = resolution;
-            _trajectoryLineRenderer.SetPositions(trajectoryPoints);
+            _lineRenderer.positionCount = resolution;
+            _lineRenderer.SetPositions(trajectoryPoints);
         }
 
         private Vector3[] CalculateLinePoints(Vector2 initialVelocity, Vector2 gravityDelayPoint, float gravity)
@@ -107,15 +110,17 @@ namespace LineControllers
 
             for (var i = 0; i < resolution; i++)
             {
+                // Calculate the time step for the next point
                 var timeStep = i * (length / resolution) / initialVelocity.x;
-
+                // Calculate the next point
                 nextPoint.x = initialVelocity.x * timeStep;
                 nextPoint.y = initialVelocity.y * timeStep;
-
                 // Apply gravity after the delay point
                 if (applyDelayedGravity && nextPoint.sqrMagnitude >= gravityDelayPoint.sqrMagnitude)
                 {
+                    // Update the time step to account for the delay
                     timeStep -= gravityDelayPoint.x / initialVelocity.x;
+                    // Apply gravity
                     nextPoint.y -= 0.5f * gravity * timeStep * timeStep;
                 }
 
