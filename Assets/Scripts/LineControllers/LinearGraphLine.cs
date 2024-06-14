@@ -15,6 +15,9 @@ namespace LineControllers
         private float _a;
         private float _b;
 
+        /// <summary>
+        /// The coefficient of the x-term in the linear function.
+        /// </summary>
         public float A
         {
             set
@@ -25,6 +28,9 @@ namespace LineControllers
             }
         }
 
+        /// <summary>
+        /// The constant term in the linear function.
+        /// </summary>
         public float B
         {
             set
@@ -35,6 +41,11 @@ namespace LineControllers
             }
         }
         
+        /// <summary>
+        /// Updates the line with the given x-coefficient and constant term.
+        /// </summary>
+        /// <param name="a"> The x-coefficient. </param>
+        /// <param name="b"> The constant term. </param>
         public void UpdateLine(float a, float b)
         {
             _a = a;

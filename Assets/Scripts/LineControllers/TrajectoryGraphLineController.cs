@@ -35,7 +35,7 @@ namespace LineControllers
         }
 
         /// <summary>
-        /// 
+        /// The coefficient of the x-term in the linear function.
         /// </summary>
         public float A
         {
@@ -48,7 +48,7 @@ namespace LineControllers
         }
 
         /// <summary>
-        /// 
+        /// The constant term in the linear function.
         /// </summary>
         public float B
         {
@@ -61,11 +61,11 @@ namespace LineControllers
         }
         
         /// <summary>
-        /// 
+        /// Updates the lines with the given x-coefficient, constant term and projectile physics.
         /// </summary>
-        /// <param name="a"></param>
-        /// <param name="b"></param>
-        /// <param name="linearProjectile"></param>
+        /// <param name="a"> The x-coefficient. </param>
+        /// <param name="b"> The constant term. </param>
+        /// <param name="linearProjectile"> The projectile physics. </param>
         public void UpdateLines(float a, float b, LinearProjectile linearProjectile)
         {
             _a = a; 

@@ -27,25 +27,25 @@ namespace Extensions
         }
         
         /// <summary>
-        /// 
+        /// The function of a line.
         /// </summary>
-        /// <param name="a"></param>
-        /// <param name="b"></param>
-        /// <param name="x"></param>
-        /// <returns></returns>
+        /// <param name="a">The coefficient of the x term.</param>
+        /// <param name="b">The constant term.</param>
+        /// <param name="x">The x value of the line.</param>
+        /// <returns>The y value of the line.</returns>
         public static float LinearFunction(float a, float b, float x)
         {
             return a * x + b;
         }
         
         /// <summary>
-        /// 
+        /// The function of a parabola.
         /// </summary>
-        /// <param name="a"></param>
-        /// <param name="b"></param>
-        /// <param name="c"></param>
-        /// <param name="x"></param>
-        /// <returns></returns>
+        /// <param name="a">The coefficient of the x^2 term.</param>
+        /// <param name="b">The coefficient of the x term.</param>
+        /// <param name="c">The constant term.</param>
+        /// <param name="x">The x value of the parabola.</param>
+        /// <returns>The y value of the parabola.</returns>
         public static float QuadraticFunction(float a, float b, float c, float x)
         {
             return a * x * x + b * x + c;

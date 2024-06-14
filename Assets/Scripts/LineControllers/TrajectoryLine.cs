@@ -20,6 +20,9 @@ namespace LineControllers
         private float _b;
         private LinearProjectile _activeProjectile;
 
+        /// <summary>
+        /// The coefficient of the x-term in the linear function.
+        /// </summary>
         public float A
         {
             set
@@ -30,6 +33,9 @@ namespace LineControllers
             }
         }
 
+        /// <summary>
+        /// The constant term in the linear function.
+        /// </summary>
         public float B
         {
             set
@@ -40,6 +46,9 @@ namespace LineControllers
             }
         }
 
+        /// <summary>
+        /// The active projectile that will be used to calculate the trajectory.
+        /// </summary>
         public LinearProjectile ActiveProjectile
         {
             set
@@ -52,11 +61,11 @@ namespace LineControllers
         }
         
         /// <summary>
-        /// 
+        /// Updates the line with the given x-coefficient, constant term and projectile physics.
         /// </summary>
-        /// <param name="a"></param>
-        /// <param name="b"></param>
-        /// <param name="linearProjectile"></param>
+        /// <param name="a"> The x-coefficient. </param>
+        /// <param name="b"> The constant term. </param>
+        /// <param name="linearProjectile"> The projectile physics. </param>
         public void UpdateLine(float a, float b, LinearProjectile linearProjectile)
         {
             _a = a; 

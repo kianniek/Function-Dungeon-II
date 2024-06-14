@@ -27,53 +27,48 @@ namespace LinearProjectiles
         
         private Transform _transform;
         private Rigidbody2D _rigidBody2D;
+        private Vector3 _startPosition;
         private IEnumerator _resetOnInactivityCoroutine;
+        
+        private float _initialGravityScale = 1f;
         private bool _gravityApplied;
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public float GravityScale { get; private set; } = 1f;
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public float AppliedGravity => Physics2D.gravity.y * GravityScale;
         
         /// <summary>
-        /// 
+        /// The applied gravity of the projectile.
+        /// </summary>
+        public float AppliedGravity => Physics2D.gravity.y * _initialGravityScale;
+        
+        /// <summary>
+        /// The speed of the projectile.
         /// </summary>
         public float Speed => speed;
         
         /// <summary>
-        /// 
+        /// The delay value of the projectile.
         /// </summary>
+        /// <remarks> Depending on the delay type, this value can represent either time or distance. </remarks>
         public float DelayValue => delayValue;
-        
-        /// <summary>
-        /// 
-        /// </summary>
-        public float DistanceTraveled => Vector2Extension.Distance(InitialPosition, _transform.position);
-        
-        /// <summary>
-        /// 
-        /// </summary>
-        public Vector3 InitialPosition { get; private set; }
 
         /// <summary>
-        /// 
+        /// Whether the projectile has delayed gravity.
         /// </summary>
         public bool DelayedGravity => delayedGravity;
 
         /// <summary>
-        /// 
+        /// The type of delay used for gravity.
         /// </summary>
         public DelayType DelayType => delayType;
+        
+        private float DistanceTraveled => Vector2Extension.Distance(_startPosition, _transform.position);
+        
+        private bool ReachedGravityDelayPoint => !_gravityApplied && delayedGravity && 
+                                                 delayType == DelayType.DistanceBased &&
+                                                 DistanceTraveled >= delayValue;
 
         /// <summary>
-        /// 
+        /// Shoots the projectile in the specified direction.
         /// </summary>
-        /// <param name="rotation"></param>
+        /// <param name="rotation">The direction in which the projectile should be shot.</param>
         public void Shoot(Quaternion rotation)
         {
             SetInitialPositionAndRotation(rotation);
@@ -97,22 +92,16 @@ namespace LinearProjectiles
         {
             ManageInactivityCoroutine();
             
-            if (
-                !_gravityApplied &&
-                delayedGravity && 
-                delayType == DelayType.DistanceBased && 
-                DistanceTraveled >= delayValue
-            )
+            if (ReachedGravityDelayPoint)
             {
-                _rigidBody2D.gravityScale = GravityScale;
-                
+                _rigidBody2D.gravityScale = _initialGravityScale;
                 _gravityApplied = true;
             }
 
             if (DistanceTraveled >= resetOnDistance)
                 Reset();
         }
-        
+
         private void Reset()
         {
             StopAllCoroutines();
@@ -122,17 +111,17 @@ namespace LinearProjectiles
         
         private void SetInitialPhysicsProperties()
         {
-            GravityScale = _rigidBody2D.gravityScale;
+            _initialGravityScale = _rigidBody2D.gravityScale;
             
-            _rigidBody2D.gravityScale = delayedGravity ? 0 : GravityScale;
+            _rigidBody2D.gravityScale = delayedGravity ? 0 : _initialGravityScale;
             _rigidBody2D.velocity = _transform.right * speed;
         }
         
         private void SetInitialPositionAndRotation(Quaternion rotation)
         {
-            InitialPosition = startPosition ? startPosition.position : _transform.position;
+            _startPosition = startPosition ? startPosition.position : _transform.position;
             
-            _transform.position = InitialPosition;
+            _transform.position = _startPosition;
             _transform.rotation = rotation;
         }
         
@@ -140,7 +129,7 @@ namespace LinearProjectiles
         {
             yield return new WaitForSeconds(delayValue);
             
-            _rigidBody2D.gravityScale = GravityScale;
+            _rigidBody2D.gravityScale = _initialGravityScale;
         }
         
         private IEnumerator ResetOnTime()
