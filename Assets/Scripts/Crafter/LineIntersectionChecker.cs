@@ -1,3 +1,4 @@
+using LineControllers;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
@@ -10,9 +11,13 @@ namespace Crafter
     /// </summary>
     public class LineIntersectionChecker : MonoBehaviour
     {
-        [Header("Correct Interception Variables")]
-        [SerializeField] private FunctionLineController line1;
-        [SerializeField] private FunctionLineController line2;
+        [Header("Line Coefficients")]
+        [SerializeField] private float a1;
+        [SerializeField] private float a2;
+        
+        [Header("Line References")]
+        [SerializeField] private LinearGraphLine line1;
+        [SerializeField] private LinearGraphLine line2;
 
         [Header("GUI References")]
         [SerializeField] private TextMeshProUGUI xAnswer;
@@ -22,21 +27,13 @@ namespace Crafter
         [SerializeField] private UnityEvent onCorrectAnswerGivenEvent;
         [SerializeField] private UnityEvent onWrongAnswerGivenEvent;
         
-        private float _a1;
         private float _b1;
-        private float _a2;
         private float _b2;
         private Vector2 _intersection;
 
         private void Start()
         {
-            _a1 = line1.A;
-            _b1 = line1.transform.position.y;
-
-            _a2 = line2.A;
-            _b2 = line2.transform.position.y;
-
-            _intersection = Vector2Extension.FindIntersection(_a1, _b1, _a2, _b2);
+            OnValidate();
         }
 
         /// <summary>
@@ -53,6 +50,20 @@ namespace Crafter
                 onCorrectAnswerGivenEvent.Invoke();
             else
                 onWrongAnswerGivenEvent.Invoke();
+        }
+
+        private void OnValidate()
+        {
+            if (!line1 || !line2)
+                return;
+            
+            line1.A = a1;
+            line2.A = a2;
+            
+            _b1 = line1.transform.position.y;
+            _b2 = line2.transform.position.y;
+            
+            _intersection = Vector2Extension.FindIntersection(a1, _b1, a2, _b2);
         }
     }
 }

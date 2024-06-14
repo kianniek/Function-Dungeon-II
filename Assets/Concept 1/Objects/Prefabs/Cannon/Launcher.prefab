@@ -739,13 +739,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefabToPool: {fileID: 33785886984917004, guid: 4fb2e525006ed4bf1af1bdb3d7228e76, type: 3}
-  amountToPool: 20
+  amountToPool: 5
   shootPosition: {fileID: 4237095870412061846}
-  totalAmmo: 3
+  totalAmmo: 5
   onAmmoChange: {fileID: 0}
   onAmmoDepleted:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 3211016367267258564}
+        m_TargetAssemblyTypeName: Delay.DelayedLevelFailed, Assembly-CSharp
+        m_MethodName: InvokeDelayed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   onShootProjectile:
     m_PersistentCalls:
       m_Calls: []

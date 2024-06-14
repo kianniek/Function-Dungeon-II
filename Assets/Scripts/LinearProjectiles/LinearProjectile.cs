@@ -106,6 +106,9 @@ namespace LinearProjectiles
         {
             StopAllCoroutines();
             
+            transform.position = _startPosition;
+            _gravityApplied = false;
+            
             gameObject.SetActive(false);
         }
         

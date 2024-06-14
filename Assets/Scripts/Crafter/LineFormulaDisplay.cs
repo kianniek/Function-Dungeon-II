@@ -1,3 +1,4 @@
+using LineControllers;
 using TMPro;
 using UnityEngine;
 
@@ -24,7 +25,7 @@ namespace Crafter
         {
             _line = lineToFollow.transform;
             _formulaText = GetComponent<TextMeshPro>();
-            _a = _line.GetComponent<FunctionLineController>().A;
+            //_a = _line.GetComponent<LinearGraphLine>().A;
             _b = _line.position.y;
         }
 
