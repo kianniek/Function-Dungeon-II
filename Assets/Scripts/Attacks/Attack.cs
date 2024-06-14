@@ -14,7 +14,6 @@ namespace Attacks
         
         [Header("Events")]
         [SerializeField] private FloatEvent onStrengthChanged = new();
-        [SerializeField] protected UnityEvent onAttack = new();
         
         private float _currentStrength;
         
