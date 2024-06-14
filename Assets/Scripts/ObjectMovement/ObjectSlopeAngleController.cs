@@ -1,4 +1,5 @@
 using Events;
+using Extensions;
 using UnityEngine;
 
 namespace ObjectMovement
@@ -15,44 +16,10 @@ namespace ObjectMovement
         [Header("Events")]
         [SerializeField] private FloatEvent onSlopeChange = new();
         [SerializeField] private FloatEvent onAngleChange = new();
-
-        private float _slope;
-        
-        public float Slope
-        {
-            get => _slope;
-            set
-            {
-                _slope = value;
-                
-                Rotate(value);
-            }
-        }
         
         private void Start()
         {
             Rotate(startSlope);
-        }
-
-        /// <summary>
-        /// Sets the slope of the object
-        /// </summary>
-        /// <param name="input"></param>
-        public void SetSlope(float input)
-        {
-            Slope = input;
-        }
-        
-        // Rotate the barrel based on the value of slope
-        private void Rotate(float slope)
-        {
-            onSlopeChange.Invoke(slope);
-            
-            var newAngle = GetAngle(slope);
-            
-            rotationPivot.transform.rotation = Quaternion.Euler(0f, 0f, newAngle);
-            
-            onAngleChange.Invoke(newAngle);
         }
         
         private void OnValidate()
@@ -61,11 +28,19 @@ namespace ObjectMovement
                 Rotate(startSlope);
         }
         
-        // Calculate the angle in degrees
-        private static float GetAngle(float y)
+        /// <summary>
+        /// Rotates the object based on the coefficient of the x-term.
+        /// </summary>
+        /// <param name="slope"> The coefficient of the x-term. </param>
+        public void Rotate(float slope)
         {
-            return Mathf.Atan2(y, 1) * Mathf.Rad2Deg;
+            onSlopeChange.Invoke(slope);
+            
+            var newAngle = MathExtensions.AToDegrees(slope);
+            
+            rotationPivot.transform.rotation = Quaternion.Euler(0f, 0f, newAngle);
+            
+            onAngleChange.Invoke(newAngle);
         }
-
     }
 }
