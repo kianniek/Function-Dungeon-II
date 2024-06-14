@@ -1,52 +1,50 @@
 using Events.GameEvents.Typed;
-using Extensions;
-using TMPro;
-using Towers;
 using UI.LinearEquation;
 using UnityEngine;
 
-public class ShootingEquationSetter : MonoBehaviour
+namespace Towers
 {
-    [Header("Tower variables")]
-    [SerializeField] private TowerVariables shootingTowerVariables;
-
-    [Header("GUI References")]
-    [SerializeField] private LinearEquationTextModifier linearEquationTextModifier;
-
-    [Header("Events")]
-    [SerializeField] Vector2GameEvent bulletCoordinatesSet;
-    [SerializeField] private GameObjectGameEvent onShootingTowerPlaced;
-
-    private GameObject _shootingTower;
-
-    private void Awake()
+    public class ShootingEquationSetter : MonoBehaviour
     {
-        onShootingTowerPlaced.AddListener(SetBombtower);
-    }
+        [Header("Tower variables")]
+        [SerializeField] private TowerVariables shootingTowerVariables;
 
-    /// <summary>
-    /// Retrieve shootingtower from event
-    /// </summary>
-    /// <param name="shootingTower">shootingtower retrieved from event</param>
-    private void SetBombtower(GameObject shootingTower)
-    {
-        _shootingTower = shootingTower;
-    }
+        [Header("GUI References")]
+        [SerializeField] private LinearEquationTextModifier linearEquationTextModifier;
 
-    /// <summary>
-    /// Check if typed coordinates are in range of tower and invoke the event to send coordinates back to tower
-    /// </summary>
-    public void OnConfirmButtonClicked()
-    {
-        var startPoint = new Vector2(_shootingTower.transform.position.x, _shootingTower.transform.position.y);
-        var a = linearEquationTextModifier.AVariable;
-        var direction = new Vector2(1, a);
-        var normalizedDirection = direction.normalized;
-        var scaledDirection = normalizedDirection * shootingTowerVariables.Range;
-        var endpoint = startPoint + scaledDirection;
+        [Header("Events")]
+        [SerializeField] Vector2GameEvent bulletCoordinatesSet;
+        [SerializeField] private GameObjectGameEvent onShootingTowerPlaced;
 
-        Debug.Log(endpoint.x + " " + endpoint.y);
+        private GameObject _shootingTower;
 
-        bulletCoordinatesSet.Invoke(endpoint);
+        private void Awake()
+        {
+            onShootingTowerPlaced.AddListener(SetBombtower);
+        }
+
+        /// <summary>
+        /// Retrieve shootingtower from event
+        /// </summary>
+        /// <param name="shootingTower">shootingtower retrieved from event</param>
+        private void SetBombtower(GameObject shootingTower)
+        {
+            _shootingTower = shootingTower;
+        }
+
+        /// <summary>
+        /// Translates player input formula to a point within tower range. Bullets will be shooted towards this point. Invoke the event to send coordinates back to tower
+        /// </summary>
+        public void OnConfirmButtonClicked()
+        {
+            var startPoint = new Vector2(_shootingTower.transform.position.x, _shootingTower.transform.position.y);
+            var a = linearEquationTextModifier.AVariable;
+            var direction = new Vector2(1, a);
+            var normalizedDirection = direction.normalized;
+            var scaledDirection = normalizedDirection * shootingTowerVariables.Range;
+            var endpoint = startPoint + scaledDirection;
+
+            bulletCoordinatesSet.Invoke(endpoint);
+        }
     }
 }
