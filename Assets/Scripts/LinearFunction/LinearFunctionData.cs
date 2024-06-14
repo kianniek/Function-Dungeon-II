@@ -28,7 +28,7 @@ namespace LinearFunction
         {
             this.values = new float[FixedLength];
             
-            for (int i = 0; i < FixedLength; i++)
+            for (var i = 0; i < FixedLength; i++)
             {
                 if (i < values.Length)
                     this.values[i] = values[i];
@@ -92,7 +92,7 @@ namespace LinearFunction
         /// <summary>
         /// Gets or sets the y-intercept of the linear function. If random values are used, generates a random y-intercept.
         /// </summary>
-        public float YIntercept { private set; get; }
+        public float YIntercept => _yIntercept;
         
         /// <summary>
         /// Gets the number of decimal places for rounding.
@@ -105,6 +105,13 @@ namespace LinearFunction
         public IReadOnlyDictionary<float, float> CorrectTableValues => correctTableValues;
         
         public XValues GetXValues => tableXValues;
+        
+        public float MinSlope => minSlope;
+        public float MaxSlope => maxSlope;
+        public float MinYIntercept => minYIntercept;
+        public float MaxYIntercept => maxYIntercept;
+        
+        
         
         /// <summary>
         /// Initializes the dictionaries mapping buttons to their text components and validates the slope and y-intercept values.
@@ -156,7 +163,6 @@ namespace LinearFunction
             foreach (var xValue in tableXValues)
             {
                 correctTableValues[xValue] = LinearFunctionHelper.GetY(xValue, _slope, _yIntercept);
-                Debug.Log(correctTableValues[xValue]);
             }
         }
     }

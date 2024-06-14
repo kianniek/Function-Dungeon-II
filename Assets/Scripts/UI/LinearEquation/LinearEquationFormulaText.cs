@@ -1,3 +1,4 @@
+using System;
 using LinearFunction;
 using TMPro;
 using UnityEngine;
@@ -8,6 +9,7 @@ using UnityEngine;
 public class LinearEquationFormulaText : MonoBehaviour
 {
     [SerializeField] private LinearFunctionData linearFunctionData;
+    [SerializeField] private bool setTextOnStart = true;
     
     private const string TextFormat = "y = {0}x + {1}";
     private const string GenericTextFormat = "y = ax + b";
@@ -34,6 +36,12 @@ public class LinearEquationFormulaText : MonoBehaviour
     private void Awake()
     {
         _text = GetComponent<TMP_Text>();
+    }
+    
+    private void Start()
+    {
+        if (setTextOnStart)
+            PullLinearFunctionData();
     }
     
     // Set the text

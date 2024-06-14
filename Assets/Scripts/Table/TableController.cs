@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using Events;
 using Events.GameEvents.Typed;
 using Extensions;
 using LinearFunction;
@@ -15,20 +16,23 @@ namespace Table
     {
         private const string PlaceholderText = " ";
         
-        [Header("Data")] [SerializeField] private LinearFunctionData linearFunctionData;
+        [Header("Data")] 
+        [SerializeField] private LinearFunctionData linearFunctionData;
+        [SerializeField] private int amoutGivenValues;
         
-        [Header("Events")] [SerializeField] private FloatGameEvent onInputChanged;
+        [Header("Events")] 
+        [SerializeField] private FloatGameEvent onInputChanged;
         [SerializeField] private ExtendedButtonGameEvent onExtendedButtonClicked;
         [SerializeField] private ExtendedButton currentSelectedButton;
         
-        [Header("Check Settings")] [SerializeField]
-        private float checkMargin;
+        [Header("Check Settings")] 
+        [SerializeField] private float checkMargin;
         
-        [SerializeField] private UnityEvent onInputCorrect;
-        [SerializeField] private UnityEvent onInputIncorrect;
+        [SerializeField] private BoolEvent onInputCorrect;
+        [SerializeField] private BoolEvent onInputIncorrect;
         
-        [Header("Table Buttons")] [SerializeField]
-        private List<Button> tableXButtons = new();
+        [Header("Table Buttons")] 
+        [SerializeField] private List<Button> tableXButtons = new();
         
         [SerializeField] private List<ExtendedButton> tableYButtons = new();
         private readonly Dictionary<Button, TMP_Text> _tableXDictionary = new();
@@ -38,6 +42,11 @@ namespace Table
         /// Gets the number of columns (buttons) in the table.
         /// </summary>
         public int ColumnCount => tableXButtons.Count;
+        
+        /// <summary>
+        /// Gets the number of Y values in the table that are given values.
+        /// </summary>
+        public int AmountGivenValues => amoutGivenValues;
         
         private void Awake()
         {
@@ -164,13 +173,11 @@ namespace Table
             //Invoke the correct or incorrect event
             if (correct)
             {
-                Debug.Log("Correct");
-                onInputCorrect?.Invoke();
+                onInputCorrect?.Invoke(false);
             }
             else
             {
-                Debug.Log("Incorrect");
-                onInputIncorrect?.Invoke();
+                onInputIncorrect?.Invoke(true);
             }
         }
     }
