@@ -21,7 +21,7 @@ namespace Towers
         private Vector2 _answer;
         private GameObject _bombTower;
 
-        private void Start()
+        private void Awake()
         {
             onBombTowerPlaced.AddListener(SetBombtower);
         }
