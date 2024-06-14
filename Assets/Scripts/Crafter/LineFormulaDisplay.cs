@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Crafter
 {
-    public class LineToText : MonoBehaviour
+    public class LineFormulaDisplay : MonoBehaviour
     {
         private const float ZPosition = -0.5f;
         
