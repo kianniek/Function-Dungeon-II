@@ -4,11 +4,14 @@ using UnityEngine;
 /// <summary>
 /// This class is responsible for defining the behavior of an object that can explode.
 /// </summary>
-public class Explodeable : MonoBehaviour
+public class ExplodeOnImpact : MonoBehaviour
 {
+    [Header("Radius Settings")]
     [SerializeField] private float forceRadius;
-    [SerializeField] private bool applyForcePowerFallOff;
+
+    [Header("Power Settings")]
     [SerializeField] private float forcePower;
+    [SerializeField] private bool applyForcePowerFallOff;
     
     private Collider2D[] _hitColliders;
     private Rigidbody2D _rigidBody2D;
