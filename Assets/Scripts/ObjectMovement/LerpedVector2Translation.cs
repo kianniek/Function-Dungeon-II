@@ -27,15 +27,6 @@ namespace ObjectMovement
             _wantedPosition = _startPosition;
         }
         
-        private void FixedUpdate()
-        {
-            var lerpedPosition = Vector3.Distance(_selfTransform.localPosition, _wantedPosition) > 0.01f
-                ? Vector3.Lerp(_selfTransform.localPosition, _wantedPosition, Time.deltaTime * movementSmoothing)
-                : _wantedPosition;
-            
-            _selfTransform.localPosition = lerpedPosition;
-        }
-        
         public void MoveX()
         {
             StartCoroutine(MoveCoroutine(_startPosition + Vector3.right * moveDistance.x, onMoveComplete));
