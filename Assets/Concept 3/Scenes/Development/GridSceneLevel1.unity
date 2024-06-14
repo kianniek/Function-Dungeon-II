@@ -968,10 +968,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: ShootTower
       objectReference: {fileID: 0}
-    - target: {fileID: 2999448396102145, guid: 09dd694369756964183233355e0d1cd2, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7105360290971891572, guid: 09dd694369756964183233355e0d1cd2, type: 3}
       propertyPath: m_LocalPosition.x
       value: 3
@@ -1165,6 +1161,10 @@ PrefabInstance:
     - target: {fileID: 2582677756436490222, guid: 06b1e360a780bd640b843d39f9fe3339, type: 3}
       propertyPath: m_Name
       value: BombTower
+      objectReference: {fileID: 0}
+    - target: {fileID: 2582677756436490222, guid: 06b1e360a780bd640b843d39f9fe3339, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
