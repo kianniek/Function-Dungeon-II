@@ -8,7 +8,6 @@ namespace Towers
         [Header("Events")]
         [SerializeField] private GameObjectGameEvent onShootingTowerPlaced;
         [SerializeField] private GameObjectGameEvent onBombTowerPlaced;
-        [SerializeField] private Vector2GameEvent bombCoordinatesSet;
 
         [Header("UI parents")]
         [SerializeField] private GameObject shootingTowerUI;
@@ -18,7 +17,6 @@ namespace Towers
         {
             onShootingTowerPlaced.AddListener(EnableShootingTowerUI);
             onBombTowerPlaced.AddListener(EnableBombTowerUI);
-            bombCoordinatesSet.AddListener(DisableBombTowerUI);
         }
 
         private void EnableShootingTowerUI()
@@ -28,11 +26,6 @@ namespace Towers
         private void EnableBombTowerUI()
         {
             bombTowerUI.SetActive(true);
-        }
-
-        private void DisableBombTowerUI()
-        {
-            bombTowerUI.SetActive(false);
         }
     }
 }
