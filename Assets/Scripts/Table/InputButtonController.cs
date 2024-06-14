@@ -142,7 +142,10 @@ namespace Table
         private float GenerateRandomValue()
         {
             // Round the value to the amount of decimals specified in the linear function data
-            return Random.Range(-valueRange, valueRange).RoundValue(linearFunctionData.AmountOfDecimals);
+            return MathfExtentions.RoundValue(
+                Random.Range(-valueRange, valueRange),
+                linearFunctionData.AmountOfDecimals
+            );
         }
         
         /// <summary>
