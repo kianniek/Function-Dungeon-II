@@ -10,6 +10,7 @@ namespace MinecartTrack
     public class MinecartRailController : MonoBehaviour
     {
         [Header("Events")]
+        // TODO: Change these gameobjectevents to new minecartRail events
         [SerializeField] private GameObjectGameEvent onTrackPlaced;
         [SerializeField] private GameObjectGameEvent onTrackConfirmPlacement;
 
@@ -22,13 +23,13 @@ namespace MinecartTrack
         private void OnEnable()
         {
             onTrackPlaced.AddListener(ChangeCurrentTrack);
-            onTrackConfirmPlacement.AddListener(ConfirmTrackPlacement);
+            onTrackConfirmPlacement.AddListener(RemoveCurentTrack);
         }
 
         private void OnDisable()
         {
             onTrackPlaced.RemoveListener(ChangeCurrentTrack);
-            onTrackConfirmPlacement.RemoveListener(ConfirmTrackPlacement);
+            onTrackConfirmPlacement.RemoveListener(RemoveCurentTrack);
         }
 
         private void ChangeCurrentTrack(GameObject track)
@@ -39,12 +40,8 @@ namespace MinecartTrack
 
             changeHeight.AddListener(_currentTrack.GetComponent<LerpedYTranslation>().Move);
             changeSlope.AddListener(_currentTrack.GetComponent<ObjectSlopeAngleController>().SetSlope);
-            _minecartTracks.Add(_currentTrack);
-        }
 
-        private void ConfirmTrackPlacement()
-        {
-            RemoveCurentTrack();
+            _minecartTracks.Add(_currentTrack);
         }
 
         private void RemoveCurentTrack()

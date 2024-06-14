@@ -5,18 +5,19 @@ namespace Player2D
 {
     public class PlayerController2D : MonoBehaviour
     {
+        [Header("Settings")]
         [SerializeField] private float jumpForce = 10f;
         [SerializeField] private float groundCheckRadius = 0.2f;
-        [SerializeField] private float interactableCheckRadius = 0.5f;
         [SerializeField] private float moveSpeed = 5f;
+        [SerializeField] private bool placementEnabled;
 
+        [Header("References")]
         [SerializeField] private Transform groundCheck;
-        [SerializeField] private Transform interactableCheck;
-
-        [SerializeField] private GameObject objectToCreate;
         [SerializeField] private Transform positionToCreate;
+        [SerializeField] private GameObject objectToCreate;
 
         private Interactable _nearbyInteractable;
+
         private Rigidbody2D _rb;
         private Vector2 _moveInput;
         private bool _isGrounded;
@@ -62,30 +63,16 @@ namespace Player2D
         /// </summary>
         public void OnPlaceObject(InputAction.CallbackContext context)
         {
-            if (context.started)
+            if (placementEnabled && context.started)
             {
                 Instantiate(objectToCreate, positionToCreate.position, Quaternion.identity);
             }
         }
 
-
         private void FixedUpdate()
         {
             _isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius);
-
             _rb.velocity = new Vector2(_moveInput.x * moveSpeed, _rb.velocity.y);
-
-            var collidersInRange = Physics2D.OverlapCircleAll(interactableCheck.position, interactableCheckRadius);
-
-            foreach (var collider2D in collidersInRange)
-            {
-                var interactable = collider2D.gameObject.GetComponent<Interactable>();
-                if (interactable != null)
-                {
-                    _nearbyInteractable = interactable;
-                    break;
-                }
-            }
 
             GroundCheck();
         }
@@ -103,10 +90,15 @@ namespace Player2D
             // Draws ground check radius
             Gizmos.color = Color.red;
             Gizmos.DrawWireSphere(groundCheck.position, groundCheckRadius);
+        }
 
-            // Draws interactible check radius
-            Gizmos.color = Color.yellow;
-            Gizmos.DrawWireSphere(interactableCheck.position, interactableCheckRadius);
+        /// <summary>
+        /// Sets the interactable of the player
+        /// </summary>
+        /// <param name="interactable">The script of the interactable</param>
+        public void SetInteractable(Interactable interactable)
+        {
+            _nearbyInteractable = interactable;
         }
     }
 }

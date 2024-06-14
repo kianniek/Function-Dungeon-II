@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6585613521180758903}
   m_Layer: 0
-  m_Name: Player System
+  m_Name: Player Building
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -162,6 +162,10 @@ PrefabInstance:
     - target: {fileID: 1408538206092533262, guid: 1c9318da0d0cf9f438c8fcfd46be656f, type: 3}
       propertyPath: m_Name
       value: PositionRounder
+      objectReference: {fileID: 0}
+    - target: {fileID: 1622354113313943011, guid: 1c9318da0d0cf9f438c8fcfd46be656f, type: 3}
+      propertyPath: placementEnabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1622354113313943011, guid: 1c9318da0d0cf9f438c8fcfd46be656f, type: 3}
       propertyPath: positionToCreate
