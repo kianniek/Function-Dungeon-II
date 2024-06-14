@@ -10,12 +10,11 @@ namespace Editor.Custom
         public override void OnInspectorGUI()
         {
             DrawDefaultInspector();
-
+            
             var gridDrawer = (GridDrawer)target;
-            if (GUILayout.Button("Redraw Grid"))
-            {
+            
+            if (GUILayout.Button("Redraw Grid")) 
                 gridDrawer.RedrawGrid();
-            }
         }
     }
 }

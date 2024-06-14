@@ -13,10 +13,8 @@ namespace Editor.Custom
             var shakeScript = (ShakeBehavior)target;
 
             if (GUILayout.Button("Test Shake"))
-            {
                 // Trigger the shake using the current settings in the inspector
                 shakeScript.Shake(shakeScript.DebugShakeDuration, shakeScript.DebugShakeIntensity);
-            }
         }
     }
 }

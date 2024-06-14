@@ -1,6 +1,6 @@
 using Events;
-using Extensions;
 using UnityEngine;
+using Utils;
 
 namespace UI
 {

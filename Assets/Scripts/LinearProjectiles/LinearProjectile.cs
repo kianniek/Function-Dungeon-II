@@ -1,7 +1,7 @@
 using System.Collections;
 using Delay;
-using Extensions;
 using UnityEngine;
+using Utils;
 
 namespace LinearProjectiles
 {
@@ -105,6 +105,9 @@ namespace LinearProjectiles
         private void Reset()
         {
             StopAllCoroutines();
+            
+            transform.position = _startPosition;
+            _gravityApplied = false;
             
             gameObject.SetActive(false);
         }

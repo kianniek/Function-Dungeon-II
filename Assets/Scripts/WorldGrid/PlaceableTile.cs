@@ -6,18 +6,20 @@ namespace WorldGrid
     public class PlaceableTile : MonoBehaviour
     {
         [SerializeField] private UnityEvent onTowerPlacedEvent = new();
+        
         private bool _hasTower;
 
         /// <summary>
-        /// Handles what happens when an tower gets place (still WIP, waiting for tower implementation)
+        /// Handles what happens when a tower gets place (still WIP, waiting for tower implementation)
         /// </summary>
         public void OnTowerPlaced()
         {
-            if (!_hasTower)
-            {
-                onTowerPlacedEvent.Invoke();
-                _hasTower = true;
-            }
+            if (_hasTower) 
+                return;
+            
+            onTowerPlacedEvent.Invoke();
+            
+            _hasTower = true;
         }
 
         /// <summary>

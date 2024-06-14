@@ -9,7 +9,6 @@ namespace FlowerSystem
     [CreateAssetMenu(fileName = "FlowerCounter", menuName = "FlowerCounter", order = 1)]
     public class FlowerCounter : ScriptableObject
     {
-        [Header("Events")]
         [SerializeField] private IntGameEvent onFlowerChange;
 
         private int _currentFlowerCount;
@@ -42,7 +41,7 @@ namespace FlowerSystem
         /// <summary>
         /// Decrease amount of flowers player has
         /// </summary>
-        /// <param name="amount">Amount to substract</param>
+        /// <param name="amount">Amount to subtract</param>
         public void Decrease(int amount)
         {
             CurrentFlowerCount -= amount;

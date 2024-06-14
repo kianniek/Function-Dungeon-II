@@ -5,6 +5,7 @@ using LinearFunction;
 using System.Collections.Generic;
 using Extensions;
 using UI;
+using Utils;
 
 namespace Table
 {
@@ -46,6 +47,7 @@ namespace Table
                 }
             }
 
+            // Assign pre-calculated values to the table
             var index = 0;
             foreach (var preCalculatedIndex in preCalculatedIndices)
             {
@@ -59,33 +61,31 @@ namespace Table
         /// </summary>
         public void ResetInputButtons()
         {
+            // Reset each button's value and color
             foreach (var button in inputButtons)
             {
                 button.SetButtonValue(0, Color.white);
             }
+            
+            // Reset the table controller's Y texts
             tableController.ResetYTexts();
         }
-
+        
+        /// <summary>
+        /// Initializes the TMP_Text components for each input button.
+        /// </summary>
         private void InitializeInputTextComponents()
         {
             foreach (var button in inputButtons)
             {
-                if (button == null)
-                {
-                    Debug.LogError("ExtendedButton is null during initialization.");
-                    continue;
-                }
-
-                if (button.ButtonText == null)
-                {
-                    Debug.LogError($"ButtonText is null for button {button.name}.");
-                    continue;
-                }
-
                 _inputDictionary.Add(button, button.ButtonText);
             }
         }
-
+        
+        /// <summary>
+        /// Validates if the amount of given values is appropriate.
+        /// </summary>
+        /// <returns>True if valid, otherwise false.</returns>
         private bool ValidateAmounts()
         {
             if (tableController.AmountGivenValues > _tableColumnCount)
@@ -116,12 +116,21 @@ namespace Table
                 }
             }
         }
-
+        
+        /// <summary>
+        /// Generates a random value within the specified range.
+        /// </summary>
+        /// <returns>A rounded random value.</returns>
         private float GenerateRandomValue()
         {
             return Random.Range(linearFunctionData.MinSlope, linearFunctionData.MaxSlope).RoundValue(linearFunctionData.AmountOfDecimals);
         }
-
+        
+        /// <summary>
+        /// Assigns a calculated value to the specified button.
+        /// </summary>
+        /// <param name="index">Index of the button to assign the value to.</param>
+        /// <param name="value">the value to assign to the button.</param>
         private void AssignCalculatedValueToButton(int index, float value)
         {
             var button = inputButtons[index];
@@ -137,13 +146,17 @@ namespace Table
             button.SetButtonValue(value);
 #endif
         }
-
+        
+        /// <summary>
+        /// Assigns a pre-calculated value to the table.
+        /// </summary>
+        /// <param name="index">Index of the table column to assign the value to.</param>
         private void AssignPreCalculatedValueToTable(int index)
         {
-            var xValues = linearFunctionData.GetXValues.GetValues();
+            var xValues = linearFunctionData.GetXValues;
             if (xValues.Length > index)
             {
-                var xValue = xValues[index];
+                var xValue = xValues.Values[index];
                 if (linearFunctionData.CorrectTableValues.TryGetValue(xValue, out var value))
                 {
                     tableController.SetYButtonValue(index, value);
@@ -158,7 +171,10 @@ namespace Table
                 Debug.LogWarning($"xValues array length is less than index {index}.");
             }
         }
-
+        
+        /// <summary>
+        /// Shuffles the input buttons randomly.
+        /// </summary>
         private void ShuffleInputButtons()
         {
             var n = inputButtons.Count;

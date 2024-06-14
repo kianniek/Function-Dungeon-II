@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace Extensions
+namespace Utils
 {
     public static class Vector2Extension
     {
@@ -18,16 +18,16 @@ namespace Extensions
             if (Mathf.Approximately(a1, a2))
             {
                 Debug.Log("Lines are parallel and do not intersect.");
-                
+
                 return Vector2.zero;
             }
-            
+
             var xIntercept = (b2 - b1) / (a1 - a2);
             var yIntercept = a1 * xIntercept + b1;
-            
-            return new Vector2(xIntercept, yIntercept);
+
+            return new Vector2 { x = xIntercept, y = yIntercept };
         }
-        
+
         /// <summary>
         /// Calculates the distance between 2 vectors using MathF.Sqrt instead of doubles
         /// </summary>
@@ -38,8 +38,20 @@ namespace Extensions
         {
             var x = from.x - to.x;
             var y = from.y - to.y;
-            
+
             return MathF.Sqrt(x * x + y * y);
+        }
+
+        /// <summary>
+        /// Returns a point on a linear function given the x value, slope, and y-intercept.
+        /// </summary>
+        /// <param name="x">The x value in the linear function.</param>
+        /// <param name="slope">The slope of the linear function.</param>
+        /// <param name="yIntercept">The y-intercept of the linear function.</param>
+        /// <returns>A Vector2 representing the point on the linear function corresponding to the given x value.</returns>
+        public static Vector2 GetPoint(float x, float slope, float yIntercept)
+        {
+            return new Vector2 { x = x, y = MathExtensions.LinearFunctionY(x, slope, yIntercept) };
         }
     }
 }

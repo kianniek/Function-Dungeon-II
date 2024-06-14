@@ -1,5 +1,5 @@
-using Extensions;
 using UnityEngine;
+using Utils;
 
 namespace LineControllers
 {
@@ -71,7 +71,7 @@ namespace LineControllers
             
             _lineRenderer.positionCount = Resolution;
 
-            var direction = new Vector2 { x = 1, y = MathExtensions.LinearFunction(_a, _b, 1) }.normalized;
+            var direction = new Vector2 { x = 1, y = MathExtensions.LinearFunctionY(_a, _b, 1) }.normalized;
             var lineEndPoint = direction * length;
 
             _lineRenderer.SetPositions(new Vector3[] { Vector3.zero, lineEndPoint });

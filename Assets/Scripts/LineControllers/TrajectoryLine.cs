@@ -1,7 +1,7 @@
 using Delay;
-using Extensions;
 using LinearProjectiles;
 using UnityEngine;
+using Utils;
 using Vector2 = UnityEngine.Vector2;
 using Vector3 = UnityEngine.Vector3;
 
@@ -94,7 +94,7 @@ namespace LineControllers
             if (!_lineRenderer)
                 return;
             
-            var direction = new Vector2 { x = 1, y = MathExtensions.LinearFunction(_a, _b, 1) }.normalized;
+            var direction = new Vector2 { x = 1, y = MathExtensions.LinearFunctionY(_a, _b, 1) }.normalized;
 
             var initialVelocity = direction * _activeProjectile.Speed;
             var gravityDelayPoint = direction * _activeProjectile.DelayValue;

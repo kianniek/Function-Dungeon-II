@@ -4,17 +4,19 @@ using UnityEngine;
 
 namespace Utils
 {
-    public class ObjectPool<T> where T : MonoBehaviour
+    public class ObjectPool<T> 
+        where T : MonoBehaviour
     {
+        private readonly List<T> _pooledObjects = new();
+        
         private readonly T _prefab;
         private readonly int _initialAmount;
-        private readonly List<T> _pooledObjects;
         
         public ObjectPool(T prefab, int initialAmount)
         {
             _prefab = prefab;
             _initialAmount = initialAmount;
-            _pooledObjects = new List<T>();
+            
             CreatePooledObjects();
         }
         
@@ -23,7 +25,9 @@ namespace Utils
             for (var i = 0; i < _initialAmount; i++)
             {
                 var obj = Object.Instantiate(_prefab);
+                
                 obj.gameObject.SetActive(false);
+                
                 _pooledObjects.Add(obj);
             }
         }
@@ -35,14 +39,13 @@ namespace Utils
         
         public void ResetPool()
         {
-            foreach (var obj in _pooledObjects)
+            foreach (var obj in _pooledObjects.Where(obj => obj))
             {
-                if (obj != null)
-                {
-                    Object.Destroy(obj.gameObject);
-                }
+                Object.Destroy(obj.gameObject);
             }
+            
             _pooledObjects.Clear();
+            
             CreatePooledObjects();
         }
     }

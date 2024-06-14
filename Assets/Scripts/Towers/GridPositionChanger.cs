@@ -1,20 +1,23 @@
 using Events.GameEvents.Typed;
 using UnityEngine;
 
-public class GridPositionChanger : MonoBehaviour
+namespace Towers
 {
-    [Header("Events")]
-    [SerializeField] private GameObjectGameEvent onShootingTowerPlaced;
-    [SerializeField] private GameObjectGameEvent onBombTowerPlaced;
-
-    private void Awake()
+    public class GridPositionChanger : MonoBehaviour
     {
-        onShootingTowerPlaced.AddListener(SetPositionToOrigin);
-        onBombTowerPlaced.AddListener(SetPositionToOrigin);
-    }
+        [Header("Events")]
+        [SerializeField] private GameObjectGameEvent onShootingTowerPlaced;
+        [SerializeField] private GameObjectGameEvent onBombTowerPlaced;
 
-    private void SetPositionToOrigin(GameObject gameObject)
-    {
-        transform.position = new Vector3(gameObject.transform.position.x, 4, gameObject.transform.position.z);
+        private void Awake()
+        {
+            onShootingTowerPlaced.AddListener(SetPositionToOrigin);
+            onBombTowerPlaced.AddListener(SetPositionToOrigin);
+        }
+
+        private void SetPositionToOrigin(GameObject gridObject)
+        {
+            transform.position = new Vector3(gridObject.transform.position.x, 4, gridObject.transform.position.z);
+        }
     }
 }

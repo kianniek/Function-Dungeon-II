@@ -126,7 +126,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8477841781360959569}
   - component: {fileID: 1049688966345983355}
-  - component: {fileID: 7213181155510191217}
+  - component: {fileID: 6695071210871575060}
   m_Layer: 5
   m_Name: Tracker Panel
   m_TagString: Untagged
@@ -161,7 +161,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3094929480434283929}
   m_CullTransparentMesh: 1
---- !u!114 &7213181155510191217
+--- !u!114 &6695071210871575060
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -170,7 +170,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3094929480434283929}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {filSetValue00000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
@@ -341,7 +341,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11c9e026ddcb4b0e8651f3228bca2d33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scoreTextFormat: 'Ammo Left: {0}'
+  textFormat: 'Ammo Left: {0}'
 --- !u!114 &5077971956044777972
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -627,8 +627,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: Score
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 423933778567359429, guid: 9aeaf26f9e9ea4e718af4163b37c3273, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -653,7 +652,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11c9e026ddcb4b0e8651f3228bca2d33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scoreTextFormat: 'Score: {0}'
+  textFormat: 'Resource: {0}'
 --- !u!224 &4627244515799860876 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 680593233857541607, guid: 9aeaf26f9e9ea4e718af4163b37c3273, type: 3}
