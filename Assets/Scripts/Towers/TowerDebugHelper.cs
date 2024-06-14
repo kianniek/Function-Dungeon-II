@@ -15,6 +15,9 @@ namespace Towers
         /// </summary>
         private void OnDrawGizmos()
         {
+            if (towerVariables == null || rangeTransform == null)
+                return;
+
             Gizmos.color = Color.yellow;
             Gizmos.DrawWireSphere(rangeTransform.position, towerVariables.Range / 2);
         }

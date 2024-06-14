@@ -1,6 +1,5 @@
-using System;
 using UnityEngine;
-using UnityEngine.Serialization;
+using Utils;
 
 namespace LinearFunction
 {
@@ -33,7 +32,7 @@ namespace LinearFunction
                 return;
             }
 
-            _rotationAngle = LinearFunctionHelper.GetAngleOfFunction(linearFunctionData.Slope);
+            _rotationAngle = MathExtensions.AToDegrees(linearFunctionData.Slope);
             
             if (invertRotation) 
                 _rotationAngle = -_rotationAngle;

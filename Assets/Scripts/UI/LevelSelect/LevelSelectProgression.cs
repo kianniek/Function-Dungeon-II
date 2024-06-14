@@ -1,8 +1,6 @@
-using Progression;
 using Progression.Grading;
 using Progression.Scoring;
 using UnityEngine;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace UI.LevelSelect

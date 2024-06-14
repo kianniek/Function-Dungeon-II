@@ -1,10 +1,15 @@
+using LineControllers;
 using TMPro;
 using UnityEngine;
 
 namespace Crafter
 {
+    /// <summary>
+    /// This class is responsible for displaying the formula of a line.
+    /// </summary>
     public class LineFormulaDisplay : MonoBehaviour
     {
+        private const string FormulaText = "Y = {0}x + {1}";
         private const float ZPosition = -0.5f;
         
         [SerializeField] private LineRenderer lineToFollow;
@@ -20,20 +25,20 @@ namespace Crafter
         {
             _line = lineToFollow.transform;
             _formulaText = GetComponent<TextMeshPro>();
-            _a = _line.GetComponent<FunctionLineController>().A;
+            //_a = _line.GetComponent<LinearGraphLine>().A;
             _b = _line.position.y;
         }
 
         private void Start()
         {
-            _formulaText.text = $"Y = {_a}x + {_b}"; 
+            _formulaText.text = string.Format(FormulaText, _a, _b);
             _yPositionOffset = transform.parent.position.y;
             
-            transform.position = new Vector3(
-                lineToFollow.GetPosition(indexOfPointToFollow).x, 
-                lineToFollow.GetPosition(indexOfPointToFollow).y + _yPositionOffset, 
-                ZPosition
-            );
+            transform.position = new Vector3 {
+                x = lineToFollow.GetPosition(indexOfPointToFollow).x, 
+                y = lineToFollow.GetPosition(indexOfPointToFollow).y + _yPositionOffset, 
+                z = ZPosition
+            };
         }
     }
 }

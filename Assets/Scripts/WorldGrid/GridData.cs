@@ -1,43 +1,49 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace WorldGrid
-{  
+{
     /// <summary>
     /// Holds griddata and marks path and placeable tiles
     /// </summary>
     [CreateAssetMenu(fileName = "GridData", menuName = "WorldGrid/GridData", order = 0)]
     public class GridData : ScriptableObject
     {
-        private readonly Vector2Int[] directions = { Vector2Int.up, Vector2Int.down, Vector2Int.left, Vector2Int.right };
+        private readonly IReadOnlyList<Vector2Int> _directions =
+            new[] { Vector2Int.up, Vector2Int.down, Vector2Int.left, Vector2Int.right };
 
-        [Tooltip("The indices of all pathcells for a level")]
-        [SerializeField] private List<Vector2Int> pathIndices;
+        [Tooltip("The indices of all path cells for a level")] [SerializeField]
+        private List<Vector2Int> pathIndices;
 
-        [Tooltip("The size of a grid")]
-        [SerializeField] private int xGridSize;
+        [Tooltip("The size of a grid")] [SerializeField]
+        private int xGridSize;
+
         [SerializeField] private int yGridSize;
 
-        private GridTileTypes[,] gridTileTypes;
+        private GridTileTypes[,] _gridTileTypes;
 
-        public List<Vector2Int> PathIndices => pathIndices;
-        public GridTileTypes[,] generatedGrid => gridTileTypes;
+        public IReadOnlyList<Vector2Int> PathIndices => pathIndices;
+
+        public GridTileTypes[,] GeneratedGrid => _gridTileTypes;
+
         public int XGridSize => xGridSize;
-        public int YGridSize => yGridSize;
-        public Vector2Int PathStartIndex => pathIndices[0];
-        public Vector2Int PathEndIndex => pathIndices[pathIndices.Count - 1];   
 
+        public int YGridSize => yGridSize;
+
+        public Vector2Int PathStartIndex => pathIndices[0];
+
+        public Vector2Int PathEndIndex => pathIndices[^1];
 
         private void OnValidate()
         {
-            gridTileTypes = new GridTileTypes[xGridSize, yGridSize];
+            _gridTileTypes = new GridTileTypes[xGridSize, yGridSize];
+
             MarkPaths();
             MarkPlaceable();
         }
 
-        /// <summary>
-        /// Marks all path coordinates as path
-        /// </summary>
+        // Marks all path coordinates as path
         private void MarkPaths()
         {
             for (var i = 0; i < xGridSize; i++)
@@ -46,30 +52,32 @@ namespace WorldGrid
                 {
                     if (pathIndices.Contains(new Vector2Int(i, j)))
                     {
-                        gridTileTypes[i, j] = GridTileTypes.Path;
+                        _gridTileTypes[i, j] = GridTileTypes.Path;
                     }
                 }
             }
         }
 
-        /// <summary>
-        /// Marks cells around the paths (which arent paths) as placeable
-        /// </summary>
+        // Marks cells around the paths (which aren't paths) as placeable
         private void MarkPlaceable()
         {
             foreach (var pathIndex in pathIndices)
             {
-                foreach (var direction in directions)
+                foreach (var direction in _directions)
                 {
                     var tileToCheck = pathIndex + direction;
 
-                    if (tileToCheck.x < 0 || tileToCheck.x > xGridSize - 1 || tileToCheck.y < 0 || tileToCheck.y > yGridSize - 1)
-                        continue;
+                    if (
+                        tileToCheck.x < 0 ||
+                        tileToCheck.x > xGridSize - 1 ||
+                        tileToCheck.y < 0 ||
+                        tileToCheck.y > yGridSize - 1
+                    ) continue;
 
-                    if (gridTileTypes[tileToCheck.x, tileToCheck.y] == GridTileTypes.Path)
-                        continue;
-
-                    gridTileTypes[tileToCheck.x, tileToCheck.y] = GridTileTypes.Placeable;
+                    if (_gridTileTypes[tileToCheck.x, tileToCheck.y] != GridTileTypes.Path)
+                    {
+                        _gridTileTypes[tileToCheck.x, tileToCheck.y] = GridTileTypes.Placeable;
+                    }
                 }
             }
         }

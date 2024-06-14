@@ -45,8 +45,8 @@ namespace UI
             {
                 _text.text += "\n";
             }
+            
             _text.text = string.Format(textFormat, value, value1);
-
         }
     }
 }

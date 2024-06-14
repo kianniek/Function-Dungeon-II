@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace Extensions
+namespace Utils
 {
     public static class MathExtensions
     {
@@ -34,7 +34,7 @@ namespace Extensions
         /// <param name="b">The constant term.</param>
         /// <param name="x">The x value of the line.</param>
         /// <returns>The y value of the line.</returns>
-        public static float LinearFunction(float a, float b, float x)
+        public static float LinearFunctionY(float a, float b, float x)
         {
             return a * x + b;
         }
@@ -69,7 +69,29 @@ namespace Extensions
         /// <returns> Returns the angle in radians. </returns>
         public static float AToRadians(float a)
         {
-            return Mathf.Atan2(a, 1);
+            return MathF.Atan(a);
+        }
+
+        /// <summary>
+        /// Returns the slope of a linear function given two points.
+        /// </summary>
+        /// <param name="point1">The first point in the form of a Vector2.</param>
+        /// <param name="point2">The second point in the form of a Vector2.</param>
+        /// <returns>The slope of the line passing through the two given points.</returns>
+        public static float GetSlope(Vector2 point1, Vector2 point2)
+        {
+            return (point2.y - point1.y) / (point2.x - point1.x);
+        }
+
+        /// <summary>
+        /// Returns the y-intercept of a linear function given a point and a slope.
+        /// </summary>
+        /// <param name="point">A point on the line in the form of a Vector2.</param>
+        /// <param name="slope">The slope of the linear function.</param>
+        /// <returns>The y-intercept of the linear function.</returns>
+        public static float GetYIntercept(Vector2 point, float slope)
+        {
+            return point.y - slope * point.x;
         }
     }
 }

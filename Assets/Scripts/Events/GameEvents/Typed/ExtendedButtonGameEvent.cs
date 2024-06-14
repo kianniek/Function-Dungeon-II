@@ -1,6 +1,5 @@
 using UI;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace Events.GameEvents.Typed
 {

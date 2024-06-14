@@ -1,5 +1,6 @@
-using Extensions;
+using System;
 using UnityEngine;
+using Utils;
 
 /// <summary>
 /// This class is responsible for defining the behavior of an object that can explode.
@@ -20,11 +21,11 @@ public class ExplodeOnImpact : MonoBehaviour
     {
         _rigidBody2D = GetComponent<Rigidbody2D>();
     }
-    
+
     /// <summary>
     /// Explodes the object and applies force to all colliders within the force radius.
     /// </summary>
-    public void Explode()
+    public void OnCollisionEnter2D(Collision2D _)
     {
         _hitColliders = Physics2D.OverlapCircleAll(transform.position, forceRadius);
         

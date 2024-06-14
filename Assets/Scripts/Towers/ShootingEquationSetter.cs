@@ -20,20 +20,21 @@ namespace Towers
 
         private void Awake()
         {
-            onShootingTowerPlaced.AddListener(SetBombtower);
+            onShootingTowerPlaced.AddListener(SetShootingTower);
         }
 
         /// <summary>
-        /// Retrieve shootingtower from event
+        /// Retrieve shooting tower from event
         /// </summary>
-        /// <param name="shootingTower">shootingtower retrieved from event</param>
-        private void SetBombtower(GameObject shootingTower)
+        /// <param name="shootingTower">shooting tower retrieved from event</param>
+        private void SetShootingTower(GameObject shootingTower)
         {
             _shootingTower = shootingTower;
         }
 
         /// <summary>
-        /// Translates player input formula to a point within tower range. Bullets will be shooted towards this point. Invoke the event to send coordinates back to tower
+        /// Translates player input formula to a point within tower range. Bullets will be shooted towards this point.
+        /// Invoke the event to send coordinates back to tower
         /// </summary>
         public void OnConfirmButtonClicked()
         {

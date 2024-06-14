@@ -1,62 +1,12 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using Extensions;
-using TMPro;
-using UI;
 using UnityEngine;
-using UnityEngine.UI;
+using Utils;
 using Random = UnityEngine.Random;
 
 namespace LinearFunction
 {
-    /// <summary>
-    /// Represents a collection of X values for the linear function.
-    /// </summary>
-    [Serializable]
-    public struct XValues : IEnumerable<float>
-    {
-        private const int FixedLength = 6;
-        [SerializeField] private float[] values;
-        
-        /// <summary>
-        /// Constructor to initialize the XValues with a fixed number of float values.
-        /// </summary>
-        /// <param name="values">The X values.</param>
-        public XValues(params float[] values)
-        {
-            this.values = new float[FixedLength];
-            
-            for (int i = 0; i < FixedLength; i++)
-            {
-                if (i < values.Length)
-                    this.values[i] = values[i];
-                else
-                    this.values[i] = 0f; // or any default value you prefer
-            }
-        }
-        
-        /// <summary>
-        /// Returns an enumerator that iterates through the X values.
-        /// </summary>
-        public IEnumerator<float> GetEnumerator()
-        {
-            return ((IEnumerable<float>)values).GetEnumerator();
-        }
-        
-        //return a array of float values
-        public float[] GetValues()
-        {
-            return values;
-        }
-        
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-            return values.GetEnumerator();
-        }
-    }
-    
     /// <summary>
     /// ScriptableObject that holds the data for a linear function, including slope, intercept, and related values.
     /// </summary>
@@ -71,29 +21,24 @@ namespace LinearFunction
         
         [Header("Random Slope Settings")] 
         [SerializeField] private float minSlope = -10;
-        
         [SerializeField] private float maxSlope = 10;
         
         [Header("Random Y-Intercept Settings")] 
         [SerializeField] private float minYIntercept = -10;
-        
         [SerializeField] private float maxYIntercept = 10;
         
-        private readonly Dictionary<float, float> correctTableValues = new();
-        
-        private float _slope;
-        private float _yIntercept;
-        
+        private readonly Dictionary<float, float> _correctTableValues = new();
+
         /// <summary>
         /// Gets or sets the slope of the linear function. If random values are used, generates a random slope.
         /// </summary>
-        public float Slope => _slope;
-        
+        public float Slope { get; private set; }
+
         /// <summary>
         /// Gets or sets the y-intercept of the linear function. If random values are used, generates a random y-intercept.
         /// </summary>
-        public float YIntercept { private set; get; }
-        
+        public float YIntercept { get; private set; }
+
         /// <summary>
         /// Gets the number of decimal places for rounding.
         /// </summary>
@@ -102,7 +47,7 @@ namespace LinearFunction
         /// <summary>
         /// Gets a read-only dictionary of correct X and Y table values.
         /// </summary>
-        public IReadOnlyDictionary<float, float> CorrectTableValues => correctTableValues;
+        public IReadOnlyDictionary<float, float> CorrectTableValues => _correctTableValues;
         
         public XValues GetXValues => tableXValues;
         
@@ -121,13 +66,13 @@ namespace LinearFunction
         {
             if (!useRandomValues)
             {
-                _slope = slope;
-                _yIntercept = yIntercept;
+                Slope = slope;
+                YIntercept = yIntercept;
             }
             else
             {
-                _slope = GenerateRandomFloat(minSlope, maxSlope, amountOfDecimals);
-                _yIntercept = GenerateRandomFloat(minYIntercept, maxYIntercept, amountOfDecimals);
+                Slope = GenerateRandomFloat(minSlope, maxSlope, amountOfDecimals);
+                YIntercept = GenerateRandomFloat(minYIntercept, maxYIntercept, amountOfDecimals);
             }
             
             FillDictionary();
@@ -151,12 +96,11 @@ namespace LinearFunction
         /// </summary>
         private void FillDictionary()
         {
-            correctTableValues.Clear();
+            _correctTableValues.Clear();
             
-            foreach (var xValue in tableXValues)
+            foreach (var xValue in tableXValues.Values)
             {
-                correctTableValues[xValue] = LinearFunctionHelper.GetY(xValue, _slope, _yIntercept);
-                Debug.Log(correctTableValues[xValue]);
+                _correctTableValues[xValue] = MathExtensions.LinearFunctionY(xValue, Slope, YIntercept);
             }
         }
     }

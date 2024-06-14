@@ -13,10 +13,8 @@ namespace Editor.Custom
             
             var script = (WaveManager)target;
             
-            if (GUILayout.Button("Spawn Wave(s)"))
-            {
+            if (GUILayout.Button("Spawn Wave(s)")) 
                 script.SpawnWaves(); // Calls SpawnWave on the target object
-            }
         }
     }
 }

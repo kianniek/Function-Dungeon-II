@@ -6,11 +6,12 @@ namespace ObjectMovement
 {
     public class LerpedVector2Translation : MonoBehaviour
     {
-        [SerializeField] private Vector3 moveDistance = new Vector3(10, 10);
+        [SerializeField] private Vector3 moveDistance = new(10, 10);
         [SerializeField] private float movementTime = 1f;
         [SerializeField] private float movementSmoothing = 5f;
         [SerializeField] private bool baseOffStartPosition = true;
         
+        [Header("Events")]
         [SerializeField] private UnityEvent onMoveComplete = new();
         [SerializeField] private UnityEvent onMoveBackComplete = new();
         [SerializeField] private UnityEvent onMovingUp = new();
@@ -62,6 +63,15 @@ namespace ObjectMovement
         public void MoveVector(Vector3 targetPosition)
         {
             StartCoroutine(MoveCoroutine(targetPosition, onMoveComplete));
+        }
+        
+        private void FixedUpdate()
+        {
+            var lerpedPosition = Vector3.Distance(_selfTransform.localPosition, _wantedPosition) > 0.01f
+                ? Vector3.Lerp(_selfTransform.localPosition, _wantedPosition, Time.deltaTime * movementSmoothing)
+                : _wantedPosition;
+
+            _selfTransform.localPosition = lerpedPosition;
         }
         
         private IEnumerator MoveCoroutine(Vector3 targetPosition, UnityEvent onCompleteEvent)

@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using Events.GameEvents.Typed;
-using Extensions;
 using LinearFunction;
 using TMPro;
 using UI;
@@ -15,22 +14,23 @@ namespace Table
     {
         private const string PlaceholderText = " ";
         
-        [Header("Data")] [SerializeField] private LinearFunctionData linearFunctionData;
+        [Header("Data")] 
+        [SerializeField] private LinearFunctionData linearFunctionData;
         
-        [Header("Events")] [SerializeField] private FloatGameEvent onInputChanged;
+        [Header("Events")] 
+        [SerializeField] private FloatGameEvent onInputChanged;
         [SerializeField] private ExtendedButtonGameEvent onExtendedButtonClicked;
         [SerializeField] private ExtendedButton currentSelectedButton;
         
-        [Header("Check Settings")] [SerializeField]
-        private float checkMargin;
-        
+        [Header("Check Settings")] 
+        [SerializeField] private float checkMargin;
         [SerializeField] private UnityEvent onInputCorrect;
         [SerializeField] private UnityEvent onInputIncorrect;
         
-        [Header("Table Buttons")] [SerializeField]
-        private List<Button> tableXButtons = new();
-        
+        [Header("Table Buttons")] 
+        [SerializeField] private List<Button> tableXButtons = new();
         [SerializeField] private List<ExtendedButton> tableYButtons = new();
+        
         private readonly Dictionary<Button, TMP_Text> _tableXDictionary = new();
         private readonly Dictionary<ExtendedButton, TMP_Text> _tableYDictionary = new();
         
@@ -75,9 +75,7 @@ namespace Table
         {
             //Check if the table rows are the same size
             if (tableXButtons.Count != tableYButtons.Count)
-                Debug.LogError("The two table rows are not the same size in collums");
-            
-            
+                Debug.LogError("The two table rows are not the same size in columns");
         }
         
         private void OnButtonClicked(ExtendedButton extendedButton)
@@ -136,13 +134,13 @@ namespace Table
             var tableData = linearFunctionData.CorrectTableValues;
             
             //Get the values from the table buttons
-            var xValues = linearFunctionData.GetXValues.GetValues();
+            var xValues = linearFunctionData.GetXValues;
             var yValues = GetYValues();
             
             for (var i = 0; i < tableXButtons.Count; i++)
             {
                 //Get the x and y values from the table buttons
-                var xValue = xValues[i];
+                var xValue = xValues.Values[i];
                 var yValue = yValues[i];
                 
                 //Check if the x value is in the table data

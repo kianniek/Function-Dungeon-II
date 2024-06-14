@@ -1,20 +1,20 @@
-using Extensions;
 using TMPro;
 using UnityEngine;
 using Events.GameEvents.Typed;
+using Utils;
 
 namespace Towers
 {
     public class BombPositionSetter : MonoBehaviour
     {
-        [Header("Tower variables")]
+        [Header("Tower variables")] 
         [SerializeField] private TowerVariables bombTowerVariables;
 
-        [Header("GUI References")]
+        [Header("GUI References")] 
         [SerializeField] private TextMeshProUGUI xAnswer;
         [SerializeField] private TextMeshProUGUI yAnswer;
 
-        [Header("Events")]
+        [Header("Events")] 
         [SerializeField] private Vector2GameEvent bombCoordinatesSet;
         [SerializeField] private GameObjectGameEvent onBombTowerPlaced;
 
@@ -23,14 +23,14 @@ namespace Towers
 
         private void Awake()
         {
-            onBombTowerPlaced.AddListener(SetBombtower);
+            onBombTowerPlaced.AddListener(SetBombTower);
         }
 
         /// <summary>
-        /// Retrieve bombtower from event
+        /// Retrieve bomb tower from event
         /// </summary>
-        /// <param name="bombTower">Bombtower retrieved from event</param>
-        private void SetBombtower(GameObject bombTower)
+        /// <param name="bombTower"> Bomb tower retrieved from event</param>
+        private void SetBombTower(GameObject bombTower)
         {
             _bombTower = bombTower;
         }
@@ -45,7 +45,12 @@ namespace Towers
                 float.Parse(StringExtensions.CleanUpDecimalOnlyString(yAnswer.text))
             );
 
-            if (_answer.x < _bombTower.transform.position.x - bombTowerVariables.Range || _answer.x > _bombTower.transform.position.x + bombTowerVariables.Range || _answer.y < _bombTower.transform.position.x - bombTowerVariables.Range || _answer.y > _bombTower.transform.position.x + bombTowerVariables.Range)
+            if (
+                _answer.x < _bombTower.transform.position.x - bombTowerVariables.Range ||
+                _answer.x > _bombTower.transform.position.x + bombTowerVariables.Range ||
+                _answer.y < _bombTower.transform.position.x - bombTowerVariables.Range ||
+                _answer.y > _bombTower.transform.position.x + bombTowerVariables.Range
+            )
                 return;
 
             bombCoordinatesSet.Invoke(_answer);

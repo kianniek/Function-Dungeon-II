@@ -12,16 +12,18 @@ GameObject:
   - component: {fileID: 8093031784450060953}
   - component: {fileID: 1732762045120391626}
   - component: {fileID: 7194805776701942715}
-  - component: {fileID: 3621945482446078802}
-  - component: {fileID: 1786236840159613523}
-  - component: {fileID: 5428016419734089186}
+  - component: {fileID: 3111081674620245995}
+  - component: {fileID: 33785886984917004}
+  - component: {fileID: 4995551950098673723}
+  - component: {fileID: 2572524915274879269}
+  - component: {fileID: -4411430225518753747}
   m_Layer: 0
-  m_Name: Projectile
+  m_Name: Linear Projectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5144363661693434479
 Transform:
   m_ObjectHideFlags: 0
@@ -31,7 +33,7 @@ Transform:
   m_GameObject: {fileID: 8489824262079630986}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.6205712, y: 1.4520869, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -154,7 +156,7 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 0.5
---- !u!114 &3621945482446078802
+--- !u!114 &3111081674620245995
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -163,16 +165,50 @@ MonoBehaviour:
   m_GameObject: {fileID: 8489824262079630986}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5ea024738f43b4dd0afd7c310b267d31, type: 3}
+  m_Script: {fileID: 11500000, guid: 1ecb7e4107a041b7bbd54b6c15321994, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseDamage: 1
   forceRadius: 5
-  forcePower: 10000
-  physicsVariables: {fileID: 11400000, guid: 1700083af172147a79deaa104412fc70, type: 2}
-  resetTime: 5
-  onCameraFollowGameObject: {fileID: 11400000, guid: 59201ab3bbab76a4fbe87ec48237a28d, type: 2}
---- !u!114 &1786236840159613523
+  forcePower: 1000
+  applyForcePowerFallOff: 1
+--- !u!114 &33785886984917004
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8489824262079630986}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c35100dc9574bc7a22505e67e84cebc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startPosition: {fileID: 0}
+  speed: 20
+  delayedGravity: 1
+  delayType: 0
+  delayValue: 5
+  resetOnInactivityTime: 5
+  resetOnDistance: 100
+  resetOnTime: 120
+--- !u!114 &4995551950098673723
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8489824262079630986}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d107f6cb12641b5b88d4a1f097accfa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startStrength: 1
+  onStrengthChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  useVelocityForCalculation: 1
+--- !u!114 &2572524915274879269
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -186,7 +222,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scorePoints: 100
   onApplyScore: {fileID: 11400000, guid: fbb7e6991063e4814b16e3ba8945c412, type: 2}
---- !u!114 &5428016419734089186
+--- !u!114 &-4411430225518753747
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -202,8 +238,8 @@ MonoBehaviour:
   response:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1786236840159613523}
-        m_TargetAssemblyTypeName: Progression.Scoring.ScoreModel, Assembly-CSharp
+      - m_Target: {fileID: 2572524915274879269}
+        m_TargetAssemblyTypeName: Progression.Scoring.ApplyScore, Assembly-CSharp
         m_MethodName: AddScore
         m_Mode: 1
         m_Arguments:
