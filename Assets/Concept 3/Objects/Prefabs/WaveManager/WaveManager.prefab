@@ -45,7 +45,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnWavesAuto: 1
-  waves: []
+  spawnWavesOnStart: 1
+  waves:
+  - {fileID: 11400000, guid: a56f6525a93c5e6409115cd87f8ddc75, type: 2}
   onWaveCompleted:
     m_PersistentCalls:
       m_Calls: []
+  gridGenerator: {fileID: 0}
