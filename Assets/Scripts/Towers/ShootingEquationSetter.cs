@@ -18,7 +18,6 @@ public class ShootingEquationSetter : MonoBehaviour
     [SerializeField] private GameObjectGameEvent onShootingTowerPlaced;
 
     private GameObject _shootingTower;
-    private Vector2 _answer;
 
     private void Awake()
     {
@@ -39,13 +38,15 @@ public class ShootingEquationSetter : MonoBehaviour
     /// </summary>
     public void OnConfirmButtonClicked()
     {
+        var startPoint = new Vector2(_shootingTower.transform.position.x, _shootingTower.transform.position.y);
         var a = linearEquationTextModifier.AVariable;
+        var direction = new Vector2(1, a);
+        var normalizedDirection = direction.normalized;
+        var scaledDirection = normalizedDirection * shootingTowerVariables.Range;
+        var endpoint = startPoint + scaledDirection;
 
-        //Set x coordinate as range from tower and set y coordinate as range * a (ax). since B is not used
-        _answer = new Vector2(shootingTowerVariables.Range/a, shootingTowerVariables.Range * a);
+        Debug.Log(endpoint.x + " " + endpoint.y);
 
-        Debug.Log(_answer.x + " " + _answer.y);
-
-        bulletCoordinatesSet.Invoke(_answer);
+        bulletCoordinatesSet.Invoke(endpoint);
     }
 }
