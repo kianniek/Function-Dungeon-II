@@ -255,6 +255,7 @@ MonoBehaviour:
   maxHeight: 10
   minHeight: 0
   movementSmoothing: 5
+  baseOffStartPosition: 0
   onMovingUp:
     m_PersistentCalls:
       m_Calls: []

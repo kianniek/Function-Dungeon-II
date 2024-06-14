@@ -119,6 +119,69 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &563222658
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 563222660}
+  - component: {fileID: 563222659}
+  m_Layer: 0
+  m_Name: NavMesh Surface
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &563222659
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 563222658}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AgentTypeID: 0
+  m_CollectObjects: 0
+  m_Size: {x: 10, y: 10, z: 10}
+  m_Center: {x: 0, y: 2, z: 0}
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_UseGeometry: 0
+  m_DefaultArea: 0
+  m_GenerateLinks: 0
+  m_IgnoreNavMeshAgent: 1
+  m_IgnoreNavMeshObstacle: 1
+  m_OverrideTileSize: 0
+  m_TileSize: 256
+  m_OverrideVoxelSize: 0
+  m_VoxelSize: 0.16666667
+  m_MinRegionArea: 2
+  m_NavMeshData: {fileID: 0}
+  m_BuildHeightMesh: 0
+--- !u!4 &563222660
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 563222658}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1140224228
 GameObject:
   m_ObjectHideFlags: 0
@@ -181,7 +244,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 10
+  orthographic size: 25
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -205,13 +268,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1140224228}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 9.5, y: 9.5, z: -10}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 19, y: 11, z: 19}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!114 &1140224232
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -267,7 +330,11 @@ PrefabInstance:
     - target: {fileID: 1128606038724778941, guid: 00d7ff7b3a199db47b8ecdd6e68d6da0, type: 3}
       propertyPath: gridData
       value: 
-      objectReference: {fileID: 11400000, guid: 45a2ad084e612414ea186eb029b8ab38, type: 2}
+      objectReference: {fileID: 11400000, guid: 4a2a3ab0b73050d418cf3c3a221f4040, type: 2}
+    - target: {fileID: 1128606038724778941, guid: 00d7ff7b3a199db47b8ecdd6e68d6da0, type: 3}
+      propertyPath: gridTile
+      value: 
+      objectReference: {fileID: 715439517032768977, guid: 7614d01fe82eec54f8dd291836e31ed7, type: 3}
     - target: {fileID: 1128606038724778941, guid: 00d7ff7b3a199db47b8ecdd6e68d6da0, type: 3}
       propertyPath: pathData
       value: 
@@ -275,15 +342,19 @@ PrefabInstance:
     - target: {fileID: 1128606038724778941, guid: 00d7ff7b3a199db47b8ecdd6e68d6da0, type: 3}
       propertyPath: pathGridTile
       value: 
-      objectReference: {fileID: 2990015622576239724, guid: f32c187719ca72b4c807b4c710a25d80, type: 3}
+      objectReference: {fileID: -2552018130129707923, guid: 592f6b38cd15945478007cfd9fc46fe7, type: 3}
     - target: {fileID: 1128606038724778941, guid: 00d7ff7b3a199db47b8ecdd6e68d6da0, type: 3}
       propertyPath: grassGridTile
       value: 
       objectReference: {fileID: 1673266920155040351, guid: ef1b0feb1f606214294ffb81531b6f6d, type: 3}
     - target: {fileID: 1128606038724778941, guid: 00d7ff7b3a199db47b8ecdd6e68d6da0, type: 3}
+      propertyPath: navMeshSurface
+      value: 
+      objectReference: {fileID: 563222659}
+    - target: {fileID: 1128606038724778941, guid: 00d7ff7b3a199db47b8ecdd6e68d6da0, type: 3}
       propertyPath: placeableGridTile
       value: 
-      objectReference: {fileID: 6663351834643575591, guid: ac216fbc6dc79c1478fff6fa9cc0843e, type: 3}
+      objectReference: {fileID: 6663351834643575591, guid: 39132e91ae9229142b2928442e802679, type: 3}
     - target: {fileID: 2463612401833687487, guid: 00d7ff7b3a199db47b8ecdd6e68d6da0, type: 3}
       propertyPath: m_Name
       value: LevelHolder
@@ -339,3 +410,4 @@ SceneRoots:
   m_Roots:
   - {fileID: 1140224231}
   - {fileID: 8857702992136077098}
+  - {fileID: 563222660}
