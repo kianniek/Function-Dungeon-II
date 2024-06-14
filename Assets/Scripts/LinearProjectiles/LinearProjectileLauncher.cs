@@ -1,21 +1,18 @@
+using System;
 using System.Collections.Generic;
-using System.Linq;
 using Attributes;
+using Events;
 using Events.GameEvents.Typed;
 using UnityEngine;
 using UnityEngine.Events;
+using Utils;
 
-namespace LinearProjectiles
+namespace Projectile
 {
-    /// <summary>
-    /// This class is responsible for managing the linear projectile launcher and its behavior.
-    /// </summary>
-    public class LinearProjectileLauncher : MonoBehaviour
+    public class ProjectileLauncher : MonoBehaviour
     {
-        private readonly List<LinearProjectile> _pooledProjectiles = new();
-        
         [Header("Projectiles")] 
-        [SerializeField, Expandable] private LinearProjectile prefabToPool;
+        [SerializeField, Expandable] private ProjectileScript prefabToPool;
         [SerializeField] private int amountToPool = 20;
         
         [Header("References")] 
@@ -27,10 +24,10 @@ namespace LinearProjectiles
         
         [Header("Events")] 
         [SerializeField] private IntGameEvent onAmmoChange;
+        [SerializeField] private GameObjectEvent onCannonFire = new();
         [SerializeField] private UnityEvent onAmmoDepleted = new();
-        [SerializeField] private LinearProjectileEvent onShootProjectile = new();
-        [SerializeField] private LinearProjectileEvent onNextProjectile = new();
         
+        private ObjectPool<ProjectileScript> _projectilePool;
         private int _currentAmmoCount;
         
         private int CurrentAmmoCount
@@ -50,42 +47,14 @@ namespace LinearProjectiles
             }
         }
         
+        private void Awake()
+        {
+            _projectilePool = new ObjectPool<ProjectileScript>(prefabToPool, amountToPool);
+        }
+        
         private void Start()
         {
-            CreatePooledProjectiles();
             CurrentAmmoCount = totalAmmo;
-            
-            onNextProjectile.Invoke(_pooledProjectiles[0]);
-        }
-        
-        // Empties the current pooled object list and creates a new pool
-        private void CreatePooledProjectiles()
-        {
-            // Checks if there are already pooled objects and destroys existing pooled gameObjects
-            if (_pooledProjectiles.Count > 0)
-                foreach (var projectile in _pooledProjectiles) 
-                    Destroy(projectile.gameObject);
-            
-            _pooledProjectiles.Clear();
-            
-            for (var i = 0; i < amountToPool; i++)
-            {
-                var projectile = Instantiate(prefabToPool, transform);
-                
-                projectile.gameObject.SetActive(false);
-                
-                _pooledProjectiles.Add(projectile);
-            }
-        }
-        
-        // Returns a pooled projectile if available, otherwise returns null
-        private LinearProjectile GetPooledProjectile()
-        {
-            for (var i = 0; i < amountToPool; i++)
-                if (!_pooledProjectiles[i].gameObject.activeInHierarchy)
-                    return _pooledProjectiles[i];
-            
-            return null;
         }
         
         /// <summary>
@@ -98,15 +67,15 @@ namespace LinearProjectiles
             
             CurrentAmmoCount--;
             
-            var projectile = GetPooledProjectile();
+            var projectile = _projectilePool.GetPooledObject();
             
             if (projectile)
             {
+                projectile.transform.position = transform.position;
                 projectile.gameObject.SetActive(true);
                 projectile.Shoot(shootPosition.transform.rotation);
                 
-                onShootProjectile.Invoke(projectile);
-                onNextProjectile.Invoke(GetPooledProjectile());
+                onCannonFire.Invoke(projectile.gameObject);
             }
             else
             {
