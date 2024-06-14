@@ -1,15 +1,16 @@
 ﻿using UnityEngine;
 using System;
+using Enemies;
 
 namespace WaveSystem
 {
     [Serializable]
     public class EnemyPrefabs
     {
-        [SerializeField] private MonoBehaviour enemyPrefab;
+        [SerializeField] private EnemyBehaviorController enemyPrefab;
         [SerializeField] private int enemyCount;
         
-        public MonoBehaviour EnemyPrefab => enemyPrefab;
+        public EnemyBehaviorController EnemyPrefab => enemyPrefab;
         public int EnemyCount => enemyCount;
     }
 }
