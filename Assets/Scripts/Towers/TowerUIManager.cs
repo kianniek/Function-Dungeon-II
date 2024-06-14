@@ -1,28 +1,39 @@
 using Events.GameEvents.Typed;
 using UnityEngine;
 
-public class TowerUIManager : MonoBehaviour
+namespace Towers
 {
-    [Header("Events")]
-    [SerializeField] private GameObjectGameEvent onShootingTowerPlaced;
-    [SerializeField] private GameObjectGameEvent onBombTowerPlaced;
-
-    [Header("Gameobjects")]
-    [SerializeField] private GameObject shootingTowerUI;
-    [SerializeField] private GameObject bombTowerUI;
-
-    private void Awake()
+    public class TowerUIManager : MonoBehaviour
     {
-        onShootingTowerPlaced.AddListener(EnableShootingTowerUI);
-        onBombTowerPlaced.AddListener(EnableBombTowerUI);
-    }
+        [Header("Events")]
+        [SerializeField] private GameObjectGameEvent onShootingTowerPlaced;
+        [SerializeField] private GameObjectGameEvent onBombTowerPlaced;
+        [SerializeField] private Vector2GameEvent bombCoordinatesSet;
 
-    private void EnableShootingTowerUI()
-    {
-        shootingTowerUI.SetActive(true);
-    }
-    private void EnableBombTowerUI()
-    {
-        bombTowerUI.SetActive(true);
+        [Header("UI parents")]
+        [SerializeField] private GameObject shootingTowerUI;
+        [SerializeField] private GameObject bombTowerUI;
+
+        private void Awake()
+        {
+            onShootingTowerPlaced.AddListener(EnableShootingTowerUI);
+            onBombTowerPlaced.AddListener(EnableBombTowerUI);
+            bombCoordinatesSet.AddListener(DisableBombTowerUI);
+        }
+
+        private void EnableShootingTowerUI()
+        {
+            shootingTowerUI.SetActive(true);
+        }
+        private void EnableBombTowerUI()
+        {
+            bombTowerUI.SetActive(true);
+        }
+
+        private void DisableBombTowerUI()
+        {
+            bombTowerUI.SetActive(false);
+        }
     }
 }
+

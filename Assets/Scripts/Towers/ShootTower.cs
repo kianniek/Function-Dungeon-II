@@ -1,12 +1,15 @@
 using Events.GameEvents.Typed;
 using UnityEngine;
 
-public class ShootTower : MonoBehaviour
+namespace Towers
 {
-    [SerializeField] private GameObjectGameEvent onShootingTowerPlaced;
-
-    private void Start()
+    public class ShootTower : MonoBehaviour
     {
-        onShootingTowerPlaced.Invoke();
+        [SerializeField] private GameObjectGameEvent onShootingTowerPlaced;
+
+        private void Start()
+        {
+            onShootingTowerPlaced.Invoke();
+        }
     }
 }

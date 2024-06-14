@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f0f1b4529c1544146a182992c646f43b, type: 3}
-  m_Name: OnEquationSetEvent
+  m_Script: {fileID: 11500000, guid: 2cf2a0decd3cda34a9baa5b20be05018, type: 3}
+  m_Name: Bomb Coordinates Set
   m_EditorClassIdentifier: 
-  description: Event that is called when the equation of a shooting tower is set
+  description: 
