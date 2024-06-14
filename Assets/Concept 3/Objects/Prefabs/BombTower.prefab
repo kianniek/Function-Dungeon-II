@@ -244,10 +244,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db2ec0d860d46594694c04498b360926, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onBombTowerPlaced: {fileID: 11400000, guid: e85e00721aea5c54ebea876a28bad097, type: 2}
-  bombCoordinatesSet: {fileID: 11400000, guid: 29c72adfff66ef047a1d1c3b5a9ae554, type: 2}
-  onBombShooted: {fileID: 11400000, guid: e68a5e6d8674450489af27c7e9d6f50e, type: 2}
-  bombTowerVariables: {fileID: 11400000, guid: 0307f21d0848a0e46ad11dbbe0985172, type: 2}
+  onTowerPlaced: {fileID: 11400000, guid: e85e00721aea5c54ebea876a28bad097, type: 2}
+  coordinatesSet: {fileID: 11400000, guid: 29c72adfff66ef047a1d1c3b5a9ae554, type: 2}
+  onProjectileShot: {fileID: 11400000, guid: e68a5e6d8674450489af27c7e9d6f50e, type: 2}
+  towerVariables: {fileID: 11400000, guid: 0307f21d0848a0e46ad11dbbe0985172, type: 2}
   rangeCircle: {fileID: 2261808994602557358}
 --- !u!1 &7439757465389608937
 GameObject:
