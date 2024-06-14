@@ -1,20 +1,18 @@
-using Extensions;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
+using Utils;
 
 namespace Crafter
 {
+    /// <summary>
+    /// This class is responsible for checking if two lines intersect at a point.
+    /// </summary>
     public class LineIntersectionChecker : MonoBehaviour
     {
         [Header("Correct Interception Variables")]
         [SerializeField] private FunctionLineController line1;
         [SerializeField] private FunctionLineController line2;
-
-        private float _a1;
-        private float _b1;
-        private float _a2;
-        private float _b2;
 
         [Header("GUI References")]
         [SerializeField] private TextMeshProUGUI xAnswer;
@@ -23,10 +21,11 @@ namespace Crafter
         [Header("Events")]
         [SerializeField] private UnityEvent onCorrectAnswerGivenEvent;
         [SerializeField] private UnityEvent onWrongAnswerGivenEvent;
-
-        /// <summary>
-        /// Gets the correct interception point for line 1 and 2.
-        /// </summary>
+        
+        private float _a1;
+        private float _b1;
+        private float _a2;
+        private float _b2;
         private Vector2 _intersection;
 
         private void Start()
@@ -45,10 +44,10 @@ namespace Crafter
         /// </summary>
         public void OnConfirmButtonClicked()
         {
-            var answer = new Vector2(
-                float.Parse(StringExtensions.CleanUpDecimalOnlyString(xAnswer.text)),
-                float.Parse(StringExtensions.CleanUpDecimalOnlyString(yAnswer.text))
-            );
+            var answer = new Vector2{
+                x = float.Parse(StringExtensions.CleanUpDecimalOnlyString(xAnswer.text)),
+                y = float.Parse(StringExtensions.CleanUpDecimalOnlyString(yAnswer.text))
+            };
 
             if (answer == _intersection)
                 onCorrectAnswerGivenEvent.Invoke();

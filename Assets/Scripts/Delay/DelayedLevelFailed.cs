@@ -15,6 +15,14 @@ namespace Delay
         
         private bool _levelCleared;
         
+        /// <summary>
+        /// Invokes the game event after the delay
+        /// </summary>
+        public void InvokeDelayed()
+        {
+            StartCoroutine(DelayedInvoke());
+        }
+        
         private void OnEnable()
         {
             onLevelCleared?.AddListener(SetLevelCleared);
@@ -23,14 +31,6 @@ namespace Delay
         private void OnDisable()
         {
             onLevelCleared?.RemoveListener(SetLevelCleared);
-        }
-        
-        /// <summary>
-        /// Invokes the game event after the delay
-        /// </summary>
-        public void InvokeDelayed()
-        {
-            StartCoroutine(DelayedInvoke());
         }
         
         private void SetLevelCleared()

@@ -5,9 +5,9 @@ using Events.GameEvents.Typed;
 using ObjectMovement;
 using UnityEngine;
 
-namespace MinecartTrack
+namespace MineCartTrack
 {
-    public class MinecartRailController : MonoBehaviour
+    public class MineCartRailController : MonoBehaviour
     {
         [Header("Events")]
         // TODO: Change these gameobjectevents to new minecartRail events
@@ -17,8 +17,8 @@ namespace MinecartTrack
         [SerializeField] private FloatEvent changeSlope = new();
         [SerializeField] private FloatEvent changeHeight = new();
 
-        private List<MinecartTrack> _minecartTracks = new List<MinecartTrack>();
-        private MinecartTrack _currentTrack;
+        private List<MineCartTrack> _minecartTracks = new List<MineCartTrack>();
+        private MineCartTrack _currentTrack;
 
         private void OnEnable()
         {
@@ -36,7 +36,7 @@ namespace MinecartTrack
         {
             RemoveCurentTrack();
 
-            _currentTrack = track.GetComponent<MinecartTrack>();
+            _currentTrack = track.GetComponent<MineCartTrack>();
 
             changeHeight.AddListener(_currentTrack.GetComponent<LerpedYTranslation>().Move);
             changeSlope.AddListener(_currentTrack.GetComponent<ObjectSlopeAngleController>().Rotate);

@@ -8,7 +8,6 @@ namespace WaveSystem
     {
         [SerializeField] private EnemyPrefabs[] enemyPrefabs;
         [SerializeField] private float spawnInterval;
-        
         [SerializeField] private Vector3 spawnLocation;
         
         public EnemyPrefabs[] EnemyPrefab => enemyPrefabs;
@@ -22,6 +21,7 @@ namespace WaveSystem
         }
         
         public float SpawnInterval => spawnInterval;
+        
         public Vector3 SpawnLocation => spawnLocation;
     }
 }

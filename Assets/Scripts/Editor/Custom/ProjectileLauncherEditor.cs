@@ -11,13 +11,11 @@ namespace Editor.Custom
         {
             base.OnInspectorGUI();
             
-            ProjectileLauncher script = (ProjectileLauncher)target;
+            var script = (ProjectileLauncher)target;
             
             if (GUILayout.Button("Test Shot"))
-            {
                 // Trigger the shot using the current settings in the inspector
                 script.ShootProjectile();
-            }
         }
     }
 }

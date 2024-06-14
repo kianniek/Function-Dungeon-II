@@ -17,16 +17,12 @@ MonoBehaviour:
   slope: 1
   yIntercept: 6
   tableXValues:
-    values:
-    - 1
-    - 3
-    - 5
-    - 7
-    - 9
-    - 12
-  tableXButtons:
-  - {fileID: 0}
-  tableYButtons: []
+    n1: 1
+    n2: 3
+    n3: 5
+    n4: 7
+    n5: 9
+    n6: 12
   minSlope: -10
   maxSlope: 10
   minYIntercept: -10

@@ -1,5 +1,5 @@
-using Extensions;
 using UnityEngine;
+using Utils;
 
 /// <summary>
 /// This class is responsible for defining the behavior of an object that can explode.

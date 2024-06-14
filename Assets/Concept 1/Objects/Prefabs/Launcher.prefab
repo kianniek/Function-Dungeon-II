@@ -390,7 +390,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3798618481931942649}
-  - component: {fileID: 7474005227718073589}
+  - component: {fileID: 5963262378909134118}
   m_Layer: 0
   m_Name: Launcher
   m_TagString: Untagged
@@ -416,7 +416,7 @@ Transform:
   - {fileID: 6544000054133170938}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7474005227718073589
+--- !u!114 &5963262378909134118
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -425,13 +425,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 4566541764318348640}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f24921cd8ef4f484b8c418cef0e641bf, type: 3}
+  m_Script: {fileID: 11500000, guid: 06a0138078494dbe9c6cd1f1f25e5431, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHeight: 10
-  minHeight: 0
+  moveDistance: {x: 0, y: 10, z: 0}
+  movementTime: 1
   movementSmoothing: 5
-  baseOffStartPosition: 0
+  baseOffStartPosition: 1
+  onMoveComplete:
+    m_PersistentCalls:
+      m_Calls: []
+  onMoveBackComplete:
+    m_PersistentCalls:
+      m_Calls: []
   onMovingUp:
     m_PersistentCalls:
       m_Calls: []

@@ -29,7 +29,6 @@ namespace Editor.Custom
         private void DebugBox()
         {
             GUILayout.BeginVertical(EditorStyles.helpBox);
-            
             GUILayout.Label("Debug", EditorStyles.boldLabel);
             
             HealthDebug();
@@ -45,15 +44,11 @@ namespace Editor.Custom
         {
             GUILayout.BeginHorizontal();
             
-            if (GUILayout.Button("Damage"))
-            {
+            if (GUILayout.Button("Damage")) 
                 _script.Health -= float.Epsilon;
-            }
             
-            if (GUILayout.Button("Kill") && !_script.NegativeHealthEnabled)
-            {
+            if (GUILayout.Button("Kill") && !_script.NegativeHealthEnabled) 
                 _script.Health = 0;
-            }
             
             GUILayout.EndHorizontal();
         }
@@ -61,7 +56,6 @@ namespace Editor.Custom
         private void HealthDebug()
         {
             GUILayout.BeginHorizontal();
-            
             GUILayout.Label("Current Health");
             
             var previousGuiState = GUI.enabled;

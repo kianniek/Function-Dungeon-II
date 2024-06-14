@@ -1,6 +1,6 @@
-using Extensions;
 using Health;
 using UnityEngine;
+using Utils;
 
 namespace Attacks
 {

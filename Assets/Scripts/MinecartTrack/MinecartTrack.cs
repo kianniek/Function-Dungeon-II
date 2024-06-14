@@ -1,9 +1,9 @@
 using Events;
 using UnityEngine;
 
-namespace MinecartTrack
+namespace MineCartTrack
 {
-    public class MinecartTrack : MonoBehaviour
+    public class MineCartTrack : MonoBehaviour
     {
         [Header("References")]
         [SerializeField] private Transform leftTrackCheck; // The check for if the track is connected on the left

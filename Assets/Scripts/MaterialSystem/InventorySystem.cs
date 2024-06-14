@@ -11,8 +11,8 @@ namespace MaterialSystem
     public class InventorySystem : ScriptableObject
     {
         // List for materials and ores that can be pre-filled in the inspector
-        [SerializeField] private List<Material> materials = new List<Material>();
-        [SerializeField] private List<Ore> ores = new List<Ore>();
+        [SerializeField] private List<Material> materials = new();
+        [SerializeField] private List<Ore> ores = new();
         
         [SerializeField] private ItemGameEvent onOreCollected;
         [SerializeField] private ItemGameEvent onOreUsed;
@@ -84,11 +84,11 @@ namespace MaterialSystem
             ore.Collect(amount);
             onOreCollected.Invoke(ore);
         }
-        
+
         /// <summary>
         /// Removes the amount of ore from the inventory
         /// </summary>
-        /// <param name="material">Ore to be consumed</param>
+        /// <param name="ore">Ore to be consumed</param>
         /// <param name="amount">Amount of the ore to be subtracted</param>
         public void UseOre(Ore ore, int amount)
         {
@@ -109,6 +109,7 @@ namespace MaterialSystem
             foreach (var req in recipe.RequiredMaterials)
             {
                 var hasMaterial = false;
+                
                 foreach (var mat in Materials)
                 {
                     if (mat != req.Material || mat.AmountCollected < req.Amount)

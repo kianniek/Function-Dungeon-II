@@ -1,7 +1,7 @@
 using System.Collections;
 using Delay;
-using Extensions;
 using UnityEngine;
+using Utils;
 
 namespace LinearProjectiles
 {

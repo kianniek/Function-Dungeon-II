@@ -3,8 +3,8 @@ using TMPro;
 using System.Linq;
 using LinearFunction;
 using System.Collections.Generic;
-using Extensions;
 using UI;
+using Utils;
 
 namespace Table
 {
@@ -65,12 +65,10 @@ namespace Table
             }
             
             // Assign pre-calculated values to the table
-            int index = 0;
-            
+
             foreach (var preCalculatedIndex in preCalculatedIndices)
             {
                 AssignPreCalculatedValueToTable(preCalculatedIndex);
-                index++;
             }
         }
         
@@ -149,7 +147,7 @@ namespace Table
         /// Assigns a calculated value to the specified button.
         /// </summary>
         /// <param name="index">Index of the button to assign the value to.</param>
-        /// <param name="value">the value to assing to the button.</param>
+        /// <param name="value">the value to assign to the button.</param>
         private void AssignCalculatedValueToButton(int index, float value)
         {
             if (_inputDictionary.TryGetValue(inputButtons[index], out var inputText))
@@ -162,8 +160,8 @@ namespace Table
         /// <param name="index">Index of the table column to assign the value to.</param>
         private void AssignPreCalculatedValueToTable(int index)
         {
-            var xValues = linearFunctionData.GetXValues.GetValues();
-            var xValue = xValues[index];
+            var xValues = linearFunctionData.GetXValues;
+            var xValue = xValues.Values[index];
             var value = linearFunctionData.CorrectTableValues[xValue];
             
             tableController.SetYButtonValue(index, value);

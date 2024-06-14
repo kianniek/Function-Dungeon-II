@@ -1,11 +1,10 @@
 using UnityEngine;
 
-namespace MinecartTrack
+namespace MineCartTrack
 {
     public class RoundPosition : MonoBehaviour
     {
         [SerializeField] private Vector3 offset; // The offset that will be added after rounding
-
         [SerializeField] private Transform transformToRound; // The transform that need to be rounded
 
         private void FixedUpdate()

@@ -33,6 +33,7 @@ namespace Towers
         private void BombCoordinatesSet(Vector2 projectilePosition)
         {
             _projectilePosition = projectilePosition;
+            
             rangeCircle.SetActive(false);
             coordinatesSet.RemoveListener(BombCoordinatesSet);
         }
@@ -46,8 +47,11 @@ namespace Towers
         private IEnumerator AttackCoroutine()
         {
             _isAttacking = true;
+            
             yield return new WaitForSeconds(towerVariables.ShootingSpeed);
+            
             onProjectileShot.Invoke(_projectilePosition);
+            
             _isAttacking = false;
         }
     }

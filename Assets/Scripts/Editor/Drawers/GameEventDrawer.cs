@@ -70,7 +70,6 @@ namespace Editor.Drawers
                 return;
             
             EditorGUI.indentLevel++;
-            
             EditorGUI.BeginChangeCheck();
             
             EditorGUILayout.PropertyField(serializedPropertyDescription);
