@@ -1013,6 +1013,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 2076593748}
     m_Modifications:
     - target: {fileID: 1836766023600342154, guid: 669dd57030bb547bc9cab97cb0eeab7c, type: 3}
+      propertyPath: step
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1836766023600342154, guid: 669dd57030bb547bc9cab97cb0eeab7c, type: 3}
       propertyPath: range.y
       value: 15
       objectReference: {fileID: 0}
@@ -1050,7 +1054,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1836766023600342154, guid: 669dd57030bb547bc9cab97cb0eeab7c, type: 3}
       propertyPath: onFloatChange.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
-      value: MoveUp
+      value: MoveYByInput
       objectReference: {fileID: 0}
     - target: {fileID: 1836766023600342154, guid: 669dd57030bb547bc9cab97cb0eeab7c, type: 3}
       propertyPath: onFloatChange.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName

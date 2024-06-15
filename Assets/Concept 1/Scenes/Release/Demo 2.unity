@@ -1374,7 +1374,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1836766023600342154, guid: 669dd57030bb547bc9cab97cb0eeab7c, type: 3}
       propertyPath: onFloatChange.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: MoveUp
+      value: MoveYByInput
       objectReference: {fileID: 0}
     - target: {fileID: 1836766023600342154, guid: 669dd57030bb547bc9cab97cb0eeab7c, type: 3}
       propertyPath: onFloatChange.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
