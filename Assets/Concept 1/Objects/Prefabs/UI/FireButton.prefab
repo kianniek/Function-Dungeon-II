@@ -122,7 +122,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Cannon.CannonProjectileController, Assembly-CSharp
+        m_TargetAssemblyTypeName: LinearProjectiles.LinearProjectileLauncher, Assembly-CSharp
         m_MethodName: ShootProjectile
         m_Mode: 1
         m_Arguments:
@@ -225,8 +225,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 72
-  m_fontSizeBase: 72
+  m_fontSize: 32
+  m_fontSizeBase: 32
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
