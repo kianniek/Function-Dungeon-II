@@ -4317,6 +4317,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: InteractablePoint
       objectReference: {fileID: 0}
+    - target: {fileID: 1326108283445983796, guid: ca7ba3598e362bb4ea1c101d10c7c2d0, type: 3}
+      propertyPath: onInteraction.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: OreProcessor
+      objectReference: {fileID: 0}
     - target: {fileID: 6995774335451952568, guid: ca7ba3598e362bb4ea1c101d10c7c2d0, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
