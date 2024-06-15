@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Concept 1/Scenes/Release/Main Menu.unity
+    guid: 72b716e45d9aee64aa18d41bbce0b900
+  - enabled: 1
     path: Assets/Concept 1/Scenes/Release/Demo 1.unity
     guid: 4638b8cbb2d143043a24ef1c1d7b453f
   - enabled: 1
@@ -15,33 +18,30 @@ EditorBuildSettings:
     path: Assets/Concept 1/Scenes/Release/Level Select.unity
     guid: 73f78cca3fdb1f141a2461734d68610e
   - enabled: 1
-    path: Assets/Concept 1/Scenes/Release/Main Menu.unity
-    guid: 72b716e45d9aee64aa18d41bbce0b900
-  - enabled: 1
     path: Assets/Concept 1/Scenes/Release/Tutorial A.unity
     guid: 359fe7cb0d5c716488b83ee7cd1e1163
   - enabled: 1
     path: Assets/Concept 1/Scenes/Release/Tutorial B.unity
     guid: 51ffa9e41fe896d4894ba8a91b2d6672
-  - enabled: 1
+  - enabled: 0
     path: Assets/Concept 2/Scenes/Release/Main Menu Myth Digger.unity
     guid: 55bd11b2b0a8b8e418d5315c23ff8846
-  - enabled: 1
+  - enabled: 0
     path: Assets/Concept 2/Scenes/Release/SurfaceWorldScene.unity
     guid: 6a5a8f296ef644e429c6e091dc03bc19
-  - enabled: 1
+  - enabled: 0
     path: Assets/Concept 2/Scenes/Release/WorkshopInsideScene.unity
     guid: 162574408cfc2fd44baa68d4e7f47215
-  - enabled: 1
+  - enabled: 0
     path: Assets/Concept 2/Scenes/Release/Ore Processor.unity
     guid: 6d7c061b5a4654f4dbeb2595bd0700fb
-  - enabled: 1
+  - enabled: 0
     path: Assets/Concept 2/Scenes/Release/CraftingManual.unity
     guid: 95671ad88aa768046953591ca41d3a4f
-  - enabled: 1
+  - enabled: 0
     path: Assets/Concept 2/Scenes/Release/ElevatorMineScene.unity
     guid: 1e308c5719e9fc34ca32041e94319c4b
-  - enabled: 1
+  - enabled: 0
     path: Assets/Concept 2/Scenes/Release/CrafterScene.unity
     guid: 598e7cbd0f46ef3448ab5f9f0c80696a
   m_configObjects:
