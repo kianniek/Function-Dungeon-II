@@ -177,7 +177,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0577f08d5d58349568806fe084c4ff56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentHealth: 0
   startHealth: 3
   enableNegativeHealth: 0
   onDeathEvent:
@@ -236,7 +235,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97b42937b67d4e4eb5c1131ecc4d87b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  physicDamageThreshold: 2
+  physicDamageThreshold: 1
+  physicDamageMultiplier: 2
 --- !u!114 &1706034157375737503
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -111,7 +111,8 @@ namespace LinearProjectiles
             StopAllCoroutines();
             
             transform.parent = _parentTransform;
-            transform.position = _startPosition;
+            transform.position = _parentTransform.position;
+            
             _gravityApplied = false;
             
             gameObject.SetActive(false);

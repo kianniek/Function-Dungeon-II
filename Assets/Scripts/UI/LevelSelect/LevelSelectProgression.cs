@@ -27,15 +27,14 @@ namespace UI.LevelSelect
             {
                 var previousSceneName = i > 0 ? sceneNamesOfLevels[i - 1] : null;
                 var levelButton = levelButtons[i];
+                
                 levelButton.interactable = false;
 
                 // Check if the level has been played before
                 if (i == 0)
                     levelButton.interactable = true;
                 else if (scoreManager.GameProgressionContainer.TryGetLevelData(previousSceneName, out var levelProgression))
-                {
                     levelButtons[i].interactable = levelProgression.GetLatestLevelData().Grade == passingGradeContainer;
-                }
             }
         }
 
