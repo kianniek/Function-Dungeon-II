@@ -51,6 +51,9 @@ namespace LinearFunction
         
         public XValues GetXValues => tableXValues;
         
+        public float MinSlope => minSlope;
+        public float MaxSlope => maxSlope;
+        
         /// <summary>
         /// Initializes the dictionaries mapping buttons to their text components and validates the slope and y-intercept values.
         /// </summary>
@@ -100,7 +103,7 @@ namespace LinearFunction
             
             foreach (var xValue in tableXValues.Values)
             {
-                _correctTableValues[xValue] = MathExtensions.LinearFunctionY(xValue, Slope, YIntercept);
+                _correctTableValues[xValue] = MathExtensions.LinearFunctionY(Slope, YIntercept, xValue);
             }
         }
     }

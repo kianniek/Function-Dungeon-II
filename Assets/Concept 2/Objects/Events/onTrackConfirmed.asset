@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f0f1b4529c1544146a182992c646f43b, type: 3}
-  m_Name: onTrackConfirmPlacement
+  m_Script: {fileID: 11500000, guid: acfa171bf822418dad21c271b0a009a2, type: 3}
+  m_Name: onTrackConfirmed
   m_EditorClassIdentifier: 
-  description: Event that is called when a track is confirmed
+  description: 

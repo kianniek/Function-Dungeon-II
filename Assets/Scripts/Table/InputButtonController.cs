@@ -8,54 +8,36 @@ using Utils;
 
 namespace Table
 {
-    /// <summary>
-    /// Manages the behavior and interaction of input buttons in the table UI.
-    /// </summary>
     public class InputButtonController : MonoBehaviour
     {
-        // Dictionary to map ExtendedButton to their corresponding TMP_Text component
         private readonly Dictionary<ExtendedButton, TMP_Text> _inputDictionary = new();
-        
-        // Serialized fields to be assigned via Unity Inspector
         [SerializeField] private LinearFunctionData linearFunctionData;
         [SerializeField] private List<ExtendedButton> inputButtons;
         [SerializeField] private TableController tableController;
-        [SerializeField] private float valueRange;
-        [SerializeField] private int amountOfGivenValues = 2;
-        
-        // Count of columns in the table
+
         private int _tableColumnCount;
-        
-        private void Awake()
+
+        private void Start()
         {
-            // Shuffle the input buttons and initialize their text components
             ShuffleInputButtons();
             InitializeInputTextComponents();
-            
-            // Set the table column count from the linear function data
             _tableColumnCount = tableController.ColumnCount;
-            
-            // Change the input numbers based on the linear function data
             ChangeInputNumbers();
         }
-        
+
         /// <summary>
-        /// Changes the input numbers based on the linear function data.
+        /// Changes the input numbers on the buttons and the table.
         /// </summary>
         public void ChangeInputNumbers()
         {
-            // Validate the amounts before proceeding
             if (!ValidateAmounts())
                 return;
-            
-            // Assign random values to the buttons
+
             AssignRandomValuesToButtons();
-            
-            // Generate random indices for pre-calculated values
+
             var preCalculatedIndices = new HashSet<int>(
-                TableHelper.GenerateRandomIndices(amountOfGivenValues, _tableColumnCount));
-            
-            // Assign calculated values to buttons that are not pre-calculated
+                TableHelper.GenerateRandomIndices(tableController.AmountGivenValues, _tableColumnCount));
+
             for (var i = 0; i < _tableColumnCount; i++)
             {
                 if (!preCalculatedIndices.Contains(i))
@@ -63,15 +45,13 @@ namespace Table
                     AssignCalculatedValueToButton(i, linearFunctionData.CorrectTableValues.ElementAt(i).Value);
                 }
             }
-            
-            // Assign pre-calculated values to the table
 
             foreach (var preCalculatedIndex in preCalculatedIndices)
             {
                 AssignPreCalculatedValueToTable(preCalculatedIndex);
             }
         }
-        
+
         /// <summary>
         /// Resets the input buttons to their default state.
         /// </summary>
@@ -80,7 +60,7 @@ namespace Table
             // Reset each button's value and color
             foreach (var button in inputButtons)
             {
-                button.SetButtonValue(button.GetComponentInChildren<TMP_Text>(), 0, Color.white);
+                button.SetButtonValue(0, Color.white);
             }
             
             // Reset the table controller's Y texts
@@ -94,7 +74,7 @@ namespace Table
         {
             foreach (var button in inputButtons)
             {
-                _inputDictionary.Add(button, button.GetComponentInChildren<TMP_Text>());
+                _inputDictionary.Add(button, button.ButtonText);
             }
         }
         
@@ -104,32 +84,32 @@ namespace Table
         /// <returns>True if valid, otherwise false.</returns>
         private bool ValidateAmounts()
         {
-            if (amountOfGivenValues > _tableColumnCount)
+            if (tableController.AmountGivenValues > _tableColumnCount)
             {
                 Debug.LogError("The amount of given values is higher than the amount of columns in the table");
                 return false;
             }
             
-            if (inputButtons.Count < amountOfGivenValues)
-            {
-                Debug.LogError("The amount of input buttons is lower than the amount of given values");
-                return false;
-            }
+            if (inputButtons.Count >= linearFunctionData.AmountOfDecimals)
+                return true;
             
-            return true;
+            Debug.LogError("The amount of input buttons is lower than the amount of given values");
+            return false;
         }
-        
-        /// <summary>
-        /// Assigns random values to each input button.
-        /// </summary>
+
         private void AssignRandomValuesToButtons()
         {
             foreach (var button in inputButtons)
             {
                 var value = GenerateRandomValue();
-                
-                if (_inputDictionary.TryGetValue(button, out var text))
-                    button.SetButtonValue(text, value);
+                if (_inputDictionary.TryGetValue(button, out var inputText))
+                {
+                    button.SetButtonValue(value);
+                }
+                else
+                {
+                    Debug.LogWarning($"Button {button.name} not found in dictionary during random value assignment.");
+                }
             }
         }
         
@@ -139,8 +119,7 @@ namespace Table
         /// <returns>A rounded random value.</returns>
         private float GenerateRandomValue()
         {
-            // Round the value to the amount of decimals specified in the linear function data
-            return Random.Range(-valueRange, valueRange).RoundValue(linearFunctionData.AmountOfDecimals);
+            return Random.Range(linearFunctionData.MinSlope, linearFunctionData.MaxSlope).RoundValue(linearFunctionData.AmountOfDecimals);
         }
         
         /// <summary>
@@ -150,8 +129,19 @@ namespace Table
         /// <param name="value">the value to assign to the button.</param>
         private void AssignCalculatedValueToButton(int index, float value)
         {
-            if (_inputDictionary.TryGetValue(inputButtons[index], out var inputText))
-                inputButtons[index].SetButtonValue(inputText, value, Color.cyan);
+            var button = inputButtons[index];
+
+            if (!_inputDictionary.TryGetValue(button, out var inputText))
+            {
+                Debug.LogError($"Button at index {index} not found in dictionary.");
+                return;
+            }
+            
+#if UNITY_EDITOR
+            button.SetButtonValue(value, Color.cyan);
+#else
+            button.SetButtonValue(value);
+#endif
         }
         
         /// <summary>
@@ -161,10 +151,22 @@ namespace Table
         private void AssignPreCalculatedValueToTable(int index)
         {
             var xValues = linearFunctionData.GetXValues;
-            var xValue = xValues.Values[index];
-            var value = linearFunctionData.CorrectTableValues[xValue];
-            
-            tableController.SetYButtonValue(index, value);
+            if (xValues.Values.Count > index)
+            {
+                var xValue = xValues.Values[index];
+                if (linearFunctionData.CorrectTableValues.TryGetValue(xValue, out var value))
+                {
+                    tableController.SetYButtonValue(index, value);
+                }
+                else
+                {
+                    Debug.LogWarning($"Correct table value for xValue {xValue} not found.");
+                }
+            }
+            else
+            {
+                Debug.LogWarning($"xValues array length is less than index {index}.");
+            }
         }
         
         /// <summary>
@@ -172,7 +174,13 @@ namespace Table
         /// </summary>
         private void ShuffleInputButtons()
         {
-            inputButtons = inputButtons.OrderBy(x => Random.Range(0, inputButtons.Count)).ToList();
+            var n = inputButtons.Count;
+            while (n > 1)
+            {
+                n--;
+                var k = Random.Range(0, n + 1);
+                (inputButtons[k], inputButtons[n]) = (inputButtons[n], inputButtons[k]);
+            }
         }
     }
 }
