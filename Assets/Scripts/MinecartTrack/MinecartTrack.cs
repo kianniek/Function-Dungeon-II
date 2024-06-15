@@ -1,56 +1,77 @@
 using Events;
 using UnityEngine;
+using UnityEngine.Events;
+using Utils;
 
-namespace MineCartTrack
+namespace MineCart
 {
     public class MineCartTrack : MonoBehaviour
     {
-        [Header("References")]
-        [SerializeField] private Transform leftTrackCheck; // The check for if the track is connected on the left
-        [SerializeField] private Transform rightTrackCheck; // The check for if the track is connected on the right
-
         [Header("Settings")]
         [SerializeField] private float maxTrackLenght = 10f; // The max length the track can stretch to
+        [SerializeField] private Vector2 trackConnectionPoint;
 
         [Header("Events")]
-        [SerializeField] private GameObjectEvent onMinecartTrackplaced = new();
+        [SerializeField] private GameObjectEvent onMineCartTrackplaced = new();
+        [SerializeField] private UnityEvent onMineCartTrackPlacable = new();
+        [SerializeField] private UnityEvent onMineCartTrackNotPlacable = new();
 
-         private GameObject _leftMinecartTrack; // The track on the left
-         private GameObject _rightMinecartTrack; // The track on the right
+        public Vector2 LeftConnectionPoint { get; private set; } // The track on the left
+        public Vector2 RightConnectionPoint { get; private set; } // The track on the right
+
+        private float _y;
+
+        private static float GetY(float angle)
+        {
+            return Mathf.Tan(angle * Mathf.Deg2Rad);
+        }
 
         private void Start()
         {
-            onMinecartTrackplaced.Invoke(gameObject);
+            SetConnectionPoint();
+            onMineCartTrackplaced.Invoke(gameObject);
         }
 
-        private void CheckConnection()
+        public void CheckCollision()
         {
-            var leftCollider = Physics2D.OverlapPoint(leftTrackCheck.position);
-            var rightCollider = Physics2D.OverlapPoint(rightTrackCheck.position);
+            if (Physics2D.OverlapPoint(transform.position))
+            {
+                onMineCartTrackNotPlacable.Invoke();
+            }
+            else
+            {
+                onMineCartTrackPlacable.Invoke();
+            }
+        }
 
-            _leftMinecartTrack = leftCollider != null ? leftCollider.gameObject : null;
-            _rightMinecartTrack = rightCollider != null ? rightCollider.gameObject : null;
+
+        /// <summary>
+        /// Creates two connection points to connect other tracks to
+        /// </summary>
+        public void SetConnectionPoint()
+        {
+            var position = new Vector2(transform.position.x, transform.position.y);
+
+            LeftConnectionPoint = new Vector2(Mathf.Round(position.x - trackConnectionPoint.x), position.y - trackConnectionPoint.y) - new Vector2(0, _y / 2);
+            RightConnectionPoint = new Vector2(Mathf.Round(position.x + trackConnectionPoint.x), position.y + trackConnectionPoint.y) + new Vector2(0, _y / 2);
+
+            LeftConnectionPoint = new Vector2(MathExtensions.RoundValue(LeftConnectionPoint.x, 1), MathExtensions.RoundValue(LeftConnectionPoint.y, 1));
+            RightConnectionPoint = new Vector2(MathExtensions.RoundValue(RightConnectionPoint.x, 1), MathExtensions.RoundValue(RightConnectionPoint.y, 1));
         }
 
         /// <summary>
         /// Changes the length of the track to ensure it can connect two tracks
         /// </summary>
-        public void AdjustLength()
+        public void AdjustLength(float slope)
         {
-            var angle = transform.eulerAngles.z * Mathf.Deg2Rad;
+            _y = GetY(slope);
+
+            var angle = slope * Mathf.Deg2Rad;
             var adjustedLength = Mathf.Clamp(1f / Mathf.Cos(angle), 0, maxTrackLenght);
 
             var newSize = transform.localScale;
             newSize.x = adjustedLength;
             transform.localScale = newSize;
-        }
-
-        /// <summary>
-        /// Places the minecart and checks connection with other tracks
-        /// </summary>
-        public void PlaceMinecartTrack()
-        {
-            CheckConnection();
         }
 
     }
