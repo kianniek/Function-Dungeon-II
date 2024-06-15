@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using Events;
 using Events.GameEvents.Typed;
 using LinearFunction;
 using TMPro;
@@ -16,6 +17,7 @@ namespace Table
         
         [Header("Data")] 
         [SerializeField] private LinearFunctionData linearFunctionData;
+        [SerializeField] private int amoutGivenValues;
         
         [Header("Events")] 
         [SerializeField] private FloatGameEvent onInputChanged;
@@ -24,8 +26,8 @@ namespace Table
         
         [Header("Check Settings")] 
         [SerializeField] private float checkMargin;
-        [SerializeField] private UnityEvent onInputCorrect;
-        [SerializeField] private UnityEvent onInputIncorrect;
+        [SerializeField] private BoolEvent onInputCorrect;
+        [SerializeField] private BoolEvent onInputIncorrect;
         
         [Header("Table Buttons")] 
         [SerializeField] private List<Button> tableXButtons = new();
@@ -38,6 +40,11 @@ namespace Table
         /// Gets the number of columns (buttons) in the table.
         /// </summary>
         public int ColumnCount => tableXButtons.Count;
+        
+        /// <summary>
+        /// Gets the number of Y values in the table that are given values.
+        /// </summary>
+        public int AmountGivenValues => amoutGivenValues;
         
         private void Awake()
         {
@@ -162,13 +169,11 @@ namespace Table
             //Invoke the correct or incorrect event
             if (correct)
             {
-                Debug.Log("Correct");
-                onInputCorrect?.Invoke();
+                onInputCorrect?.Invoke(false);
             }
             else
             {
-                Debug.Log("Incorrect");
-                onInputIncorrect?.Invoke();
+                onInputIncorrect?.Invoke(true);
             }
         }
     }
