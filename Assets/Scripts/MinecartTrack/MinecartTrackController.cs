@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using Cannon;
 using Events;
+using Events.GameEvents;
 using Events.GameEvents.Typed;
 using UnityEngine;
 using UnityEngine.Events;
@@ -14,8 +15,8 @@ namespace Minecart
 
         [Header("Events")]
         // TODO: Change these gameobjectevents to new minecartRail events
-        [SerializeField] private GameObjectGameEvent onTrackPlaced;
-        [SerializeField] private GameObjectGameEvent onTrackConfirmPlacement;
+        [SerializeField] private MinecartTrackGameEvent onTrackPlaced;
+        [SerializeField] private GameEvent onTrackConfirmPlacement;
 
         [SerializeField] private FloatEvent changeSlope = new();
         [SerializeField] private FloatEvent changeHeight = new();
@@ -50,11 +51,11 @@ namespace Minecart
             onTrackConfirmPlacement.RemoveListener(ConfirmTrackPlacement);
         }
 
-        private void ChangeCurrentTrack(GameObject track)
+        private void ChangeCurrentTrack(MinecartTrack track)
         {
             RemoveCurentTrack();
 
-            _currentTrack = track.GetComponent<MinecartTrack>();
+            _currentTrack = track;
 
             changeHeight.AddListener(_currentTrack.GetComponent<LerpedYTranslation>().Move);
             changeSlope.AddListener(_currentTrack.GetComponent<ObjectSlopeAngleController>().SetSlope);

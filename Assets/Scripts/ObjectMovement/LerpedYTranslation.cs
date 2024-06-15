@@ -15,6 +15,7 @@ namespace Cannon
 
         [SerializeField] private UnityEvent onMovingUp = new (); // Event invoked when the platform is moving up.
         [SerializeField] private UnityEvent onMovingDown = new (); // Event invoked when the platform is moving down.
+        [SerializeField] private UnityEvent onMoving = new (); // Event invoked when the platform is moving.
 
         private Vector3 _wantedPosition;
         private Vector3 _startPosition;
@@ -33,6 +34,7 @@ namespace Cannon
             if (Vector3.Distance(transform.position, _wantedPosition) > 0.01f)
             {
                 lerpedPosition = Vector3.Lerp(transform.position, _wantedPosition, Time.deltaTime * movementSmoothing);
+                onMoving.Invoke();
             }
             else
             {

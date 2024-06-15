@@ -1,6 +1,7 @@
 using Events;
 using Extensions;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UIElements;
 
 namespace Minecart
@@ -13,16 +14,18 @@ namespace Minecart
 
         [Header("Events")]
         [SerializeField] private GameObjectEvent onMinecartTrackplaced = new();
+        [SerializeField] private UnityEvent onMinecartTrackPlacable = new();
+        [SerializeField] private UnityEvent onMinecartTrackNotPlacable = new();
 
         public Vector2 LeftConnectionPoint { get; private set; } // The track on the left
         public Vector2 RightConnectionPoint { get; private set; } // The track on the right
 
-
-
-        [SerializeField] private Vector2 _LeftConnectionPoint;
-        [SerializeField] private Vector2 _RightConnectionPoint;
-
         private float _y;
+
+        private static float GetY(float angle)
+        {
+            return Mathf.Tan(angle * Mathf.Deg2Rad);
+        }
 
         private void Start()
         {
@@ -30,6 +33,22 @@ namespace Minecart
             onMinecartTrackplaced.Invoke(gameObject);
         }
 
+        public void CheckCollision()
+        {
+            if (Physics2D.OverlapPoint(transform.position))
+            {
+                onMinecartTrackNotPlacable.Invoke();
+            }
+            else
+            {
+                onMinecartTrackPlacable.Invoke();
+            }
+        }
+
+
+        /// <summary>
+        /// Creates two connection points to connect other tracks to
+        /// </summary>
         public void SetConnectionPoint()
         {
             var position = new Vector2(transform.position.x, transform.position.y);
@@ -39,9 +58,6 @@ namespace Minecart
 
             LeftConnectionPoint = new Vector2(MathfExtentions.RoundValue(LeftConnectionPoint.x, 1), MathfExtentions.RoundValue(LeftConnectionPoint.y, 1));
             RightConnectionPoint = new Vector2(MathfExtentions.RoundValue(RightConnectionPoint.x, 1), MathfExtentions.RoundValue(RightConnectionPoint.y, 1));
-
-            _LeftConnectionPoint = LeftConnectionPoint;
-            _RightConnectionPoint = RightConnectionPoint;
         }
 
         /// <summary>
@@ -50,12 +66,6 @@ namespace Minecart
         public void AdjustLength(float slope)
         {
             _y = GetY(slope);
-            //Vector2 position = new Vector2(transform.position.x, transform.position.y);
-
-            //LeftConnectionPoint = position - trackConnectionPoint 
-            //RightConnectionPoint = position + trackConnectionPoint
-            //_LeftConnectionPoint = LeftConnectionPoint;
-            //_RightConnectionPoint = RightConnectionPoint;
 
             var angle = slope * Mathf.Deg2Rad;
             var adjustedLength = Mathf.Clamp(1f / Mathf.Cos(angle), 0, maxTrackLenght);
@@ -65,17 +75,5 @@ namespace Minecart
             transform.localScale = newSize;
         }
 
-        private static float GetY(float angle)
-        {
-            return Mathf.Tan(angle * Mathf.Deg2Rad);
-        }
-
-        /// <summary>
-        /// Places the minecart and checks connection with other tracks
-        /// </summary>
-        public void PlaceMinecartTrack()
-        {
-
-        }
     }
 }
