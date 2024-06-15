@@ -42,8 +42,6 @@ namespace Table
             {
                 if (!preCalculatedIndices.Contains(i))
                 {
-                    Debug.Log($"Assigning calculated value to button {i}");
-                    Debug.Log($"Value: {linearFunctionData.CorrectTableValues.ElementAt(i).Value}");
                     AssignCalculatedValueToButton(i, linearFunctionData.CorrectTableValues.ElementAt(i).Value);
                 }
             }
