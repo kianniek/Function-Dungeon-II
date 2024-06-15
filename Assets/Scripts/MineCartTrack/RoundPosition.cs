@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace MinecartTrack
+namespace MineCart
 {
     public class RoundPosition : MonoBehaviour
     {

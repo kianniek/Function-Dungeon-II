@@ -1,21 +1,20 @@
 using System.Collections.Generic;
-using Cannon;
 using Events;
 using Events.GameEvents;
 using Events.GameEvents.Typed;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace Minecart
+namespace MineCart
 {
-    public class MinecartRailController : MonoBehaviour
+    public class MineCartRailController : MonoBehaviour
     {
         [Header("Settings")]
         [SerializeField] private float trackPlacementCompletionX;
 
         [Header("Events")]
         // TODO: Change these gameobjectevents to new minecartRail events
-        [SerializeField] private MinecartTrackGameEvent onTrackPlaced;
+        [SerializeField] private MineCartTrackGameEvent onTrackPlaced;
         [SerializeField] private GameEvent onTrackConfirmPlacement;
 
         [SerializeField] private FloatEvent changeSlope = new();
@@ -23,11 +22,11 @@ namespace Minecart
         [SerializeField] private UnityEvent trackCompleted = new();
 
         [Header("References")]
-        [SerializeField] private MinecartTrack firstTrack;
+        [SerializeField] private MineCartTrack firstTrack;
 
-        private List<MinecartTrack> _minecartTracks = new List<MinecartTrack>();
+        private List<MineCartTrack> _minecartTracks = new List<MineCartTrack>();
         [SerializeField] private Dictionary<Vector2, int> _connectionPoints = new Dictionary<Vector2, int>();
-        private MinecartTrack _currentTrack;
+        private MineCartTrack _currentTrack;
 
         private void Start()
         {
@@ -51,7 +50,7 @@ namespace Minecart
             onTrackConfirmPlacement.RemoveListener(ConfirmTrackPlacement);
         }
 
-        private void ChangeCurrentTrack(MinecartTrack track)
+        private void ChangeCurrentTrack(MineCartTrack track)
         {
             RemoveCurentTrack();
 
