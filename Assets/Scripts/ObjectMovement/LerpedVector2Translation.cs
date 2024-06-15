@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -80,6 +80,7 @@ namespace ObjectMovement
             }
             
             _selfTransform.localPosition = targetPosition;
+
             onCompleteEvent?.Invoke();
         }
         
