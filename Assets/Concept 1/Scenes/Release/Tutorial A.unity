@@ -1890,13 +1890,33 @@ PrefabInstance:
       value: LinearEquationUI
       objectReference: {fileID: 0}
     - target: {fileID: 2953903247395189401, guid: 669dd57030bb547bc9cab97cb0eeab7c, type: 3}
+      propertyPath: onFloatChange.m_PersistentCalls.m_Calls.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2953903247395189401, guid: 669dd57030bb547bc9cab97cb0eeab7c, type: 3}
+      propertyPath: onFloatChange.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2953903247395189401, guid: 669dd57030bb547bc9cab97cb0eeab7c, type: 3}
       propertyPath: onFloatChange.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 795646733}
     - target: {fileID: 2953903247395189401, guid: 669dd57030bb547bc9cab97cb0eeab7c, type: 3}
+      propertyPath: onFloatChange.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
+      objectReference: {fileID: 534610745}
+    - target: {fileID: 2953903247395189401, guid: 669dd57030bb547bc9cab97cb0eeab7c, type: 3}
       propertyPath: onFloatChange.m_PersistentCalls.m_Calls.Array.data[3].m_Target
       value: 
       objectReference: {fileID: 534610745}
+    - target: {fileID: 2953903247395189401, guid: 669dd57030bb547bc9cab97cb0eeab7c, type: 3}
+      propertyPath: onFloatChange.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
+      value: EnableGraphObject
+      objectReference: {fileID: 0}
+    - target: {fileID: 2953903247395189401, guid: 669dd57030bb547bc9cab97cb0eeab7c, type: 3}
+      propertyPath: onFloatChange.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
+      value: UI.GraphDrawer.FunctionGraphDrawerController, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 3438157767611939403, guid: 669dd57030bb547bc9cab97cb0eeab7c, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1985,6 +2005,11 @@ PrefabInstance:
 --- !u!224 &739575560 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3438157767611939403, guid: 669dd57030bb547bc9cab97cb0eeab7c, type: 3}
+  m_PrefabInstance: {fileID: 739575559}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &739575562 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 556582872961547745, guid: 669dd57030bb547bc9cab97cb0eeab7c, type: 3}
   m_PrefabInstance: {fileID: 739575559}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &795646731
@@ -4124,6 +4149,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fire
       objectReference: {fileID: 0}
+    - target: {fileID: 3532443262937236232, guid: 434b023e4440f48f7b63b6aa9df90adb, type: 3}
+      propertyPath: response.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 739575562}
     - target: {fileID: 5471314512848531115, guid: 434b023e4440f48f7b63b6aa9df90adb, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -4208,6 +4237,14 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1791251267}
+    - target: {fileID: 5918779053352099270, guid: 434b023e4440f48f7b63b6aa9df90adb, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 534610745}
+    - target: {fileID: 5918779053352099270, guid: 434b023e4440f48f7b63b6aa9df90adb, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
+      objectReference: {fileID: 739575562}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

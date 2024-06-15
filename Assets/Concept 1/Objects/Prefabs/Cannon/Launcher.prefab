@@ -725,6 +725,22 @@ MonoBehaviour:
   shootPosition: {fileID: 4237095870412061846}
   totalAmmo: 5
   onAmmoChange: {fileID: 11400000, guid: a28cd43c2dfd44b4ca3baa17409c8cf5, type: 2}
+  onShootProjectile:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: 59201ab3bbab76a4fbe87ec48237a28d, type: 2}
+        m_TargetAssemblyTypeName: Events.GameEvents.GameEventBase`1[[UnityEngine.GameObject,
+          UnityEngine
+        m_MethodName: Invoke
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 0
   onAmmoDepleted:
     m_PersistentCalls:
       m_Calls:
@@ -740,9 +756,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  onShootProjectile:
-    m_PersistentCalls:
-      m_Calls: []
   onNextProjectile:
     m_PersistentCalls:
       m_Calls:
