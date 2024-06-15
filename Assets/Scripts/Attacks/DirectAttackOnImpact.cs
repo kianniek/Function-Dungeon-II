@@ -29,6 +29,8 @@ namespace Attacks
             var damage = CurrentStrength * attackMultiplier;
             
             damageableObject.Health -= damage;
+            
+            onImpact.Invoke();
         }
     }
 }
