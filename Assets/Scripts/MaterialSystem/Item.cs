@@ -36,18 +36,18 @@ namespace MaterialSystem
         /// Keeps track of the amount of an item that has been collected.
         /// </summary>
         /// <param name="amount"></param>
-        public void Collect(int amount)
+        public void Collect()
         {
-            amountCollected += amount;
+            amountCollected++;
         }
         
         /// <summary>
         /// Keeps track of the amount of an item that has been used. Does not remove the item from the inventory.
         /// </summary>
         /// <param name="amount"></param>
-        public void Use(int amount)
+        public void Use()
         {
-            amountUsed += amount;
+            amountUsed++;
         }
         
         /// <summary>
@@ -56,7 +56,7 @@ namespace MaterialSystem
         /// <param name="amount"></param>
         public void Remove(int amount)
         {
-            amountCollected -= amount;
+            amountCollected--;
         }
     }
 }

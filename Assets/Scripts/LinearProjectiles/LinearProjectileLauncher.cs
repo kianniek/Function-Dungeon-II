@@ -103,6 +103,7 @@ namespace LinearProjectiles
             {
                 projectile.gameObject.SetActive(true);
                 projectile.Shoot(shootPosition.transform.rotation);
+                projectile.transform.parent = null;
                 
                 onShootProjectile.Invoke(projectile);
                 onNextProjectile.Invoke(GetPooledProjectile());

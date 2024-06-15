@@ -1,8 +1,11 @@
 using System.Collections.Generic;
+using System.Linq;
 using Events;
 using Events.GameEvents;
 using Events.GameEvents.Typed;
+using MaterialSystem;
 using ObjectMovement;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -12,17 +15,18 @@ namespace MineCart
     {
         [Header("Settings")]
         [SerializeField] private float trackPlacementCompletionX;
+        [SerializeField] private float minimalTrackPlacementDistance = 1f;
 
         [Header("Events")]
         [SerializeField] private MineCartTrackGameEvent onTrackPlaced;
         [SerializeField] private GameEvent onTrackConfirmPlacement;
-
         [SerializeField] private FloatEvent changeSlope = new();
         [SerializeField] private FloatEvent changeHeight = new();
         [SerializeField] private UnityEvent trackCompleted = new();
 
         [Header("References")]
         [SerializeField] private MineCartTrack firstTrack;
+        [SerializeField] private MineCartTrack lastTrack;
 
         private List<MineCartTrack> _minecartTracks = new List<MineCartTrack>();
         private Dictionary<Vector2, int> _connectionPoints = new Dictionary<Vector2, int>();
@@ -30,13 +34,18 @@ namespace MineCart
 
         private void Start()
         {
-            AddFirstTrack();
+            InitializeFirstTrack();
         }
 
-        private void AddFirstTrack()
+        private void InitializeFirstTrack()
         {
-            firstTrack.SetConnectionPoint();
+            firstTrack.UpdateConnectionPoints();
             _connectionPoints.Add(firstTrack.RightConnectionPoint, 1);
+            _connectionPoints.Add(firstTrack.LeftConnectionPoint, 2);
+            
+            lastTrack.UpdateConnectionPoints();
+            _connectionPoints.Add(lastTrack.LeftConnectionPoint, 1);
+            _connectionPoints.Add(lastTrack.RightConnectionPoint, 2);
         }
 
         private void OnEnable()
@@ -53,66 +62,103 @@ namespace MineCart
 
         private void ChangeCurrentTrack(MineCartTrack track)
         {
-            RemoveCurentTrack();
-
+            RemoveCurrentTrack();
             _currentTrack = track;
+            SubscribeToTrackEvents();
+            _minecartTracks.Add(_currentTrack);
+        }
 
+        private void SubscribeToTrackEvents()
+        {
             changeHeight.AddListener(_currentTrack.GetComponent<LerpedVector2Translation>().MoveYByInput);
             changeSlope.AddListener(_currentTrack.GetComponent<ObjectSlopeAngleController>().Rotate);
+        }
 
-            _minecartTracks.Add(_currentTrack);
+        private void UnsubscribeFromTrackEvents()
+        {
+            changeSlope.RemoveAllListeners();
+            changeHeight.RemoveAllListeners();
         }
 
         private void ConfirmTrackPlacement()
         {
-            _currentTrack.SetConnectionPoint();
+            if (_currentTrack == null) 
+                return;
 
-            AddTrackToList();
-            RemoveCurentTrack();
-
-            if (IsEveryTrackConnected())
+            _currentTrack.UpdateConnectionPoints();
+            
+            if (!IsTrackConnectingProperly())
             {
+                DestroyCurrentTrack();
+                return;
+            }
+
+            AddTrackToConnectionPoints();
+
+            if (IsTrackPlacementComplete())
+            {
+                Debug.Log("All tracks connected");
+                
                 trackCompleted.Invoke();
             }
+
+            RemoveCurrentTrack();
         }
 
-        private void AddTrackToList()
+        private bool IsTrackConnectingProperly()
         {
             var leftSide = _currentTrack.LeftConnectionPoint;
             var rightSide = _currentTrack.RightConnectionPoint;
 
-            if (_connectionPoints.ContainsKey(leftSide))
-                _connectionPoints[leftSide]++;
-            else
-                _connectionPoints.Add(_currentTrack.LeftConnectionPoint, 1);
+            var leftSideValid = _connectionPoints.ContainsKey(leftSide) && _connectionPoints[leftSide] < 2;
+            var rightSideValid = _connectionPoints.ContainsKey(rightSide) && _connectionPoints[rightSide] < 2;
 
+            // Ensure the track connects to at least one valid connection point
+            return leftSideValid || rightSideValid;
+        }
+
+        private void AddTrackToConnectionPoints()
+        {
+            UpdateConnectionPoint(_currentTrack.LeftConnectionPoint);
             if (_currentTrack.gameObject.transform.position.x < trackPlacementCompletionX)
-                if (_connectionPoints.ContainsKey(rightSide))
-                    _connectionPoints[rightSide]++;
-                else
-                    _connectionPoints.Add(_currentTrack.RightConnectionPoint, 1);
-        }
-
-        private void RemoveCurentTrack()
-        {
-            if (_currentTrack != null)
             {
-                changeSlope.RemoveAllListeners();
-                changeHeight.RemoveAllListeners();
-                _currentTrack = null;
+                UpdateConnectionPoint(_currentTrack.RightConnectionPoint);
             }
         }
 
-        private bool IsEveryTrackConnected()
+        private void UpdateConnectionPoint(Vector2 point)
         {
-            foreach (var point in _connectionPoints.Values)
-            {
-                Debug.Log(point);
-                if (point < 2)
-                    return false;
-            }
+            if (!_connectionPoints.TryAdd(point, 1))
+                _connectionPoints[point]++;
+        }
 
-            return true;
+        private bool IsTrackPlacementComplete()
+        {
+            return AreAllTracksConnected();
+        }
+
+        private bool AreAllTracksConnected()
+        {
+            // All connection points should be used exactly twice (once for each track connecting at that point)
+            return _connectionPoints.Values.All(point => point == 2);
+        }
+
+        private void RemoveCurrentTrack()
+        {
+            if (_currentTrack == null) 
+                return;
+            
+            UnsubscribeFromTrackEvents();
+            _currentTrack = null;
+        }
+
+        private void DestroyCurrentTrack()
+        {
+            if (_currentTrack == null) 
+                return;
+            
+            Destroy(_currentTrack.gameObject);
+            _currentTrack = null;
         }
 
         /// <summary>
@@ -125,12 +171,22 @@ namespace MineCart
         }
 
         /// <summary>
-        /// Gets called whenever the slope changes of the track
+        /// Gets called whenever the height changes of the track
         /// </summary>
-        /// <param name="angle">The H of the change</param>
+        /// <param name="height">The height of the change</param>
         public void OnChangeHeight(float height)
         {
             changeHeight.Invoke(height);
+        }
+        
+        //draw gizmos to show the connection points
+        private void OnDrawGizmos()
+        {
+            foreach (var connectionPoint in _connectionPoints)
+            {
+                Gizmos.color = Color.red;
+                Gizmos.DrawSphere(connectionPoint.Key, 0.1f);
+            }
         }
     }
 }
