@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 680593233857541607}
   - component: {fileID: 7336561269958659490}
   - component: {fileID: 3904275878939340502}
+  - component: {fileID: 934170589979765652}
   - component: {fileID: 5121976012744705185}
   m_Layer: 5
   m_Name: Score
@@ -137,6 +138,19 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &934170589979765652
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8589724738296654259}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11c9e026ddcb4b0e8651f3228bca2d33, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textFormat: 'Score: {0}'
 --- !u!114 &5121976012744705185
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -152,4 +166,16 @@ MonoBehaviour:
   listenTo: {fileID: 11400000, guid: 3f170e3f4f55e4dfb9d31131ab67f06b, type: 2}
   response:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 934170589979765652}
+        m_TargetAssemblyTypeName: UI.ResourceText, Assembly-CSharp
+        m_MethodName: SetValue
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
