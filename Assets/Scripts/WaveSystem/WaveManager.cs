@@ -3,7 +3,7 @@ using UnityEngine.Events;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using ObjectMovement;
+using UnityEngine.AI;
 using Utils;
 using WorldGrid;
 
@@ -11,7 +11,7 @@ namespace WaveSystem
 {
     public class WaveManager : MonoBehaviour
     {
-        private readonly List<ObjectPool<BloomShroomMovement>> _enemyPool = new();
+        private readonly List<ObjectPool<NavMeshAgent>> _enemyPool = new();
         
         [Header("Spawn Settings")]
         [SerializeField] private bool spawnWavesAuto;
@@ -25,22 +25,23 @@ namespace WaveSystem
         [SerializeField] private GridGenerator gridGenerator;
         
         private int _currentWaveIndex;
-        private int _enemiesLeftInWave;
-        
-        public void Awake()
+
+        public int CurrentWave => _currentWaveIndex + 1;
+
+        public int EnemiesLeftInWave { get; private set; }
+
+        public int WavesLeft => waves.Count - CurrentWave;
+
+        private void Awake()
         {
-            foreach (var enemyPrefab in waves.SelectMany(enemyWave => enemyWave.EnemyPrefab))
-            {
-                _enemyPool.Add(new ObjectPool<BloomShroomMovement>(enemyPrefab.EnemyPrefab, enemyPrefab.EnemyCount));
-            }
+            foreach (var enemyPrefab in waves.SelectMany(enemyWave => enemyWave.EnemyPrefab)) 
+                _enemyPool.Add(new ObjectPool<NavMeshAgent>(enemyPrefab.EnemyPrefab, enemyPrefab.EnemyCount));
         }
         
-        public void Start()
+        private void Start()
         {
-            if (spawnWavesOnStart)
-            {
+            if (spawnWavesOnStart) 
                 SpawnWaves();
-            }
         }
         
         public void SpawnWaves()
@@ -56,41 +57,31 @@ namespace WaveSystem
 
             for (var index = 0; index < wave.EnemyPrefab.Length; index++)
             {
-                _enemiesLeftInWave = wave.EnemyCount;
+                EnemiesLeftInWave = wave.EnemyCount;
 
                 for (var i = 0; i < wave.EnemyCount; i++)
                 {
-                    _enemiesLeftInWave--;
+                    EnemiesLeftInWave--;
                     
                     var enemy = _enemyPool.Find(pool => pool.GetPooledObject()).GetPooledObject();
 
                     enemy.transform.position = gridGenerator.PathStartPosition;
                     enemy.gameObject.SetActive(true);
-                    enemy.SetAndStartPath(gridGenerator.PathEndPosition);
+                    enemy.enabled = true;
+                    enemy.SetDestination(gridGenerator.PathEndPosition);
 
                     yield return new WaitForSeconds(wave.SpawnInterval);
                 }
 
                 onWaveCompleted.Invoke();
+                
                 _currentWaveIndex++;
 
-                if (_currentWaveIndex < waves.Count && spawnWavesAuto)
-                {
+                if (_currentWaveIndex < waves.Count && spawnWavesAuto) 
                     StartCoroutine(InitializeWave(waves[_currentWaveIndex]));
-                }
 
                 yield return null;
             }
-        }
-        
-        public int GetEnemiesLeftInWave()
-        {
-            return _enemiesLeftInWave;
-        }
-        
-        public int GetWavesLeft()
-        {
-            return waves.Count - _currentWaveIndex;
         }
     }
 }

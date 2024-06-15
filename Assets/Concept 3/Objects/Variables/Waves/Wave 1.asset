@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Wave 1
   m_EditorClassIdentifier: 
   enemyPrefabs:
-  - enemyPrefab: {fileID: 8273156906793085097, guid: 730be238b0f2c9943a4ba16560ede0b1, type: 3}
+  - enemyPrefab: {fileID: -1385989702630780348, guid: 730be238b0f2c9943a4ba16560ede0b1, type: 3}
     enemyCount: 3
-  - enemyPrefab: {fileID: 8273156906793085097, guid: cf20f74160072634180c688af12b090e, type: 3}
+  - enemyPrefab: {fileID: 2423925787375125342, guid: cf20f74160072634180c688af12b090e, type: 3}
     enemyCount: 5
   spawnInterval: 3
   spawnLocation: {x: 4, y: 1.5833335, z: 0}

@@ -7,6 +7,8 @@ namespace WaveSystem
     public class EnemyWave : ScriptableObject
     {
         [SerializeField] private EnemyPrefabs[] enemyPrefabs;
+        
+        [Header("Spawn Settings")]
         [SerializeField] private float spawnInterval;
         [SerializeField] private Vector3 spawnLocation;
         

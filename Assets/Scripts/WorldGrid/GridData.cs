@@ -4,27 +4,25 @@ using UnityEngine;
 namespace WorldGrid
 {
     /// <summary>
-    /// Holds griddata and marks path and placeable tiles
+    /// Holds grid data and marks path and placeable tiles
     /// </summary>
     [CreateAssetMenu(fileName = "GridData", menuName = "WorldGrid/GridData", order = 0)]
     public class GridData : ScriptableObject
     {
-        private readonly IReadOnlyList<Vector2Int> _directions =
-            new[] { Vector2Int.up, Vector2Int.down, Vector2Int.left, Vector2Int.right };
+        private readonly IReadOnlyList<Vector2Int> _directions = new[]
+        {
+            Vector2Int.up, Vector2Int.down, Vector2Int.left, Vector2Int.right
+        };
 
-        [Tooltip("The indices of all path cells for a level")] [SerializeField]
-        private List<Vector2Int> pathIndices;
-
-        [Tooltip("The size of a grid")] [SerializeField]
-        private int xGridSize;
-
+        [Tooltip("The indices of all path cells for a level")] 
+        [SerializeField] private List<Vector2Int> pathIndices;
+        
+        [Header("Grid Settings")]
+        [Tooltip("The size of a grid")] 
+        [SerializeField] private int xGridSize;
         [SerializeField] private int yGridSize;
 
-        private GridTileTypes[,] _gridTileTypes;
-
-        public IReadOnlyList<Vector2Int> PathIndices => pathIndices;
-
-        public GridTileTypes[,] GeneratedGrid => _gridTileTypes;
+        public GridTileTypes[,] GeneratedGrid { get; private set; }
 
         public int XGridSize => xGridSize;
 
@@ -36,7 +34,7 @@ namespace WorldGrid
 
         private void OnValidate()
         {
-            _gridTileTypes = new GridTileTypes[xGridSize, yGridSize];
+            GeneratedGrid = new GridTileTypes[xGridSize, yGridSize];
 
             MarkPaths();
             MarkPlaceable();
@@ -51,7 +49,7 @@ namespace WorldGrid
                 {
                     if (pathIndices.Contains(new Vector2Int(i, j)))
                     {
-                        _gridTileTypes[i, j] = GridTileTypes.Path;
+                        GeneratedGrid[i, j] = GridTileTypes.Path;
                     }
                 }
             }
@@ -73,9 +71,9 @@ namespace WorldGrid
                         tileToCheck.y > yGridSize - 1
                     ) continue;
 
-                    if (_gridTileTypes[tileToCheck.x, tileToCheck.y] != GridTileTypes.Path)
+                    if (GeneratedGrid[tileToCheck.x, tileToCheck.y] != GridTileTypes.Path)
                     {
-                        _gridTileTypes[tileToCheck.x, tileToCheck.y] = GridTileTypes.Placeable;
+                        GeneratedGrid[tileToCheck.x, tileToCheck.y] = GridTileTypes.Placeable;
                     }
                 }
             }

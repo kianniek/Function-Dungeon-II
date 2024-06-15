@@ -5,7 +5,7 @@ using UnityEngine;
 namespace Utils
 {
     public class ObjectPool<T> 
-        where T : MonoBehaviour
+        where T : Behaviour
     {
         private readonly List<T> _pooledObjects = new();
         
