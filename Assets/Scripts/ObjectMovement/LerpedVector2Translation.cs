@@ -43,21 +43,21 @@ namespace ObjectMovement
             StartCoroutine(MoveCoroutine(_startPosition, onMoveBackComplete));
         }
         
-        public void MoveUp(float amount)
+        /// <summary>
+        /// Moves the object by the input value on the Y-axis
+        /// </summary>
+        /// <param name="input">Amount to deviate from the starting position</param>
+        public void MoveYByInput(float input)
         {
-            MoveYByInput(amount);
-            onMovingUp.Invoke();
-        }
-        
-        public void MoveDown(float amount)
-        {
-            MoveYByInput(-amount);
-            onMovingDown.Invoke();
-        }
-        
-        private void MoveYByInput(float input)
-        {
+            //Check if the input is positive or negative in reference to the previous input
+            if(_wantedPosition.y < _startPosition.y + input)
+                onMovingUp.Invoke();
+            else
+                onMovingDown.Invoke();
+            
+            //Set the wanted position to the new position
             _wantedPosition.y = input + _startPosition.y;
+            StartCoroutine(LerpToWantedPosition());
         }
         
         public void MoveVector(Vector3 targetPosition)
@@ -81,6 +81,18 @@ namespace ObjectMovement
             
             _selfTransform.localPosition = targetPosition;
             onCompleteEvent?.Invoke();
+        }
+        
+        private IEnumerator LerpToWantedPosition()
+        {
+            while (_selfTransform.localPosition != _wantedPosition)
+            {
+                _selfTransform.localPosition = Vector3.Lerp(_selfTransform.localPosition, _wantedPosition,
+                    movementSmoothing * Time.deltaTime);
+                yield return null;
+            }
+            
+            _selfTransform.localPosition = _wantedPosition;
         }
     }
 }
