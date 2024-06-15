@@ -168,7 +168,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ecb7e4107a041b7bbd54b6c15321994, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  forceRadius: 5
+  forceRadius: 10
   forcePower: 1000
   applyForcePowerFallOff: 1
 --- !u!114 &33785886984917004
@@ -210,6 +210,18 @@ MonoBehaviour:
   onImpact:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 3111081674620245995}
+        m_TargetAssemblyTypeName: ExplodeOnImpact, Assembly-CSharp
+        m_MethodName: Explode
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 33785886984917004}
         m_TargetAssemblyTypeName: UnityEngine.Component, UnityEngine
         m_MethodName: SendMessage
