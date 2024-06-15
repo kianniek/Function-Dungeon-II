@@ -187,7 +187,7 @@ MonoBehaviour:
   speed: 20
   delayedGravity: 1
   delayType: 0
-  delayValue: 5
+  delayValue: 10
   resetOnInactivityTime: 5
   resetOnDistance: 100
   resetOnTime: 120
