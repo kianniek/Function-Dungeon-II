@@ -76,7 +76,6 @@ namespace ObjectMovement
         
         private IEnumerator MoveCoroutine(Vector3 targetPosition, UnityEvent onCompleteEvent)
         {
-            Debug.Log("done");
             var elapsedTime = 0f;
             var initialPosition = _selfTransform.localPosition;
             
@@ -90,7 +89,7 @@ namespace ObjectMovement
             }
             
             _selfTransform.localPosition = targetPosition;
-            Debug.Log("done");
+
             onCompleteEvent?.Invoke();
         }
     }
