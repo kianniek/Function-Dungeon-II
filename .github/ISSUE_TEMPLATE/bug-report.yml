@@ -4,6 +4,22 @@ title: "Bug: "
 labels:
     - bug
 body:
+  - type: checkboxes
+    id: os
+    attributes:
+     label: Which OS are you using?
+     description: You may select more than one.
+     options:
+      - label: Windows
+      - label: macOS
+  - type: input
+    id: build
+    attributes:
+     label: Build ID
+     description: "What is the ID of the build you are using?"
+     placeholder: "E.g. D1"
+    validations:
+     required: true
   - type: textarea
     id: expected-behaviour
     attributes:
@@ -24,4 +40,3 @@ body:
     attributes:
       label: "Additional Information"
       description: "Any additional information that may be relevant."
-      
