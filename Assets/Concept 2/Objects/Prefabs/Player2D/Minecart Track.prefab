@@ -98,8 +98,8 @@ GameObject:
   - component: {fileID: 3581020393843766468}
   - component: {fileID: 7875635333406325979}
   - component: {fileID: 2128412402501737773}
-  - component: {fileID: 7532064503397205663}
   - component: {fileID: 8648122642557690596}
+  - component: {fileID: 1689702685156638823}
   m_Layer: 0
   m_Name: Minecart Track
   m_TagString: Untagged
@@ -191,37 +191,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxTrackLenght: 5
   trackConnectionPoint: {x: 0.5, y: 0}
-  onMinecartTrackplaced:
+  onMineCartTrackplaced:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 11400000, guid: b9476d845e80f004191e0d0025cf1d27, type: 2}
-        m_TargetAssemblyTypeName: Events.GameEvents.GameEventBase`1[[Minecart.MinecartTrack,
+        m_TargetAssemblyTypeName: Events.GameEvents.GameEventBase`1[[MineCart.MineCartTrack,
           Assembly-CSharp
         m_MethodName: Invoke
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 7875635333406325979}
-          m_ObjectArgumentAssemblyTypeName: Minecart.MinecartTrack, Assembly-CSharp
+          m_ObjectArgumentAssemblyTypeName: MineCart.MineCartTrack, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  onMinecartTrackPlacable:
+  onMineCartTrackPlacable:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4646832027488002061}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 3581020393843766468}
         m_TargetAssemblyTypeName: UnityEngine.Renderer, UnityEngine
         m_MethodName: set_enabled
@@ -234,24 +222,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 11400000, guid: 528e83017868ce9439aa4f95984188fc, type: 2}
-        m_TargetAssemblyTypeName: Events.GameEvents.GameEvent, Assembly-CSharp
-        m_MethodName: Invoke
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-  onMinecartTrackNotPlacable:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 4646832027488002061}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
+      - m_Target: {fileID: 2164345794060210700}
+        m_TargetAssemblyTypeName: UnityEngine.Renderer, UnityEngine
+        m_MethodName: set_enabled
         m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -259,8 +232,11 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 1
+          m_BoolArgument: 0
         m_CallState: 2
+  onMineCartTrackNotPlacable:
+    m_PersistentCalls:
+      m_Calls:
       - m_Target: {fileID: 3581020393843766468}
         m_TargetAssemblyTypeName: UnityEngine.Renderer, UnityEngine
         m_MethodName: set_enabled
@@ -273,17 +249,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 11400000, guid: eaabb6d2cc74649488ac65e9498fc4fa, type: 2}
-        m_TargetAssemblyTypeName: Events.GameEvents.GameEvent, Assembly-CSharp
-        m_MethodName: Invoke
-        m_Mode: 1
+      - m_Target: {fileID: 2164345794060210700}
+        m_TargetAssemblyTypeName: UnityEngine.Renderer, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 0
+          m_BoolArgument: 1
         m_CallState: 2
 --- !u!114 &2128412402501737773
 MonoBehaviour:
@@ -299,6 +275,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotationPivot: {fileID: 5935489581430677191}
   startSlope: 0
+  onSlopeChange:
+    m_PersistentCalls:
+      m_Calls: []
   onAngleChange:
     m_PersistentCalls:
       m_Calls:
@@ -306,43 +285,6 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: Minecart.MinecartTrack, Assembly-CSharp
         m_MethodName: AdjustLength
         m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &7532064503397205663
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5935489581430677191}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f24921cd8ef4f484b8c418cef0e641bf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHeight: 10
-  minHeight: -10
-  movementSmoothing: 12
-  baseOffStartPosition: 1
-  onMovingUp:
-    m_PersistentCalls:
-      m_Calls: []
-  onMovingDown:
-    m_PersistentCalls:
-      m_Calls: []
-  onMoving:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 7875635333406325979}
-        m_TargetAssemblyTypeName: Minecart.MinecartTrack, Assembly-CSharp
-        m_MethodName: CheckCollision
-        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -379,3 +321,55 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &1689702685156638823
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5935489581430677191}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06a0138078494dbe9c6cd1f1f25e5431, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveDistance: {x: 10, y: 10, z: 0}
+  movementTime: 10
+  movementSmoothing: 5
+  baseOffStartPosition: 1
+  onMoveComplete:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7875635333406325979}
+        m_TargetAssemblyTypeName: MineCart.MineCartTrack, Assembly-CSharp
+        m_MethodName: CheckCollision
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onMoveBackComplete:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7875635333406325979}
+        m_TargetAssemblyTypeName: MineCart.MineCartTrack, Assembly-CSharp
+        m_MethodName: CheckCollision
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onMovingUp:
+    m_PersistentCalls:
+      m_Calls: []
+  onMovingDown:
+    m_PersistentCalls:
+      m_Calls: []

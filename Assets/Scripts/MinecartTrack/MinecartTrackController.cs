@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using Events;
 using Events.GameEvents;
 using Events.GameEvents.Typed;
+using ObjectMovement;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -13,7 +14,6 @@ namespace MineCart
         [SerializeField] private float trackPlacementCompletionX;
 
         [Header("Events")]
-        // TODO: Change these gameobjectevents to new minecartRail events
         [SerializeField] private MineCartTrackGameEvent onTrackPlaced;
         [SerializeField] private GameEvent onTrackConfirmPlacement;
 
@@ -25,7 +25,7 @@ namespace MineCart
         [SerializeField] private MineCartTrack firstTrack;
 
         private List<MineCartTrack> _minecartTracks = new List<MineCartTrack>();
-        [SerializeField] private Dictionary<Vector2, int> _connectionPoints = new Dictionary<Vector2, int>();
+        private Dictionary<Vector2, int> _connectionPoints = new Dictionary<Vector2, int>();
         private MineCartTrack _currentTrack;
 
         private void Start()
@@ -35,7 +35,8 @@ namespace MineCart
 
         private void AddFirstTrack()
         {
-            _connectionPoints.Add(_currentTrack.RightConnectionPoint, 1);
+            firstTrack.SetConnectionPoint();
+            _connectionPoints.Add(firstTrack.RightConnectionPoint, 1);
         }
 
         private void OnEnable()
@@ -56,8 +57,8 @@ namespace MineCart
 
             _currentTrack = track;
 
-            changeHeight.AddListener(_currentTrack.GetComponent<LerpedYTranslation>().Move);
-            changeSlope.AddListener(_currentTrack.GetComponent<ObjectSlopeAngleController>().SetSlope);
+            changeHeight.AddListener(_currentTrack.GetComponent<LerpedVector2Translation>().MoveUp);
+            changeSlope.AddListener(_currentTrack.GetComponent<ObjectSlopeAngleController>().Rotate);
 
             _minecartTracks.Add(_currentTrack);
         }
