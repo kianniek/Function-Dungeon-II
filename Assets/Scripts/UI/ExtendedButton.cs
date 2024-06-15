@@ -67,8 +67,6 @@ namespace UI
         
         public void SetButtonValue(float value, Color color, bool useColor = true)
         {
-            Debug.Log(_button);
-            Debug.Log(gameObject.name);
             ButtonValue = value;
             
             if (ButtonText != null)

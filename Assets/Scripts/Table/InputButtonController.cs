@@ -3,7 +3,6 @@ using TMPro;
 using System.Linq;
 using LinearFunction;
 using System.Collections.Generic;
-using Extensions;
 using UI;
 using Utils;
 
@@ -43,16 +42,15 @@ namespace Table
             {
                 if (!preCalculatedIndices.Contains(i))
                 {
+                    Debug.Log($"Assigning calculated value to button {i}");
+                    Debug.Log($"Value: {linearFunctionData.CorrectTableValues.ElementAt(i).Value}");
                     AssignCalculatedValueToButton(i, linearFunctionData.CorrectTableValues.ElementAt(i).Value);
                 }
             }
 
-            // Assign pre-calculated values to the table
-            var index = 0;
             foreach (var preCalculatedIndex in preCalculatedIndices)
             {
                 AssignPreCalculatedValueToTable(preCalculatedIndex);
-                index++;
             }
         }
 
@@ -140,6 +138,7 @@ namespace Table
                 Debug.LogError($"Button at index {index} not found in dictionary.");
                 return;
             }
+            
 #if UNITY_EDITOR
             button.SetButtonValue(value, Color.cyan);
 #else
@@ -154,7 +153,7 @@ namespace Table
         private void AssignPreCalculatedValueToTable(int index)
         {
             var xValues = linearFunctionData.GetXValues;
-            if (xValues.Length > index)
+            if (xValues.Values.Count > index)
             {
                 var xValue = xValues.Values[index];
                 if (linearFunctionData.CorrectTableValues.TryGetValue(xValue, out var value))

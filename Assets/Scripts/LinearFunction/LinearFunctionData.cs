@@ -103,7 +103,7 @@ namespace LinearFunction
             
             foreach (var xValue in tableXValues.Values)
             {
-                _correctTableValues[xValue] = MathExtensions.LinearFunctionY(xValue, Slope, YIntercept);
+                _correctTableValues[xValue] = MathExtensions.LinearFunctionY(Slope, YIntercept, xValue);
             }
         }
     }

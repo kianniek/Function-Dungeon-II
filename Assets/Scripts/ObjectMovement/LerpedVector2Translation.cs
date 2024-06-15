@@ -65,15 +65,6 @@ namespace ObjectMovement
             StartCoroutine(MoveCoroutine(targetPosition, onMoveComplete));
         }
         
-        private void FixedUpdate()
-        {
-            var lerpedPosition = Vector3.Distance(_selfTransform.localPosition, _wantedPosition) > 0.01f
-                ? Vector3.Lerp(_selfTransform.localPosition, _wantedPosition, Time.deltaTime * movementSmoothing)
-                : _wantedPosition;
-
-            _selfTransform.localPosition = lerpedPosition;
-        }
-        
         private IEnumerator MoveCoroutine(Vector3 targetPosition, UnityEvent onCompleteEvent)
         {
             var elapsedTime = 0f;
