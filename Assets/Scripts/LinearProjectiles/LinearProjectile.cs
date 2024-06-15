@@ -112,6 +112,8 @@ namespace LinearProjectiles
             
             transform.parent = _parentTransform;
             transform.position = _parentTransform.position;
+
+            _rigidBody2D.gravityScale = _initialGravityScale;
             
             _gravityApplied = false;
             
