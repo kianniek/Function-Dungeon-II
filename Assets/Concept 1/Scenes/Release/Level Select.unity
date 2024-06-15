@@ -1108,7 +1108,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreManager: {fileID: 11400000, guid: abf0b0075bf6c44d1972e8c7b3fb417b, type: 2}
-  passingGradeContainer: {fileID: 11400000, guid: 5ea195156db534b37998e81fc6cc13e9, type: 2}
+  passingGradeContainer: {fileID: 11400000, guid: ca3747225e00b184c8f4414b637276c9, type: 2}
   sceneNamesOfLevels:
   - Tutorial A
   - Tutorial B

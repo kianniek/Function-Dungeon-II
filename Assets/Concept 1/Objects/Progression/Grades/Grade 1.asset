@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4b808c5412344d98d2761ce3944b037, type: 3}
   m_Name: Grade 1
   m_EditorClassIdentifier: 
-  gradeName: Completed
-  icon: {fileID: 5894175889483764281, guid: a02937fc6a2b6244384bc580b4fa0f0a, type: 3}
+  gradeName: Neutral
+  icon: {fileID: 2918896897891146217, guid: b6fe988e72cd8814b8d186ad302a35ee, type: 3}
