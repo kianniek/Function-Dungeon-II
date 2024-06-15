@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fdacbe245c244459885935ca08be9bb6, type: 3}
+  m_Name: Demo 1
+  m_EditorClassIdentifier: 
+  gradingSystem:
+  - scoreThreshold: 3000
+    grade: {fileID: 11400000, guid: 4e614fade1c05c745bfbf818263f3b11, type: 2}
+  - scoreThreshold: 1500
+    grade: {fileID: 11400000, guid: ca3747225e00b184c8f4414b637276c9, type: 2}
+  - scoreThreshold: 750
+    grade: {fileID: 11400000, guid: 3aaba403110724dc8a88417b7a9f604d, type: 2}
+  - scoreThreshold: 0
+    grade: {fileID: 11400000, guid: 5ea195156db534b37998e81fc6cc13e9, type: 2}
