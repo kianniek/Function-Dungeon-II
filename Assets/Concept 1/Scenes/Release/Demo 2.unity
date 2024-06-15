@@ -1658,7 +1658,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 33173292619338169, guid: fd0283a78bcb8c9458f6c5b873ee32d3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -23.388252
+      value: -6.7699995
       objectReference: {fileID: 0}
     - target: {fileID: 727409757332046778, guid: fd0283a78bcb8c9458f6c5b873ee32d3, type: 3}
       propertyPath: cannon
@@ -1682,7 +1682,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 798328801725688903, guid: fd0283a78bcb8c9458f6c5b873ee32d3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -9.93
+      value: -1.96
       objectReference: {fileID: 0}
     - target: {fileID: 3006668761895524385, guid: fd0283a78bcb8c9458f6c5b873ee32d3, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1728,9 +1728,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: CameraSystem
       objectReference: {fileID: 0}
+    - target: {fileID: 3513503852559916770, guid: fd0283a78bcb8c9458f6c5b873ee32d3, type: 3}
+      propertyPath: m_Lens.OrthographicSize
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 4754397563577675139, guid: fd0283a78bcb8c9458f6c5b873ee32d3, type: 3}
       propertyPath: Lens.NearClipPlane
       value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 5742234137250416238, guid: fd0283a78bcb8c9458f6c5b873ee32d3, type: 3}
+      propertyPath: m_Lens.OrthographicSize
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 5933574824706853479, guid: fd0283a78bcb8c9458f6c5b873ee32d3, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -6.77
       objectReference: {fileID: 0}
     - target: {fileID: 6261472955422335891, guid: fd0283a78bcb8c9458f6c5b873ee32d3, type: 3}
       propertyPath: orthographic size
@@ -1742,11 +1754,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8633538644131664279, guid: fd0283a78bcb8c9458f6c5b873ee32d3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 9.08
+      value: 5.72
       objectReference: {fileID: 0}
     - target: {fileID: 8633538644131664279, guid: fd0283a78bcb8c9458f6c5b873ee32d3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -7.23
+      value: 0.24
       objectReference: {fileID: 0}
     - target: {fileID: 8800816140754660572, guid: fd0283a78bcb8c9458f6c5b873ee32d3, type: 3}
       propertyPath: Lens.NearClipPlane
@@ -2356,11 +2368,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 573570093250322970, guid: d7f7eb400e21b874da1e6ed0b87067b3, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 160
+      value: 75
       objectReference: {fileID: 0}
     - target: {fileID: 573570093250322970, guid: d7f7eb400e21b874da1e6ed0b87067b3, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 160
+      value: 75
       objectReference: {fileID: 0}
     - target: {fileID: 573570093250322970, guid: d7f7eb400e21b874da1e6ed0b87067b3, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2392,11 +2404,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 573570093250322970, guid: d7f7eb400e21b874da1e6ed0b87067b3, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 40
+      value: 690
       objectReference: {fileID: 0}
     - target: {fileID: 573570093250322970, guid: d7f7eb400e21b874da1e6ed0b87067b3, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 40
+      value: 825
       objectReference: {fileID: 0}
     - target: {fileID: 573570093250322970, guid: d7f7eb400e21b874da1e6ed0b87067b3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
