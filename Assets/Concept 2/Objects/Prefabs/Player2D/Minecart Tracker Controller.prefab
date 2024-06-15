@@ -44,4 +44,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d001427a77e2276458cd6b9ead06a17a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  trackPlacementCompletionX: 0
   onTrackPlaced: {fileID: 11400000, guid: b9476d845e80f004191e0d0025cf1d27, type: 2}
+  onTrackConfirmPlacement: {fileID: 11400000, guid: 2326661a9d7c7cb41bebc534fb75fafb, type: 2}
+  changeSlope:
+    m_PersistentCalls:
+      m_Calls: []
+  changeHeight:
+    m_PersistentCalls:
+      m_Calls: []
+  trackCompleted:
+    m_PersistentCalls:
+      m_Calls: []
+  firstTrack: {fileID: 0}

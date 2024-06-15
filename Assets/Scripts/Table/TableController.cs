@@ -6,7 +6,6 @@ using LinearFunction;
 using TMPro;
 using UI;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.UI;
 
 namespace Table
