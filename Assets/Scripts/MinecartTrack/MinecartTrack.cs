@@ -1,10 +1,9 @@
 using Events;
-using Extensions;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.UIElements;
+using Utils;
 
-namespace Minecart
+namespace MineCart
 {
     public class MineCartTrack : MonoBehaviour
     {
@@ -13,9 +12,9 @@ namespace Minecart
         [SerializeField] private Vector2 trackConnectionPoint;
 
         [Header("Events")]
-        [SerializeField] private GameObjectEvent onMinecartTrackplaced = new();
-        [SerializeField] private UnityEvent onMinecartTrackPlacable = new();
-        [SerializeField] private UnityEvent onMinecartTrackNotPlacable = new();
+        [SerializeField] private GameObjectEvent onMineCartTrackplaced = new();
+        [SerializeField] private UnityEvent onMineCartTrackPlacable = new();
+        [SerializeField] private UnityEvent onMineCartTrackNotPlacable = new();
 
         public Vector2 LeftConnectionPoint { get; private set; } // The track on the left
         public Vector2 RightConnectionPoint { get; private set; } // The track on the right
@@ -30,18 +29,18 @@ namespace Minecart
         private void Start()
         {
             SetConnectionPoint();
-            onMinecartTrackplaced.Invoke(gameObject);
+            onMineCartTrackplaced.Invoke(gameObject);
         }
 
         public void CheckCollision()
         {
             if (Physics2D.OverlapPoint(transform.position))
             {
-                onMinecartTrackNotPlacable.Invoke();
+                onMineCartTrackNotPlacable.Invoke();
             }
             else
             {
-                onMinecartTrackPlacable.Invoke();
+                onMineCartTrackPlacable.Invoke();
             }
         }
 
@@ -56,8 +55,8 @@ namespace Minecart
             LeftConnectionPoint = new Vector2(Mathf.Round(position.x - trackConnectionPoint.x), position.y - trackConnectionPoint.y) - new Vector2(0, _y / 2);
             RightConnectionPoint = new Vector2(Mathf.Round(position.x + trackConnectionPoint.x), position.y + trackConnectionPoint.y) + new Vector2(0, _y / 2);
 
-            LeftConnectionPoint = new Vector2(MathfExtentions.RoundValue(LeftConnectionPoint.x, 1), MathfExtentions.RoundValue(LeftConnectionPoint.y, 1));
-            RightConnectionPoint = new Vector2(MathfExtentions.RoundValue(RightConnectionPoint.x, 1), MathfExtentions.RoundValue(RightConnectionPoint.y, 1));
+            LeftConnectionPoint = new Vector2(MathExtensions.RoundValue(LeftConnectionPoint.x, 1), MathExtensions.RoundValue(LeftConnectionPoint.y, 1));
+            RightConnectionPoint = new Vector2(MathExtensions.RoundValue(RightConnectionPoint.x, 1), MathExtensions.RoundValue(RightConnectionPoint.y, 1));
         }
 
         /// <summary>
