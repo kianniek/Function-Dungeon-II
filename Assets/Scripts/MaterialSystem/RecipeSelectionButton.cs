@@ -40,7 +40,7 @@ namespace MaterialSystem
         private void OnButtonClicked()
         {
             // Display the selected recipe in the crafting manual
-            craftingManual.DisplayRecipe(recipe);
+            craftingManual.UpdateCraftButton(recipe);
         }
     }
 }

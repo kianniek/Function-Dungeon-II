@@ -52,6 +52,7 @@ public class ShakeBehavior : MonoBehaviour
         while (elapsed < duration)
         {
             elapsed += Time.deltaTime;
+            
             var decayRate = EnableDecay ? (1 - (elapsed / duration)) : 1;
             var shakeAmount = new Vector3(
                 intensity.x * Random.insideUnitSphere.x * decayRate,
@@ -59,6 +60,7 @@ public class ShakeBehavior : MonoBehaviour
                 0);
             
             transform.localPosition = _originalPosition + shakeAmount;
+            
             yield return null;
         }
         

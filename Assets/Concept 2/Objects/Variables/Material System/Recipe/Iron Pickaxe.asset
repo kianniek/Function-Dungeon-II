@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 622751bd388f9b6459949036140356d4, type: 3}
   m_Name: Iron Pickaxe
   m_EditorClassIdentifier: 
-  itemName: Iron Pickaxe
-  materials:
+  recipeName: Iron Pickaxe
+  item: {fileID: 11400000, guid: baef7916a393c52408e329217a604e64, type: 2}
+  requiredMaterials:
   - material: {fileID: 11400000, guid: 4116603fcd2cf7c438c356e189f1c652, type: 2}
     amount: 2

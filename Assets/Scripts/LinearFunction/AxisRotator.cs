@@ -1,5 +1,5 @@
 using UnityEngine;
-using UnityEngine.Serialization;
+using Utils;
 
 namespace LinearFunction
 {
@@ -11,10 +11,15 @@ namespace LinearFunction
         [SerializeField] private Axis rotationAxis;
         [SerializeField] private bool invertRotation;
         [SerializeField] private Transform targetTransform;
-        [FormerlySerializedAs("LinearFunctionData")] [SerializeField] private LinearFunctionData linearFunctionData;
+        [SerializeField] private LinearFunctionData linearFunctionData;
 
         private float _rotationAngle;
-
+        
+        private void Start()
+        {
+            Rotate();
+        }
+        
         /// <summary>
         /// Rotates the target transform based on the linear function data.
         /// </summary>
@@ -27,9 +32,10 @@ namespace LinearFunction
                 return;
             }
 
-            _rotationAngle = LinearFunctionHelper.GetAngleOfFunction(linearFunctionData.Slope);
-
-            if (invertRotation) _rotationAngle = -_rotationAngle;
+            _rotationAngle = MathExtensions.AToDegrees(linearFunctionData.Slope);
+            
+            if (invertRotation) 
+                _rotationAngle = -_rotationAngle;
 
             var rotationVector = rotationAxis switch
             {
@@ -38,7 +44,7 @@ namespace LinearFunction
                 Axis.Z => Vector3.forward * _rotationAngle,
                 _ => Vector3.zero
             };
-
+            
             targetTransform.Rotate(rotationVector);
         }
     }

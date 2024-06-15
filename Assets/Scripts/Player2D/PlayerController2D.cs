@@ -17,12 +17,11 @@ namespace Player2D
         [SerializeField] private GameObject objectToCreate;
 
         private Interactable _nearbyInteractable;
-
         private Rigidbody2D _rb;
         private Vector2 _moveInput;
         private bool _isGrounded;
 
-        void Start()
+        private void Start()
         {
             _rb = GetComponent<Rigidbody2D>();
         }
@@ -52,10 +51,8 @@ namespace Player2D
         /// <param name="context">Holds the state of the button</param>
         public void OnInteract(InputAction.CallbackContext context)
         {
-            if (_nearbyInteractable)
-            {
+            if (_nearbyInteractable) 
                 _nearbyInteractable.InvokeInteraction();
-            }
         }
 
         /// <summary>
@@ -63,10 +60,8 @@ namespace Player2D
         /// </summary>
         public void OnPlaceObject(InputAction.CallbackContext context)
         {
-            if (placementEnabled && context.started)
-            {
+            if (placementEnabled && context.started) 
                 Instantiate(objectToCreate, positionToCreate.position, Quaternion.identity);
-            }
         }
 
         private void FixedUpdate()
@@ -79,10 +74,8 @@ namespace Player2D
 
         private void GroundCheck()
         {
-            if (!_isGrounded)
-            {
+            if (!_isGrounded) 
                 Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius);
-            }
         }
 
         private void OnDrawGizmos()

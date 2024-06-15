@@ -519,4 +519,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 185798a12b004f8fb657dc80aae3b491, type: 3}
   m_Name: Projectile
   m_EditorClassIdentifier: 
-  components: []
+  followDistance: 6
+  gravity: -9.8
+  velocity: 20

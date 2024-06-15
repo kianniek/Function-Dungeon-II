@@ -11,18 +11,22 @@ namespace MaterialSystem
         [SerializeField] private Sprite icon;
         [SerializeField] private int amountCollected;
         [SerializeField] private int amountUsed;
+        
         /// <summary>
         /// Name of the item
         /// </summary>
         public string ItemName => itemName;
+        
         /// <summary>
         /// Icon of the item
         /// </summary>
         public Sprite Icon => icon;
+        
         /// <summary>
         /// Amount of the item that has been collected
         /// </summary>
         public int AmountCollected => amountCollected;
+        
         /// <summary>
         /// Amount of the item that has been used
         /// </summary>
