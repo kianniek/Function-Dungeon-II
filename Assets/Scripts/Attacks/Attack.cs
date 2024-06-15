@@ -32,7 +32,7 @@ namespace Attacks
             }
         }
         
-        private void Start()
+        protected virtual void Start()
         {
             CurrentStrength = startStrength;
         }

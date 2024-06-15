@@ -10,22 +10,22 @@ namespace Health
     public class CollectiveHealth : MonoBehaviour
     {
         [SerializeField] private CollectiveHealthContainer collectiveHealthContainer;
-        
-        private Damageable _damageable;
-        
+
+        public Damageable Damageable { get; private set; }
+
         private void Awake()
         {
-            _damageable = GetComponent<Damageable>();
+            Damageable = GetComponent<Damageable>();
         }
         
         private void OnEnable()
         {
-            collectiveHealthContainer.AddDamageable(_damageable);
+            collectiveHealthContainer.AddDamageable(Damageable);
         }
         
         private void OnDisable()
         {
-            collectiveHealthContainer.RemoveDamageable(_damageable);
+            collectiveHealthContainer.RemoveDamageable(Damageable);
         }
     }
 }

@@ -2,7 +2,8 @@
 using UnityEngine.Events;
 using System.Collections;
 using System.Collections.Generic;
-using Enemies;
+using System.Linq;
+using ObjectMovement;
 using Utils;
 using WorldGrid;
 
@@ -10,29 +11,27 @@ namespace WaveSystem
 {
     public class WaveManager : MonoBehaviour
     {
+        private readonly List<ObjectPool<BloomShroomMovement>> _enemyPool = new();
+        
+        [Header("Spawn Settings")]
         [SerializeField] private bool spawnWavesAuto;
         [SerializeField] private bool spawnWavesOnStart;
-        [SerializeField] private EnemyWave[] waves;
+        [SerializeField] private List<EnemyWave> waves;
+        
+        [Header("Events")]
         [SerializeField] private UnityEvent onWaveCompleted;
         
-        [Header("References To Pass to Spawned Objects")]
+        [Header("World Reference")]
         [SerializeField] private GridGenerator gridGenerator;
         
-        
-        //use object pooling to spawn enemies
-        private List<ObjectPool<EnemyBehaviorController>> _enemyPool = new();
-        
-        private int currentWaveIndex;
-        private int enemiesLeftInWave;
+        private int _currentWaveIndex;
+        private int _enemiesLeftInWave;
         
         public void Awake()
         {
-            foreach (var enemyWave in waves)
+            foreach (var enemyPrefab in waves.SelectMany(enemyWave => enemyWave.EnemyPrefab))
             {
-                foreach (var enemyPrefab in enemyWave.EnemyPrefab)
-                {
-                    _enemyPool.Add(new ObjectPool<EnemyBehaviorController>(enemyPrefab.EnemyPrefab, enemyPrefab.EnemyCount));
-                }
+                _enemyPool.Add(new ObjectPool<BloomShroomMovement>(enemyPrefab.EnemyPrefab, enemyPrefab.EnemyCount));
             }
         }
         
@@ -46,54 +45,52 @@ namespace WaveSystem
         
         public void SpawnWaves()
         {
-            if (waves.Length > 0)
-            {
-                StartCoroutine(InitializeWave(waves[currentWaveIndex]));
-            }
+            if (waves.Any()) 
+                StartCoroutine(InitializeWave(waves[_currentWaveIndex]));
         }
         
         // ReSharper disable Unity.PerformanceAnalysis
         private IEnumerator InitializeWave(EnemyWave wave)
         {
             yield return new WaitForSeconds(wave.SpawnInterval);
-            
-            foreach (var enemyPrefabs in wave.EnemyPrefab)
+
+            for (var index = 0; index < wave.EnemyPrefab.Length; index++)
             {
-                enemiesLeftInWave = wave.EnemyCount;
-                Debug.Log($"Spawning {wave.EnemyCount} {enemyPrefabs.EnemyPrefab.name}");
+                _enemiesLeftInWave = wave.EnemyCount;
+
                 for (var i = 0; i < wave.EnemyCount; i++)
                 {
-                    enemiesLeftInWave--;
+                    _enemiesLeftInWave--;
+                    
                     var enemy = _enemyPool.Find(pool => pool.GetPooledObject()).GetPooledObject();
-                    
-                    enemy.transform.position = wave.SpawnLocation;
-                    enemy.GridGenerator = gridGenerator;
+
+                    enemy.transform.position = gridGenerator.PathStartPosition;
                     enemy.gameObject.SetActive(true);
-                    Debug.Log($"Spawned {enemyPrefabs.EnemyPrefab.name}");
-                    
+                    enemy.SetAndStartPath(gridGenerator.PathEndPosition);
+
                     yield return new WaitForSeconds(wave.SpawnInterval);
                 }
-                
+
                 onWaveCompleted.Invoke();
-                currentWaveIndex++;
-                
-                if (currentWaveIndex < waves.Length && spawnWavesAuto)
+                _currentWaveIndex++;
+
+                if (_currentWaveIndex < waves.Count && spawnWavesAuto)
                 {
-                    StartCoroutine(InitializeWave(waves[currentWaveIndex]));
+                    StartCoroutine(InitializeWave(waves[_currentWaveIndex]));
                 }
-                
+
                 yield return null;
             }
         }
         
         public int GetEnemiesLeftInWave()
         {
-            return enemiesLeftInWave;
+            return _enemiesLeftInWave;
         }
         
         public int GetWavesLeft()
         {
-            return waves.Length - currentWaveIndex;
+            return waves.Count - _currentWaveIndex;
         }
     }
 }

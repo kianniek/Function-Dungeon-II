@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 8714070733609776089}
   - component: {fileID: 8867726681835871759}
   - component: {fileID: 1747232232689400912}
-  - component: {fileID: 2381157406376694979}
-  - component: {fileID: 8273156906793085097}
   - component: {fileID: 2423925787375125342}
+  - component: {fileID: 8273156906793085097}
+  - component: {fileID: 2381157406376694979}
+  - component: {fileID: 3771996365874032907}
   m_Layer: 0
   m_Name: Enemy2
   m_TagString: Untagged
@@ -110,6 +111,40 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!195 &2423925787375125342
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2038675575060427630}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 1
+  m_BaseOffset: 0.5
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
+--- !u!114 &8273156906793085097
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2038675575060427630}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9908131592cb08743a4f42cf17c03780, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &2381157406376694979
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -142,7 +177,7 @@ MonoBehaviour:
   onDamageEvent:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &8273156906793085097
+--- !u!114 &3771996365874032907
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -151,32 +186,46 @@ MonoBehaviour:
   m_GameObject: {fileID: 2038675575060427630}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9908131592cb08743a4f42cf17c03780, type: 3}
+  m_Script: {fileID: 11500000, guid: 2890e0d332b54ceeba520a07eb104b3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridGenerator: {fileID: 0}
-  movementSpeed: 2
-  damage: 60
-  attackSpeed: 3
---- !u!195 &2423925787375125342
-NavMeshAgent:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2038675575060427630}
-  m_Enabled: 1
-  m_AgentTypeID: 0
-  m_Radius: 0.5
-  m_Speed: 3.5
-  m_Acceleration: 8
-  avoidancePriority: 50
-  m_AngularSpeed: 120
-  m_StoppingDistance: 0
-  m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
-  m_AutoRepath: 1
-  m_Height: 1
-  m_BaseOffset: 0.5
-  m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
+  startStrength: 1
+  onStrengthChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  onImpact:
+    m_PersistentCalls:
+      m_Calls: []
+  attackSpeed: 1
+  attackRange: 3
+  targetScanInterval: 1
+  onTargetFound:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2423925787375125342}
+        m_TargetAssemblyTypeName: UnityEngine.AI.NavMeshAgent, UnityEngine
+        m_MethodName: set_isStopped
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+  onTargetDead:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2423925787375125342}
+        m_TargetAssemblyTypeName: UnityEngine.AI.NavMeshAgent, UnityEngine
+        m_MethodName: set_isStopped
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
