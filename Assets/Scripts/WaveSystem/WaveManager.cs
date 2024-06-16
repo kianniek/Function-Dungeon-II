@@ -50,7 +50,6 @@ namespace WaveSystem
                 StartCoroutine(InitializeWave(waves[_currentWaveIndex]));
         }
         
-        // ReSharper disable Unity.PerformanceAnalysis
         private IEnumerator InitializeWave(EnemyWave wave)
         {
             yield return new WaitForSeconds(wave.SpawnInterval);

@@ -1,4 +1,3 @@
-using Attacks;
 using UnityEngine;
 
 namespace Towers
@@ -7,13 +6,13 @@ namespace Towers
     public class TowerVariables : ScriptableObject
     {
         [Tooltip("The amount of flowers the tower costs to place")]
-        [SerializeField] private int flowerCost;
+        [SerializeField, Min(1)] private int flowerCost;
         
         [Header("Attack Settings")]
         [Tooltip("The shooting speed of a tower")]
-        [SerializeField] private float fireRate;
+        [SerializeField, Min(0.1f)] private float fireRate;
         [Tooltip("The fireRange that a tower can shoot its projectiles")]
-        [SerializeField] private int fireRange;
+        [SerializeField, Min(0.1f)] private int fireRange;
 
         public int FireRange => fireRange;
 

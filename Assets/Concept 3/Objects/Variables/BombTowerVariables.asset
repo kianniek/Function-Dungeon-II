@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f62ea2f94578d084681a666071039def, type: 3}
   m_Name: BombTowerVariables
   m_EditorClassIdentifier: 
-  range: 10
-  shootingSpeed: 4
   flowerCost: 75
+  fireRate: 4
+  fireRange: 10

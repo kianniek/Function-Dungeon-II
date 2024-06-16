@@ -13,8 +13,9 @@ GameObject:
   - component: {fileID: 4760324017243373145}
   - component: {fileID: 1550290100988707515}
   - component: {fileID: 5937373876720523766}
-  - component: {fileID: 8024161684719496186}
   - component: {fileID: -8448291088817767745}
+  - component: {fileID: 5041128151901619710}
+  - component: {fileID: -5125595317912632668}
   m_Layer: 0
   m_Name: ShootTower
   m_TagString: Untagged
@@ -132,23 +133,6 @@ MonoBehaviour:
   onDamageEvent:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &8024161684719496186
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2999448396102145}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db2ec0d860d46594694c04498b360926, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  onTowerPlaced: {fileID: 11400000, guid: 0fdb457e6ad76934c8bd9753641303c8, type: 2}
-  coordinatesSet: {fileID: 11400000, guid: e02ee37a18113254880e67a612580bf1, type: 2}
-  onProjectileShot: {fileID: 11400000, guid: e1bbc3de3c199bc44a78e382214b7832, type: 2}
-  towerVariables: {fileID: 11400000, guid: faffc62667631d041885fce6802a2321, type: 2}
-  rangeCircle: {fileID: 7726246396506175506}
 --- !u!114 &-8448291088817767745
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -162,6 +146,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   collectiveHealthContainer: {fileID: 0}
+--- !u!114 &5041128151901619710
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2999448396102145}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1706e978ac24d2d8ea6fe05a0991ea8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectilePrefab: {fileID: -277189766230627367, guid: c74dae0300fbf4ea0af59a9ed7d4b92e, type: 3}
+--- !u!114 &-5125595317912632668
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2999448396102145}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: caff7d1c25974ef899cb97d4a8e6b008, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onConfigureTower: {fileID: 11400000, guid: 74e9eeb80cf134806b2c3fe3eb38d1ce, type: 2}
+  towerVariables: {fileID: 11400000, guid: faffc62667631d041885fce6802a2321, type: 2}
 --- !u!1 &7726246396506175506
 GameObject:
   m_ObjectHideFlags: 0
