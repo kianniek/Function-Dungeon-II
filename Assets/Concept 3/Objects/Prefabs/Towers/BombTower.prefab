@@ -101,6 +101,7 @@ GameObject:
   - component: {fileID: 4441643187660778935}
   - component: {fileID: 1262900693338697865}
   - component: {fileID: 8005992387909670825}
+  - component: {fileID: 303317286830861211}
   m_Layer: 0
   m_Name: BombTower
   m_TagString: Untagged
@@ -249,6 +250,19 @@ MonoBehaviour:
   onProjectileShot: {fileID: 11400000, guid: e68a5e6d8674450489af27c7e9d6f50e, type: 2}
   towerVariables: {fileID: 11400000, guid: 0307f21d0848a0e46ad11dbbe0985172, type: 2}
   rangeCircle: {fileID: 2261808994602557358}
+--- !u!114 &303317286830861211
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2582677756436490222}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8781360e909b43d19d040901f061188c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collectiveHealthContainer: {fileID: 0}
 --- !u!1 &7439757465389608937
 GameObject:
   m_ObjectHideFlags: 0
