@@ -113,7 +113,7 @@ Transform:
   m_GameObject: {fileID: 295530610957306007}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -128,7 +128,7 @@ LineRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 295530610957306007}
   m_Enabled: 1
-  m_CastShadows: 1
+  m_CastShadows: 0
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
@@ -142,7 +142,7 @@ LineRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -165,28 +165,28 @@ LineRenderer:
   m_SortingOrder: 0
   m_Positions:
   - {x: 0, y: 0, z: 0}
-  - {x: 2, y: 2, z: 0}
-  - {x: 4, y: 3.9947093, z: 0}
+  - {x: 1.5, y: 1.5, z: 0}
+  - {x: 3, y: 3, z: 0}
+  - {x: 4.5, y: 4.477187, z: 0}
   - {x: 6, y: 5.851045, z: 0}
-  - {x: 8, y: 7.511181, z: 0}
-  - {x: 10, y: 8.975117, z: 0}
+  - {x: 7.4999995, y: 7.1145406, z: 0}
+  - {x: 9, y: 8.2676735, z: 0}
+  - {x: 10.5, y: 9.310445, z: 0}
   - {x: 12, y: 10.242852, z: 0}
-  - {x: 14, y: 11.314388, z: 0}
-  - {x: 16, y: 12.189724, z: 0}
+  - {x: 13.5, y: 11.0648985, z: 0}
+  - {x: 14.999999, y: 11.776581, z: 0}
+  - {x: 16.5, y: 12.377902, z: 0}
   - {x: 18, y: 12.86886, z: 0}
-  - {x: 20, y: 13.351796, z: 0}
-  - {x: 22, y: 13.638531, z: 0}
+  - {x: 19.5, y: 13.249456, z: 0}
+  - {x: 21, y: 13.51969, z: 0}
+  - {x: 22.5, y: 13.679559, z: 0}
   - {x: 24, y: 13.729067, z: 0}
-  - {x: 26, y: 13.623404, z: 0}
-  - {x: 28, y: 13.32154, z: 0}
-  - {x: 29.999998, y: 12.823475, z: 0}
-  - {x: 32, y: 12.129209, z: 0}
-  - {x: 34, y: 11.238745, z: 0}
-  - {x: 36, y: 10.1520815, z: 0}
-  - {x: 38, y: 8.869218, z: 0}
+  - {x: 25.5, y: 13.668213, z: 0}
+  - {x: 27, y: 13.496997, z: 0}
+  - {x: 28.499998, y: 13.215416, z: 0}
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 0.1
+    widthMultiplier: 0.2
     widthCurve:
       serializedVersion: 2
       m_Curve:
@@ -197,24 +197,15 @@ LineRenderer:
         outSlope: 0
         tangentMode: 0
         weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 0, g: 1, b: 0.2694857, a: 0.5019608}
-      key1: {r: 1, g: 0, b: 0, a: 0}
+      key0: {r: 1, g: 0, b: 0, a: 1}
+      key1: {r: 0.29162621, g: 1, b: 0, a: 0}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
@@ -241,8 +232,8 @@ LineRenderer:
       m_ColorSpace: 0
       m_NumColorKeys: 2
       m_NumAlphaKeys: 2
-    numCornerVertices: 8
-    numCapVertices: 8
+    numCornerVertices: 0
+    numCapVertices: 0
     alignment: 0
     textureMode: 0
     textureScale: {x: 1, y: 1}
@@ -265,7 +256,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   resolution: 20
-  length: 40
+  length: 30
 --- !u!1 &1805666388102711695
 GameObject:
   m_ObjectHideFlags: 0
@@ -471,7 +462,7 @@ Transform:
   m_GameObject: {fileID: 5170049509925808092}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -500,7 +491,7 @@ LineRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -520,13 +511,13 @@ LineRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 0
   m_Positions:
   - {x: 0, y: 0, z: 0}
-  - {x: 14.142136, y: 14.142136, z: 0}
+  - {x: 17.67767, y: 17.67767, z: 0}
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 0.1
+    widthMultiplier: 0.2
     widthCurve:
       serializedVersion: 2
       m_Curve:
@@ -537,17 +528,8 @@ LineRenderer:
         outSlope: 0
         tangentMode: 0
         weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -581,8 +563,8 @@ LineRenderer:
       m_ColorSpace: 0
       m_NumColorKeys: 2
       m_NumAlphaKeys: 2
-    numCornerVertices: 8
-    numCapVertices: 8
+    numCornerVertices: 0
+    numCapVertices: 0
     alignment: 0
     textureMode: 0
     textureScale: {x: 1, y: 1}
@@ -604,7 +586,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8fe70aa70614469bb7b71d6bcaf84b30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  length: 20
+  length: 25
 --- !u!1 &5325595249722484321
 GameObject:
   m_ObjectHideFlags: 0
@@ -739,10 +721,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefabToPool: {fileID: 33785886984917004, guid: 4fb2e525006ed4bf1af1bdb3d7228e76, type: 3}
-  amountToPool: 5
+  amountToPool: 6
   shootPosition: {fileID: 4237095870412061846}
   totalAmmo: 5
-  onAmmoChange: {fileID: 0}
+  onAmmoChange: {fileID: 11400000, guid: a28cd43c2dfd44b4ca3baa17409c8cf5, type: 2}
+  onShootProjectile:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: 59201ab3bbab76a4fbe87ec48237a28d, type: 2}
+        m_TargetAssemblyTypeName: Events.GameEvents.GameEventBase`1[[UnityEngine.GameObject,
+          UnityEngine
+        m_MethodName: Invoke
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 0
   onAmmoDepleted:
     m_PersistentCalls:
       m_Calls:
@@ -758,9 +756,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  onShootProjectile:
-    m_PersistentCalls:
-      m_Calls: []
   onNextProjectile:
     m_PersistentCalls:
       m_Calls:

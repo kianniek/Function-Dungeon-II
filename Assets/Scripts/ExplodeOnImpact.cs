@@ -24,7 +24,7 @@ public class ExplodeOnImpact : MonoBehaviour
     /// <summary>
     /// Explodes the object and applies force to all colliders within the force radius.
     /// </summary>
-    public void OnCollisionEnter2D(Collision2D _)
+    public void Explode()
     {
         _hitColliders = Physics2D.OverlapCircleAll(transform.position, forceRadius);
         

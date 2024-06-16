@@ -1,5 +1,6 @@
 using Events;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Attacks
 {
@@ -13,6 +14,7 @@ namespace Attacks
         
         [Header("Events")]
         [SerializeField] private FloatEvent onStrengthChanged = new();
+        [SerializeField] protected UnityEvent onImpact = new();
         
         private float _currentStrength;
         

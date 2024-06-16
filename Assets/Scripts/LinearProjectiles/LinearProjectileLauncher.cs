@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Attributes;
+using Events;
 using Events.GameEvents.Typed;
 using UnityEngine;
 using UnityEngine.Events;
@@ -24,10 +25,12 @@ namespace LinearProjectiles
         [Tooltip("The total amount of times the cannon can shoot in the current level")]
         [SerializeField] private int totalAmmo = 3;
         
-        [Header("Events")] 
+        [Header("Game Events")] 
         [SerializeField] private IntGameEvent onAmmoChange;
+        
+        [Header("Events")] 
+        [SerializeField] private GameObjectEvent onShootProjectile = new();
         [SerializeField] private UnityEvent onAmmoDepleted = new();
-        [SerializeField] private LinearProjectileEvent onShootProjectile = new();
         [SerializeField] private LinearProjectileEvent onNextProjectile = new();
         
         private int _currentAmmoCount;
@@ -105,7 +108,7 @@ namespace LinearProjectiles
                 projectile.Shoot(shootPosition.transform.rotation);
                 projectile.transform.parent = null;
                 
-                onShootProjectile.Invoke(projectile);
+                onShootProjectile.Invoke(projectile.gameObject);
                 onNextProjectile.Invoke(GetPooledProjectile());
             }
             else

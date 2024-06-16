@@ -26,6 +26,7 @@ namespace LinearProjectiles
         [SerializeField, Min(1f)] private float resetOnTime = 120f;
         
         private Transform _transform;
+        private Transform _parentTransform;
         private Rigidbody2D _rigidBody2D;
         private Vector3 _startPosition;
         private IEnumerator _resetOnInactivityCoroutine;
@@ -73,6 +74,9 @@ namespace LinearProjectiles
         {
             SetInitialPositionAndRotation(rotation);
             SetInitialPhysicsProperties();
+
+            _parentTransform = transform.parent;
+            transform.parent = null;
             
             StartCoroutine(ResetOnTime());
             
@@ -106,7 +110,11 @@ namespace LinearProjectiles
         {
             StopAllCoroutines();
             
-            transform.position = _startPosition;
+            transform.parent = _parentTransform;
+            transform.position = _parentTransform.position;
+
+            _rigidBody2D.gravityScale = _initialGravityScale;
+            
             _gravityApplied = false;
             
             gameObject.SetActive(false);

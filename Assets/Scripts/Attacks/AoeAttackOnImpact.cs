@@ -37,6 +37,8 @@ namespace Attacks
                 var damage = CurrentStrength * damageFallOff;
                 
                 damageable.Health -= damage;
+                
+                onImpact.Invoke();
             }
         }
     }
