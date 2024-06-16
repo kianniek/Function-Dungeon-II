@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Iron
   icon: {fileID: 0}
-  amountCollected: 1
+  amountCollected: 2
   amountUsed: 0
