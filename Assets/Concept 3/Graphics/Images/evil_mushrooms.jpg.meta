@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 9d96a75f503f82a4c935fc4094a3e16f
+guid: ff2e01f43f3490747927391efd56d8ef
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2424453428984153791
-    second: reload_0
+      213: -4795443946398681075
+    second: evil_mushrooms_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: reload_0
+      name: evil_mushrooms_0
       rect:
         serializedVersion: 2
-        x: 50
+        x: 0
         y: 0
-        width: 699
-        height: 800
+        width: 1749
+        height: 1265
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -127,8 +127,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 149fbee937c9a5ed0800000000000000
-      internalID: -2424453428984153791
+      spriteID: d08fb9a5329237db0800000000000000
+      internalID: -4795443946398681075
       vertices: []
       indices: 
       edges: []
@@ -143,8 +143,7 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable:
-      reload_0: -2424453428984153791
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
