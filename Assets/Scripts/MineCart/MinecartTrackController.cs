@@ -113,8 +113,11 @@ namespace MineCart
             var leftSideValid = _connectionPoints.ContainsKey(leftSide) && _connectionPoints[leftSide] < 2;
             var rightSideValid = _connectionPoints.ContainsKey(rightSide) && _connectionPoints[rightSide] < 2;
 
-            // Ensure the track connects to at least one valid connection point
-            return leftSideValid || rightSideValid;
+            // Ensure the track does not connect to both sides
+            bool connectsToOneSide = leftSideValid ^ rightSideValid;
+
+            // The track should either connect to one side or to none, but not both
+            return connectsToOneSide || (!leftSideValid && !rightSideValid);
         }
 
         private void AddTrackToConnectionPoints()
