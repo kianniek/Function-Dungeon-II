@@ -4343,7 +4343,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7253027851721890495, guid: 8920d7ed5822f32428905413d278acb7, type: 3}
       propertyPath: trackCompleted.m_PersistentCalls.m_Calls.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7253027851721890495, guid: 8920d7ed5822f32428905413d278acb7, type: 3}
       propertyPath: trackCompleted.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
@@ -4351,7 +4351,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7253027851721890495, guid: 8920d7ed5822f32428905413d278acb7, type: 3}
       propertyPath: trackCompleted.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
-      value: 2
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 7253027851721890495, guid: 8920d7ed5822f32428905413d278acb7, type: 3}
       propertyPath: trackCompleted.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -4360,7 +4360,7 @@ PrefabInstance:
     - target: {fileID: 7253027851721890495, guid: 8920d7ed5822f32428905413d278acb7, type: 3}
       propertyPath: trackCompleted.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 11400000, guid: 7a32fc7c3e4c9f84f9f34db23259dfd7, type: 2}
+      objectReference: {fileID: 7286214603670706145}
     - target: {fileID: 7253027851721890495, guid: 8920d7ed5822f32428905413d278acb7, type: 3}
       propertyPath: trackCompleted.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
@@ -4375,7 +4375,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7253027851721890495, guid: 8920d7ed5822f32428905413d278acb7, type: 3}
       propertyPath: trackCompleted.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: AddNewMaterial
+      value: OnEventTriggered
       objectReference: {fileID: 0}
     - target: {fileID: 7253027851721890495, guid: 8920d7ed5822f32428905413d278acb7, type: 3}
       propertyPath: trackCompleted.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
@@ -4383,7 +4383,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7253027851721890495, guid: 8920d7ed5822f32428905413d278acb7, type: 3}
       propertyPath: trackCompleted.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: MaterialSystem.InventorySystem, Assembly-CSharp
+      value: Table.BoolEventTrigger, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 7253027851721890495, guid: 8920d7ed5822f32428905413d278acb7, type: 3}
       propertyPath: trackCompleted.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
@@ -4400,14 +4400,14 @@ PrefabInstance:
     - target: {fileID: 7253027851721890495, guid: 8920d7ed5822f32428905413d278acb7, type: 3}
       propertyPath: trackCompleted.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgument
       value: 
-      objectReference: {fileID: 11400000, guid: 4116603fcd2cf7c438c356e189f1c652, type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: 7253027851721890495, guid: 8920d7ed5822f32428905413d278acb7, type: 3}
       propertyPath: trackCompleted.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: MaterialSystem.Material, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 7253027851721890495, guid: 8920d7ed5822f32428905413d278acb7, type: 3}
       propertyPath: trackCompleted.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: MaterialSystem.Material, Assembly-CSharp
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4423,6 +4423,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d001427a77e2276458cd6b9ead06a17a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7286214603670706145 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4084510894502010943, guid: 8920d7ed5822f32428905413d278acb7, type: 3}
+  m_PrefabInstance: {fileID: 7286214603670706143}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b44034f351a370e4fb8769da93c8a419, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!224 &7489484546805745848
