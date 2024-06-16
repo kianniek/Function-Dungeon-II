@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4338210857315951420}
   - component: {fileID: 7253027851721890495}
+  - component: {fileID: 4084510894502010943}
   m_Layer: 0
   m_Name: Minecart Tracker Controller
   m_TagString: Untagged
@@ -45,6 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   trackPlacementCompletionX: 0
+  minimalTrackPlacementDistance: 1
   onTrackPlaced: {fileID: 11400000, guid: b9476d845e80f004191e0d0025cf1d27, type: 2}
   onTrackConfirmPlacement: {fileID: 11400000, guid: 2326661a9d7c7cb41bebc534fb75fafb, type: 2}
   changeSlope:
@@ -55,5 +57,38 @@ MonoBehaviour:
       m_Calls: []
   trackCompleted:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   firstTrack: {fileID: 0}
+  lastTrack: {fileID: 0}
+--- !u!114 &4084510894502010943
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2195962536087421413}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b44034f351a370e4fb8769da93c8a419, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boolVariable: {fileID: 11400000, guid: 0d15084ee0d705440965d498bc051c85, type: 2}
+  boolGameEvent: {fileID: 11400000, guid: 5030637e7348ad04aacb507f7e3e1c17, type: 2}
+  onTrue:
+    m_PersistentCalls:
+      m_Calls: []
+  onFalse:
+    m_PersistentCalls:
+      m_Calls: []
