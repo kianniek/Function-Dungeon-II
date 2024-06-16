@@ -121,6 +121,7 @@ namespace Table
             _tableYDictionary[button].text = $"{value}";
             
             button.ButtonValue = value;
+            button.SetButtonInteractable(false);
         }
         
         public void ResetYTexts()
