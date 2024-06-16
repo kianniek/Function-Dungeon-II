@@ -143,7 +143,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      evil_mushrooms_0: -4795443946398681075
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
