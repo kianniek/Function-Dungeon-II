@@ -45,7 +45,9 @@ namespace LinearFunction
                 _ => Vector3.zero
             };
             
-            targetTransform.Rotate(rotationVector);
+            Debug.Log($"Rotating {targetTransform.name} by {_rotationAngle} degrees on the {rotationAxis} axis.");
+            
+            targetTransform.rotation = Quaternion.Euler(rotationVector);
         }
     }
 }

@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 using Utils;
 
 namespace LineControllers
@@ -7,14 +8,15 @@ namespace LineControllers
     [RequireComponent(typeof(LineRenderer))]
     public class LinearGraphLine : MonoBehaviour
     {
-        private const int Resolution = 2;
+        private const int Resolution = 10;
         
         [SerializeField, Min(1)] private float length = 10f;
-
+        [SerializeField] private UnityEvent onLineUpdate = new();
+        
         private LineRenderer _lineRenderer;
         private float _a;
         private float _b;
-
+        
         /// <summary>
         /// The coefficient of the x-term in the linear function.
         /// </summary>
@@ -26,8 +28,10 @@ namespace LineControllers
                 
                 UpdateLine();
             }
+            
+            get => _a;
         }
-
+        
         /// <summary>
         /// The constant term in the linear function.
         /// </summary>
@@ -39,6 +43,8 @@ namespace LineControllers
                 
                 UpdateLine();
             }
+            
+            get => _b;
         }
         
         /// <summary>
@@ -58,23 +64,28 @@ namespace LineControllers
         {
             _lineRenderer = GetComponent<LineRenderer>();
         }
-
+        
         private void OnValidate()
         {
             UpdateLine();
         }
-
+        
         private void UpdateLine()
         {
             if (!_lineRenderer)
                 return;
             
             _lineRenderer.positionCount = Resolution;
-
-            var direction = new Vector2 { x = 1, y = MathExtensions.LinearFunctionY(_a, _b, 1) }.normalized;
-            var lineEndPoint = direction * length;
-
-            _lineRenderer.SetPositions(new Vector3[] { Vector3.zero, lineEndPoint });
+            
+            for (var i = 0; i < Resolution; i++)
+            {
+                var x = i * (length / Resolution);
+                var y = MathExtensions.LinearFunctionY(_a, _b, x);
+                
+                _lineRenderer.SetPosition(i, new Vector3(x, y, 0));
+            }
+            
+            onLineUpdate.Invoke();
         }
     }
 }
