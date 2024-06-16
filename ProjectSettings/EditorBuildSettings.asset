@@ -44,6 +44,18 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Concept 2/Scenes/Release/CrafterScene.unity
     guid: 598e7cbd0f46ef3448ab5f9f0c80696a
+  - enabled: 0
+    path: Assets/Concept 3/Scenes/Release/MainMenuMushroomsOfBloom.unity
+    guid: d8baca3261103f14ca161cfe915c42f5
+  - enabled: 0
+    path: Assets/Concept 3/Scenes/Release/LevelSelectMushroomsOfBloom.unity
+    guid: a7a134879a0df5d44a2599fc3866f797
+  - enabled: 0
+    path: Assets/Concept 3/Scenes/Release/Level 1.unity
+    guid: 71198989f62b09b42841b36f0aa37859
+  - enabled: 0
+    path: Assets/Concept 3/Scenes/Release/Level 2.unity
+    guid: 90196d065c09591459a4178c88140c1a
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: bf90d5f94d8d74920bccc253210010ab, type: 2}
   m_UseUCBPForAssetBundles: 0
