@@ -1,11 +1,14 @@
 using Health;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Towers
 {
     [RequireComponent(typeof(SuitablePlacementFinder))]
     public class TowerPlacementController : MonoBehaviour
     {
+        [SerializeField] private UnityEvent onTowerPlaced = new();
+        
         private SuitablePlacementFinder _suitablePlacementFinder;
         private CollectiveHealth _selectedTower;
 
@@ -38,10 +41,14 @@ namespace Towers
         {
             if (!SelectedTower)
                 return;
+            
+            position.y += 1f;
 
             Instantiate(SelectedTower, position, Quaternion.identity);
             
             SelectedTower = null;
+            
+            onTowerPlaced.Invoke();
         }
     }
 }

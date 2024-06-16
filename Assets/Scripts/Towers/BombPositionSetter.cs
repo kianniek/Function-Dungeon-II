@@ -46,10 +46,10 @@ namespace Towers
             );
 
             if (
-                _answer.x < _bombTower.transform.position.x - bombTowerVariables.Range ||
-                _answer.x > _bombTower.transform.position.x + bombTowerVariables.Range ||
-                _answer.y < _bombTower.transform.position.x - bombTowerVariables.Range ||
-                _answer.y > _bombTower.transform.position.x + bombTowerVariables.Range
+                _answer.x < _bombTower.transform.position.x - bombTowerVariables.FireRange ||
+                _answer.x > _bombTower.transform.position.x + bombTowerVariables.FireRange ||
+                _answer.y < _bombTower.transform.position.x - bombTowerVariables.FireRange ||
+                _answer.y > _bombTower.transform.position.x + bombTowerVariables.FireRange
             )
                 return;
 

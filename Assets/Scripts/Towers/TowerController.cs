@@ -4,10 +4,10 @@ using UnityEngine;
 
 namespace Towers
 {
-    public class TowerBehaviour : MonoBehaviour
+    public class TowerController : MonoBehaviour
     {
         [Header("Events")]
-        [SerializeField] private GameObjectGameEvent onTowerPlaced;
+        [SerializeField] private TowerVariablesGameEvent onTowerPlaced;
         [SerializeField] private Vector2GameEvent coordinatesSet;
         [SerializeField] private Vector2GameEvent onProjectileShot;
 
@@ -22,14 +22,10 @@ namespace Towers
 
         private void Start()
         {
-            onTowerPlaced.Invoke(gameObject);
+            onTowerPlaced?.Invoke(towerVariables);
             coordinatesSet.AddListener(BombCoordinatesSet);
         }
-
-        /// <summary>
-        /// Sets projectile coordinate from event
-        /// </summary>
-        /// <param name="projectilePosition">The projectile position</param>
+        
         private void BombCoordinatesSet(Vector2 projectilePosition)
         {
             _projectilePosition = projectilePosition;
@@ -37,6 +33,7 @@ namespace Towers
             rangeCircle.SetActive(false);
             coordinatesSet.RemoveListener(BombCoordinatesSet);
         }
+        
         private void FixedUpdate()
         {
             if (_isAttacking)
@@ -44,11 +41,12 @@ namespace Towers
 
             StartCoroutine(AttackCoroutine());
         }
+        
         private IEnumerator AttackCoroutine()
         {
             _isAttacking = true;
             
-            yield return new WaitForSeconds(towerVariables.ShootingSpeed);
+            yield return new WaitForSeconds(towerVariables.FireRate);
             
             onProjectileShot.Invoke(_projectilePosition);
             

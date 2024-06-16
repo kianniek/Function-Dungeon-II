@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 4760324017243373145}
   - component: {fileID: 1550290100988707515}
   - component: {fileID: 5937373876720523766}
-  - component: {fileID: 6661555484357554436}
   - component: {fileID: 8024161684719496186}
   - component: {fileID: -8448291088817767745}
   m_Layer: 0
@@ -133,20 +132,6 @@ MonoBehaviour:
   onDamageEvent:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &6661555484357554436
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2999448396102145}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c5811cc048eee9a4fbd3a43e74166570, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  towerVariables: {fileID: 11400000, guid: faffc62667631d041885fce6802a2321, type: 2}
-  rangeTransform: {fileID: 6988505247822506976}
 --- !u!114 &8024161684719496186
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -202,13 +187,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7726246396506175506}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 8, y: 8, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7105360290971891572}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!212 &7862905756534666873
 SpriteRenderer:
   m_ObjectHideFlags: 0

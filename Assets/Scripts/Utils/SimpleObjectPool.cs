@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Utils
 {
-    public class ObjectPool<T> 
+    public class SimpleObjectPool<T> 
         where T : Behaviour
     {
         private readonly List<T> _pooledObjects = new();
@@ -12,7 +12,7 @@ namespace Utils
         private readonly T _prefab;
         private readonly int _initialAmount;
         
-        public ObjectPool(T prefab, int initialAmount)
+        public SimpleObjectPool(T prefab, int initialAmount)
         {
             _prefab = prefab;
             _initialAmount = initialAmount;

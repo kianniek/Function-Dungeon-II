@@ -22,11 +22,7 @@ namespace Towers
         {
             onShootingTowerPlaced.AddListener(SetShootingTower);
         }
-
-        /// <summary>
-        /// Retrieve shooting tower from event
-        /// </summary>
-        /// <param name="shootingTower">shooting tower retrieved from event</param>
+        
         private void SetShootingTower(GameObject shootingTower)
         {
             _shootingTower = shootingTower;
@@ -42,7 +38,7 @@ namespace Towers
             var a = linearEquationTextModifier.AVariable;
             var direction = new Vector2(1, a);
             var normalizedDirection = direction.normalized;
-            var scaledDirection = normalizedDirection * shootingTowerVariables.Range;
+            var scaledDirection = normalizedDirection * shootingTowerVariables.FireRange;
             var endpoint = startPoint + scaledDirection;
 
             bulletCoordinatesSet.Invoke(endpoint);

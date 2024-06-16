@@ -11,7 +11,7 @@ namespace WaveSystem
 {
     public class WaveManager : MonoBehaviour
     {
-        private readonly List<ObjectPool<NavMeshAgent>> _enemyPool = new();
+        private readonly List<SimpleObjectPool<NavMeshAgent>> _enemyPool = new();
         
         [Header("Spawn Settings")]
         [SerializeField] private bool spawnWavesAuto;
@@ -35,7 +35,7 @@ namespace WaveSystem
         private void Awake()
         {
             foreach (var enemyPrefab in waves.SelectMany(enemyWave => enemyWave.EnemyPrefab)) 
-                _enemyPool.Add(new ObjectPool<NavMeshAgent>(enemyPrefab.EnemyPrefab, enemyPrefab.EnemyCount));
+                _enemyPool.Add(new SimpleObjectPool<NavMeshAgent>(enemyPrefab.EnemyPrefab, enemyPrefab.EnemyCount));
         }
         
         private void Start()
