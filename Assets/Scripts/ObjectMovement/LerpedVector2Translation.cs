@@ -9,7 +9,7 @@ namespace ObjectMovement
         [SerializeField] private Vector3 moveDistance = new(10, 10);
         [SerializeField] private float movementTime = 1f;
         [SerializeField] private float movementSmoothing = 5f;
-        [SerializeField] private bool baseOffStartPosition = true;
+        //[SerializeField] private bool baseOffStartPosition = true;
         
         [Header("Events")]
         [SerializeField] private UnityEvent onMoveComplete = new();
