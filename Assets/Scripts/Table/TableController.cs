@@ -6,6 +6,7 @@ using LinearFunction;
 using TMPro;
 using UI;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 namespace Table
@@ -25,6 +26,7 @@ namespace Table
         
         [Header("Check Settings")] 
         [SerializeField] private float checkMargin;
+        [SerializeField] private UnityEvent onAllValuesSet = new();
         [SerializeField] private BoolEvent onInputCorrect;
         [SerializeField] private BoolEvent onInputIncorrect;
         
@@ -61,6 +63,8 @@ namespace Table
             }
             
             linearFunctionData.ValidateSlopeAndYIntercept();
+            
+            ResetYTexts();
         }
         
         private void OnEnable()
@@ -97,6 +101,12 @@ namespace Table
             //Set the value of the current selected button
             currentSelectedButton.ButtonValue = value;
             _tableYDictionary[currentSelectedButton].text = $"{value}";
+            
+            //check if all the y values are set by looking if button
+            var allSet = tableYButtons.All(button => button.ButtonText.text != PlaceholderText);
+            
+            if(allSet)
+                onAllValuesSet?.Invoke();
         }
         
         /// <summary>

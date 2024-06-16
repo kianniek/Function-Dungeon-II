@@ -5286,7 +5286,7 @@ MonoBehaviour:
   onClickFloat:
     m_PersistentCalls:
       m_Calls: []
-  buttonText: {fileID: 0}
+  buttonText: {fileID: 225705781770118683}
 --- !u!1 &4089078463620437078
 GameObject:
   m_ObjectHideFlags: 0
@@ -5447,7 +5447,7 @@ MonoBehaviour:
   onClickFloat:
     m_PersistentCalls:
       m_Calls: []
-  buttonText: {fileID: 0}
+  buttonText: {fileID: 1118604329683142076}
 --- !u!114 &4227632574609289346
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6316,7 +6316,7 @@ MonoBehaviour:
   onClickFloat:
     m_PersistentCalls:
       m_Calls: []
-  buttonText: {fileID: 0}
+  buttonText: {fileID: 5894569306870007888}
 --- !u!114 &4762843524680232933
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6335,6 +6335,21 @@ MonoBehaviour:
   onExtendedButtonClicked: {fileID: 11400000, guid: 29c93d3f47dd7494295b1222acb8e6e8, type: 2}
   currentSelectedButton: {fileID: 0}
   checkMargin: 0.1
+  onAllValuesSet:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6061756955796070986}
+        m_TargetAssemblyTypeName: UnityEngine.UI.Selectable, UnityEngine.UI
+        m_MethodName: set_interactable
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
   onInputCorrect:
     m_PersistentCalls:
       m_Calls:
@@ -6671,7 +6686,7 @@ MonoBehaviour:
   onClickFloat:
     m_PersistentCalls:
       m_Calls: []
-  buttonText: {fileID: 0}
+  buttonText: {fileID: 384075233054521450}
 --- !u!1 &5166679099272953663
 GameObject:
   m_ObjectHideFlags: 0
@@ -6727,7 +6742,7 @@ MonoBehaviour:
   onClickFloat:
     m_PersistentCalls:
       m_Calls: []
-  buttonText: {fileID: 0}
+  buttonText: {fileID: 6812751337424160092}
 --- !u!1 &5357036659903628081
 GameObject:
   m_ObjectHideFlags: 0
@@ -7340,7 +7355,7 @@ MonoBehaviour:
   onClickFloat:
     m_PersistentCalls:
       m_Calls: []
-  buttonText: {fileID: 0}
+  buttonText: {fileID: 3789773215472076640}
 --- !u!114 &5894569306870007888
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7566,7 +7581,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 668275056064738050}
   m_OnClick:
     m_PersistentCalls:
@@ -8275,7 +8290,6 @@ MonoBehaviour:
   moveDistance: {x: 290, y: 0, z: 0}
   movementTime: 1
   movementSmoothing: 5
-  baseOffStartPosition: 1
   onMoveComplete:
     m_PersistentCalls:
       m_Calls:
@@ -9254,7 +9268,6 @@ MonoBehaviour:
   moveDistance: {x: 290, y: 0, z: 0}
   movementTime: 1
   movementSmoothing: 5
-  baseOffStartPosition: 1
   onMoveComplete:
     m_PersistentCalls:
       m_Calls:
@@ -9510,7 +9523,6 @@ MonoBehaviour:
   moveDistance: {x: -270, y: 0, z: 0}
   movementTime: 1
   movementSmoothing: 5
-  baseOffStartPosition: 1
   onMoveComplete:
     m_PersistentCalls:
       m_Calls:
