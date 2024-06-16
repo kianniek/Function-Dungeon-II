@@ -47,13 +47,12 @@ namespace MaterialSystem
         /// Sets the material amount of an existing material
         /// </summary>
         /// <param name="material">Existing material that was collected</param>
-        /// <param name="amount">Amount of a material that has been collected</param>
-        public void CollectMaterial(Material material, int amount)
+        public void CollectMaterial(Material material)
         {
             if (!materials.Contains(material))
                 AddNewMaterial(material);
             
-            material.Collect(amount);
+            material.Collect();
             onMaterialCollected.Invoke(material);
         }
         
@@ -61,13 +60,12 @@ namespace MaterialSystem
         /// Removes the amount of material from the inventory
         /// </summary>
         /// <param name="material">Material to be consumed</param>
-        /// <param name="amount">Amount of the material to be subtracted</param>
-        public void UseMaterial(Material material, int amount)
+        public void UseMaterial(Material material)
         {
             if (!materials.Contains(material)) 
                 return;
             
-            material.Use(amount);
+            material.Use();
             onMaterialUsed.Invoke(material);
         }
         
@@ -75,13 +73,12 @@ namespace MaterialSystem
         /// Collects the ore and adds its amount to the inventory
         /// </summary>
         /// <param name="ore">The type ore that is collected</param>
-        /// <param name="amount">The amount of the ore that is collected</param>
-        public void CollectOre(Ore ore, int amount)
+        public void CollectOre(Ore ore)
         {
             if (!ores.Contains(ore))
                 AddNewOre(ore);
             
-            ore.Collect(amount);
+            ore.Collect();
             onOreCollected.Invoke(ore);
         }
 
@@ -89,13 +86,12 @@ namespace MaterialSystem
         /// Removes the amount of ore from the inventory
         /// </summary>
         /// <param name="ore">Ore to be consumed</param>
-        /// <param name="amount">Amount of the ore to be subtracted</param>
-        public void UseOre(Ore ore, int amount)
+        public void UseOre(Ore ore)
         {
             if (!ores.Contains(ore))
                 return;
             
-            ore.Use(amount);
+            ore.Use();
             onOreUsed.Invoke(ore);
         }
 

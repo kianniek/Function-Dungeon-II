@@ -45,7 +45,8 @@ namespace LinearFunction
                 _ => Vector3.zero
             };
             
-            targetTransform.Rotate(rotationVector);
+            
+            targetTransform.rotation = Quaternion.Euler(rotationVector);
         }
     }
 }

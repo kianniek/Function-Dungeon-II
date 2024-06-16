@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System.Linq;
 using Events;
 using UnityEngine;
 using UnityEngine.Events;
@@ -28,7 +30,7 @@ namespace MineCart
 
         private void Start()
         {
-            SetConnectionPoint();
+            UpdateConnectionPoints();
             onMineCartTrackplaced.Invoke(gameObject);
         }
 
@@ -48,7 +50,7 @@ namespace MineCart
         /// <summary>
         /// Creates two connection points to connect other tracks to
         /// </summary>
-        public void SetConnectionPoint()
+        public void UpdateConnectionPoints()
         {
             var position = new Vector2(transform.position.x, transform.position.y);
 
@@ -74,5 +76,12 @@ namespace MineCart
             transform.localScale = newSize;
         }
 
+        //draws the connection points in the editor
+        private void OnDrawGizmos()
+        {
+            Gizmos.color = Color.blue;
+            Gizmos.DrawSphere(LeftConnectionPoint, 0.1f);
+            Gizmos.DrawSphere(RightConnectionPoint, 0.1f);
+        }
     }
 }

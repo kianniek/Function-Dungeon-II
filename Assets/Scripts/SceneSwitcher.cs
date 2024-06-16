@@ -35,4 +35,9 @@ public class SceneSwitcher : MonoBehaviour
         //if scene has finished loading, activate it
         SceneManager.SetActiveScene(SceneManager.GetSceneByName(sceneName));
     }
+    
+    public void ReloadScene()
+    {
+        StartCoroutine(LoadScene(SceneManager.GetActiveScene().name));
+    }
 }

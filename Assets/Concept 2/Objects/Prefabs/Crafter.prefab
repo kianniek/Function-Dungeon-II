@@ -82,8 +82,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   a1: 0
   a2: 0
-  line1: {fileID: 761172611447808608}
-  line2: {fileID: 2757075611035387535}
+  line1: {fileID: 0}
+  line2: {fileID: 0}
   xAnswer: {fileID: 8168581396879448073}
   yAnswer: {fileID: 8923226210279615800}
   onCorrectAnswerGivenEvent:
@@ -897,7 +897,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2180849645312983200}
   - component: {fileID: 7526154896639222820}
-  - component: {fileID: 761172611447808608}
+  - component: {fileID: 5920843195308634023}
   m_Layer: 0
   m_Name: Line
   m_TagString: Untagged
@@ -1036,7 +1036,7 @@ LineRenderer:
   m_UseWorldSpace: 0
   m_Loop: 0
   m_ApplyActiveColorSpace: 1
---- !u!114 &761172611447808608
+--- !u!114 &5920843195308634023
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1048,7 +1048,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8fe70aa70614469bb7b71d6bcaf84b30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  length: 10
+  length: 20
 --- !u!1 &3510843090378997623
 GameObject:
   m_ObjectHideFlags: 0
@@ -1449,7 +1449,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lineToFollow: {fileID: 8803651041549215413}
-  indexOfPointToFollow: 2
+  indexOfPointToFollow: 1
 --- !u!1 &5139244850599905881
 GameObject:
   m_ObjectHideFlags: 0
@@ -2244,7 +2244,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lineToFollow: {fileID: 7526154896639222820}
-  indexOfPointToFollow: 2
+  indexOfPointToFollow: 1
 --- !u!1 &7703598250092573517
 GameObject:
   m_ObjectHideFlags: 0
@@ -2391,7 +2391,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6931571298773066212}
   - component: {fileID: 8803651041549215413}
-  - component: {fileID: 2757075611035387535}
+  - component: {fileID: 74195049685321438}
   m_Layer: 0
   m_Name: Line2
   m_TagString: Untagged
@@ -2530,7 +2530,7 @@ LineRenderer:
   m_UseWorldSpace: 0
   m_Loop: 0
   m_ApplyActiveColorSpace: 1
---- !u!114 &2757075611035387535
+--- !u!114 &74195049685321438
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2542,7 +2542,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8fe70aa70614469bb7b71d6bcaf84b30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  length: 10
+  length: 20
 --- !u!1 &8393316254197101542
 GameObject:
   m_ObjectHideFlags: 0
