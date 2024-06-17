@@ -231,7 +231,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8781360e909b43d19d040901f061188c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  collectiveHealthContainer: {fileID: 0}
+  collectiveHealthContainer: {fileID: 11400000, guid: f9e40045d12fc41dbba4637f684f2f58, type: 2}
 --- !u!114 &9089406490384708520
 MonoBehaviour:
   m_ObjectHideFlags: 0

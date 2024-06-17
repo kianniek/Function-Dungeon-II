@@ -10,6 +10,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 12fa7e34e5596f9448bfb0e5b5d9e288, type: 3}
-  m_Name: FlowerCounter
+  m_Name: Flower Counter
   m_EditorClassIdentifier: 
   onFlowerChange: {fileID: 11400000, guid: f933276958dfed043829e6d772e5b91b, type: 2}

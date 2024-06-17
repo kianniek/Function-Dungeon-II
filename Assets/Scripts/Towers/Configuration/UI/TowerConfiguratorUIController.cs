@@ -11,11 +11,11 @@ namespace Towers.Configuration.UI
         [Header("Shooting UI")]
         [SerializeField, Expandable] private TowerVariables shootingType;
         [SerializeField] private ShootingConfiguratorUIController shootingUI;
-        
-        [Header("Bombing UI")]
+
+        [Header("Bombing UI")] 
         [SerializeField, Expandable] private TowerVariables bombingType;
         [SerializeField] private BombingConfiguratorUIController bombingUI;
-        
+
         private void OnEnable()
         {
             onConfigureTower?.AddListener(ActivateConfiguratorUI);
@@ -25,11 +25,12 @@ namespace Towers.Configuration.UI
         {
             onConfigureTower?.RemoveListener(ActivateConfiguratorUI);
         }
-        
+
         private void ActivateConfiguratorUI(TowerConfigurator towerConfigurator)
         {
             if (towerConfigurator.TowerVariables == shootingType)
             {
+                shootingUI.ActiveTower = towerConfigurator;
                 shootingUI.gameObject.SetActive(true);
             }
             else if (towerConfigurator.TowerVariables == bombingType)
