@@ -278,7 +278,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7939975364953887199, guid: 58966d60a617e704392ecf1bb842d873, type: 3}
       propertyPath: switchDelay
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5286,7 +5286,7 @@ MonoBehaviour:
   onClickFloat:
     m_PersistentCalls:
       m_Calls: []
-  buttonText: {fileID: 0}
+  buttonText: {fileID: 225705781770118683}
 --- !u!1 &4089078463620437078
 GameObject:
   m_ObjectHideFlags: 0
@@ -5447,7 +5447,7 @@ MonoBehaviour:
   onClickFloat:
     m_PersistentCalls:
       m_Calls: []
-  buttonText: {fileID: 0}
+  buttonText: {fileID: 1118604329683142076}
 --- !u!114 &4227632574609289346
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6316,7 +6316,7 @@ MonoBehaviour:
   onClickFloat:
     m_PersistentCalls:
       m_Calls: []
-  buttonText: {fileID: 0}
+  buttonText: {fileID: 5894569306870007888}
 --- !u!114 &4762843524680232933
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6335,6 +6335,21 @@ MonoBehaviour:
   onExtendedButtonClicked: {fileID: 11400000, guid: 29c93d3f47dd7494295b1222acb8e6e8, type: 2}
   currentSelectedButton: {fileID: 0}
   checkMargin: 0.1
+  onAllValuesSet:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6061756955796070986}
+        m_TargetAssemblyTypeName: UnityEngine.UI.Selectable, UnityEngine.UI
+        m_MethodName: set_interactable
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
   onInputCorrect:
     m_PersistentCalls:
       m_Calls:
@@ -6363,6 +6378,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 9181530502407843780}
+        m_TargetAssemblyTypeName: Table.BoolEventTrigger, Assembly-CSharp
+        m_MethodName: OnEventTriggered
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
   onInputIncorrect:
     m_PersistentCalls:
       m_Calls:
@@ -6383,6 +6410,18 @@ MonoBehaviour:
           mscorlib
         m_MethodName: Invoke
         m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 9181530502407843780}
+        m_TargetAssemblyTypeName: Table.BoolEventTrigger, Assembly-CSharp
+        m_MethodName: OnEventTriggered
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -6671,7 +6710,7 @@ MonoBehaviour:
   onClickFloat:
     m_PersistentCalls:
       m_Calls: []
-  buttonText: {fileID: 0}
+  buttonText: {fileID: 384075233054521450}
 --- !u!1 &5166679099272953663
 GameObject:
   m_ObjectHideFlags: 0
@@ -6727,7 +6766,7 @@ MonoBehaviour:
   onClickFloat:
     m_PersistentCalls:
       m_Calls: []
-  buttonText: {fileID: 0}
+  buttonText: {fileID: 6812751337424160092}
 --- !u!1 &5357036659903628081
 GameObject:
   m_ObjectHideFlags: 0
@@ -7340,7 +7379,7 @@ MonoBehaviour:
   onClickFloat:
     m_PersistentCalls:
       m_Calls: []
-  buttonText: {fileID: 0}
+  buttonText: {fileID: 3789773215472076640}
 --- !u!114 &5894569306870007888
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7566,7 +7605,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 668275056064738050}
   m_OnClick:
     m_PersistentCalls:
@@ -8275,7 +8314,6 @@ MonoBehaviour:
   moveDistance: {x: 290, y: 0, z: 0}
   movementTime: 1
   movementSmoothing: 5
-  baseOffStartPosition: 1
   onMoveComplete:
     m_PersistentCalls:
       m_Calls:
@@ -9254,7 +9292,6 @@ MonoBehaviour:
   moveDistance: {x: 290, y: 0, z: 0}
   movementTime: 1
   movementSmoothing: 5
-  baseOffStartPosition: 1
   onMoveComplete:
     m_PersistentCalls:
       m_Calls:
@@ -9510,7 +9547,6 @@ MonoBehaviour:
   moveDistance: {x: -270, y: 0, z: 0}
   movementTime: 1
   movementSmoothing: 5
-  baseOffStartPosition: 1
   onMoveComplete:
     m_PersistentCalls:
       m_Calls:
@@ -10826,6 +10862,7 @@ GameObject:
   - component: {fileID: 1473973927752737871}
   - component: {fileID: 668275056064738050}
   - component: {fileID: 6061756955796070986}
+  - component: {fileID: 9181530502407843780}
   m_Layer: 5
   m_Name: Confirm Button
   m_TagString: Untagged
@@ -10833,6 +10870,50 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &9181530502407843780
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9181530502407843779}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b44034f351a370e4fb8769da93c8a419, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boolVariable: {fileID: 11400000, guid: 9891aafd40eadec459a640aba0dd9101, type: 2}
+  boolGameEvent: {fileID: 11400000, guid: 54bd0a49a10a2ba4db024e687d3a9155, type: 2}
+  onTrue:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: 9891aafd40eadec459a640aba0dd9101, type: 2}
+        m_TargetAssemblyTypeName: Table.BoolVariable, Assembly-CSharp
+        m_MethodName: set_Value
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+  onFalse:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: 9891aafd40eadec459a640aba0dd9101, type: 2}
+        m_TargetAssemblyTypeName: Table.BoolVariable, Assembly-CSharp
+        m_MethodName: set_Value
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &9209254117710778150
 MonoBehaviour:
   m_ObjectHideFlags: 0
