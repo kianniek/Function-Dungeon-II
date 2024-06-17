@@ -11,6 +11,16 @@ namespace Utils
         
         private readonly T _prefab;
         private readonly int _initialAmount;
+        private readonly Transform _parent;
+        
+        public SimpleObjectPool(T prefab, int initialAmount, Transform parent)
+        {
+            _prefab = prefab;
+            _initialAmount = initialAmount;
+            _parent = parent;
+            
+            CreatePooledObjects();
+        }
         
         public SimpleObjectPool(T prefab, int initialAmount)
         {
@@ -24,7 +34,7 @@ namespace Utils
         {
             for (var i = 0; i < _initialAmount; i++)
             {
-                var obj = Object.Instantiate(_prefab);
+                var obj = _parent ? Object.Instantiate(_prefab, _parent) : Object.Instantiate(_prefab);
                 
                 obj.gameObject.SetActive(false);
                 
@@ -39,10 +49,8 @@ namespace Utils
         
         public void ResetPool()
         {
-            foreach (var obj in _pooledObjects.Where(obj => obj))
-            {
+            foreach (var obj in _pooledObjects.Where(obj => obj)) 
                 Object.Destroy(obj.gameObject);
-            }
             
             _pooledObjects.Clear();
             

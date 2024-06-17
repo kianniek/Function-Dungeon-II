@@ -35,7 +35,9 @@ namespace WaveSystem
         private void Awake()
         {
             foreach (var enemyPrefab in waves.SelectMany(enemyWave => enemyWave.EnemyPrefab)) 
-                _enemyPool.Add(new SimpleObjectPool<NavMeshAgent>(enemyPrefab.EnemyPrefab, enemyPrefab.EnemyCount));
+                _enemyPool.Add(
+                    new SimpleObjectPool<NavMeshAgent>(enemyPrefab.EnemyPrefab, enemyPrefab.EnemyCount, transform)
+                );
         }
         
         private void Start()

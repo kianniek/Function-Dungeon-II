@@ -600,11 +600,11 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 1818808511}
     m_Modifications:
     - target: {fileID: 3533221278623723374, guid: 71071b9aa62714f48b9288ccf5d656c2, type: 3}
       propertyPath: m_Name
-      value: WaveManager
+      value: ' Wave Manager'
       objectReference: {fileID: 0}
     - target: {fileID: 5165565580759338371, guid: 71071b9aa62714f48b9288ccf5d656c2, type: 3}
       propertyPath: gridGenerator
@@ -664,15 +664,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8782293488560647701, guid: 71071b9aa62714f48b9288ccf5d656c2, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 8782293488560647701, guid: 71071b9aa62714f48b9288ccf5d656c2, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 8782293488560647701, guid: 71071b9aa62714f48b9288ccf5d656c2, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 8782293488560647701, guid: 71071b9aa62714f48b9288ccf5d656c2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -843,7 +843,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1004160145}
   m_Layer: 0
-  m_Name: World Grid
+  m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -857,14 +857,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1004160144}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2011855655}
   - {fileID: 1913677708}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1818808511}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1016378155
 GameObject:
@@ -1006,6 +1006,7 @@ MonoBehaviour:
   shootingTowerVariables: {fileID: 11400000, guid: faffc62667631d041885fce6802a2321, type: 2}
   bombTowerButton: {fileID: 1701167174}
   bombTowerVariables: {fileID: 11400000, guid: 0307f21d0848a0e46ad11dbbe0985172, type: 2}
+  world: {fileID: 1818808511}
   onTowerInstantiated:
     m_PersistentCalls:
       m_Calls: []
@@ -1862,6 +1863,39 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1701167172}
   m_CullTransparentMesh: 1
+--- !u!1 &1818808510
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1818808511}
+  m_Layer: 0
+  m_Name: World
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1818808511
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1818808510}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1004160145}
+  - {fileID: 1922134931}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1838102679
 GameObject:
   m_ObjectHideFlags: 0
@@ -1972,6 +2006,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bddd201627524bc89ec8bb175ea78145, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &1922134931 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8782293488560647701, guid: 71071b9aa62714f48b9288ccf5d656c2, type: 3}
+  m_PrefabInstance: {fileID: 936062691}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1922134932
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4865,8 +4904,7 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 1140224231}
-  - {fileID: 1004160145}
   - {fileID: 1381993621}
+  - {fileID: 1818808511}
   - {fileID: 1838102680}
-  - {fileID: 936062691}
   - {fileID: 2074155507}

@@ -18,6 +18,9 @@ namespace Towers.Placement
         [SerializeField] private Button bombTowerButton;
         [SerializeField] private TowerVariables bombTowerVariables;
         
+        [Header("World")]
+        [SerializeField] private Transform world;
+        
         [Header("Events")]
         [SerializeField] private UnityEvent onTowerInstantiated = new();
         
@@ -74,7 +77,7 @@ namespace Towers.Placement
             
             position.y += 1f;
 
-            Instantiate(SelectedTower, position, Quaternion.identity);
+            Instantiate(SelectedTower, position, Quaternion.identity, world);
             
             RecalculateFlowers();
             
