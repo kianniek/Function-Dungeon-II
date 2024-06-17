@@ -83,5 +83,14 @@ namespace UI
                 _button.colors = ColorBlockExtensions.GetColorBlock(color);
             }
         }
+        
+        /// <summary>
+        /// Sets the interactable state of the button.
+        /// </summary>
+        /// <param name="interactable"></param>
+        public void SetButtonInteractable(bool interactable)
+        {
+            _button.interactable = interactable;
+        }
     }
 }
