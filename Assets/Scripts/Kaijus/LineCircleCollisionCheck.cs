@@ -1,7 +1,7 @@
+using Events.GameEvents;
 using Events.GameEvents.Typed;
 using LineControllers;
 using UnityEngine;
-using UnityEngine.Events;
 
 //TODO class probably needs to be adjusted when ROBB-E is implemented, i dont know how the line will looks like atm.
 public class LineCircleCollisionCheck : MonoBehaviour
@@ -9,8 +9,8 @@ public class LineCircleCollisionCheck : MonoBehaviour
     private Vector2 _sphereCenter; 
     private float _sphereRadius;
 
-    [SerializeField] private UnityEvent onHitpointHit;
-    [SerializeField] private UnityEvent onHitpointMiss;
+    [SerializeField] private GameEvent onHitpointHit;
+    [SerializeField] private GameEvent onHitpointMiss;
 
     private float _a; //TODO assign this when line is implemented
     private float _b; //TODO assign this when line is implemented

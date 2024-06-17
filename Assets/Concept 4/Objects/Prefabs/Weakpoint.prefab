@@ -136,9 +136,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7380026af190ac4a818c532e6b9768a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onHitpointHit:
-    m_PersistentCalls:
-      m_Calls: []
-  onHitpointMiss:
-    m_PersistentCalls:
-      m_Calls: []
+  onHitpointHit: {fileID: 11400000, guid: cdd2a7269f0f10c46bc5185fbc9f092d, type: 2}
+  onHitpointMiss: {fileID: 0}
