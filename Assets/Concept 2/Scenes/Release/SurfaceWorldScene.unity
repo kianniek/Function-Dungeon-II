@@ -1111,10 +1111,6 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 1717126259}
-    - target: {fileID: 5423517054880273821, guid: b50c2c040e662d544a875077bf75e732, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: SwitchScene
-      objectReference: {fileID: 0}
     - target: {fileID: 7306158668144998834, guid: b50c2c040e662d544a875077bf75e732, type: 3}
       propertyPath: m_Name
       value: Menu Overlay

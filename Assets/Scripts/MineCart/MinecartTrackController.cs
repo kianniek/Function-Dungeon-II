@@ -106,15 +106,22 @@ namespace MineCart
         {
             var leftSide = _currentTrack.LeftConnectionPoint;
             var rightSide = _currentTrack.RightConnectionPoint;
+
+            // Check if one of points exists
+            var left = _connectionPoints.ContainsKey(leftSide);
+            var right = _connectionPoints.ContainsKey(rightSide);
             
-            var leftSideValid = _connectionPoints.ContainsKey(leftSide) && _connectionPoints[leftSide] < 2;
-            var rightSideValid = _connectionPoints.ContainsKey(rightSide) && _connectionPoints[rightSide] < 2;
-
-            // Ensure the track does not connect to both sides
-            bool connectsToOneSide = leftSideValid ^ rightSideValid;
-
-            // The track should either connect to one side or to none, but not both
-            return connectsToOneSide || (!leftSideValid && !rightSideValid);
+            if (!left && !right)
+                return false;
+            
+            // Check if any of the connection points exist more than once
+            if (left && _connectionPoints[leftSide] > 1)
+                return false;
+            
+            if (right && _connectionPoints[rightSide] > 1)
+                return false;
+            
+            return true;
         }
         
         private void AddTrackToConnectionPoints()
@@ -160,6 +167,9 @@ namespace MineCart
             if (_currentTrack == null)
                 return;
             
+            _connectionPoints.Remove(_currentTrack.LeftConnectionPoint);
+            
+            
             Destroy(_currentTrack.gameObject);
             _currentTrack = null;
         }
@@ -189,6 +199,13 @@ namespace MineCart
             {
                 Gizmos.color = Color.red;
                 Gizmos.DrawSphere(connectionPoint.Key, 0.1f);
+            }
+            
+            if (_currentTrack != null)
+            {
+                Gizmos.color = Color.green;
+                Gizmos.DrawSphere(_currentTrack.LeftConnectionPoint, 0.1f);
+                Gizmos.DrawSphere(_currentTrack.RightConnectionPoint, 0.1f);
             }
         }
     }
