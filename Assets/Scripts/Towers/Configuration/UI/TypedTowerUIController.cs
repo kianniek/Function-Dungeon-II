@@ -4,6 +4,9 @@ using UnityEngine.Events;
 
 namespace Towers.Configuration.UI
 {
+    /// <summary>
+    /// A UI controller for configuring a tower.
+    /// </summary>
     public class TypedTowerUIController : MonoBehaviour
     {
         [Header("Grid")]
@@ -15,6 +18,9 @@ namespace Towers.Configuration.UI
         
         private TowerConfigurator _activeTower;
 
+        /// <summary>
+        /// The active tower being configured.
+        /// </summary>
         internal TowerConfigurator ActiveTower
         {
             get => _activeTower;

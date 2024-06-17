@@ -14,10 +14,19 @@ namespace Towers
         [Tooltip("The fireRange that a tower can shoot its projectiles")]
         [SerializeField, Min(0.1f)] private int fireRange;
 
+        /// <summary>
+        /// The fire range of the tower.
+        /// </summary>
         public int FireRange => fireRange;
 
+        /// <summary>
+        /// The fire rate of the tower.
+        /// </summary>
         public float FireRate => fireRate;
 
+        /// <summary>
+        /// The cost of the tower in flowers.
+        /// </summary>
         public int FlowerCost => flowerCost;
     }
 }

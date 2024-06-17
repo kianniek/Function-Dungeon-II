@@ -4,12 +4,24 @@ using Utils;
 
 namespace Towers.Configuration.UI
 {
+    /// <summary>
+    /// A UI controller for configuring a bombing tower.
+    /// </summary>
     public class BombingConfiguratorUIController : TypedTowerUIController
     {
+        /// <summary>
+        /// The x coordinate of the bombing position.
+        /// </summary>
         public string X { private get; set; }
  
+        /// <summary>
+        /// The y coordinate of the bombing position.
+        /// </summary>
         public string Y { private get; set; }
 
+        /// <summary>
+        /// Called when the user confirms the coordinates.
+        /// </summary>
         public void OnConfirmCoordinates()
         {
             var shootingBehaviour = ActiveTower.GetComponent<LinearProjectileTower>();

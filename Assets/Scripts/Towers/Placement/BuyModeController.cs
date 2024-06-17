@@ -6,6 +6,9 @@ using UnityEngine.UI;
 
 namespace Towers.Placement
 {
+    /// <summary>
+    /// Controls the buy mode of the game.
+    /// </summary>
     [RequireComponent(typeof(SuitablePlacementFinder))]
     public class BuyModeController : MonoBehaviour
     {
@@ -27,6 +30,9 @@ namespace Towers.Placement
         private SuitablePlacementFinder _suitablePlacementFinder;
         private TowerConfigurator _selectedTower;
 
+        /// <summary>
+        /// The selected tower to place.
+        /// </summary>
         public TowerConfigurator SelectedTower
         {
             private get => _selectedTower;
@@ -52,6 +58,9 @@ namespace Towers.Placement
             _suitablePlacementFinder.UnsubscribeFromOnSuitablePlacement(PlaceTower);
         }
 
+        /// <summary>
+        /// Recalculates the flowers after a tower has been placed.
+        /// </summary>
         public void RecalculateFlowers()
         {
             if (SelectedTower.TowerVariables == shootingTowerVariables)
@@ -63,7 +72,10 @@ namespace Towers.Placement
                 flowerCounter.CurrentFlowerCount -= bombTowerVariables.FlowerCost;
             }
         }
-
+        
+        /// <summary>
+        /// Enables the buy buttons.
+        /// </summary>
         public void EnableBuyButtons()
         {
             shootingTowerButton.interactable = flowerCounter.CurrentFlowerCount >= shootingTowerVariables.FlowerCost;
