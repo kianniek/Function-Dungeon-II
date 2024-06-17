@@ -331,8 +331,8 @@ SpriteShapeRenderer:
   - {fileID: 21300000, guid: 608e61deb05c54660bebf5a4dd2ee02d, type: 3}
   - {fileID: 21300000, guid: 608e61deb05c54660bebf5a4dd2ee02d, type: 3}
   m_LocalAABB:
-    m_Center: {x: 3.4910288, y: 0.17875338, z: 0}
-    m_Extent: {x: 5.0244756, y: 1.8022, z: 0}
+    m_Center: {x: 3.4910288, y: 0.17875302, z: 0}
+    m_Extent: {x: 5.0244756, y: 1.8021996, z: 0}
   m_SpriteSortPoint: 0
 --- !u!114 &420288310184322836
 MonoBehaviour:
@@ -444,11 +444,11 @@ MonoBehaviour:
   m_ColliderSegment:
   - {x: -1.3610687, y: -1.0976219}
   - {x: -0.17106868, y: 0.15237768}
-  - {x: 0.0974238, y: 0.23000002}
-  - {x: 0.8503003, y: 0.23014459}
-  - {x: 1.6606741, y: 1.9809533}
-  - {x: 3.6605864, y: 1.9690821}
-  - {x: 4.510414, y: 0.25352687}
+  - {x: 0.09744821, y: 0.23000002}
+  - {x: 0.8503414, y: 0.23023331}
+  - {x: 1.6606739, y: 1.9809527}
+  - {x: 3.660781, y: 1.9690809}
+  - {x: 4.510414, y: 0.25352603}
   - {x: 5.3518324, y: -0.2923945}
   - {x: 5.792942, y: -0.3760896}
   - {x: 8.271925, y: -0.9490222}
@@ -505,11 +505,11 @@ PolygonCollider2D:
     m_Paths:
     - - {x: -1.3610687, y: -1.0976219}
       - {x: -0.17106868, y: 0.15237768}
-      - {x: 0.0974238, y: 0.23000002}
-      - {x: 0.8503003, y: 0.23014459}
-      - {x: 1.6606741, y: 1.9809533}
-      - {x: 3.6605864, y: 1.9690821}
-      - {x: 4.510414, y: 0.25352687}
+      - {x: 0.09744821, y: 0.23000002}
+      - {x: 0.8503414, y: 0.23023331}
+      - {x: 1.6606739, y: 1.9809527}
+      - {x: 3.660781, y: 1.9690809}
+      - {x: 4.510414, y: 0.25352603}
       - {x: 5.3518324, y: -0.2923945}
       - {x: 5.792942, y: -0.3760896}
       - {x: 8.271925, y: -0.9490222}
@@ -528,6 +528,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3547752209758237979}
   - component: {fileID: 287103535718330639}
+  - component: {fileID: 6927954162371910248}
   m_Layer: 0
   m_Name: OreTunnelEndWall
   m_TagString: Untagged
@@ -604,6 +605,52 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!61 &6927954162371910248
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1639890883269303560}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &2797080500749078735
 GameObject:
   m_ObjectHideFlags: 0
@@ -614,6 +661,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8985450988149923694}
   - component: {fileID: 4101321795594451403}
+  - component: {fileID: 213312706114675258}
   m_Layer: 0
   m_Name: OreTunnelGround
   m_TagString: Untagged
@@ -690,6 +738,52 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!61 &213312706114675258
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2797080500749078735}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &5782560247477933949
 GameObject:
   m_ObjectHideFlags: 0
@@ -700,6 +794,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4024398083819022127}
   - component: {fileID: 172585776225633943}
+  - component: {fileID: 4052759704405224309}
   m_Layer: 0
   m_Name: OreTunnelCeiling
   m_TagString: Untagged
@@ -776,6 +871,52 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!61 &4052759704405224309
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5782560247477933949}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &5900715098995304560
 GameObject:
   m_ObjectHideFlags: 0
