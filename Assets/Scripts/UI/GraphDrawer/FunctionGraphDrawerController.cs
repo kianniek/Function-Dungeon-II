@@ -17,10 +17,8 @@ namespace UI.GraphDrawer
         public void DisableGraphObject()
         {
             // Disable the graph objects children
-            foreach (Transform child in transform)
-            {
+            foreach (Transform child in transform) 
                 child.gameObject.SetActive(false);
-            }
         }
 
         /// <summary>
@@ -29,10 +27,8 @@ namespace UI.GraphDrawer
         public void EnableGraphObject()
         {
             // Enable the graph objects children
-            foreach (Transform child in transform)
-            {
+            foreach (Transform child in transform) 
                 child.gameObject.SetActive(true);
-            }
         }
     }
 }

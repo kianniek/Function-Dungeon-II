@@ -13,7 +13,7 @@ namespace FlowerSystem
 
         private int _currentFlowerCount;
 
-        private int CurrentFlowerCount
+        public int CurrentFlowerCount
         {
             get => _currentFlowerCount;
             set
@@ -25,26 +25,6 @@ namespace FlowerSystem
 
                 onFlowerChange?.Invoke(value);
             }
-        }
-
-        public int FlowerCount => CurrentFlowerCount;
-
-        /// <summary>
-        /// Increase amount of flowers player has
-        /// </summary>
-        /// <param name="amount">Amount to add</param>
-        public void Increase(int amount)
-        {
-            CurrentFlowerCount += amount;
-        }
-
-        /// <summary>
-        /// Decrease amount of flowers player has
-        /// </summary>
-        /// <param name="amount">Amount to subtract</param>
-        public void Decrease(int amount)
-        {
-            CurrentFlowerCount -= amount;
         }
     }
 }

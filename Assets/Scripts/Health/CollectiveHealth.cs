@@ -20,12 +20,12 @@ namespace Health
         
         private void OnEnable()
         {
-            collectiveHealthContainer.AddDamageable(Damageable);
+            collectiveHealthContainer?.AddDamageable(Damageable);
         }
         
         private void OnDisable()
         {
-            collectiveHealthContainer.RemoveDamageable(Damageable);
+            collectiveHealthContainer?.RemoveDamageable(Damageable);
         }
     }
 }
