@@ -3,10 +3,8 @@ using UnityEngine;
 
 namespace Towers.Configuration.UI
 {
-    public class ShootingConfiguratorUIController : MonoBehaviour
+    public class ShootingConfiguratorUIController : TypedTowerUIController
     {
-        internal TowerConfigurator ActiveTower { private get; set; }
-        
         public float A { private get; set; }
         
         public void OnConfirmAngle()
@@ -14,6 +12,8 @@ namespace Towers.Configuration.UI
             var shootingBehaviour = ActiveTower.GetComponent<LinearProjectileTower>();
             
             shootingBehaviour.SetShootingDirection(A);
+            
+            onTowerConfigured?.Invoke();
             
             gameObject.SetActive(false);
         }

@@ -4,10 +4,8 @@ using Utils;
 
 namespace Towers.Configuration.UI
 {
-    public class BombingConfiguratorUIController : MonoBehaviour
+    public class BombingConfiguratorUIController : TypedTowerUIController
     {
-        internal TowerConfigurator ActiveTower { private get; set; }
-
         public string X { private get; set; }
  
         public string Y { private get; set; }
@@ -15,8 +13,6 @@ namespace Towers.Configuration.UI
         public void OnConfirmCoordinates()
         {
             var shootingBehaviour = ActiveTower.GetComponent<LinearProjectileTower>();
-            
-            Debug.Log($"X: {X}, Y: {Y}");
 
             if (string.IsNullOrEmpty(X) || string.IsNullOrEmpty(Y))
                 return;
@@ -26,19 +22,12 @@ namespace Towers.Configuration.UI
                 float.Parse(StringExtensions.CleanUpDecimalOnlyString(Y))
             );
             
-            Debug.Log($"X: {answer.x}, Y: {answer.y}");
-
-            if (
-                answer.x < ActiveTower.transform.position.x - ActiveTower.TowerVariables.FireRange ||
-                answer.x > ActiveTower.transform.position.x + ActiveTower.TowerVariables.FireRange ||
-                answer.y < ActiveTower.transform.position.x - ActiveTower.TowerVariables.FireRange ||
-                answer.y > ActiveTower.transform.position.x + ActiveTower.TowerVariables.FireRange
-            )
+            if (answer.Distance(ActiveTower.transform.position) > ActiveTower.TowerVariables.FireRange)
                 return;
             
-            Debug.Log("Coordinates are in range");
-            
             shootingBehaviour.SetShootingPosition(answer.x, answer.y);
+            
+            onTowerConfigured?.Invoke();
             
             gameObject.SetActive(false);
         }
