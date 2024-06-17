@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace MaterialSystem
 {
@@ -11,7 +10,8 @@ namespace MaterialSystem
     [CreateAssetMenu(fileName = "NewRecipe", menuName = "Crafting/Recipe")]
     public class Recipe : ScriptableObject
     {
-        [SerializeField] private string itemName;
+        [SerializeField] private string recipeName;
+        [SerializeField] private Item item;
         [SerializeField] private List<MaterialRequirement> requiredMaterials;
         
         /// <summary>
@@ -19,7 +19,9 @@ namespace MaterialSystem
         /// </summary>
         public List<MaterialRequirement> RequiredMaterials => requiredMaterials;
         
-        public string RecipeName => itemName;
+        public string RecipeName => recipeName;
+        
+        public Item Item => item;
     
         /// <summary>
         /// Returns the recipe details

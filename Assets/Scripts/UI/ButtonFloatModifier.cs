@@ -1,6 +1,6 @@
-using System;
 using Events;
 using UnityEngine;
+using Utils;
 
 namespace UI
 {
@@ -29,7 +29,7 @@ namespace UI
 
             private set
             {
-                _value = Mathf.Clamp(MathF.Round(value, roundings), range.x, range.y);
+                _value = Mathf.Clamp(value.RoundValue(roundings), range.x, range.y);
 
                 onFloatChange.Invoke(_value);
             }

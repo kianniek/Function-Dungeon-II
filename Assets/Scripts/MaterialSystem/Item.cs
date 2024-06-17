@@ -11,18 +11,22 @@ namespace MaterialSystem
         [SerializeField] private Sprite icon;
         [SerializeField] private int amountCollected;
         [SerializeField] private int amountUsed;
+        
         /// <summary>
         /// Name of the item
         /// </summary>
         public string ItemName => itemName;
+        
         /// <summary>
         /// Icon of the item
         /// </summary>
         public Sprite Icon => icon;
+        
         /// <summary>
         /// Amount of the item that has been collected
         /// </summary>
         public int AmountCollected => amountCollected;
+        
         /// <summary>
         /// Amount of the item that has been used
         /// </summary>
@@ -32,18 +36,18 @@ namespace MaterialSystem
         /// Keeps track of the amount of an item that has been collected.
         /// </summary>
         /// <param name="amount"></param>
-        public void Collect(int amount)
+        public void Collect()
         {
-            amountCollected += amount;
+            amountCollected++;
         }
         
         /// <summary>
         /// Keeps track of the amount of an item that has been used. Does not remove the item from the inventory.
         /// </summary>
         /// <param name="amount"></param>
-        public void Use(int amount)
+        public void Use()
         {
-            amountUsed += amount;
+            amountUsed++;
         }
         
         /// <summary>
@@ -52,7 +56,7 @@ namespace MaterialSystem
         /// <param name="amount"></param>
         public void Remove(int amount)
         {
-            amountCollected -= amount;
+            amountCollected--;
         }
     }
 }

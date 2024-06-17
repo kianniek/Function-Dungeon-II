@@ -9,6 +9,7 @@ namespace Health
     public class PhysicsDamageable : MonoBehaviour
     {
         [SerializeField] private float physicDamageThreshold = 2f;
+        [SerializeField] private float physicDamageMultiplier = 1f;
         
         private Damageable _damageable;
         
@@ -22,10 +23,10 @@ namespace Health
             if (!collision.gameObject.TryGetComponent<PhysicsDamageable>(out _))
                 return;
             
-            var relativeVelocity = collision.relativeVelocity.magnitude;
+            var damage = collision.relativeVelocity.magnitude * physicDamageMultiplier;
             
-            if (relativeVelocity > physicDamageThreshold)
-                _damageable.Health -= relativeVelocity;
+            if (damage > physicDamageThreshold)
+                _damageable.Health -= damage;
         }
     }
 }

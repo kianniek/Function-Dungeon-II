@@ -1,4 +1,4 @@
-﻿using Events.GameEvents.Typed;
+using Events.GameEvents.Typed;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,8 +11,8 @@ namespace MaterialSystem
     public class InventorySystem : ScriptableObject
     {
         // List for materials and ores that can be pre-filled in the inspector
-        [SerializeField] private List<Material> materials = new List<Material>();
-        [SerializeField] private List<Ore> ores = new List<Ore>();
+        [SerializeField] private List<Material> materials = new();
+        [SerializeField] private List<Ore> ores = new();
         
         [SerializeField] private ItemGameEvent onOreCollected;
         [SerializeField] private ItemGameEvent onOreUsed;
@@ -47,13 +47,12 @@ namespace MaterialSystem
         /// Sets the material amount of an existing material
         /// </summary>
         /// <param name="material">Existing material that was collected</param>
-        /// <param name="amount">Amount of a material that has been collected</param>
-        public void CollectMaterial(Material material, int amount)
+        public void CollectMaterial(Material material)
         {
             if (!materials.Contains(material))
                 AddNewMaterial(material);
             
-            material.Collect(amount);
+            material.Collect();
             onMaterialCollected.Invoke(material);
         }
         
@@ -61,13 +60,12 @@ namespace MaterialSystem
         /// Removes the amount of material from the inventory
         /// </summary>
         /// <param name="material">Material to be consumed</param>
-        /// <param name="amount">Amount of the material to be subtracted</param>
-        public void UseMaterial(Material material, int amount)
+        public void UseMaterial(Material material)
         {
             if (!materials.Contains(material)) 
                 return;
             
-            material.Use(amount);
+            material.Use();
             onMaterialUsed.Invoke(material);
         }
         
@@ -75,28 +73,68 @@ namespace MaterialSystem
         /// Collects the ore and adds its amount to the inventory
         /// </summary>
         /// <param name="ore">The type ore that is collected</param>
-        /// <param name="amount">The amount of the ore that is collected</param>
-        public void CollectOre(Ore ore, int amount)
+        public void CollectOre(Ore ore)
         {
             if (!ores.Contains(ore))
                 AddNewOre(ore);
             
-            ore.Collect(amount);
+            ore.Collect();
             onOreCollected.Invoke(ore);
         }
-        
+
         /// <summary>
         /// Removes the amount of ore from the inventory
         /// </summary>
-        /// <param name="material">Ore to be consumed</param>
-        /// <param name="amount">Amount of the ore to be subtracted</param>
-        public void UseOre(Ore ore, int amount)
+        /// <param name="ore">Ore to be consumed</param>
+        public void UseOre(Ore ore)
         {
             if (!ores.Contains(ore))
                 return;
             
-            ore.Use(amount);
+            ore.Use();
             onOreUsed.Invoke(ore);
+        }
+
+        /// <summary>
+        /// Adds a material to the player's inventory.
+        /// </summary>
+        /// <param name="recipe"></param>
+        /// <returns></returns>
+        public bool HasRequiredMaterials(Recipe recipe)
+        {
+            foreach (var req in recipe.RequiredMaterials)
+            {
+                var hasMaterial = false;
+                
+                foreach (var mat in Materials)
+                {
+                    if (mat != req.Material || mat.AmountCollected < req.Amount)
+                        continue;
+
+                    hasMaterial = true;
+                    break;
+                }
+
+                if (!hasMaterial)
+                    return false;
+            }
+            return true;
+        }
+
+        /// <summary>
+        /// Removes the required materials from the player's inventory.
+        /// </summary>
+        /// <param name="material"></param>
+        /// <param name="amount"></param>
+        /// <returns></returns>
+        public bool HasAmountOfMaterial(Material material, int amount)
+        {
+            foreach (var mat in Materials)
+            {
+                if (mat == material && mat.AmountCollected >= amount)
+                    return true;
+            }
+            return false;
         }
     }
 }

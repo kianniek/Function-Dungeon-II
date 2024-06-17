@@ -1,53 +1,96 @@
 using Events;
-using Extensions;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using Utils;
 
 namespace UI
 {
     [RequireComponent(typeof(Button))]
     public class ExtendedButton : MonoBehaviour
     {
-        [SerializeField] private ExtendedButtonEvent onClickButton = new ();
-        [SerializeField] private FloatEvent onClickFloat = new ();
+        [SerializeField] private ExtendedButtonEvent onClickParseButton = new();
+        [SerializeField] private FloatEvent onClickFloat = new();
         
-        public Button Button { get; private set; }
+        [SerializeField] private TMP_Text buttonText;
+        
+        private Button _button;
         
         public float ButtonValue { get; set; }
-
+        
+        public TMP_Text ButtonText
+        {
+            get
+            {
+                if (buttonText) 
+                    return buttonText;
+                
+                buttonText = GetComponentInChildren<TMP_Text>();
+                
+                if (!buttonText)
+                {
+                    Debug.LogError("TMP_Text component is not assigned and cannot be found in children.");
+                }
+                
+                return buttonText;
+            }
+        }
+        
         private void Awake()
         {
-            Button = GetComponent<Button>();
+            _button = GetComponent<Button>();
+            
+            if (!buttonText)
+                buttonText = GetComponentInChildren<TMP_Text>();
+            
+            if (!buttonText)
+                Debug.LogError($"TMP_Text component is missing on {gameObject.name}");
         }
-
+        
         protected void Start()
         {
-            Button.onClick.AddListener(() => onClickButton.Invoke(this));
-            Button.onClick.AddListener(() => onClickFloat.Invoke(ButtonValue));
+            _button.onClick.AddListener(() => onClickParseButton.Invoke(this));
+            _button.onClick.AddListener(() => onClickFloat.Invoke(ButtonValue));
         }
-
+        
         public void OnPointerClick(PointerEventData eventData)
         {
-            onClickButton.Invoke(this);
+            onClickParseButton.Invoke(this);
             onClickFloat.Invoke(ButtonValue);
         }
         
-        public void SetButtonValue(TMP_Text text, float value)
+        public void SetButtonValue(float value)
         {
-            SetButtonValue(text, value, Color.clear, false);
+            SetButtonValue(value, Color.clear, false);
         }
         
-        public void SetButtonValue(TMP_Text text, float value, Color color, bool useColor = true)
+        public void SetButtonValue(float value, Color color, bool useColor = true)
         {
             ButtonValue = value;
-            text.text = $"{value}";
+            
+            if (ButtonText != null)
+            {
+                ButtonText.text = $"{value}";
+            }
+            else
+            {
+                Debug.LogError($"ButtonText is null on {gameObject.name} when trying to set value {value}");
+            }
             
             if (useColor)
             {
-                Button.colors = ColorBlockExtensions.GetColorBlock(color);
+                _button.colors = ColorBlockExtensions.GetColorBlock(color);
             }
+        }
+        
+        /// <summary>
+        /// Sets the interactable state of the button.
+        /// </summary>
+        /// <param name="interactable"></param>
+        public void SetButtonInteractable(bool interactable)
+        {
+            _button.interactable = interactable;
         }
     }
 }

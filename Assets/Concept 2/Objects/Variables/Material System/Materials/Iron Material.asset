@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Iron Material
   m_EditorClassIdentifier: 
   itemName: Iron
-  icon: {fileID: 0}
-  amountCollected: 0
+  icon: {fileID: -6752202015829249346, guid: 0f74b5c8a1cb99047b145c15673ddef2, type: 3}
+  amountCollected: 2
   amountUsed: 0

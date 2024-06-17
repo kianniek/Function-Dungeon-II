@@ -18,11 +18,11 @@ MonoBehaviour:
   - levelName: Tutorial A
     gradingSystem: {fileID: 11400000, guid: 3b313b15d0a0d43bcaa0dcc5efe1d16d, type: 2}
   - levelName: Tutorial B
-    gradingSystem: {fileID: 11400000, guid: 3b313b15d0a0d43bcaa0dcc5efe1d16d, type: 2}
+    gradingSystem: {fileID: 11400000, guid: 48a1768b4f660438d84a0f6dd8013c1e, type: 2}
   - levelName: Demo 1
-    gradingSystem: {fileID: 11400000, guid: 3b313b15d0a0d43bcaa0dcc5efe1d16d, type: 2}
+    gradingSystem: {fileID: 11400000, guid: d8d60bab88b1f499cbd65586e7a663d7, type: 2}
   - levelName: Demo 2
-    gradingSystem: {fileID: 11400000, guid: 3b313b15d0a0d43bcaa0dcc5efe1d16d, type: 2}
+    gradingSystem: {fileID: 11400000, guid: afead91baee8848c08c38d612d214d73, type: 2}
   allowNegativeScore: 0
   gameProgressionContainer: {fileID: 11400000, guid: 456cdb52776f746e79eede9e7a6219b9, type: 2}
   onUpdateScore: {fileID: 11400000, guid: fbb7e6991063e4814b16e3ba8945c412, type: 2}

@@ -80,7 +80,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2765d751f3d6175469d9122e8ac90e23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interceptionCalculator: {fileID: 5564735652332944096}
+  a1: 0
+  a2: 0
+  line1: {fileID: 0}
+  line2: {fileID: 0}
   xAnswer: {fileID: 8168581396879448073}
   yAnswer: {fileID: 8923226210279615800}
   onCorrectAnswerGivenEvent:
@@ -410,7 +413,7 @@ SpriteRenderer:
   m_Size: {x: 8.14, y: 9.99}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &2145511379578670983
@@ -894,7 +897,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2180849645312983200}
   - component: {fileID: 7526154896639222820}
-  - component: {fileID: 6018000140153687598}
+  - component: {fileID: 5920843195308634023}
   m_Layer: 0
   m_Name: Line
   m_TagString: Untagged
@@ -964,16 +967,7 @@ LineRenderer:
   m_SortingOrder: 0
   m_Positions:
   - {x: 0, y: 0, z: 0}
-  - {x: 1.3416408, y: 2.6832817, z: 0}
-  - {x: 2.6832817, y: 5.3665633, z: 0}
-  - {x: 4.0249224, y: 8.049845, z: 0}
-  - {x: 5.3665633, y: 10.733127, z: 0}
-  - {x: 6.708204, y: 13.416408, z: 0}
-  - {x: 8.049845, y: 16.09969, z: 0}
-  - {x: 9.391485, y: 18.78297, z: 0}
-  - {x: 10.733127, y: 21.466253, z: 0}
-  - {x: 12.074766, y: 24.149532, z: 0}
-  - {x: 13.416408, y: 26.832815, z: 0}
+  - {x: 10, y: 0, z: 0}
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 0.1
@@ -1042,7 +1036,7 @@ LineRenderer:
   m_UseWorldSpace: 0
   m_Loop: 0
   m_ApplyActiveColorSpace: 1
---- !u!114 &6018000140153687598
+--- !u!114 &5920843195308634023
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1051,21 +1045,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 3481057997310183538}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e0c3261d71a9486f95022f4dd42bcdd, type: 3}
+  m_Script: {fileID: 11500000, guid: 8fe70aa70614469bb7b71d6bcaf84b30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isQuadratic: 0
-  a: 2
-  b: 0
-  c: 1
-  functionLineLength: 30
-  segments: 10
-  lineRenderer: {fileID: 7526154896639222820}
-  trajectoryLineRenderer: {fileID: 0}
-  timeStep: 1
-  hideTime: 5
-  groundLevel: 0
-  projectilePhysicsVariables: {fileID: 11400000, guid: 1700083af172147a79deaa104412fc70, type: 2}
+  length: 20
 --- !u!1 &3510843090378997623
 GameObject:
   m_ObjectHideFlags: 0
@@ -1466,7 +1449,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lineToFollow: {fileID: 8803651041549215413}
-  indexOfPointToFollow: 2
+  indexOfPointToFollow: 1
 --- !u!1 &5139244850599905881
 GameObject:
   m_ObjectHideFlags: 0
@@ -1755,7 +1738,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2005012185629278863}
-  - component: {fileID: 5564735652332944096}
   m_Layer: 0
   m_Name: LineSystem
   m_TagString: Untagged
@@ -1780,20 +1762,6 @@ Transform:
   - {fileID: 6931571298773066212}
   m_Father: {fileID: 6392165978576281484}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5564735652332944096
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5577388164008093085}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2dbbdefbebefd544cadf419b51b3a32d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  line1: {fileID: 6018000140153687598}
-  line2: {fileID: 7876169785252658364}
 --- !u!1 &5674705329855749110
 GameObject:
   m_ObjectHideFlags: 0
@@ -2276,7 +2244,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lineToFollow: {fileID: 7526154896639222820}
-  indexOfPointToFollow: 2
+  indexOfPointToFollow: 1
 --- !u!1 &7703598250092573517
 GameObject:
   m_ObjectHideFlags: 0
@@ -2423,7 +2391,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6931571298773066212}
   - component: {fileID: 8803651041549215413}
-  - component: {fileID: 7876169785252658364}
+  - component: {fileID: 74195049685321438}
   m_Layer: 0
   m_Name: Line2
   m_TagString: Untagged
@@ -2493,16 +2461,7 @@ LineRenderer:
   m_SortingOrder: 0
   m_Positions:
   - {x: 0, y: 0, z: 0}
-  - {x: 2.1213205, y: -2.1213205, z: 0}
-  - {x: 4.242641, y: -4.242641, z: 0}
-  - {x: 6.363961, y: -6.363961, z: 0}
-  - {x: 8.485282, y: -8.485282, z: 0}
-  - {x: 10.606602, y: -10.606602, z: 0}
-  - {x: 12.727922, y: -12.727922, z: 0}
-  - {x: 14.849242, y: -14.849242, z: 0}
-  - {x: 16.970564, y: -16.970564, z: 0}
-  - {x: 19.091883, y: -19.091883, z: 0}
-  - {x: 21.213203, y: -21.213203, z: 0}
+  - {x: 10, y: 0, z: 0}
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 0.1
@@ -2571,7 +2530,7 @@ LineRenderer:
   m_UseWorldSpace: 0
   m_Loop: 0
   m_ApplyActiveColorSpace: 1
---- !u!114 &7876169785252658364
+--- !u!114 &74195049685321438
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2580,21 +2539,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 8138445477234787703}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e0c3261d71a9486f95022f4dd42bcdd, type: 3}
+  m_Script: {fileID: 11500000, guid: 8fe70aa70614469bb7b71d6bcaf84b30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isQuadratic: 0
-  a: -1
-  b: 0
-  c: 1
-  functionLineLength: 30
-  segments: 10
-  lineRenderer: {fileID: 8803651041549215413}
-  trajectoryLineRenderer: {fileID: 0}
-  timeStep: 1
-  hideTime: 5
-  groundLevel: 0
-  projectilePhysicsVariables: {fileID: 11400000, guid: 1700083af172147a79deaa104412fc70, type: 2}
+  length: 20
 --- !u!1 &8393316254197101542
 GameObject:
   m_ObjectHideFlags: 0

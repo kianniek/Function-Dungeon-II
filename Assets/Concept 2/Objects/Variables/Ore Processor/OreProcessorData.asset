@@ -7,15 +7,23 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5190593f583ecb64d969921a8b7d8517, type: 3}
   m_Name: OreProcessorData
   m_EditorClassIdentifier: 
-  _slope: 0
-  _yIntercept: 0
-  _amountOfDecimals: 1
-  _minSlope: -10
-  _maxSlope: 10
-  _minYIntercept: -10
-  _maxYIntercept: 10
+  amountOfDecimals: 1
+  useRandomValues: 0
+  slope: 1
+  yIntercept: 6
+  tableXValues:
+    n1: 1
+    n2: 3
+    n3: 5
+    n4: 8
+    n5: 14
+    n6: 24
+  minSlope: -10
+  maxSlope: 10
+  minYIntercept: -10
+  maxYIntercept: 10

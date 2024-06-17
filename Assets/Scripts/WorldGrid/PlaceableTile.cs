@@ -1,32 +1,10 @@
 using UnityEngine;
-using UnityEngine.Events;
 
 namespace WorldGrid
 {
+    // TODO: Make it possible to instantiate a tower on the tile
+    // use ray cast for check, don't actually add it on here
     public class PlaceableTile : MonoBehaviour
     {
-        [SerializeField] private UnityEvent onTowerPlacedEvent = new();
-        private bool _hasTower;
-
-        /// <summary>
-        /// Handles what happens when an tower gets place (still WIP, waiting for tower implementation)
-        /// </summary>
-        public void OnTowerPlaced()
-        {
-            if (!_hasTower)
-            {
-                onTowerPlacedEvent.Invoke();
-                _hasTower = true;
-            }
-        }
-
-        /// <summary>
-        /// Adds a listener to the onTowerPlacedEvent
-        /// </summary>
-        /// <param name="action">The function to add</param>
-        public void SubscribeToTowerPlacedEvent(UnityAction action)
-        {
-            onTowerPlacedEvent.AddListener(action);
-        }
     }
 }

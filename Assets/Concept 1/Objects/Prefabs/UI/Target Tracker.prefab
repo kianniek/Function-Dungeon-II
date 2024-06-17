@@ -149,8 +149,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e62f4da5c4c6441e3aa0c9783e9d5c4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targets:
-  - {fileID: 0}
+  targets: []
   textFormat: 'Targets left: {0}'
-  onAllTargetsDestroyed: {fileID: 11400000, guid: 0324aa95a59544d198ad86effba8466c, type: 2}
+  onAllTargetsDestroyed: {fileID: 11400000, guid: 69c475b72e6134b98abcde11371048fc, type: 2}
   onTargetDestroyed: {fileID: 0}
