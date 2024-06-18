@@ -3,8 +3,8 @@ using UnityEngine;
 
 namespace Kaijus
 {
-    [CreateAssetMenu(fileName = "New Kaiju Wave", menuName = "KaijuWave")]
-    public class KaijuWave : ScriptableObject
+    [CreateAssetMenu(fileName = "New Kaiju Level", menuName = "KaijuLevel")]
+    public class KaijuLevel : ScriptableObject
     {
         [SerializeField] private GameObject[] kaijuPrefabs;
 

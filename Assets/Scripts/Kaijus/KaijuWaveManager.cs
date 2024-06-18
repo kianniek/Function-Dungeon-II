@@ -5,89 +5,89 @@ namespace Kaijus
 {
     public class KaijuWaveManager : MonoBehaviour
     {
-        [Header("Variables for pre-defined wave")]
-        [Tooltip("Insert a pre-defined KaijuWave scriptable object in here")]
-        [SerializeField] private KaijuWave waveToPlay;
+        [Header("Variables for pre-defined level")]
+        [Tooltip("Insert a pre-defined Kaijulevel scriptable object in here")]
+        [SerializeField] private KaijuLevel levelToPlay;
 
         /// <summary>
-        /// Random wave is conditinial bool for this block of variables
+        /// Random level is conditinial bool for this block of variables
         /// </summary>
-        [Header("Variables for random wave")]
-        [SerializeField] private bool randomWave;
-        [Tooltip("Prefabs for kaijus which can be included in the random wave")]
+        [Header("Variables for random level")]
+        [SerializeField] private bool randomLevel;
+        [Tooltip("Prefabs for kaijus which can be included in the random level")]
         [SerializeField] private GameObject[] kaijuPrefabs;
-        [Tooltip("Amount of kaijus in the random wave")]
-        [SerializeField] private int kaijusInWave = 3;
+        [Tooltip("Amount of kaijus in the random level")]
+        [SerializeField] private int kaijusInLevel = 3;
 
         [Header("Events")]
         [SerializeField] private GameEvent onKaijuDie;
 
-        private GameObject[] _kaijuWave;
-        private int _currentKaijuInWave;
+        private GameObject[] _kaijuLevel;
+        private int _currentKaijuInLevel;
 
         private void Awake()
         {
-            onKaijuDie.AddListener(NextKaijuInWave);
+            onKaijuDie.AddListener(NextKaijuInLevel);
         }
 
         private void Start()
         {
-            if (randomWave)
+            if (randomLevel)
             {
-                GenerateRandomWave();
+                GenerateRandomLevel();
             }
             else
             {
-                GeneratePredefinedWave();
+                GeneratePredefinedLevel();
             }
         }
 
         /// <summary>
-        /// Generates a random kaijuwave and saves it in an array. Spawns the first kaiju
+        /// Generates a random kaijulevel and saves it in an array. Spawns the first kaiju
         /// </summary>
-        private void GenerateRandomWave()
+        private void GenerateRandomLevel()
         {
-            _kaijuWave = new GameObject[kaijusInWave];
-            for (var i = 0; i < kaijusInWave; i++)
+            _kaijuLevel = new GameObject[kaijusInLevel];
+            for (var i = 0; i < kaijusInLevel; i++)
             {
-                _kaijuWave[i] = kaijuPrefabs[Random.Range(0, kaijuPrefabs.Length)];
+                _kaijuLevel[i] = kaijuPrefabs[Random.Range(0, kaijuPrefabs.Length)];
             }
             SpawnKaiju();
         }
 
         /// <summary>
-        /// Generates a pre-defined kaijuwave and saves it in an array. Spawns the first kaiju
+        /// Generates a pre-defined kaijulevel and saves it in an array. Spawns the first kaiju
         /// </summary>
-        private void GeneratePredefinedWave()
+        private void GeneratePredefinedLevel()
         {
-            _kaijuWave = new GameObject[waveToPlay.KaijuCount];
-            for (var i = 0; i < waveToPlay.KaijuCount; i++)
+            _kaijuLevel = new GameObject[levelToPlay.KaijuCount];
+            for (var i = 0; i < levelToPlay.KaijuCount; i++)
             {
-                _kaijuWave[i] = waveToPlay.KaijuPrefabs[i];
+                _kaijuLevel[i] = levelToPlay.KaijuPrefabs[i];
             }
-            kaijusInWave = waveToPlay.KaijuCount;
+            kaijusInLevel = levelToPlay.KaijuCount;
             SpawnKaiju();
         }
 
         /// <summary>
-        /// Checks if there are any kaijus left in the wave. If yes spawn the next kaiju
+        /// Checks if there are any kaijus left in the level. If yes spawn the next kaiju
         /// </summary>
-        private void NextKaijuInWave()
+        private void NextKaijuInLevel()
         {
-            if (_currentKaijuInWave == kaijusInWave)
+            if (_currentKaijuInLevel == kaijusInLevel)
             {
-                //TODO player has killed all kaijus in a wave
+                //TODO player has killed all kaijus in a level, Should this be here?
             }
-            _currentKaijuInWave++;
+            _currentKaijuInLevel++;
             SpawnKaiju();
         }
 
         /// <summary>
-        /// Spawns the kaiju with index _currentKaijuInWave.
+        /// Spawns the kaiju with index _currentKaijuInLevel.
         /// </summary>
         private void SpawnKaiju()
         {
-            Instantiate(_kaijuWave[_currentKaijuInWave]);
+            Instantiate(_kaijuLevel[_currentKaijuInLevel]);
         }
     }
 }

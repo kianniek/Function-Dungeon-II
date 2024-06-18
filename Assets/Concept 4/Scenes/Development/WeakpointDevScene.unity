@@ -276,6 +276,14 @@ PrefabInstance:
       propertyPath: waveToPlay
       value: 
       objectReference: {fileID: 11400000, guid: 92ffa25d59920b442a67419895de1af8, type: 2}
+    - target: {fileID: 7773854999712731162, guid: 84546d59a198a4943982be00f4d824e9, type: 3}
+      propertyPath: levelToPlay
+      value: 
+      objectReference: {fileID: 11400000, guid: 92ffa25d59920b442a67419895de1af8, type: 2}
+    - target: {fileID: 7773854999712731162, guid: 84546d59a198a4943982be00f4d824e9, type: 3}
+      propertyPath: randomLevel
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8637441009453055124, guid: 84546d59a198a4943982be00f4d824e9, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

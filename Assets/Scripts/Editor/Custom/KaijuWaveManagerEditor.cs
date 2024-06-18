@@ -6,18 +6,18 @@ namespace Editor.Custom
     [CustomEditor(typeof(KaijuWaveManager))]
     public class KaijuWaveManagerEditor : UnityEditor.Editor
     {
-        SerializedProperty waveToPlayProp;
-        SerializedProperty randomWaveProp;
+        SerializedProperty levelToPlayProp;
+        SerializedProperty randomLevelProp;
         SerializedProperty kaijuPrefabsProp;
-        SerializedProperty kaijusInWaveProp;
+        SerializedProperty kaijusInLevelProp;
         SerializedProperty onKaijuDieProp;
 
         private void OnEnable()
         {
-            waveToPlayProp = serializedObject.FindProperty("waveToPlay");
-            randomWaveProp = serializedObject.FindProperty("randomWave");
+            levelToPlayProp = serializedObject.FindProperty("levelToPlay");
+            randomLevelProp = serializedObject.FindProperty("randomLevel");
             kaijuPrefabsProp = serializedObject.FindProperty("kaijuPrefabs");
-            kaijusInWaveProp = serializedObject.FindProperty("kaijusInWave");
+            kaijusInLevelProp = serializedObject.FindProperty("kaijusInLevel");
             onKaijuDieProp = serializedObject.FindProperty("onKaijuDie");
         }
 
@@ -25,16 +25,16 @@ namespace Editor.Custom
         {
             serializedObject.Update();
 
-            EditorGUILayout.PropertyField(randomWaveProp);
+            EditorGUILayout.PropertyField(randomLevelProp);
 
-            if (randomWaveProp.boolValue)
+            if (randomLevelProp.boolValue)
             {
                 EditorGUILayout.PropertyField(kaijuPrefabsProp, true);
-                EditorGUILayout.PropertyField(kaijusInWaveProp);
+                EditorGUILayout.PropertyField(kaijusInLevelProp);
             }
             else
             {
-                EditorGUILayout.PropertyField(waveToPlayProp);
+                EditorGUILayout.PropertyField(levelToPlayProp);
             }
 
             EditorGUILayout.PropertyField(onKaijuDieProp);
