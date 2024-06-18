@@ -28,11 +28,7 @@ namespace Towers.Configuration.UI
             {
                 _activeTower = value;
                 
-                var position = _activeTower.transform.position;
-
-                position.y += 1f;
-                
-                gridOrigin.position = position;
+                gridOrigin.position = _activeTower.transform.position;
                 gridDrawer.gameObject.SetActive(true);
             }
         }

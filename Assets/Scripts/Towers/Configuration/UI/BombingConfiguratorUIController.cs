@@ -34,11 +34,8 @@ namespace Towers.Configuration.UI
             private get => $"{_x}";
             set
             {
-                if (string.IsNullOrEmpty(value))
-                    return;
-                
-                _x = float.Parse(StringExtensions.CleanUpDecimalOnlyString(value));
-                
+                _x = string.IsNullOrEmpty(value) ? 0 : float.Parse(StringExtensions.CleanUpDecimalOnlyString(value));
+                    
                 UpdatePosition();
             }
         }
@@ -51,10 +48,7 @@ namespace Towers.Configuration.UI
             private get => $"{_y}";
             set
             {
-                if (string.IsNullOrEmpty(value))
-                    return;
-                
-                _y = float.Parse(StringExtensions.CleanUpDecimalOnlyString(value));
+                _y = string.IsNullOrEmpty(value) ? 0 : float.Parse(StringExtensions.CleanUpDecimalOnlyString(value));
                 
                 UpdatePosition();
             }
@@ -65,7 +59,7 @@ namespace Towers.Configuration.UI
         /// </summary>
         public override void OnConfirmButtonClicked()
         {
-            if (BombPositionInRange())
+            if (!BombPositionInRange())
                 return;
             
             ActiveTower.GetComponent<LinearProjectileTower>().SetShootingPosition(_bombingPosition);

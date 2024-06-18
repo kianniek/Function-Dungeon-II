@@ -87,7 +87,7 @@ namespace Towers.Placement
             if (!SelectedTower)
                 return;
             
-            position.y += 1f;
+            position.y += 2f;
 
             Instantiate(SelectedTower, position, Quaternion.identity, world);
             

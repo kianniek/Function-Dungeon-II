@@ -49,9 +49,7 @@ namespace Towers.Configuration.UI
         /// </summary>
         public override void OnConfirmButtonClicked()
         {
-            var shootingBehaviour = ActiveTower.GetComponent<LinearProjectileTower>();
-
-            shootingBehaviour.SetShootingPosition(_pointOnShootingCircle);
+            ActiveTower.GetComponent<LinearProjectileTower>().SetShootingPosition(_pointOnShootingCircle);
 
             onTowerConfigured?.Invoke();
 
