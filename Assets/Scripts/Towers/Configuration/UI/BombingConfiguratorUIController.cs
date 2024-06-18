@@ -1,4 +1,3 @@
-using System;
 using LinearProjectiles;
 using UnityEngine;
 using UnityEngine.UI;
@@ -62,7 +61,7 @@ namespace Towers.Configuration.UI
             if (!BombPositionInRange())
                 return;
             
-            ActiveTower.GetComponent<LinearProjectileTower>().SetShootingPosition(_bombingPosition);
+            ActiveTower.GetComponent<SimpleProjectileLauncher>().SetShootingPosition(_bombingPosition);
             
             onTowerConfigured?.Invoke();
             
@@ -89,7 +88,7 @@ namespace Towers.Configuration.UI
         {
             var distance = _bombingPosition.Distance(ActiveTower.transform.position);
             
-            return distance < ActiveTower.TowerVariables.FireRange && distance > TowerVariables.MinFireRange;
+            return distance <= ActiveTower.TowerVariables.FireRange && distance >= TowerVariables.MinFireRange;
         }
     }
 }

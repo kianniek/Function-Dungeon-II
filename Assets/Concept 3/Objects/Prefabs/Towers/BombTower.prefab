@@ -119,7 +119,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6770520576378262374}
@@ -243,7 +243,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1706e978ac24d2d8ea6fe05a0991ea8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectilePrefab: {fileID: -7324163361462902121, guid: cdd0ab007ad004c30bb5762e2dd39189, type: 3}
+  onWaveStart: {fileID: 0}
+  onEnterBuildMode: {fileID: 0}
+  projectilePrefab: {fileID: 0}
 --- !u!114 &-5851452932852700323
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -258,4 +260,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   guide: {fileID: 6770520576378262374}
   towerVariables: {fileID: 11400000, guid: 0307f21d0848a0e46ad11dbbe0985172, type: 2}
+  onWaveStart: {fileID: 11400000, guid: 8564f0782fbc24e16a21a6b5cda31170, type: 2}
+  onEnterBuildMode: {fileID: 11400000, guid: 8855556e189cc4657a04a5b7635f89bd, type: 2}
   onConfigureTower: {fileID: 11400000, guid: 74e9eeb80cf134806b2c3fe3eb38d1ce, type: 2}

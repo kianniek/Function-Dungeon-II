@@ -14,8 +14,8 @@ GameObject:
   - component: {fileID: 1550290100988707515}
   - component: {fileID: 5937373876720523766}
   - component: {fileID: -8448291088817767745}
-  - component: {fileID: 5041128151901619710}
   - component: {fileID: -5125595317912632668}
+  - component: {fileID: -5513209855550651050}
   m_Layer: 0
   m_Name: ShootTower
   m_TagString: Untagged
@@ -145,19 +145,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   collectiveHealthContainer: {fileID: 11400000, guid: f9e40045d12fc41dbba4637f684f2f58, type: 2}
---- !u!114 &5041128151901619710
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2999448396102145}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b1706e978ac24d2d8ea6fe05a0991ea8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  projectilePrefab: {fileID: -277189766230627367, guid: c74dae0300fbf4ea0af59a9ed7d4b92e, type: 3}
 --- !u!114 &-5125595317912632668
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -172,7 +159,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   guide: {fileID: 565772817717844625}
   towerVariables: {fileID: 11400000, guid: faffc62667631d041885fce6802a2321, type: 2}
+  onWaveStart: {fileID: 11400000, guid: 8564f0782fbc24e16a21a6b5cda31170, type: 2}
+  onEnterBuildMode: {fileID: 11400000, guid: 8855556e189cc4657a04a5b7635f89bd, type: 2}
   onConfigureTower: {fileID: 11400000, guid: 74e9eeb80cf134806b2c3fe3eb38d1ce, type: 2}
+--- !u!114 &-5513209855550651050
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2999448396102145}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1706e978ac24d2d8ea6fe05a0991ea8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onWaveStart: {fileID: 11400000, guid: 8564f0782fbc24e16a21a6b5cda31170, type: 2}
+  onEnterBuildMode: {fileID: 11400000, guid: 8855556e189cc4657a04a5b7635f89bd, type: 2}
+  projectilePrefab: {fileID: 743849356745063862, guid: c74dae0300fbf4ea0af59a9ed7d4b92e, type: 3}
 --- !u!1 &7726246396506175506
 GameObject:
   m_ObjectHideFlags: 0
