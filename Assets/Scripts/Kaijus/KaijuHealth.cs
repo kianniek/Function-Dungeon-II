@@ -40,14 +40,15 @@ namespace Kaijus
         }
 
         /// <summary>
-        /// When health is zero invoke kaiju death event
+        /// When health is zero invoke kaiju death event and destroy kaiju
         /// </summary>
         private void DieCheck()
         {
             if (_health == 0)
             {
                 onKaijuDie.Invoke();
-                Debug.Log("Dead");
+                Debug.Log("Dead");                
+                Destroy(gameObject);
             }
         }
     }
