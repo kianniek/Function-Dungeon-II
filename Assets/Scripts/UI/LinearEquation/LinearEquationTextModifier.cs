@@ -10,10 +10,14 @@ namespace UI.LinearEquation
     public class LinearEquationTextModifier : MonoBehaviour
     {
         private const string EquationFormat = "y = {0}x + {1}";
+        private const string EquationFormatNoHeight = "y = {0}x";
         
         [Header("Variables")]
         [SerializeField] private float startAVariable;
         [SerializeField] private float startBVariable;
+
+        [Header("Visual Settings")] 
+        [SerializeField] private bool showHeight = true;
         
         private TMP_Text _text;
         private float _aVariable;
@@ -27,8 +31,9 @@ namespace UI.LinearEquation
             get => _aVariable;
             set
             {
-                _text.text = string.Format(EquationFormat, value, _bVariable);
                 _aVariable = value;
+                
+                UpdateText();
             }
         }
 
@@ -40,8 +45,9 @@ namespace UI.LinearEquation
             get => _bVariable;
             set
             {
-                _text.text = string.Format(EquationFormat, _aVariable, value);
                 _bVariable = value;
+                
+                UpdateText();
             }
         }
 
@@ -54,6 +60,13 @@ namespace UI.LinearEquation
         {
             AVariable = startAVariable;
             BVariable = startBVariable;
+        }
+
+        private void UpdateText()
+        {
+            _text.text = showHeight ? 
+                string.Format(EquationFormat, _aVariable, _bVariable) : 
+                string.Format(EquationFormatNoHeight, _aVariable);
         }
     }
 }

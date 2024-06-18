@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f62ea2f94578d084681a666071039def, type: 3}
   m_Name: ShootingTowerVariables
   m_EditorClassIdentifier: 
-  range: 8
-  shootingSpeed: 0.5
   flowerCost: 50
+  fireRate: 0.5
+  fireRange: 8

@@ -19,6 +19,15 @@ namespace UI
         /// Set the value of the text
         /// </summary>
         /// <param name="value"></param>
+        public void SetValue(float value)
+        {
+            _text.text = string.Format(textFormat, value);
+        }
+        
+        /// <summary>
+        /// Set the value of the text
+        /// </summary>
+        /// <param name="value"></param>
         public void SetValue(int value)
         {
             _text.text = string.Format(textFormat, value);

@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using Events.GameEvents;
 using Events.GameEvents.Typed;
 using UnityEngine;
 
@@ -18,7 +19,7 @@ namespace Health
         
         [Header("Game Events")] 
         [SerializeField] private FloatGameEvent onHealthChanged;
-        [SerializeField] private FloatGameEvent onDeath;
+        [SerializeField] private GameEvent onDeath;
         
         private float _currentCollectiveHealth;
         
@@ -32,7 +33,7 @@ namespace Health
             {
                 if (!enableNegativeHealth && value < 0)
                 {
-                    onDeath?.Invoke(value);
+                    onDeath?.Invoke();
                     
                     _currentCollectiveHealth = 0;
                 }

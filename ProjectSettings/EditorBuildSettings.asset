@@ -5,22 +5,22 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Concept 1/Scenes/Release/Main Menu.unity
     guid: 72b716e45d9aee64aa18d41bbce0b900
-  - enabled: 1
+  - enabled: 0
     path: Assets/Concept 1/Scenes/Release/Demo 1.unity
     guid: 4638b8cbb2d143043a24ef1c1d7b453f
-  - enabled: 1
+  - enabled: 0
     path: Assets/Concept 1/Scenes/Release/Demo 2.unity
     guid: 6a7608b06c5c5bb4e8604670291060a3
-  - enabled: 1
+  - enabled: 0
     path: Assets/Concept 1/Scenes/Release/Level Select.unity
     guid: 73f78cca3fdb1f141a2461734d68610e
-  - enabled: 1
+  - enabled: 0
     path: Assets/Concept 1/Scenes/Release/Tutorial A.unity
     guid: 359fe7cb0d5c716488b83ee7cd1e1163
-  - enabled: 1
+  - enabled: 0
     path: Assets/Concept 1/Scenes/Release/Tutorial B.unity
     guid: 51ffa9e41fe896d4894ba8a91b2d6672
   - enabled: 1
@@ -44,16 +44,16 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Concept 2/Scenes/Release/CrafterScene.unity
     guid: 598e7cbd0f46ef3448ab5f9f0c80696a
-  - enabled: 1
+  - enabled: 0
     path: Assets/Concept 3/Scenes/Release/MainMenuMushroomsOfBloom.unity
     guid: d8baca3261103f14ca161cfe915c42f5
-  - enabled: 1
+  - enabled: 0
     path: Assets/Concept 3/Scenes/Release/LevelSelectMushroomsOfBloom.unity
     guid: a7a134879a0df5d44a2599fc3866f797
-  - enabled: 1
+  - enabled: 0
     path: Assets/Concept 3/Scenes/Release/Level 1.unity
     guid: 71198989f62b09b42841b36f0aa37859
-  - enabled: 1
+  - enabled: 0
     path: Assets/Concept 3/Scenes/Release/Level 2.unity
     guid: 90196d065c09591459a4178c88140c1a
   m_configObjects:
