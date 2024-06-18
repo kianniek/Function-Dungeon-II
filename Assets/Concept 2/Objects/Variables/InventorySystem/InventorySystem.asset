@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   materials:
   - {fileID: 11400000, guid: 4116603fcd2cf7c438c356e189f1c652, type: 2}
-  ores: []
+  ores:
+  - {fileID: 11400000, guid: 2e1da2a0e6521954596c570fce939a93, type: 2}
   onOreCollected: {fileID: 11400000, guid: 900940ece18f1a543ba90cbb22152e42, type: 2}
   onOreUsed: {fileID: 11400000, guid: b568c53db098e88488f2e3b54ddeb9d3, type: 2}
   onMaterialCollected: {fileID: 11400000, guid: 52b7d58f1201d1548a39831894a71a6c, type: 2}
