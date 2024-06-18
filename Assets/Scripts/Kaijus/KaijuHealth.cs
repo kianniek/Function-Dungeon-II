@@ -1,40 +1,52 @@
-using System;
 using System.Collections.Generic;
 using Events.GameEvents;
 using UnityEngine;
 
-public class KaijuHealth : MonoBehaviour
+namespace Kaijus
 {
-    [SerializeField] private List<GameObject> weakpoints = new();
-    [SerializeField] private GameEvent onHitpointHit;
-
-    private int _health;
-
-    private void Awake()
+    public class KaijuHealth : MonoBehaviour
     {
-        onHitpointHit.AddListener(SubtractHealth);
-    }
+        [SerializeField] private List<GameObject> weakpoints = new();
+        [SerializeField] private GameEvent onHitpointHit;
+        [SerializeField] private GameEvent onKaijuDie;
 
-    private void Start()
-    {
-        foreach (var weakpoint in weakpoints)
+        private int _health;
+
+        private void Awake()
         {
-            _health++;
+            onHitpointHit.AddListener(SubtractHealth);
         }
-    }
 
-    private void SubtractHealth()
-    {
-        _health--;
-        DieCheck();
-    }
-
-    private void DieCheck()
-    {
-        if (_health == 0)
+        /// <summary>
+        /// Set kaiju health based on amount of hitpoints
+        /// </summary>
+        private void Start()
         {
-            //TODO handle next wave etc
-            Debug.Log("Dead");
+            foreach (var weakpoint in weakpoints)
+            {
+                _health++;
+            }
+        }
+
+        /// <summary>
+        /// When hitpoint gets hit substract health
+        /// </summary>
+        private void SubtractHealth()
+        {
+            _health--;
+            DieCheck();
+        }
+
+        /// <summary>
+        /// When health is zero invoke kaiju death event
+        /// </summary>
+        private void DieCheck()
+        {
+            if (_health == 0)
+            {
+                onKaijuDie.Invoke();
+                Debug.Log("Dead");
+            }
         }
     }
 }
