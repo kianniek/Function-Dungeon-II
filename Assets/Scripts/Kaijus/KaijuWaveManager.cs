@@ -36,6 +36,7 @@ namespace Kaijus
 
         private void GenerateRandomWave()
         {
+            kaijuWave = new GameObject[kaijusInWave];
             for (var i = 0; i < kaijusInWave; i++)
             {
                 kaijuWave[i] = kaijuPrefabs[Random.Range(0, kaijuPrefabs.Length)];
@@ -45,6 +46,7 @@ namespace Kaijus
 
         private void GeneratePredefinedWave()
         {
+            kaijuWave = new GameObject[waveToPlay.KaijuCount];
             for (var i = 0; i < waveToPlay.KaijuCount; i++)
             {
                 kaijuWave[i] = waveToPlay.KaijuPrefabs[i];

@@ -1,9 +1,10 @@
+using Kaijus;
 using UnityEditor;
 
-namespace Kaijus
+namespace Editor.Custom
 {
     [CustomEditor(typeof(KaijuWaveManager))]
-    public class KaijuWaveManagerEditor : Editor
+    public class KaijuWaveManagerEditor : UnityEditor.Editor
     {
         SerializedProperty waveToPlayProp;
         SerializedProperty randomWaveProp;

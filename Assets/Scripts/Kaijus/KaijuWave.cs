@@ -4,7 +4,7 @@ using UnityEngine;
 namespace Kaijus
 {
     [CreateAssetMenu(fileName = "New Kaiju Wave", menuName = "KaijuWave")]
-    public class KaijuWave : MonoBehaviour
+    public class KaijuWave : ScriptableObject
     {
         [SerializeField] private GameObject[] kaijuPrefabs;
 
