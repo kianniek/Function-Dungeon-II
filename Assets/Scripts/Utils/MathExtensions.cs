@@ -93,5 +93,15 @@ namespace Utils
         {
             return point.y - slope * point.x;
         }
+        
+        /// <summary>
+        /// Calculates the point on a circle given an angle.
+        /// </summary>
+        /// <param name="radians"> The angle in radians. </param>
+        /// <returns> The point on the circle. </returns>
+        public static Vector2 CalculatePointOnCircle(float radians)
+        {
+            return new Vector2(MathF.Cos(radians), MathF.Sin(radians));
+        }
     }
 }

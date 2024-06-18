@@ -343,7 +343,7 @@ GameObject:
   - component: {fileID: 52737322}
   - component: {fileID: 52737321}
   m_Layer: 5
-  m_Name: Button (1)
+  m_Name: Settings
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -476,7 +476,7 @@ GameObject:
   - component: {fileID: 212285950}
   - component: {fileID: 212285949}
   m_Layer: 5
-  m_Name: Button
+  m_Name: Level 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -499,7 +499,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -700, y: 119}
+  m_AnchoredPosition: {x: -385, y: 329}
   m_SizeDelta: {x: 75, y: 75}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &212285949
@@ -926,11 +926,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 418075253}
-  - component: {fileID: 418075255}
   - component: {fileID: 418075257}
-  - component: {fileID: 418075256}
+  - component: {fileID: 418075255}
   m_Layer: 5
-  m_Name: UI
+  m_Name: Levels
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -969,22 +968,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5ec8ab0f9891cd45898b1aad7fc3a7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &418075256
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 418075252}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d897d350d8291fe419141411cb5c0a5a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentUIElement: {fileID: 418075253}
-  linePrefab: {fileID: 8723619369193030762, guid: 17947318ebae41b48a34a51dbb2fbb39, type: 3}
-  lineWidth: 10
-  lineColor: {r: 0, g: 0, b: 0, a: 1}
 --- !u!120 &418075257
 LineRenderer:
   serializedVersion: 2
@@ -1104,7 +1087,7 @@ GameObject:
   - component: {fileID: 506560573}
   - component: {fileID: 506560572}
   m_Layer: 5
-  m_Name: Button (2)
+  m_Name: Level 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1127,7 +1110,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -60, y: -251}
+  m_AnchoredPosition: {x: 244, y: 24}
   m_SizeDelta: {x: 75, y: 75}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &506560572
@@ -1584,7 +1567,7 @@ GameObject:
   - component: {fileID: 910809429}
   - component: {fileID: 910809428}
   m_Layer: 5
-  m_Name: Button
+  m_Name: Main Menu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1664,7 +1647,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: MainMenuMushroomsOfBloom
+          m_StringArgument: Main Menu
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &910809429
@@ -2272,7 +2255,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1765280524}
   m_Layer: 5
-  m_Name: SettingsMenu
+  m_Name: Settings Menu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
