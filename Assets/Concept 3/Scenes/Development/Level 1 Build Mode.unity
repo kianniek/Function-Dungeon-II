@@ -155,7 +155,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5165565580759338371, guid: 71071b9aa62714f48b9288ccf5d656c2, type: 3}
       propertyPath: onWaveCompleted.m_PersistentCalls.m_Calls.Array.size
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5165565580759338371, guid: 71071b9aa62714f48b9288ccf5d656c2, type: 3}
       propertyPath: onWaveCompleted.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
@@ -164,7 +164,7 @@ PrefabInstance:
     - target: {fileID: 5165565580759338371, guid: 71071b9aa62714f48b9288ccf5d656c2, type: 3}
       propertyPath: onWaveCompleted.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1922134933}
     - target: {fileID: 5165565580759338371, guid: 71071b9aa62714f48b9288ccf5d656c2, type: 3}
       propertyPath: onWaveCompleted.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
@@ -228,6 +228,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3533221278623723374, guid: 71071b9aa62714f48b9288ccf5d656c2, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1922134932}
+    - targetCorrespondingSourceObject: {fileID: 3533221278623723374, guid: 71071b9aa62714f48b9288ccf5d656c2, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1922134933}
   m_SourcePrefab: {fileID: 100100000, guid: 71071b9aa62714f48b9288ccf5d656c2, type: 3}
 --- !u!4 &1004160145 stripped
 Transform:
@@ -711,6 +714,34 @@ MonoBehaviour:
       - m_Target: {fileID: 1922134930}
         m_TargetAssemblyTypeName: WaveSystem.WaveManager, Assembly-CSharp
         m_MethodName: SpawnWaves
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1922134933
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1922134929}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: baca1f6f82f84e1a82d7c63c93d658ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  delay: 10
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: 8855556e189cc4657a04a5b7635f89bd, type: 2}
+        m_TargetAssemblyTypeName: Events.GameEvents.GameEvent, Assembly-CSharp
+        m_MethodName: Invoke
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

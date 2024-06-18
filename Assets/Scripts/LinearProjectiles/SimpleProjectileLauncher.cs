@@ -60,7 +60,11 @@ namespace LinearProjectiles
             {
                 var projectile = _projectilePool.GetPooledObject();
                 var direction = (_shootingPosition - transform.position).normalized;
-                var startingPosition = transform.position + direction * projectilePrefab.transform.localScale.x;
+
+                var startingPosition =
+                    transform.position +
+                    direction * projectilePrefab.transform.localScale.x +
+                    direction * transform.localScale.x;
                 
                 projectile.transform.position = startingPosition;
                 projectile.gameObject.SetActive(true);

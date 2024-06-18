@@ -243,9 +243,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1706e978ac24d2d8ea6fe05a0991ea8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onWaveStart: {fileID: 0}
-  onEnterBuildMode: {fileID: 0}
-  projectilePrefab: {fileID: 0}
+  onWaveStart: {fileID: 11400000, guid: 8564f0782fbc24e16a21a6b5cda31170, type: 2}
+  onEnterBuildMode: {fileID: 11400000, guid: 8855556e189cc4657a04a5b7635f89bd, type: 2}
+  projectilePrefab: {fileID: 3569361127482119146, guid: cdd0ab007ad004c30bb5762e2dd39189, type: 3}
 --- !u!114 &-5851452932852700323
 MonoBehaviour:
   m_ObjectHideFlags: 0
