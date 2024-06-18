@@ -6,25 +6,28 @@ namespace Attacks
     /// <summary>
     /// This class is responsible for defining the behavior of a direct attack that triggers on impact.
     /// </summary>
-    [RequireComponent(typeof(Rigidbody2D))]
-    public class DirectAttackOnImpact : Attack
+    [RequireComponent(typeof(Rigidbody))]
+    public class DirectAttackOnImpact3D : Attack
     {
         [Header("Damage Calculation Settings")]
         [SerializeField] private bool useVelocityForCalculation = true;
         
-        private Rigidbody2D _rigidBody2D;
+        private Rigidbody _rigidBody;
         
         private void Awake()
         {
-            _rigidBody2D = GetComponent<Rigidbody2D>();
+            _rigidBody = GetComponent<Rigidbody>();
         }
-        
-        private void OnCollisionEnter2D(Collision2D collision)
+
+        private void OnTriggerEnter(Collider other)
         {
-            var attackMultiplier = useVelocityForCalculation ? _rigidBody2D.velocity.magnitude : 1;
-            
-            if (!collision.gameObject.TryGetComponent<Damageable>(out var damageableObject)) 
+            if (other.gameObject == gameObject)
                 return;
+            
+            if (!other.TryGetComponent<Damageable>(out var damageableObject)) 
+                return;
+            
+            var attackMultiplier = useVelocityForCalculation ? _rigidBody.velocity.magnitude : 1;
             
             var damage = CurrentStrength * attackMultiplier;
             

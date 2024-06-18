@@ -12,6 +12,10 @@ namespace Towers.Placement
         
         private RaycastHit _onClickHit;
 
+        /// <summary>
+        /// Subscribes to the OnClick event.
+        /// </summary>
+        /// <param name="context"></param>
         public void OnClick(InputAction.CallbackContext context)
         {
             if (context.phase != InputActionPhase.Started)
@@ -31,11 +35,19 @@ namespace Towers.Placement
             onSuitablePlacement.Invoke(tile.transform.position);
         }
         
+        /// <summary>
+        /// Subscribes to the OnSuitablePlacement event.
+        /// </summary>
+        /// <param name="action"> The action to subscribe to. </param>
         public void SubscribeToOnSuitablePlacement(UnityAction<Vector3> action)
         {
             onSuitablePlacement.AddListener(action);
         }
         
+        /// <summary>
+        /// Unsubscribes from the OnSuitablePlacement event.
+        /// </summary>
+        /// <param name="action"> The action to unsubscribe from. </param>
         public void UnsubscribeFromOnSuitablePlacement(UnityAction<Vector3> action)
         {
             onSuitablePlacement.RemoveListener(action);

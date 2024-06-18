@@ -4,6 +4,9 @@ using UnityEngine;
 
 namespace Towers.Configuration.UI
 {
+    /// <summary>
+    /// A UI controller for configuring a tower.
+    /// </summary>
     public class TowerConfiguratorUIController : MonoBehaviour
     {
         [SerializeField] private TowerConfigurationGameEvent onConfigureTower;

@@ -8,7 +8,7 @@ namespace Attacks
     /// This class is responsible for defining the behavior of an area of effect attack that triggers on impact.
     /// </summary>
     [RequireComponent(typeof(Rigidbody2D))]
-    public class AoeAttackOnImpact : Attack
+    public class AoeAttackOnImpact2D : Attack
     {
         [Header("Aoe Settings")]
         [SerializeField, Min(0.01f)] private float effectRadius;
