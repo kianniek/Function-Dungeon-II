@@ -1,4 +1,5 @@
 using FlowerSystem;
+using TMPro;
 using Towers.Configuration;
 using UnityEngine;
 using UnityEngine.Events;
@@ -17,8 +18,10 @@ namespace Towers.Placement
         
         [Header("Buy Buttons")]
         [SerializeField] private Button shootingTowerButton;
+        [SerializeField] private TMP_Text shootingTowerCostText;
         [SerializeField] private TowerVariables shootingTowerVariables;
         [SerializeField] private Button bombTowerButton;
+        [SerializeField] private TMP_Text bombTowerCostText;
         [SerializeField] private TowerVariables bombTowerVariables;
         
         [Header("World")]
@@ -56,6 +59,15 @@ namespace Towers.Placement
         private void OnDisable()
         {
             _suitablePlacementFinder.UnsubscribeFromOnSuitablePlacement(PlaceTower);
+        }
+        
+        private void Start()
+        {
+            shootingTowerCostText.text += 
+                $"\n\nCosts: {shootingTowerVariables.FlowerCost} Flowers";
+            
+            bombTowerCostText.text += 
+                $"\n\nCosts: {bombTowerVariables.FlowerCost} Flowers";
         }
 
         /// <summary>
