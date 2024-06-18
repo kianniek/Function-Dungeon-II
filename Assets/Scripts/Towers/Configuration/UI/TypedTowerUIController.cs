@@ -4,7 +4,10 @@ using UnityEngine.Events;
 
 namespace Towers.Configuration.UI
 {
-    public class TypedTowerUIController : MonoBehaviour
+    /// <summary>
+    /// A UI controller for configuring a tower.
+    /// </summary>
+    public abstract class TypedTowerUIController : MonoBehaviour
     {
         [Header("Grid")]
         [SerializeField] protected FunctionGraphDrawerController gridDrawer;
@@ -15,6 +18,9 @@ namespace Towers.Configuration.UI
         
         private TowerConfigurator _activeTower;
 
+        /// <summary>
+        /// The active tower being configured.
+        /// </summary>
         internal TowerConfigurator ActiveTower
         {
             get => _activeTower;
@@ -22,13 +28,11 @@ namespace Towers.Configuration.UI
             {
                 _activeTower = value;
                 
-                var position = _activeTower.transform.position;
-
-                position.y += 1f;
-                
-                gridOrigin.position = position;
+                gridOrigin.position = _activeTower.transform.position;
                 gridDrawer.gameObject.SetActive(true);
             }
         }
+        
+        public abstract void OnConfirmButtonClicked();
     }
 }

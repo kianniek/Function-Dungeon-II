@@ -4,6 +4,9 @@ using WorldGrid;
 
 namespace Towers
 {
+    /// <summary>
+    /// Sets the final castle position.
+    /// </summary>
     public class FinalCastlePositionSetter : MonoBehaviour
     {
         private const int FinalCastleYPosition = 2;
