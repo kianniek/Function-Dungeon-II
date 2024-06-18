@@ -1,5 +1,7 @@
+using System;
 using LinearProjectiles;
 using UnityEngine;
+using UnityEngine.UI;
 using Utils;
 
 namespace Towers.Configuration.UI
@@ -9,39 +11,91 @@ namespace Towers.Configuration.UI
     /// </summary>
     public class BombingConfiguratorUIController : TypedTowerUIController
     {
+        [Header("Configuration Guide")]
+        [SerializeField] private Image bombingPositionGuide;
+        
+        private float _x;
+        private float _y;
+        private Vector3 _bombingPosition;
+
+        private void Start()
+        {
+            _x = 0;
+            _y = 0;
+            
+            UpdatePosition();
+        }
+
         /// <summary>
         /// The x coordinate of the bombing position.
         /// </summary>
-        public string X { private get; set; }
- 
+        public string X
+        {
+            private get => $"{_x}";
+            set
+            {
+                if (string.IsNullOrEmpty(value))
+                    return;
+                
+                _x = float.Parse(StringExtensions.CleanUpDecimalOnlyString(value));
+                
+                UpdatePosition();
+            }
+        }
+
         /// <summary>
         /// The y coordinate of the bombing position.
         /// </summary>
-        public string Y { private get; set; }
+        public string Y
+        {
+            private get => $"{_y}";
+            set
+            {
+                if (string.IsNullOrEmpty(value))
+                    return;
+                
+                _y = float.Parse(StringExtensions.CleanUpDecimalOnlyString(value));
+                
+                UpdatePosition();
+            }
+        }
 
         /// <summary>
         /// Called when the user confirms the coordinates.
         /// </summary>
-        public void OnConfirmCoordinates()
+        public override void OnConfirmButtonClicked()
         {
-            var shootingBehaviour = ActiveTower.GetComponent<LinearProjectileTower>();
-
-            if (string.IsNullOrEmpty(X) || string.IsNullOrEmpty(Y))
+            if (BombPositionInRange())
                 return;
             
-            var answer = new Vector2(
-                float.Parse(StringExtensions.CleanUpDecimalOnlyString(X)),
-                float.Parse(StringExtensions.CleanUpDecimalOnlyString(Y))
-            );
-            
-            if (answer.Distance(ActiveTower.transform.position) > ActiveTower.TowerVariables.FireRange)
-                return;
-            
-            shootingBehaviour.SetShootingPosition(answer.x, answer.y);
+            ActiveTower.GetComponent<LinearProjectileTower>().SetShootingPosition(_bombingPosition);
             
             onTowerConfigured?.Invoke();
             
             gameObject.SetActive(false);
+        }
+
+        private void UpdatePosition()
+        {
+            if (UnityEngine.Camera.main is not { } mainCamera) 
+                return;
+            
+            _bombingPosition = new Vector3
+            {
+                x = ActiveTower.transform.position.x + _x,
+                y = ActiveTower.transform.position.y,
+                z = ActiveTower.transform.position.z + _y
+            };
+            
+            bombingPositionGuide.rectTransform.position = mainCamera.WorldToScreenPoint(_bombingPosition);
+            bombingPositionGuide.color = BombPositionInRange() ? Color.green : Color.red;
+        }
+
+        private bool BombPositionInRange()
+        {
+            var distance = _bombingPosition.Distance(ActiveTower.transform.position);
+            
+            return distance < ActiveTower.TowerVariables.FireRange && distance > TowerVariables.MinFireRange;
         }
     }
 }

@@ -7,7 +7,7 @@ namespace Towers.Configuration.UI
     /// <summary>
     /// A UI controller for configuring a tower.
     /// </summary>
-    public class TypedTowerUIController : MonoBehaviour
+    public abstract class TypedTowerUIController : MonoBehaviour
     {
         [Header("Grid")]
         [SerializeField] protected FunctionGraphDrawerController gridDrawer;
@@ -36,5 +36,7 @@ namespace Towers.Configuration.UI
                 gridDrawer.gameObject.SetActive(true);
             }
         }
+        
+        public abstract void OnConfirmButtonClicked();
     }
 }

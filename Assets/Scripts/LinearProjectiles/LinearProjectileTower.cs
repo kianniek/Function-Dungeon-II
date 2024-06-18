@@ -1,4 +1,3 @@
-using System;
 using Towers.Configuration;
 using UnityEngine;
 using Utils;
@@ -24,13 +23,15 @@ namespace LinearProjectiles
         {
             _shootingPosition = new Vector3(x, 1.1f, y);
         }
-
-        public void SetShootingDirection(float a)
+        
+        public void SetShootingPosition(Vector2 position)
         {
-            var x = MathF.Cos(a * Mathf.Deg2Rad);
-            var y = MathF.Sin(a * Mathf.Deg2Rad);
-            
-            SetShootingPosition(x, y);
+            _shootingPosition = new Vector3(position.x, 1.1f, position.y);
+        }
+        
+        public void SetShootingPosition(Vector3 position)
+        {
+            _shootingPosition = position;
         }
     }
 }

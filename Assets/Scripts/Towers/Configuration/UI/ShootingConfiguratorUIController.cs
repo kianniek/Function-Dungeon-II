@@ -1,5 +1,6 @@
 using LinearProjectiles;
 using UnityEngine;
+using Utils;
 
 namespace Towers.Configuration.UI
 {
@@ -8,22 +9,52 @@ namespace Towers.Configuration.UI
     /// </summary>
     public class ShootingConfiguratorUIController : TypedTowerUIController
     {
+        private const int LineResolution = 2;
+
+        [Header("Configuration Guide")] 
+        [SerializeField] private LineRenderer shootingDirectionGuide;
+
+        private float _a;
+        private Vector3 _pointOnShootingCircle;
+
         /// <summary>
         /// The angle of the shooting direction.
         /// </summary>
-        public float A { private get; set; }
-        
+        public float A
+        {
+            private get => _a;
+            set
+            {
+                _a = value;
+
+                if (!ActiveTower)
+                    return;
+
+                _pointOnShootingCircle = ActiveTower.transform.position;
+
+                var pointOnIdentity =
+                    MathExtensions.CalculatePointOnCircle(MathExtensions.AToRadians(A)) *
+                    ActiveTower.TowerVariables.FireRange;
+
+                _pointOnShootingCircle.x -= pointOnIdentity.x;
+                _pointOnShootingCircle.z -= pointOnIdentity.y;
+
+                shootingDirectionGuide.positionCount = LineResolution;
+                shootingDirectionGuide.SetPositions(new[] { ActiveTower.transform.position, _pointOnShootingCircle });
+            }
+        }
+
         /// <summary>
         /// Called when the user confirms the angle.
         /// </summary>
-        public void OnConfirmAngle()
+        public override void OnConfirmButtonClicked()
         {
             var shootingBehaviour = ActiveTower.GetComponent<LinearProjectileTower>();
-            
-            shootingBehaviour.SetShootingDirection(A);
-            
+
+            shootingBehaviour.SetShootingPosition(_pointOnShootingCircle);
+
             onTowerConfigured?.Invoke();
-            
+
             gameObject.SetActive(false);
         }
     }
