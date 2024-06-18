@@ -11,48 +11,56 @@ namespace Crafter
     /// </summary>
     public class LineIntersectionChecker : MonoBehaviour
     {
-        [Header("Line Coefficients")]
-        [SerializeField] private float a1;
+        [Header("Line Coefficients")] [SerializeField]
+        private float a1;
+        
         [SerializeField] private float a2;
         
-        [Header("Line References")]
-        [SerializeField] private LinearGraphLine line1;
+        [Header("Line References")] [SerializeField]
+        private LinearGraphLine line1;
+        
         [SerializeField] private LinearGraphLine line2;
-
-        [Header("GUI References")]
-        [SerializeField] private TextMeshProUGUI xAnswer;
+        
+        [Header("GUI References")] [SerializeField]
+        private TextMeshProUGUI xAnswer;
+        
         [SerializeField] private TextMeshProUGUI yAnswer;
-
-        [Header("Events")]
-        [SerializeField] private UnityEvent onCorrectAnswerGivenEvent;
+        
+        [Header("Events")] [SerializeField] private UnityEvent onCorrectAnswerGivenEvent;
         [SerializeField] private UnityEvent onWrongAnswerGivenEvent;
         
         private float _b1;
         private float _b2;
         private Vector2 _intersection;
-
+        
         private void Start()
         {
-            OnValidate();
+            SetValues();
         }
-
+        
         /// <summary>
         /// Check if answer is correct when confirm button is clicked and fires unity event for wrong or right answer
         /// </summary>
         public void OnConfirmButtonClicked()
         {
-            var answer = new Vector2{
+            var answer = new Vector2
+            {
                 x = float.Parse(StringExtensions.CleanUpDecimalOnlyString(xAnswer.text)),
                 y = float.Parse(StringExtensions.CleanUpDecimalOnlyString(yAnswer.text))
             };
-
+            
             if (answer == _intersection)
                 onCorrectAnswerGivenEvent.Invoke();
             else
                 onWrongAnswerGivenEvent.Invoke();
         }
-
+        
         private void OnValidate()
+        {
+            SetValues();
+        }
+        
+        private void SetValues()
         {
             if (!line1 || !line2)
                 return;
@@ -67,4 +75,3 @@ namespace Crafter
         }
     }
 }
-
