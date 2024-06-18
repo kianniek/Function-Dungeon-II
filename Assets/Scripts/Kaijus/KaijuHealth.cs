@@ -7,6 +7,8 @@ namespace Kaijus
     public class KaijuHealth : MonoBehaviour
     {
         [SerializeField] private List<GameObject> weakpoints = new();
+
+        [Header("Events")]
         [SerializeField] private GameEvent onHitpointHit;
         [SerializeField] private GameEvent onKaijuDie;
 

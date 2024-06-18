@@ -8,17 +8,20 @@ namespace Kaijus
     //TODO class probably needs to be adjusted when ROBB-E is implemented, i dont know how the line will looks like atm.
     public class LineCircleCollisionCheck : MonoBehaviour
     {
-        private Vector2 _sphereCenter;
-        private float _sphereRadius;
-
+        [Header("Events")]
         [SerializeField] private GameEvent onHitpointHit;
         [SerializeField] private GameEvent onHitpointMiss;
+        [SerializeField] private GameObjectGameEvent onHandShot; //TODO make with ROBB-E
 
         private float _a; //TODO assign this when line is implemented
         private float _b; //TODO assign this when line is implemented
-        private GameObjectGameEvent onHandShot; //TODO make with ROBB-E
+        private Vector2 _sphereCenter;
+        private float _sphereRadius;
         private LinearGraphLine _linearGraphLine;//TODO assign when line is implemented
 
+        /// <summary>
+        /// Get radius and center values form sphere and add event listeners.
+        /// </summary>
         private void Start()
         {
             _sphereRadius = transform.localScale.x;
