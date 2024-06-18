@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5190593f583ecb64d969921a8b7d8517, type: 3}
   m_Name: OreProcessorData
   m_EditorClassIdentifier: 
-  amountOfDecimals: 1
+  amountOfDecimals: 0
   useRandomValues: 0
   slope: 1
   yIntercept: 6
@@ -24,6 +24,6 @@ MonoBehaviour:
     n5: 14
     n6: 24
   minSlope: -10
-  maxSlope: 10
+  maxSlope: 50
   minYIntercept: -10
-  maxYIntercept: 10
+  maxYIntercept: 50

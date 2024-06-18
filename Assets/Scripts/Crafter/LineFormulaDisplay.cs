@@ -16,23 +16,24 @@ namespace Crafter
         [SerializeField] private LineRenderer lineToFollow;
         [SerializeField] private LinearGraphLine linearGraphLine;
         [SerializeField] private int indexOfPointToFollow = 2;
-
+        
         private Transform _line;
         private TextMeshPro _formulaText;
         private float _a;
         private float _b;
         private float _yPositionOffset;
-
+        
         private void Awake()
         {
-            _line = lineToFollow.transform;
             _formulaText = GetComponent<TextMeshPro>();
-            _a = linearGraphLine.A;
-            _b = _line.position.y;
         }
-
+        
         private void Start()
         {
+            _line = lineToFollow.transform;
+            _a = linearGraphLine.A;
+            _b = _line.position.y;
+            
             UpdateFormulaDisplay();
         }
         
@@ -41,7 +42,8 @@ namespace Crafter
             _formulaText.text = string.Format(FormulaText, _a, _b);
             _yPositionOffset = transform.parent.position.y;
             
-            transform.position = new Vector3 {
+            transform.position = new Vector3
+            {
                 x = lineToFollow.GetPosition(indexOfPointToFollow).x,
                 y = lineToFollow.GetPosition(indexOfPointToFollow).y + _yPositionOffset,
                 z = ZPosition
