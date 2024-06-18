@@ -25,13 +25,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2261808994602557358}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0.5}
   m_LocalScale: {x: 10, y: 10, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 966521215793122328}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!212 &2946815040798078711
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -99,8 +99,9 @@ GameObject:
   - component: {fileID: 7178415505086152761}
   - component: {fileID: 5868319224291558665}
   - component: {fileID: 4441643187660778935}
-  - component: {fileID: 1262900693338697865}
-  - component: {fileID: 8005992387909670825}
+  - component: {fileID: 303317286830861211}
+  - component: {fileID: 9089406490384708520}
+  - component: {fileID: -5851452932852700323}
   m_Layer: 0
   m_Name: BombTower
   m_TagString: Untagged
@@ -218,7 +219,7 @@ MonoBehaviour:
   onDamageEvent:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &1262900693338697865
+--- !u!114 &303317286830861211
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -227,12 +228,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 2582677756436490222}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c5811cc048eee9a4fbd3a43e74166570, type: 3}
+  m_Script: {fileID: 11500000, guid: 8781360e909b43d19d040901f061188c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  towerVariables: {fileID: 11400000, guid: 0307f21d0848a0e46ad11dbbe0985172, type: 2}
-  rangeTransform: {fileID: 8306043494361629779}
---- !u!114 &8005992387909670825
+  collectiveHealthContainer: {fileID: 11400000, guid: f9e40045d12fc41dbba4637f684f2f58, type: 2}
+--- !u!114 &9089406490384708520
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -241,14 +241,24 @@ MonoBehaviour:
   m_GameObject: {fileID: 2582677756436490222}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db2ec0d860d46594694c04498b360926, type: 3}
+  m_Script: {fileID: 11500000, guid: b1706e978ac24d2d8ea6fe05a0991ea8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onTowerPlaced: {fileID: 11400000, guid: e85e00721aea5c54ebea876a28bad097, type: 2}
-  coordinatesSet: {fileID: 11400000, guid: 29c72adfff66ef047a1d1c3b5a9ae554, type: 2}
-  onProjectileShot: {fileID: 11400000, guid: e68a5e6d8674450489af27c7e9d6f50e, type: 2}
+  projectilePrefab: {fileID: -7324163361462902121, guid: cdd0ab007ad004c30bb5762e2dd39189, type: 3}
+--- !u!114 &-5851452932852700323
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2582677756436490222}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: caff7d1c25974ef899cb97d4a8e6b008, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onConfigureTower: {fileID: 11400000, guid: 74e9eeb80cf134806b2c3fe3eb38d1ce, type: 2}
   towerVariables: {fileID: 11400000, guid: 0307f21d0848a0e46ad11dbbe0985172, type: 2}
-  rangeCircle: {fileID: 2261808994602557358}
 --- !u!1 &7439757465389608937
 GameObject:
   m_ObjectHideFlags: 0

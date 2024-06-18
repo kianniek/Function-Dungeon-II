@@ -1,3 +1,4 @@
+using Health;
 using UnityEngine;
 using WorldGrid;
 
@@ -5,14 +6,22 @@ namespace Towers
 {
     public class FinalCastlePositionSetter : MonoBehaviour
     {
+        private const int FinalCastleYPosition = 2;
+        
+        [Header("World Settings")]
         [SerializeField] private GridGenerator gridGenerator;
-        [SerializeField] private Transform finalCastle;
-
-        private int _finalCastleYPosition = 2;
-
+        [SerializeField] private Transform world;
+        
+        [Header("Prefab")]
+        [SerializeField] private Damageable finalCastle;
+        
         private void Start()
         {
-            finalCastle.position = new Vector3(gridGenerator.PathEndPosition.x, _finalCastleYPosition, gridGenerator.PathEndPosition.z);
+            var position = gridGenerator.PathEndPosition;
+            
+            position.y = FinalCastleYPosition;
+            
+            Instantiate(finalCastle, position, Quaternion.identity, world);
         }
     }
 }

@@ -4484,7 +4484,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7253027851721890495, guid: 8920d7ed5822f32428905413d278acb7, type: 3}
       propertyPath: trackCompleted.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: CollectMaterial
+      value: CollectOre
       objectReference: {fileID: 0}
     - target: {fileID: 7253027851721890495, guid: 8920d7ed5822f32428905413d278acb7, type: 3}
       propertyPath: trackCompleted.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
@@ -4509,14 +4509,14 @@ PrefabInstance:
     - target: {fileID: 7253027851721890495, guid: 8920d7ed5822f32428905413d278acb7, type: 3}
       propertyPath: trackCompleted.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
-      objectReference: {fileID: 11400000, guid: 4116603fcd2cf7c438c356e189f1c652, type: 2}
+      objectReference: {fileID: 11400000, guid: 2e1da2a0e6521954596c570fce939a93, type: 2}
     - target: {fileID: 7253027851721890495, guid: 8920d7ed5822f32428905413d278acb7, type: 3}
       propertyPath: trackCompleted.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgument
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 7253027851721890495, guid: 8920d7ed5822f32428905413d278acb7, type: 3}
       propertyPath: trackCompleted.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: MaterialSystem.Material, Assembly-CSharp
+      value: MaterialSystem.Ore, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 7253027851721890495, guid: 8920d7ed5822f32428905413d278acb7, type: 3}
       propertyPath: trackCompleted.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
