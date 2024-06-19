@@ -11,13 +11,12 @@ namespace Kaijus
         [Header("Events")]
         [SerializeField] private GameEvent onHitpointHit;
         [SerializeField] private GameEvent onHitpointMiss;
-        [SerializeField] private GameObjectGameEvent onHandShot; //TODO make with ROBB-E
+        [SerializeField] private Vector2GameEvent onHandShot;
 
         private float _a; //TODO assign this when line is implemented
         private float _b; //TODO assign this when line is implemented
         private Vector2 _sphereCenter;
         private float _sphereRadius;
-        private LinearGraphLine _linearGraphLine;//TODO assign when line is implemented
 
         /// <summary>
         /// Get radius and center values form sphere and add event listeners.
@@ -26,29 +25,17 @@ namespace Kaijus
         {
             _sphereRadius = transform.localScale.x;
             _sphereCenter = transform.position;
-            onHandShot.AddListener(GetLine);
             onHandShot.AddListener(IntersectionDebugger);
         }
 
-        //TODO possible change this when line is implemented
-        private void GetLine(GameObject gameObject)
-        {
-            if (gameObject.TryGetComponent<LinearGraphLine>(out _))
-            {
-                _linearGraphLine = gameObject.GetComponent<LinearGraphLine>();
-            }
-        }
 
         /// <summary>
         /// Debugs interception lines, calls LineIntersectsSphere. Should also be changed later
         /// </summary>
-        private void IntersectionDebugger()
+        private void IntersectionDebugger(Vector2 abValues)
         {
-            if (_linearGraphLine == null)
-                return;
-
-            _a = _linearGraphLine.A;
-            _b = _linearGraphLine.B;
+            _a = abValues.x;
+            _b = abValues.y;
 
             Vector2 intersectionPoint1, intersectionPoint2;
             bool intersects = LineIntersectsSphere(out intersectionPoint1, out intersectionPoint2);
