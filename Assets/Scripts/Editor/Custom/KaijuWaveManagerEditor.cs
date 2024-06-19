@@ -6,25 +6,30 @@ namespace Editor.Custom
     [CustomEditor(typeof(KaijuWaveManager))]
     public class KaijuWaveManagerEditor : UnityEditor.Editor
     {
+        SerializedProperty kaijuPositionProp;
         SerializedProperty levelToPlayProp;
         SerializedProperty randomLevelProp;
         SerializedProperty kaijuPrefabsProp;
         SerializedProperty kaijusInLevelProp;
         SerializedProperty onKaijuDieProp;
+        SerializedProperty kaijuSpawnProp;
 
         private void OnEnable()
         {
+            kaijuPositionProp = serializedObject.FindProperty("kaijuPosition");
             levelToPlayProp = serializedObject.FindProperty("levelToPlay");
             randomLevelProp = serializedObject.FindProperty("randomLevel");
             kaijuPrefabsProp = serializedObject.FindProperty("kaijuPrefabs");
             kaijusInLevelProp = serializedObject.FindProperty("kaijusInLevel");
             onKaijuDieProp = serializedObject.FindProperty("onKaijuDie");
+            kaijuSpawnProp = serializedObject.FindProperty("KaijuSpawn");
         }
 
         public override void OnInspectorGUI()
         {
             serializedObject.Update();
 
+            EditorGUILayout.PropertyField(kaijuPositionProp);
             EditorGUILayout.PropertyField(randomLevelProp);
 
             if (randomLevelProp.boolValue)
@@ -38,6 +43,7 @@ namespace Editor.Custom
             }
 
             EditorGUILayout.PropertyField(onKaijuDieProp);
+            EditorGUILayout.PropertyField(kaijuSpawnProp);
 
             serializedObject.ApplyModifiedProperties();
         }

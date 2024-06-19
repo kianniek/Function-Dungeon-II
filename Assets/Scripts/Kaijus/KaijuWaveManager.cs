@@ -1,3 +1,4 @@
+using Events;
 using Events.GameEvents;
 using UnityEngine;
 
@@ -5,6 +6,10 @@ namespace Kaijus
 {
     public class KaijuWaveManager : MonoBehaviour
     {
+        [Header("References")]
+        [Tooltip("Place the kaiju is created")]
+        [SerializeField] private GameObject kaijuPosition;
+        
         [Header("Variables for pre-defined level")]
         [Tooltip("Insert a pre-defined Kaijulevel scriptable object in here")]
         [SerializeField] private KaijuLevel levelToPlay;
@@ -21,6 +26,7 @@ namespace Kaijus
 
         [Header("Events")]
         [SerializeField] private GameEvent onKaijuDie;
+        public GameObjectEvent KaijuSpawn = new();
 
         private GameObject[] _kaijuLevel;
         private int _currentKaijuInLevel;
@@ -87,7 +93,12 @@ namespace Kaijus
         /// </summary>
         private void SpawnKaiju()
         {
-            Instantiate(_kaijuLevel[_currentKaijuInLevel]);
+            var childCount = kaijuPosition.transform.childCount;
+            for (var i = childCount - 1; i >= 0; i--)
+            {
+                Destroy(kaijuPosition.transform.GetChild(i).gameObject);
+            }
+            Instantiate(_kaijuLevel[_currentKaijuInLevel], kaijuPosition.transform);
         }
     }
 }
