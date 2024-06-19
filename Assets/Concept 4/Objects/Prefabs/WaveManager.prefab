@@ -44,11 +44,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20cb35d83415899409a5bd2668ead3fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waveToPlay: {fileID: 0}
-  randomWave: 0
+  levelToPlay: {fileID: 0}
+  randomLevel: 0
   kaijuPrefabs:
   - {fileID: 1461377707680661535, guid: 4a4b3414d0430584da53eab16f5129e5, type: 3}
   - {fileID: 8835650148968616144, guid: 35dded8de61174b41a015bc5e94566d7, type: 3}
   - {fileID: 5571153032456120382, guid: 6a5a8a756909ea242b2414ef003a9fa4, type: 3}
-  kaijusInWave: 3
+  kaijusInLevel: 3
   onKaijuDie: {fileID: 11400000, guid: ffc95c3c9e34c1341a29d49c23d8cd49, type: 2}

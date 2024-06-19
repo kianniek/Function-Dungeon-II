@@ -1,36 +1,69 @@
+using System;
+using System.Collections;
 using Events.GameEvents.Typed;
 using UnityEngine;
 
-public class ShootArm : MonoBehaviour
+namespace Robbe
 {
-    //[SerializeField] private GameObject projectilePrefab;
-    [SerializeField] private Vector2 shootPoint;
-    [SerializeField] private float projectileSpeed = 5f;
-    private float _aValue;
-    private float _bValue;
-    [SerializeField] private Vector2GameEvent onHandShot;
-
-    // TODO create projectile
-    void Start()
+    public class ShootArm : MonoBehaviour
     {
-        //var projecile = Instantiate(projectilePrefab);
-        //_projecileTransform = projecile.transform;
+        [SerializeField] private GameObject projectilePrefab;
+        [SerializeField] private float projectileSpeed = 5f;
 
-        //hide the projectile until it is shot
-    }
+        [SerializeField] private Vector2GameEvent onHandShot;
+        [SerializeField] private Vector2GameEvent onHitpointHit;
 
-    public void Shoot()
-    {
-        onHandShot.Invoke(new Vector2(_aValue, _bValue));
-    }
+        private bool _hitpointHit;
+        private float _aValue;
+        private float _bValue;
+        private Vector2 _shootPoint;
+        private Transform _projecileTransform;
 
-    public void GetAValue(float aValue)
-    {
-        _aValue = aValue;
-    }
+        void Start()
+        {
+            onHitpointHit.AddListener(FreezeBulletPosition);
+            _projecileTransform = Instantiate(projectilePrefab).transform;
+        }
 
-    public void GetBValue(float bValue)
-    {
-        _bValue = bValue;
+        private void FreezeBulletPosition(Vector2 position)
+        {
+            _hitpointHit = false; 
+            _projecileTransform.position = position;
+        }
+
+        public void Shoot()
+        {
+            _hitpointHit = true;
+            onHandShot.Invoke(new Vector2(_aValue, _bValue));
+            StartCoroutine(ShootToTarget());
+        }
+
+        public void GetAValue(float aValue)
+        {
+            _aValue = aValue;
+        }
+
+        public void GetBValue(float bValue)
+        {
+            _bValue = bValue;
+        }
+
+        private IEnumerator ShootToTarget()
+        {
+            _hitpointHit = true;
+            _projecileTransform.position = _shootPoint;
+            Vector2 targetPosition = new Vector2(20, 20 * _aValue + _bValue);
+            var direction = targetPosition - _shootPoint;
+
+            //make the projectile look at the target
+            _projecileTransform.right = direction;
+
+            //while the projectile is not at the target keep moving
+            while (_hitpointHit && Vector2.Distance(_projecileTransform.position, targetPosition) > 0.1f)
+            {
+                _projecileTransform.position = Vector2.MoveTowards(_projecileTransform.position, targetPosition, projectileSpeed * Time.deltaTime);
+                yield return null;
+            }
+        }
     }
 }

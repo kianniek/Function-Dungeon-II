@@ -159,13 +159,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ece4ac487d7a1549b3f2f3657e7454f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectilePrefab: {fileID: 0}
-  shootPoint: {fileID: 0}
-  projectilePositions: []
+  shootPoint: {x: 0, y: 0}
+  projectilePrefab: {fileID: 8927956299774712123, guid: 4561a24b5812b664aa714dd0cc49b594, type: 3}
   projectileSpeed: 5
-  onTargetReached:
-    m_PersistentCalls:
-      m_Calls: []
+  onHandShot: {fileID: 11400000, guid: ff3019f0964d44f4ead2b2c29e12b2cf, type: 2}
+  onHitpointHit: {fileID: 11400000, guid: bbcfcc57d288e2f42a03604b6a802ae5, type: 2}
 --- !u!1 &935059956298774861
 GameObject:
   m_ObjectHideFlags: 0
