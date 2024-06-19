@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using Events.GameEvents;
 using Events.GameEvents.Typed;
@@ -18,6 +17,7 @@ namespace Robbe
 
         private float _aValue;
         private float _bValue;
+        private float _xValue = 20;
         private Vector2 _shootPoint;
         private Vector2 _targetPosition;
         private Transform _projecileTransform;
@@ -29,17 +29,36 @@ namespace Robbe
             _projecileTransform = Instantiate(projectilePrefab).transform;
         }
 
+        /// <summary>
+        /// Gets executed when bullet hits weakpoint (pre-determined by using discriminant)
+        /// Moves bullet towards weakpoint
+        /// </summary>
+        /// <param name="weakpointPosition">Position of the weakpoint</param>
         private void BulletHitShot(Vector2 weakpointPosition)
         {
             _targetPosition = weakpointPosition;
-            StartCoroutine(BulletHit());
-        }
-        private void BulletMissShot()
-        {
-            StartCoroutine(BulletMiss());
+            StartCoroutine(MoveTowardsTarget());
+
+            lineSystem.transform.position = _targetPosition;
+            _projecileTransform.gameObject.SetActive(false);
+            _shootPoint = _targetPosition;
         }
 
-        private IEnumerator BulletHit()
+        /// <summary>
+        /// Gets executed when bullet misses weakpoint (pre-determined by using discriminant)
+        /// Moves bullet towards position, uses y=ax+b to determine position
+        /// </summary>
+        private void BulletMissShot()
+        {
+            _targetPosition = new Vector2(_xValue, _xValue * _aValue + _bValue);
+            StartCoroutine(MoveTowardsTarget());
+        }
+
+        /// <summary>
+        /// Moves projectile towards target
+        /// </summary>
+        /// <returns></returns>
+        private IEnumerator MoveTowardsTarget()
         {
             _projecileTransform.position = _shootPoint;
 
@@ -54,28 +73,8 @@ namespace Robbe
                 _projecileTransform.position = Vector2.MoveTowards(_projecileTransform.position, _targetPosition, projectileSpeed * Time.deltaTime);
                 yield return null;
             }
-
-            lineSystem.transform.position = _targetPosition;
-            _projecileTransform.gameObject.SetActive(false);
-            _shootPoint = _targetPosition;
         }
 
-        private IEnumerator BulletMiss()
-        {
-            _projecileTransform.position = _shootPoint;
-            Vector2 targetPosition = new Vector2(20, 20 * _aValue + _bValue);
-            var direction = targetPosition - _shootPoint;
-
-            //make the projectile look at the target
-            _projecileTransform.right = direction;
-
-            //while the projectile is not at the target keep moving
-            while (Vector2.Distance(_projecileTransform.position, targetPosition) > 0.1f)
-            {
-                _projecileTransform.position = Vector2.MoveTowards(_projecileTransform.position, targetPosition, projectileSpeed * Time.deltaTime);
-                yield return null;
-            }
-        }
         public void Shoot()
         {
             _projecileTransform.gameObject.SetActive(true);

@@ -23,36 +23,16 @@ namespace Kaijus
         {
             _sphereRadius = transform.localScale.x;
             _sphereCenter = transform.position;
-            onHandShot.AddListener(IntersectionDebugger);
-        }
-
-
-        /// <summary>
-        /// Debugs interception lines, calls LineIntersectsSphere. Should also be changed later
-        /// </summary>
-        private void IntersectionDebugger(Vector2 abValues)
-        {
-            _a = abValues.x;
-            _b = abValues.y;
-
-            bool intersects = LineIntersectsSphere();
-
-            if (intersects)
-            {
-                onHitpointHit.Invoke(transform.position);
-            }
-            else
-            {
-                onHitpointMiss.Invoke();
-            }
+            onHandShot.AddListener(LineIntersectsSphere);
         }
 
         /// <summary>
         /// Uses discriminant to get if Line has collision with sphere
         /// </summary>
-        /// <returns>True if the line has 1 or 2 intersection points with the circle</returns>
-        public bool LineIntersectsSphere()
+        private void LineIntersectsSphere(Vector2 abValues)
         {
+            _a = abValues.x;
+            _b = abValues.y;
             // Center of the sphere
             float xc = _sphereCenter.x;
             float yc = _sphereCenter.y;
@@ -67,11 +47,11 @@ namespace Kaijus
 
             if (discriminant < 0)
             {
-                return false;
+                onHitpointMiss.Invoke();
             }
             else
             {
-                return true;
+                onHitpointHit.Invoke(transform.position);
             }
         }
     }
