@@ -50,7 +50,7 @@ MonoBehaviour:
   weakpoints:
   - {fileID: 3790341778293987562}
   - {fileID: 1457746252410830248}
-  onHitpointHit: {fileID: 11400000, guid: cdd2a7269f0f10c46bc5185fbc9f092d, type: 2}
+  onHitpointHit: {fileID: 11400000, guid: bbcfcc57d288e2f42a03604b6a802ae5, type: 2}
   onKaijuDie: {fileID: 11400000, guid: ffc95c3c9e34c1341a29d49c23d8cd49, type: 2}
 --- !u!1 &7522042285757605745
 GameObject:

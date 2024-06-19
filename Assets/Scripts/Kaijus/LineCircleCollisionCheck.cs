@@ -1,23 +1,20 @@
 using Events.GameEvents;
 using Events.GameEvents.Typed;
-using LineControllers;
 using UnityEngine;
 
 namespace Kaijus
 {
-    //TODO class probably needs to be adjusted when ROBB-E is implemented, i dont know how the line will looks like atm.
     public class LineCircleCollisionCheck : MonoBehaviour
     {
         [Header("Events")]
-        [SerializeField] private GameEvent onHitpointHit;
+        [SerializeField] private Vector2GameEvent onHitpointHit;
         [SerializeField] private GameEvent onHitpointMiss;
-        [SerializeField] private GameObjectGameEvent onHandShot; //TODO make with ROBB-E
+        [SerializeField] private Vector2GameEvent onHandShot;
 
-        private float _a; //TODO assign this when line is implemented
-        private float _b; //TODO assign this when line is implemented
+        private float _a;
+        private float _b;
         private Vector2 _sphereCenter;
         private float _sphereRadius;
-        private LinearGraphLine _linearGraphLine;//TODO assign when line is implemented
 
         /// <summary>
         /// Get radius and center values form sphere and add event listeners.
@@ -26,55 +23,16 @@ namespace Kaijus
         {
             _sphereRadius = transform.localScale.x;
             _sphereCenter = transform.position;
-            onHandShot.AddListener(GetLine);
-            onHandShot.AddListener(IntersectionDebugger);
-        }
-
-        //TODO possible change this when line is implemented
-        private void GetLine(GameObject gameObject)
-        {
-            if (gameObject.TryGetComponent<LinearGraphLine>(out _))
-            {
-                _linearGraphLine = gameObject.GetComponent<LinearGraphLine>();
-            }
-        }
-
-        /// <summary>
-        /// Debugs interception lines, calls LineIntersectsSphere. Should also be changed later
-        /// </summary>
-        private void IntersectionDebugger()
-        {
-            if (_linearGraphLine == null)
-                return;
-
-            _a = _linearGraphLine.A;
-            _b = _linearGraphLine.B;
-
-            Vector2 intersectionPoint1, intersectionPoint2;
-            bool intersects = LineIntersectsSphere(out intersectionPoint1, out intersectionPoint2);
-
-            if (intersects)
-            {
-                onHitpointHit.Invoke();
-                Debug.Log("The line intersects with the sphere.");
-                Debug.Log("Intersection point 1: " + intersectionPoint1);
-                Debug.Log("Intersection point 2: " + intersectionPoint2);
-            }
-            else
-            {
-                onHitpointMiss.Invoke();
-                Debug.Log("The line does not intersect with the sphere.");
-            }
+            onHandShot.AddListener(LineIntersectsSphere);
         }
 
         /// <summary>
         /// Uses discriminant to get if Line has collision with sphere
         /// </summary>
-        /// <param name="intersectionPoint1"></param>
-        /// <param name="intersectionPoint2"></param>
-        /// <returns>True if the line has 1 or 2 intersection points with the circle</returns>
-        public bool LineIntersectsSphere(out Vector2 intersectionPoint1, out Vector2 intersectionPoint2)
+        private void LineIntersectsSphere(Vector2 abValues)
         {
+            _a = abValues.x;
+            _b = abValues.y;
             // Center of the sphere
             float xc = _sphereCenter.x;
             float yc = _sphereCenter.y;
@@ -89,29 +47,11 @@ namespace Kaijus
 
             if (discriminant < 0)
             {
-                // No intersection
-                intersectionPoint1 = Vector2.zero;
-                intersectionPoint2 = Vector2.zero;
-                return false;
-            }
-            else if (discriminant == 0)
-            {
-                // One intersection point (tangent)
-                float t = -B / (2 * A);
-                intersectionPoint1 = new Vector2(_a * t, _b + t);
-                intersectionPoint2 = Vector2.zero;
-                return true;
+                onHitpointMiss.Invoke();
             }
             else
             {
-                // Two intersection points
-                float sqrtDiscriminant = Mathf.Sqrt(discriminant);
-                float t1 = (-B + sqrtDiscriminant) / (2 * A);
-                float t2 = (-B - sqrtDiscriminant) / (2 * A);
-
-                intersectionPoint1 = new Vector2(_a * t1, _b + t1);
-                intersectionPoint2 = new Vector2(_a * t2, _b + t2);
-                return true;
+                onHitpointHit.Invoke(transform.position);
             }
         }
     }
