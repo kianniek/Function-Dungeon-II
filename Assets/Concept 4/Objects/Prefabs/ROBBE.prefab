@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6724363531172456948}
   - component: {fileID: 1568517909173999193}
   - component: {fileID: 3516914286788114061}
+  - component: {fileID: 2107100979513290641}
   m_Layer: 0
   m_Name: ROBBE
   m_TagString: Untagged
@@ -146,6 +147,25 @@ MonoBehaviour:
   m_SolverEditorData:
   - color: {r: 0, g: 1, b: 0, a: 1}
     showGizmo: 1
+--- !u!114 &2107100979513290641
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 790123299082789724}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ece4ac487d7a1549b3f2f3657e7454f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectilePrefab: {fileID: 0}
+  shootPoint: {fileID: 0}
+  projectilePositions: []
+  projectileSpeed: 5
+  onTargetReached:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &935059956298774861
 GameObject:
   m_ObjectHideFlags: 0
