@@ -12,11 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18cb1f6fad90de64680953dbf1e4e28f, type: 3}
   m_Name: Test Turn Data
   m_EditorClassIdentifier: 
-  currentTurn: 1
-  amountOfTurns: 4
-  isPlayerTurn: 0
+  currentTurn: 0
+  amountOfTurns: 3
   enemyPositions:
-  - {x: 0, y: 0, z: 0}
-  - {x: 1.1, y: 0, z: 0}
-  - {x: 3.72, y: 0, z: 0}
-  - {x: 4.98, y: 0, z: 0}
+  - {x: 13, y: 0, z: 0}
+  - {x: 10, y: 0, z: 0}
+  - {x: 7, y: 0, z: 0}
