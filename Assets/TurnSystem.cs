@@ -9,14 +9,15 @@ namespace TurnSystem
     public class TurnSystem : MonoBehaviour
     {
         [SerializeField] private TurnData turnData;
+        [SerializeField] private Transform enemyPlace;
 
-        public BoolEvent OnPlayerTurn = new BoolEvent();
-        public Vector3Event OnEnemyTurn = new Vector3Event();
+        public UnityEvent OnPlayerTurn = new UnityEvent();
+        public UnityEvent OnEnemyTurn = new UnityEvent();
         public UnityEvent OnMaxTurnsReached = new UnityEvent();
 
         private void Start()
         {
-            StartNewTurn();
+            ResetTurn();
         }
 
         /// <summary>
@@ -24,26 +25,28 @@ namespace TurnSystem
         /// </summary>
         public void StartNewTurn()
         {
-            OnMaxTurnsReached.Invoke();
             turnData.IsPlayerTurn = !turnData.IsPlayerTurn;
 
             if (turnData.IsPlayerTurn)
             {
+                OnPlayerTurn.Invoke();
+            }
+            else
+            {
                 turnData.CurrentTurn++;
+                OnEnemyTurn.Invoke();
 
-                if (turnData.AmountOfTurns < turnData.CurrentTurn)
+
+                if (turnData.AmountOfTurns == turnData.CurrentTurn)
                 {
                     OnMaxTurnsReached.Invoke();
                 }
                 else
                 {
-                    OnPlayerTurn.Invoke(turnData.IsPlayerTurn);
+                    var enemyposition = turnData.EnemyPositions[turnData.CurrentTurn];
+                    if (enemyposition != null)
+                        enemyPlace.position = enemyposition;
                 }
-            }
-            else
-            {
-                var enemyposition = turnData.EnemyPositions[turnData.CurrentTurn - 1];
-                OnEnemyTurn.Invoke(enemyposition);
             }
         }
 
@@ -54,6 +57,17 @@ namespace TurnSystem
         public int GetCurrentTurn()
         {
             return turnData.CurrentTurn;
+        }
+
+        /// <summary>
+        /// Resets the counter and starts a new one
+        /// </summary>
+        public void ResetTurn()
+        {
+            turnData.CurrentTurn = 0;
+            turnData.IsPlayerTurn = false;
+            enemyPlace.position = turnData.EnemyPositions[turnData.CurrentTurn];
+            StartNewTurn();
         }
     }
 }

@@ -45,12 +45,49 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   turnData: {fileID: 11400000, guid: 5b8906a720d03b8428e5ba8a51f99896, type: 2}
+  enemyPlace: {fileID: 0}
   OnPlayerTurn:
     m_PersistentCalls:
       m_Calls: []
   OnEnemyTurn:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7809597207922925011}
+        m_TargetAssemblyTypeName: TurnSystem.TurnSystem, Assembly-CSharp
+        m_MethodName: StartNewTurn
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnMaxTurnsReached:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: ffc95c3c9e34c1341a29d49c23d8cd49, type: 2}
+        m_TargetAssemblyTypeName: Events.GameEvents.GameEvent, Assembly-CSharp
+        m_MethodName: Invoke
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 7809597207922925011}
+        m_TargetAssemblyTypeName: TurnSystem.TurnSystem, Assembly-CSharp
+        m_MethodName: ResetTurn
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
