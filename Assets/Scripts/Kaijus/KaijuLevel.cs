@@ -11,6 +11,7 @@ namespace Kaijus
         public GameObject[] KaijuPrefabs => kaijuPrefabs;
 
         public int KaijuCount => kaijuPrefabs.Count();
+        public int CurrentKaijuInLevel;
 
     }
 }

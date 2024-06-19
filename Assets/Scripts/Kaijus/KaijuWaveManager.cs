@@ -29,7 +29,6 @@ namespace Kaijus
         public GameObjectEvent KaijuSpawn = new();
 
         private GameObject[] _kaijuLevel;
-        private int _currentKaijuInLevel;
 
         private void Awake()
         {
@@ -38,6 +37,7 @@ namespace Kaijus
 
         private void Start()
         {
+            levelToPlay.CurrentKaijuInLevel = 0;
             if (randomLevel)
             {
                 GenerateRandomLevel();
@@ -80,11 +80,11 @@ namespace Kaijus
         /// </summary>
         private void NextKaijuInLevel()
         {
-            if (_currentKaijuInLevel == kaijusInLevel)
+            if (levelToPlay.CurrentKaijuInLevel == kaijusInLevel)
             {
                 //TODO player has killed all kaijus in a level, Should this be here?
             }
-            _currentKaijuInLevel++;
+            levelToPlay.CurrentKaijuInLevel++;
             SpawnKaiju();
         }
 
@@ -98,7 +98,7 @@ namespace Kaijus
             {
                 Destroy(kaijuPosition.transform.GetChild(i).gameObject);
             }
-            Instantiate(_kaijuLevel[_currentKaijuInLevel], kaijuPosition.transform);
+            Instantiate(_kaijuLevel[levelToPlay.CurrentKaijuInLevel], kaijuPosition.transform);
         }
     }
 }
