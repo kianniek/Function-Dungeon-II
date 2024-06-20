@@ -13,6 +13,7 @@ namespace Editor.Custom
         SerializedProperty kaijusInLevelProp;
         SerializedProperty onKaijuDieProp;
         SerializedProperty kaijuSpawnProp;
+        SerializedProperty completedLevelProp;
 
         private void OnEnable()
         {
@@ -23,6 +24,7 @@ namespace Editor.Custom
             kaijusInLevelProp = serializedObject.FindProperty("kaijusInLevel");
             onKaijuDieProp = serializedObject.FindProperty("onKaijuDie");
             kaijuSpawnProp = serializedObject.FindProperty("KaijuSpawn");
+            completedLevelProp = serializedObject.FindProperty("completedLevel");
         }
 
         public override void OnInspectorGUI()
@@ -44,6 +46,7 @@ namespace Editor.Custom
 
             EditorGUILayout.PropertyField(onKaijuDieProp);
             EditorGUILayout.PropertyField(kaijuSpawnProp);
+            EditorGUILayout.PropertyField(completedLevelProp);
 
             serializedObject.ApplyModifiedProperties();
         }

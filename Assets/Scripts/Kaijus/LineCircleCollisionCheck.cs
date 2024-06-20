@@ -26,6 +26,11 @@ namespace Kaijus
             onHandShot.AddListener(LineIntersectsSphere);
         }
 
+        private void OnDisable()
+        {
+            onHandShot.RemoveListener(LineIntersectsSphere);
+        }
+
         /// <summary>
         /// Uses discriminant to get if Line has collision with sphere
         /// </summary>
@@ -52,6 +57,7 @@ namespace Kaijus
             else
             {
                 onHitpointHit.Invoke(transform.position);
+                Destroy(gameObject);
             }
         }
     }
