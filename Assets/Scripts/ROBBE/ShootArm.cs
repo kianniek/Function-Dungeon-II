@@ -20,6 +20,7 @@ namespace Robbe
         private float _xValue = 20;
         private Vector2 _shootPoint;
         private Vector2 _targetPosition;
+        private Vector2 _lineSystemOriginalPosition;
         private Transform _projecileTransform;
 
         void Start()
@@ -27,6 +28,7 @@ namespace Robbe
             onHitpointHit.AddListener(BulletHitShot);
             onHitpointMiss.AddListener(BulletMissShot);
             _projecileTransform = Instantiate(projectilePrefab).transform;
+            _lineSystemOriginalPosition = lineSystem.transform.position;
         }
 
         /// <summary>
@@ -52,6 +54,7 @@ namespace Robbe
         {
             _targetPosition = new Vector2(_xValue, _xValue * _aValue + _bValue);
             StartCoroutine(MoveTowardsTarget());
+            lineSystem.transform.position = _lineSystemOriginalPosition;
         }
 
         /// <summary>

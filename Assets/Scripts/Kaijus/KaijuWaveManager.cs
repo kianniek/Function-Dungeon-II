@@ -1,6 +1,7 @@
 using Events;
 using Events.GameEvents;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Kaijus
 {
@@ -9,7 +10,7 @@ namespace Kaijus
         [Header("References")]
         [Tooltip("Place the kaiju is created")]
         [SerializeField] private GameObject kaijuPosition;
-        
+
         [Header("Variables for pre-defined level")]
         [Tooltip("Insert a pre-defined Kaijulevel scriptable object in here")]
         [SerializeField] private KaijuLevel levelToPlay;
@@ -27,9 +28,9 @@ namespace Kaijus
         [Header("Events")]
         [SerializeField] private GameEvent onKaijuDie;
         public GameObjectEvent KaijuSpawn = new();
+        public UnityEvent completedLevel = new();
 
         private GameObject[] _kaijuLevel;
-        private int _currentKaijuInLevel;
 
         private void Awake()
         {
@@ -38,6 +39,7 @@ namespace Kaijus
 
         private void Start()
         {
+            levelToPlay.CurrentKaijuInLevel = 0;
             if (randomLevel)
             {
                 GenerateRandomLevel();
@@ -80,12 +82,15 @@ namespace Kaijus
         /// </summary>
         private void NextKaijuInLevel()
         {
-            if (_currentKaijuInLevel == kaijusInLevel)
+            if (levelToPlay.CurrentKaijuInLevel == kaijusInLevel - 1)
             {
-                //TODO player has killed all kaijus in a level, Should this be here?
+                completedLevel.Invoke();
             }
-            _currentKaijuInLevel++;
-            SpawnKaiju();
+            else
+            {
+                levelToPlay.CurrentKaijuInLevel++;
+                SpawnKaiju();
+            }
         }
 
         /// <summary>
@@ -98,7 +103,7 @@ namespace Kaijus
             {
                 Destroy(kaijuPosition.transform.GetChild(i).gameObject);
             }
-            Instantiate(_kaijuLevel[_currentKaijuInLevel], kaijuPosition.transform);
+            Instantiate(_kaijuLevel[levelToPlay.CurrentKaijuInLevel], kaijuPosition.transform);
         }
     }
 }

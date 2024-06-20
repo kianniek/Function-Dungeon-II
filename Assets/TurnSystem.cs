@@ -13,6 +13,7 @@ namespace TurnSystem
 
         public UnityEvent OnPlayerTurn = new UnityEvent();
         public UnityEvent OnEnemyTurn = new UnityEvent();
+        public FloatEvent OnNewTurn = new FloatEvent();
         public UnityEvent OnMaxTurnsReached = new UnityEvent();
 
         private void Start()
@@ -30,6 +31,7 @@ namespace TurnSystem
             if (turnData.IsPlayerTurn)
             {
                 OnPlayerTurn.Invoke();
+                OnNewTurn.Invoke(GetCurrentTurn());
             }
             else
             {
@@ -56,7 +58,7 @@ namespace TurnSystem
         /// <returns>The current turn</returns>
         public int GetCurrentTurn()
         {
-            return turnData.CurrentTurn;
+            return turnData.CurrentTurn + 1;
         }
 
         /// <summary>

@@ -1,5 +1,7 @@
 using System.Collections.Generic;
+using System.Diagnostics.Tracing;
 using Events.GameEvents;
+using Events.GameEvents.Typed;
 using UnityEngine;
 
 namespace Kaijus
@@ -9,14 +11,24 @@ namespace Kaijus
         [SerializeField] private List<GameObject> weakpoints = new();
 
         [Header("Events")]
-        [SerializeField] private GameEvent onHitpointHit;
+        [SerializeField] private Vector2GameEvent onHitpointHit;
+        [SerializeField] private GameEvent onHitpointMiss;
+        [SerializeField] private GameEvent onKajiuMiss;
         [SerializeField] private GameEvent onKaijuDie;
 
         private int _health;
+        private int _missCount;
 
         private void Awake()
         {
             onHitpointHit.AddListener(SubtractHealth);
+            onHitpointMiss.AddListener(CountCollisions);
+        }
+
+        private void OnDisable()
+        {
+            onHitpointHit.RemoveListener(SubtractHealth);
+            onHitpointMiss.RemoveListener(CountCollisions);
         }
 
         /// <summary>
@@ -36,6 +48,14 @@ namespace Kaijus
         private void SubtractHealth()
         {
             _health--;
+            if(_missCount == 0)
+            {
+                _missCount = -1;
+            }
+            else
+            {
+                _missCount = 0;
+            }
             DieCheck();
         }
 
@@ -49,6 +69,17 @@ namespace Kaijus
                 onKaijuDie.Invoke();
                 Debug.Log("Dead");                
                 Destroy(gameObject);
+            }
+        }
+
+        private void CountCollisions()
+        {
+            _missCount++;
+
+            if(_missCount == _health)
+            {
+                onKajiuMiss.Invoke();
+                _missCount = 0;
             }
         }
     }

@@ -48,6 +48,11 @@ namespace Health
                 }
             }
         }
+
+        public void DamageObject(float damage)
+        {
+            Health -= damage;
+        }
         
         /// <summary>
         /// Whether negative health is enabled.

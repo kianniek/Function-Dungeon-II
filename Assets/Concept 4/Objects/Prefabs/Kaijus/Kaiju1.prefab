@@ -51,6 +51,8 @@ MonoBehaviour:
   - {fileID: 3790341778293987562}
   - {fileID: 1457746252410830248}
   onHitpointHit: {fileID: 11400000, guid: bbcfcc57d288e2f42a03604b6a802ae5, type: 2}
+  onHitpointMiss: {fileID: 11400000, guid: d9a8471435b6ce14db9f634ab28fc741, type: 2}
+  onKajiuMiss: {fileID: 11400000, guid: ba0f201e709f9c247b5ff2dabf88c055, type: 2}
   onKaijuDie: {fileID: 11400000, guid: ffc95c3c9e34c1341a29d49c23d8cd49, type: 2}
 --- !u!1 &7522042285757605745
 GameObject:
@@ -148,11 +150,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8502302417448602617, guid: bd820cfbf3868634b8809b90c896bb83, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8502302417448602617, guid: bd820cfbf3868634b8809b90c896bb83, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.7
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8502302417448602617, guid: bd820cfbf3868634b8809b90c896bb83, type: 3}
       propertyPath: m_LocalPosition.z
@@ -215,11 +217,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8502302417448602617, guid: bd820cfbf3868634b8809b90c896bb83, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.38
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8502302417448602617, guid: bd820cfbf3868634b8809b90c896bb83, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.42
+      value: -3
       objectReference: {fileID: 0}
     - target: {fileID: 8502302417448602617, guid: bd820cfbf3868634b8809b90c896bb83, type: 3}
       propertyPath: m_LocalPosition.z
